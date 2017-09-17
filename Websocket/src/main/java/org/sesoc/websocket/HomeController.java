@@ -35,7 +35,7 @@ public class HomeController {
 		
 		System.out.println("22깃허브 체인지");
 		
-		System.out.println("ddd");
+		System.out.println("dddddd");
 		return "home";
 	}
 	
