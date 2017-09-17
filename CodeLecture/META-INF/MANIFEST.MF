@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CodeLecture
-Bundle-SymbolicName: CodeLecture
+Bundle-SymbolicName: Corona
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: CodeLecture.jar,
   BossMonster/Downloads/cos-26Dec2008 (1)/lib/cos.jar
