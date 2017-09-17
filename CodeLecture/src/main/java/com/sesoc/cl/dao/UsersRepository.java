@@ -1,12 +1,14 @@
 package com.sesoc.cl.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.Users;
 
 
@@ -15,6 +17,7 @@ public class UsersRepository {
 	
 	@Autowired
 	SqlSession sqlSession;
+	
 	
 	public Users login(String id, String password) {
 		UsersDAO dao = sqlSession.getMapper(UsersDAO.class);
@@ -88,5 +91,11 @@ public class UsersRepository {
 		
 		return result;
 	}
-
+	public List<ClassInfo> myTeacherList(String id){
+		UsersDAO dao = sqlSession.getMapper(UsersDAO.class);
+		
+		List<ClassInfo> result = dao.myTeacherList(id);
+		
+		return result;
+	}
 }

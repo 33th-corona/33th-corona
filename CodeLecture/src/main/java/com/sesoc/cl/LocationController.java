@@ -1,18 +1,26 @@
 package com.sesoc.cl;
 
 import java.io.File;
+import java.util.List;
 
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sesoc.cl.dao.UsersRepository;
+import com.sesoc.cl.vo.ClassInfo;
+
 @Controller
 public class LocationController {
+	@Autowired
+	UsersRepository repo;
+	
 	String path = "/img";
 	
 	@RequestMapping(value="searchLocation", method=RequestMethod.GET)
@@ -22,6 +30,7 @@ public class LocationController {
 
 	@RequestMapping(value="afterLoginLocation", method=RequestMethod.GET)
 	public String afterLoginForm(Model model, HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("loginId");
 		String name = (String)session.getAttribute("name");
@@ -31,6 +40,8 @@ public class LocationController {
 		model.addAttribute("name", name);
 		model.addAttribute("userImg", userImg);
 		model.addAttribute("email", email);
+		List<ClassInfo> myTeacherList = repo.myTeacherList(id);
+		model.addAttribute("myTeacherList", myTeacherList);
 		String mime = null;
 			String fullPath = path + "/" + userImg;
 			mime = new MimetypesFileTypeMap().getContentType(new File(fullPath));

@@ -388,6 +388,13 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/everyBoardLocation"><i class="icon-list"></i>전체 게시판</a></li>
 						<li><a href="${pageContext.request.contextPath}/createHomeWorkLocation"><i class="icon-paperclip"></i>과제 만들기</a></li>
+						<li><a href="#"><i class="icon-briefcase"></i>내가 선생일 때</a>
+							<ul>
+								<c:forEach items="${myTeacherList}" var="teacherList">
+									<li><a href="${pageContext.request.contextPath}/ClassForm?num=${teacherList.num}"><i class="icon-magic"></i>${teacherList.name}</a></li>
+								</c:forEach>
+							</ul>
+						</li>
 					</ul>
 				</nav>
 			</div>
