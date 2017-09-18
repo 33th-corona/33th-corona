@@ -12,7 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sesoc.cl.board.Board;
+import com.sesoc.cl.board.BoardRepository;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.vo.ClassInfo;
@@ -24,6 +27,8 @@ public class LocationController {
 	UsersRepository repo;
 	@Autowired
 	ClassRepository cRepo;
+	@Autowired
+	BoardRepository br;
 	
 	String path = "/img";
 	
@@ -74,11 +79,42 @@ public class LocationController {
 		this.listCome(model, request);
 		return "createHomeWorkForm";
 	}
+	
 	@RequestMapping(value="boardLocation", method=RequestMethod.GET)
-	public String boardForm(Model model, String status, HttpServletRequest request) {
-		this.listCome(model, request);
-		model.addAttribute("status", status);
-		return "boardForm";
+	public String boardForm(
+			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
+			@RequestParam(value="searchword",defaultValue="") String searchword,
+			Model model, String status) {
+		//보드 리스트
+		System.out.println("게시판 구분 : "+status);
+		if(status.equals("normal")) {
+			System.out.println(""+ "노말진입");
+			List<Board> boardList = br.findAll(searchtype, searchword);
+			model.addAttribute("boardList", boardList);
+			model.addAttribute("status", status);
+			System.out.println("노말모델 넘김 :"+boardList.get(0));
+			return "boardForm";
+			
+		}else if(status.equals("tesk")) {
+			System.out.println("자료실 입장");
+			model.addAttribute("status", status);
+			return "boardForm";
+		}
+		
+		System.out.println("과제 게시판");
+		
+		System.out.println("보드로케이션 끝");
+		return "boradForm";
+	}
+	
+	@RequestMapping("teskWrite")
+	public String teskWrite(){
+		return "teskWrite";
+	}
+	
+	@RequestMapping("teskDetail")
+	public String teskDetail(){
+		return "teskDetail";
 	}
 	
 	public void listCome(Model model, HttpServletRequest request) {
