@@ -117,6 +117,15 @@ public class LocationController {
 		return "teskDetail";
 	}
 	
+	@RequestMapping(value="teacherFormLocation", method=RequestMethod.GET)
+	public String teacherForm(Model model, HttpServletRequest request, int num){
+		System.out.println("여기와?");
+		this.listCome(model, request);
+		ClassInfo classinfo = cRepo.selectClassOne(num);
+		model.addAttribute("classInfo", classinfo);
+		return "teacherForm";
+	}
+	
 	public void listCome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		String id = (String)session.getAttribute("loginId");
@@ -126,4 +135,5 @@ public class LocationController {
 		model.addAttribute("myTeacherList", myTeacherList);
 		model.addAttribute("myStudentList", myStudentList);
 	}
+	
 }

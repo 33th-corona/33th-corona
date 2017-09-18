@@ -394,7 +394,7 @@
 									<li><a>너 선생아니다!!</a></li>
 									</c:if>
 								<c:forEach items="${myTeacherList}" var="teacherList">
-									<li><a href="${pageContext.request.contextPath}/teacherForm?num=${teacherList.num}"><i class="icon-magic"></i>${teacherList.name}</a></li>
+									<li><a href="${pageContext.request.contextPath}/teacherFormLocation?num=${teacherList.num}"><i class="icon-magic"></i>${teacherList.name}</a></li>
 								</c:forEach>
 							</ul>
 						</li>
@@ -404,7 +404,7 @@
 									<li><a>너 학생아니다!!!</a></li>
 								</c:if>
 								<c:forEach items="${myStudentList}" var="studentList">
-									<li><a href="${pageContext.request.contextPath}/studentForm?num=${studentList.num}"><i class="icon-pencil2"></i>${studentList.name}</a></li>
+									<li><a href="${pageContext.request.contextPath}/studentFormLocation?num=${studentList.num}"><i class="icon-pencil2"></i>${studentList.name}</a></li>
 								</c:forEach>
 							</ul>
 						</li>
