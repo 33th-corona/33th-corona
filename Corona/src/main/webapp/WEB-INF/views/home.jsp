@@ -14,6 +14,7 @@
 
 	<!-- Stylesheets
 	============================================= -->
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="resources/style.css" type="text/css" />
@@ -39,10 +40,11 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>CodeLecture</title>
+	<title>Corona</title>
 	<style type="text/css">
-	#modal-register-form{
-		
+	.button {
+	background-color: #ff9800 !important;
+	color: #FFF;
 	}
 	</style>
 	
@@ -89,18 +91,24 @@
 					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 				</div>
 			</div>
-		</header><!-- #header end -->
-
+		</header>
 		<!-- Slider
 		============================================= -->
-		<section id="slider">
+		<section id="slider" class="page-title-parallax page-title-dark page-title-video">
+		
 			<div class="section dark nomargin noborder ohidden content-wrap" style="padding: 120px 0;">
+				<div class="video-wrap" style="z-index: 0">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
+					<source src='images/videos/corona2.webm' type='video/mp4' />
+				</video>
+				<div class="video-overlay"></div>
+			</div>
 				<div class="container center clearfix">
 					<div class="emphasis-title">
-						<span class="before-heading opm-medium t300 uppercase font-primary">We are</span>
+						<span class="before-heading opm-medium t300 uppercase font-primary" style="color: #ff9800; font-weight: bold !important;">We are</span>
 						<h1>
 							<span class="text-rotater nocolor" data-separator="|" data-rotate="fadeInLeft" data-speed="6000">
-								<span class="t-rotate t700 font-body opm-medium-word">Corona.|Eclipse.|JAVA.</span>
+								<span class="t-rotate t700 font-body opm-medium-word">Corona|Eclipse|JAVA</span>
 							</span>
 						</h1>
 					</div>
@@ -187,7 +195,7 @@
 								<div class="col_full nobottommargin">
 									<div class="row">
 										<div class="col-xs-6">
-											<input type="button" id="loginbtn" class="button button-rounded button-small button-dark nomargin" value="login">
+											<input type="button" id="loginbtn" class="button button-rounded button-light button-reveal button-small button-dark nomargin" value="login">
 										</div>
 										<div class="col-xs-6">
 											<p class="nobottommargin tright"><small class="t300"><em><a href="#">Forgot Password?</a></em></small></p>

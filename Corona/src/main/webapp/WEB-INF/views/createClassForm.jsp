@@ -126,15 +126,14 @@
 	
 	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0;">
 			<div class="video-wrap">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
-					<source src='images/videos/explore.mp4' type='video/mp4' />
-					<source src='images/videos/explore.webm' type='video/webm' />
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
+					<source src='images/videos/classCreateForm.webm' type='video/webm' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
 			<div class="container clearfix" style="z-index: 1;">
 					<div class="emphasis-title">
-							<span class="t-rotate t700 font-body col_full" style="font-size: 60px">Create Class</span>
+							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#444 !important;">Create Class</span>
 					</div>
 			</div>
 			

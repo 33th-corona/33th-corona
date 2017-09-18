@@ -20,9 +20,9 @@
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.3cm; padding-right: 0.36cm;   /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white w3-orange">
-						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="standard-logo logoChange" style="z-index: 1" data-dark-logo="images/logo2.png"><img class="logoChange" src="images/logo2.png" alt="CodeLecture Logo"></a>
-						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="retina-logo logoChange" style="z-index: 1" data-dark-logo="images/logo2.png"><img class="logoChange" src="images/logo2.png" alt="CodeLecture Logo"></a>
+					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm;   /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white w3-orange">
+						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="standard-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
+						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="retina-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
@@ -56,12 +56,12 @@
 		<script>
 		$(function() {
 			$('.logoChange').mouseover(function() {
-				$(this).attr("data-dark-logo","images/logoChange.PNG");
-				$(this).attr("src", "images/logoChange.PNG");
+				$(this).attr("data-dark-logo","images/corona3Change.png");
+				$(this).attr("src", "images/corona3Change.png");
 			});
 			$('.logoChange').mouseout(function() {
-				$(this).attr("data-dark-logo","images/logo2.png");
-				$(this).attr("src", "images/logo2.png");
+				$(this).attr("data-dark-logo","images/corona3.png");
+				$(this).attr("src", "images/corona3.png");
 			})
 		});
 		</script>

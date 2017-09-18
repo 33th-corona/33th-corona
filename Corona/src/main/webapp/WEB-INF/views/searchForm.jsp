@@ -33,7 +33,17 @@
 	
 <title>Insert title here</title>
 <style type="text/css">
-
+th {
+background-color: white;
+}
+.button-orange { background-color: #ff9800; }
+.button-3d.button-orange:hover,
+.button-reveal.button-orange:hover,
+.button-border.button-orange:hover,
+.button-border.button-orange.button-fill:before { background-color: #ff9800 !important; }
+.dataTables_paginate {
+ color: orange;
+}
 </style>
 </head>
 
@@ -66,7 +76,7 @@
 				<div class="container clearfix" style="z-index: 1">
 					<div class="emphasis-title center">
 						<div class="topmargin">
-							<span class="t-rotate t700 font-body col_full" style="font-size: 60px">Search Class</span>
+							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color: #222">Search Class</span>
 						<div class="col-md-2 nomargin" style="padding:0px;">
 							<select id="searchType" class="typeahead select-1 sm-form-control t-rotate"  dir="auto" style="width:100%; font-weight: bold; height: 1.0796cm; opacity: 0.8; border: 2px solid #DDD; border-right: 0; border-radius: 0 !important; line-height: 1.42857143;position: relative;   ">
 										<option value="name">ClassName</option>
@@ -115,7 +125,23 @@
 							</tr>
 						</tfoot>
 						<tbody>
-							<c:forEach items="${map.list}" var="searchList">
+							<c:forEach items="${map.list}" var="searchList" varStatus="in">
+							<c:if test="${0 == in.index % 2}">
+							<tr>
+								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.num}</th>
+								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.name}</th>
+								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.teacher_id}</th>
+								<c:forEach items="${map.countList}" var="countList">
+									<c:if test="${searchList.num eq countList.num}">
+										<th style="background-color: rgba(255,152,0, 0.4) !important;">${countList.usernum}</th>		
+									</c:if>
+								</c:forEach>
+								<th class="center"style="background-color: rgba(255,152,0, 0.4) !important;">
+								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin request"><i class="icon-angle-right" style="width: 20px "></i>가입신청</button>
+								</th>
+							</tr>
+							</c:if>
+							<c:if test="${1 == in.index % 2}">
 							<tr>
 								<th>${searchList.num}</th>
 								<th>${searchList.name}</th>
@@ -126,9 +152,10 @@
 									</c:if>
 								</c:forEach>
 								<th class="center">
-								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
+								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
 								</th>
 							</tr>
+							</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -183,7 +210,9 @@
 				            data;
 				    }
 				    } ]
+				, "bSortClasses" : false
 		});
+		
 		
 		$("#searchText").keyup(function(e){
 			
