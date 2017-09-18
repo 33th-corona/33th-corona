@@ -22,4 +22,5 @@ public interface ClassInfoDao {
 	List<ClassUser> selectMyRequestAll(String user_id);
 	ClassUser selectDuplicateCheckOne(ClassUser user);
 	int insertClassUser(ClassUser user);
+	List<ClassInfo> myStudentList(String id);
 }

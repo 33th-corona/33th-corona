@@ -41,13 +41,16 @@
 		delete from class_user where num = #{num}
 	</delete>
 	<select id="selectSearch" parameterType="map" resultType="ClassInfo">
-		select c.num, c.name, c.TEACHER_ID, c.is_public
-		from class_info c where c.num not in(select u.class_num from class_user u, class_info c where c.teacher_id = #{user_id} and u.user_id = #{user_id})
-		and c.num not in(select c.num from class_user u, class_info c where c.teacher_id = #{user_id} and u.user_id =#{user_id}) and 
-		<if test="searchType == 'teacher_id'">c.teacher_id = #{searchWord}</if>
-		<if test="searchType == 'name'">c.name like '%'||#{searchWord}||'%'</if>
-		 and c.is_public = 'y' order by c.num
-		 
+		select DISTINCT i.num, i.name, i.TEACHER_ID, i.IS_PUBLIC
+		from class_user u, class_info i
+		where u.class_num (+) = i.num
+		and i.num not in (select class_user.class_num
+		from class_user
+		where class_user.user_id = #{user_id})
+		and i.teacher_id != #{user_id} and 
+		<if test="searchType == 'teacher_id'">i.teacher_id = #{searchWord}</if>
+		<if test="searchType == 'name'">i.name like '%'||#{searchWord}||'%'</if>
+		 and i.is_public = 'y' order by i.num
 	</select>
 	<select id="selectMyRequestAll" parameterType="String" resultType="ClassUser">
 		select * from
@@ -63,4 +66,7 @@
 			class_user_seq.NEXTVAL, #{class_num}, #{user_id}, 'request'
 		)
 	</insert>
+	<select id="myStudentList" parameterType="String" resultType="ClassInfo">
+		select i.NUM, i.name , i.TEACHER_ID, i.IS_PUBLIC from class_user u, CLASS_INFO i where u.CLASS_NUM = i.NUM and u.user_id = #{id}
+	</select>
 </mapper>

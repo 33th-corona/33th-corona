@@ -76,4 +76,8 @@ public class ClassRepository {
 		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
 		return dao.insertClassUser(user);
 	}
+	public List<ClassInfo> myStudentList(String id){
+		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
+		return dao.myStudentList(id);
+	}
 }
