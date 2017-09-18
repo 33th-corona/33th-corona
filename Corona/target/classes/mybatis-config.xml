@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
-      <typeAlias type="com.sesoc.cl.vo.Users" alias="Users"/>
-      <typeAlias type="com.sesoc.cl.vo.ClassInfo" alias="ClassInfo"/>
+	    <typeAlias type="com.sesoc.cl.vo.Users" alias="Users"/>
+	    <typeAlias type="com.sesoc.cl.vo.ClassInfo" alias="ClassInfo"/>
 		<typeAlias type="com.sesoc.cl.vo.ClassCount" alias="ClassCount"/>
 		<typeAlias type="com.sesoc.cl.vo.ClassUser" alias="ClassUser"/>
-		<typeAlias type="com.sesoc.cl.board.Board" alias="Board" />
+		<typeAlias type="com.sesoc.cl.board.Board" alias="Board"/>
 		<typeAlias type="com.sesoc.cl.board.Board_Reply" alias="Reply"/>    
    </typeAliases>
    <mappers>

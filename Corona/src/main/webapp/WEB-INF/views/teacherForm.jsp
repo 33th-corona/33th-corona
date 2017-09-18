@@ -28,9 +28,10 @@
 	<link rel="stylesheet" href="css/customHeader.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
+
+<body class="stretched side-panel-left">
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
-<body class="stretched side-panel-left">
 	<div class="body-overlay"></div>
 		<div id="wrapper" class="clearfix">
 			<section id="page-title">
