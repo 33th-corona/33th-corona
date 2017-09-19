@@ -196,40 +196,42 @@
 								} ],
 								"bSortClasses" : false
 							});
-			$('#datatable3 tbody').on('click', '.commit', commit);
-			$('#datatable3 tbody').on('click', '.withdraw', withdraw);
+			$('#datatable3 tbody').on('click', '.status', status);
 		});
-		function commit() {
+		function status() {
 			var num = $(this).attr('num');
-			var status = $(this).attr('status');
+			var statusChange = $(this).attr('status');
 			var btn = $(this);
 			$.ajax({
-						url : 'commit',
+						url : 'status',
 						method : 'POST',
-						data : 'num=' + num + '&status=' + status,
+						data : 'num=' + num + '&status=' + statusChange,
 						success : function(repo) {
-							$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+							if(repo == 'student'){
+								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+								$('button.status').find('button').each(function(index) {
+									var wnum = $(this).attr('num');
+									if(num == wnum){
+										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+									}
+								})
+							}
+							if(repo == 'withdraw'){
+								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
+								$('button.status').find('button').each(function(index) {
+									var wnum = $(this).attr('num');
+									if(num == wnum){
+										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+									}
+								})
+							}
 						},
 						error : function(repo) {
 							alert("오류 : " + repo)
 						}
 				});
 		}
-		function withdraw() {
-			var num = $(this).attr('num');
-			var btn = $(this);
-			$.ajax({
-						url : 'withdraw',
-						method : 'POST',
-						data : 'num=' + num + '&status=' + status,
-						success : function(repo) {
-							$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
-						},
-						error : function(repo) {
-							alert("오류 : " + repo)
-						}
-			});
-		}
+		
 	</script>
 </body>
 </html>
