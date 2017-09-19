@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="resources/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	

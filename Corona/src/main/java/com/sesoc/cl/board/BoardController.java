@@ -22,14 +22,6 @@ public class BoardController {
 	@Autowired
 	Board_ReplyRepository rr;
 	
-	@RequestMapping("login")
-	public String login(String user_id, String password, HttpSession session){
-		String chid = repo.login(user_id, password);
-		if(chid != null){
-			session.setAttribute("loginId", chid);
-		}
-		return "home";
-	}
 	
 	@RequestMapping(value="/bbbiii")
 	public String boardList(

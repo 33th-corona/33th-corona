@@ -97,12 +97,11 @@
 					</div>
 
 					<!-- 자료실  -->
-					<div id="tesk" class="entry clearfix"
+					<div id="drive" class="entry clearfix"
 						style="margin-bottom: 10px; padding-bottom: 10px;">
 						<div class="center">
 							<h2>자료실</h2>
 						</div>
-
 						<table id="datatable2"
 							class="table table-striped table-bordered datatable"
 							cellspacing="0" width="100%">
@@ -111,7 +110,8 @@
 									<th>Num</th>
 									<th>Title</th>
 									<th>ID</th>
-									<th>File</th>
+									<th>Date</th>
+									<th>Hit</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -119,26 +119,27 @@
 									<th>Num</th>
 									<th>Title</th>
 									<th>ID</th>
-									<th>File</th>
+									<th>Date</th>
+									<th>Hit</th>
 								</tr>
 							</tfoot>
 							<tbody>
-								<tr>
-									<td>B</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-								</tr>
-								<tr>
-									<td>A</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-								</tr>
+								<c:forEach var="drive" items="${driveList}" varStatus="stat">
+									<tr>
+										<td>${stat.count}</td>
+										<td class="title">
+											<a href="driveDetail?num=${drive.num}&status=${status}">
+											${drive.title}</a>
+										</td>
+										<td>${drive.user_id}</td>
+										<td>${drive.register_time}</td>
+										<td>${drive.hit}</td>
+									</tr>	
+								</c:forEach>
 							</tbody>
 						</table>
 						<div class="tright">
-						<a href="teskWrite" class="button button-3d button-rounded button-blue"><i
+						<a href="driveWrite" class="button button-3d button-rounded button-blue"><i
 							class="icon-book3"></i>글쓰기</a>
 					</div>
 					</div>
@@ -218,13 +219,13 @@
 	$(function() {
 		var status = $('#tableSet').val();
 		$('#normal').css('display', 'none');
-		$('#tesk').css('display', 'none');
+		$('#drive').css('display', 'none');
 		$('#homeWork').css('display', 'none');
 		if(status == "normal"){
 			$('#normal').css('display', 'inline');
 		}
-		if(status == "tesk"){
-			$('#tesk').css('display', 'inline');
+		if(status == "drive"){
+			$('#drive').css('display', 'inline');
 		}
 		if(status == "homeWork"){
 			$('#homeWork').css('display', 'inline');
