@@ -36,7 +36,7 @@
 		select * from class_info where num = #{num}
 	</select>
 	<select id="selectRequestClassOne" parameterType="int" resultType="ClassUser">
-		select * from class_user where class_num = #{num} and status = 'request'
+		select * from class_user where class_num = #{num}
 	</select>
 	<update id="updateStatus" parameterType="map">
 		update class_user set status = #{status} where num = #{num}
@@ -72,7 +72,7 @@
 	</insert>
 	<select id="myStudentList" parameterType="String" resultType="ClassInfo">
 		select i.NUM, i.name , i.TEACHER_ID, i.IS_PUBLIC from class_user u, CLASS_INFO i 
-		where u.CLASS_NUM = i.NUM and u.user_id = #{user_id} and not u.STATUS = 'request' and u.status = 'withdraw'
+		where u.CLASS_NUM = i.NUM and u.user_id = #{user_id} and not u.STATUS = 'request' and not u.status = 'withdraw'
 	</select>
 	<select id="myTeacherList" parameterType="String" resultType="ClassInfo">
 	Select * from Class_Info where Teacher_id = #{id} order by num
