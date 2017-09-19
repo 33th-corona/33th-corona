@@ -52,7 +52,7 @@ public class FileService {
 			return savedFilename;
 	}
 	
-	//아이디 이름으로 파일을 하드디스크에 저장 (경로는 uploadPath)
+	//아이디 이름으로 파일을 하드디스크에 저장 (경로는 uploadPath) //회원가입 프로필 사진용
 		public static String originalSaveFile(MultipartFile upload, String uploadPath, String id) {
 			if(upload.isEmpty()) return null;
 				File path = new File(uploadPath);

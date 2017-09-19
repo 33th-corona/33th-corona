@@ -18,6 +18,8 @@ import com.sesoc.cl.board.Board;
 import com.sesoc.cl.board.BoardRepository;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
+import com.sesoc.cl.drive.Drive;
+import com.sesoc.cl.drive.DriveRepository;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.ClassUser;
 
@@ -29,6 +31,8 @@ public class LocationController {
 	ClassRepository cRepo;
 	@Autowired
 	BoardRepository br;
+	@Autowired
+	DriveRepository dr;
 	
 	String path = "/img";
 	
@@ -95,9 +99,12 @@ public class LocationController {
 			System.out.println("노말모델 넘김 :"+boardList.get(0));
 			return "boardForm";
 			
-		}else if(status.equals("tesk")) {
+		}else if(status.equals("drive")) {
 			System.out.println("자료실 입장");
+			List<Drive> drivelist = dr.selectDriveAll();
+			model.addAttribute("driveList", drivelist);
 			model.addAttribute("status", status);
+			System.out.println("다시 자료실로 넘겨주기");
 			return "boardForm";
 		}
 		

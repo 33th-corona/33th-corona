@@ -38,32 +38,25 @@
 
 
 <script>
-	$(function(){
-		init();
+	$(function() {
+		$("#update").on('click',update);
 	});
-	
-	function init(){
-		var board_num = '5${board.num}';
-		$.ajax({
-			url : "replyList",
-			method:"get",
-			data:"board_num="+board_num,
-			dataType:"json",
-			success : replyList,
-			error : function(){
-				alert("게시글을 읽어올 수 없습니다.");
-			}
-		});
+
+	function update() {
+		var num = $('#num').val();
+		location.href = "${pageContext.request.contextPath}/driveUpdateForm?num=" + num;
 	}
 	
 	//글삭제
 	function deleteForm(){
 		var del = confirm("정말 삭제하시겠습니까?")
 		if(del){
-			location.href="deleteForm?num=${board.num}";
+			location.href="drivedelete?num=${board.num}";
 		}
 		return;
-	}	
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -72,38 +65,50 @@
 	<div class="center">
 	<h2>[ 자료실 글보기 ]</h2>
 	</div>
-	<form action="teskUpdateForm" id="Form" method="POST" >
-	<input type="hidden" name="num" value="${board.num}">
+	<form action="driveUpdateForm" id="Form" method="GET" >
+	<input type="hidden" id="num" name="num" value="${drive.num}">
 	<table class="Bordered table">
 		<tr>
-			<th colspan="3">${board.title}제목제목 [댓글 수]</th>
+			<th colspan="3">${drive.title}제목제목</th>
 		</tr>
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3">프로필사진</td>
-			<td class="col-md-5">${board.user_id}작성자</td>
+			<td class="col-md-5">${drive.user_id}작성자</td>
 			<td rowspan="3" class="col-md-4">빈공간입니다 광고??</td>
 		</tr>
 		
 		<tr>
-			<th>${board.register_time}글쓴날</th>
+			<th>${drive.register_time}글쓴날</th>
 		</tr>	
 		<tr>
 			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
 		</tr>
-		<tr>
+		
+		<c:forEach items="${list}" var="driveList" varStatus="check">
+				<tr>
+				<td>
+					<label>첨부파일${check.index + 1}</label>
+				</td>
+				<td>
+					<a href="download?num=${driveList.num}">${driveList.original_filename}</a>
+				</td>
+			</tr>
+		</c:forEach>
+		
+		<tr>	
 			<td colspan="3">
-				<pre class="col-md-12">${board.content}글내용</pre>
+				<pre class="col-md-12">${drive.content}글내용</pre>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="boardList?searchtype=${searchtype}&searchword=${searchword}&currentPage=${navi.currentPage}&countpage=${navi.countPerPage}" >목록으로</a>
+				<a href="boardLocation?status=drive" >목록으로</a>
 			</td>
 			<td></td>
 			<td align="right">	
-				<input type="submit" class="btn btn-primary" value="글수정">
+				<input type="button" id="update" class="btn btn-primary" value="글수정">
 				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="boardWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
+				<a class="btn btn-primary" href="driveWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
 			</td>
 		</tr>
 	</table>
