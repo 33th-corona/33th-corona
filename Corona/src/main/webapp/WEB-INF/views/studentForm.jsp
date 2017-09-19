@@ -80,7 +80,6 @@
 										<th>Num</th>
 										<th>UserId</th>
 										<th>Email</th>
-										<th>Retired</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -94,7 +93,6 @@
 											<th>${all.email}</th>
 											</c:if>
 											</c:forEach>
-											<th><button num="${sList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin commit"><i class="icon-angle-right" style="width: 20px "></i>탈퇴</button></th>
 										</tr>
 										</c:if>
 									</c:forEach>
@@ -131,26 +129,25 @@
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script>
-	$('.datatable').dataTable({
-		  "columns": [
-			    { "width": "50%" },
-			    { "width": "25%", "orderable": false },
-			    { "width": "25%", "orderable": false },
-			  ], scrollY: 300,
-			  scrollCollapse: true,
-			  columnDefs: [ {
-			        targets: 0,
-			        render: function ( data, type, row ) {
-			        return type === 'display' && data.length > 10 ?
-			            data.substr( 0, 10 ) +'…' :
-			            data;
-			    }
-			    } ]
-			, "bSortClasses" : false
-	});
-	$('.commit').on('click', commit){
-		
-	}
+	$(function() {
+		$('.datatable').dataTable({
+			  "columns": [
+				    { "width": "50%" },
+				    { "width": "25%", "orderable": false },
+				    { "width": "25%", "orderable": false },
+				  ], scrollY: 300,
+				  scrollCollapse: true,
+				  columnDefs: [ {
+				        targets: 0,
+				        render: function ( data, type, row ) {
+				        return type === 'display' && data.length > 10 ?
+				            data.substr( 0, 10 ) +'…' :
+				            data;
+				    }
+				    } ]
+				, "bSortClasses" : false
+		});
+	})
 	</script>
 </body>
 </html>

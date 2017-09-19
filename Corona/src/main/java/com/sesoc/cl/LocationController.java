@@ -142,6 +142,8 @@ public class LocationController {
 		this.listCome(model, request);
 		ClassInfo classinfo = cRepo.selectClassOne(num);
 		List<Users> allList = repo.allList();
+		List<ClassUser> list = cRepo.selectRequestClassOne(num);
+		model.addAttribute("userList", list);
 		model.addAttribute("allList", allList);
 		model.addAttribute("classInfo", classinfo);
 		return "studentForm";
