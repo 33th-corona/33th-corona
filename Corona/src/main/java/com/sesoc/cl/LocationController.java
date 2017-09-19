@@ -130,6 +130,16 @@ public class LocationController {
 		return "teacherForm";
 	}
 	
+	@RequestMapping(value="studentFormLocation", method=RequestMethod.GET)
+	public String studentForm(Model model, HttpServletRequest request, int num){
+		this.listCome(model, request);
+		ClassInfo classinfo = cRepo.selectClassOne(num);
+		List<Users> allList = repo.allList();
+		model.addAttribute("allList", allList);
+		model.addAttribute("classInfo", classinfo);
+		return "studentForm";
+	}
+	
 	public void listCome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		String id = (String)session.getAttribute("loginId");

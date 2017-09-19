@@ -69,44 +69,7 @@
 				<div class="panel-heading">
 					<div id="homeWork" class="entry clearfix"
 					style="margin-bottom: 10px; padding-bottom: 10px;">
-					<div class="table-responsive col-md-6">
-					<h2>가입 신청 정보</h2>
-					<table id="datatable3"
-						class="table table-striped table-bordered datatable"
-						cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>UserId</th>
-								<th>Commit</th>
-								<th>WithDraw</th>
-							</tr>
-						</thead>
-						<tfoot>
-							<tr>
-								<th>UserId</th>
-								<th>Commit</th>
-								<th>WithDraw</th>
-							</tr>
-						</tfoot>
-						<tbody>
-							<c:forEach items="${userList}" var="uList">
-								<tr>
-									<th>${uList.user_id}</th>
-									<th class="center">
-										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="student" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>승낙</button>
-										</c:if>
-									</th>
-									<th class="center">
-										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="withdraw" class="button button-rounded button-reveal button-small button-border button-red tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>거부</button>
-										</c:if>
-									</th>
-							</c:forEach>
-						</tbody>
-					</table>
-					</div>
-					<div class="panel panel-default col-md-6">
+					<div class="panel panel-default col_full">
 					<h2>가입자 명단</h2>
 							<!-- Default panel contents -->
 
@@ -168,68 +131,26 @@
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script>
-
-		$(function() {
-
-			$('.datatable')
-					.dataTable(
-							{
-								"columns" : [ {
-									"width" : "50%"
-								}, {
-									"width" : "25%",
-									"orderable" : false
-								}, {
-									"width" : "25%",
-									"orderable" : false
-								}, ],
-								scrollY : 300,
-								scrollCollapse : true,
-								columnDefs : [ {
-									targets : 0,
-									render : function(data, type, row) {
-										return type === 'display'
-												&& data.length > 10 ? data
-												.substr(0, 10)
-												+ '…' : data;
-									}
-								} ],
-								"bSortClasses" : false
-							});
-			$('#datatable3 tbody').on('click', '.commit', commit);
-			$('#datatable3 tbody').on('click', '.withdraw', withdraw);
-		});
-		function commit() {
-			var num = $(this).attr('num');
-			var status = $(this).attr('status');
-			var btn = $(this);
-			$.ajax({
-						url : 'commit',
-						method : 'POST',
-						data : 'num=' + num + '&status=' + status,
-						success : function(repo) {
-							$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
-						},
-						error : function(repo) {
-							alert("오류 : " + repo)
-						}
-				});
-		}
-		function withdraw() {
-			var num = $(this).attr('num');
-			var btn = $(this);
-			$.ajax({
-						url : 'withdraw',
-						method : 'POST',
-						data : 'num=' + num + '&status=' + status,
-						success : function(repo) {
-							$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
-						},
-						error : function(repo) {
-							alert("오류 : " + repo)
-						}
-			});
-		}
+	$('.datatable').dataTable({
+		  "columns": [
+			    { "width": "50%" },
+			    { "width": "25%", "orderable": false },
+			    { "width": "25%", "orderable": false },
+			  ], scrollY: 300,
+			  scrollCollapse: true,
+			  columnDefs: [ {
+			        targets: 0,
+			        render: function ( data, type, row ) {
+			        return type === 'display' && data.length > 10 ?
+			            data.substr( 0, 10 ) +'…' :
+			            data;
+			    }
+			    } ]
+			, "bSortClasses" : false
+	});
+	$('.commit').on('click', commit){
+		
+	}
 	</script>
 </body>
 </html>
