@@ -398,7 +398,7 @@
 								</c:forEach>
 							</ul>
 						</li>
-						<li><a href="#"><i class="icon-book3"></i>내가 학생일 때</a>
+						<li><a href="#"><i class="icon-study"></i>내가 학생일 때</a>
 							<ul>
 								<c:if test="${empty myStudentList}">
 									<li><a>너 학생아니다!!!</a></li>

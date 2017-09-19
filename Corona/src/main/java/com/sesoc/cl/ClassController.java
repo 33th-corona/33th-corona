@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sesoc.cl.dao.ClassRepository;
+import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.vo.ClassCount;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.ClassUser;
@@ -26,13 +27,15 @@ import com.sesoc.cl.vo.ClassUser;
 @Controller
 public class ClassController {
 	@Autowired
-	ClassRepository repo;
+	UsersRepository repo;
+	@Autowired
+	ClassRepository cRepo;
 	
 		//반 생성
 		@RequestMapping(value = "createClass", method = RequestMethod.POST)
 		public String createClass(ClassInfo createClass, @RequestParam(defaultValue="y", value="is_public")String is_public) {
 			createClass.setIs_public(is_public);
-			repo.createClass(createClass);
+			cRepo.createClass(createClass);
 			return "redirect:afterLoginLocation";
 		}
 		
@@ -41,8 +44,8 @@ public class ClassController {
 		public String myClassList(Locale locale, Model model, HttpServletRequest request) {
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("loginId");
-			List<ClassInfo> list = repo.selectMyAll(id);
-			List<ClassCount> countList = repo.selectCount(id);
+			List<ClassInfo> list = cRepo.selectMyAll(id);
+			List<ClassCount> countList = cRepo.selectCount(id);
 			model.addAttribute("countList", countList);
 			model.addAttribute("list", list);
 			return "myClassList1";
@@ -51,8 +54,8 @@ public class ClassController {
 		//반 정보 출력
 		@RequestMapping(value = "myClassDetailForm", method = RequestMethod.GET)
 		public String myClassDetailForm(Model model, HttpServletRequest request, int num) {
-			List<ClassUser> list = repo.selectUserAll(num);
-			ClassInfo classOne = repo.selectClassOne(num);
+			List<ClassUser> list = cRepo.selectUserAll(num);
+			ClassInfo classOne = cRepo.selectClassOne(num);
 			model.addAttribute("list", list);
 			model.addAttribute("classOne", classOne);
 			return "myClassDetail";
@@ -64,7 +67,7 @@ public class ClassController {
 		public int checkClassName(String name) {
 			int swt = 1;
 			if(!(name.equals(""))) {
-			ClassInfo check = repo.checkClassName(name);
+			ClassInfo check = cRepo.checkClassName(name);
 			if(check == null) {
 				swt = 0;
 			}
@@ -81,14 +84,14 @@ public class ClassController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("status", status);
 			map.put("num", num);
-			repo.updateStatus(map);
+			cRepo.updateStatus(map);
 			return status;
 		}
 		//강제 탈퇴
 		@ResponseBody
 		@RequestMapping(value = "retired", method = RequestMethod.POST)
 		public int retired(int num) {
-			int result =  repo.deleteRetired(num);
+			int result =  cRepo.deleteRetired(num);
 			return result;
 		}
 		
@@ -99,16 +102,17 @@ public class ClassController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			HttpSession session = request.getSession();
 			String user_id = (String)session.getAttribute("loginId");
-			List<ClassUser> myList = repo.selectMyRequestAll(user_id);
+			List<ClassUser> myList = cRepo.selectMyRequestAll(user_id);
 			map.put("searchWord", searchWord);
 			map.put("searchType", searchType);
 			map.put("user_id", user_id);
-			List<ClassCount> countList= repo.selectSearchCount(map);
+			List<ClassCount> countList= cRepo.selectSearchCount(map);
 			map.put("myList", myList);
 			map.put("countList", countList);
-			List<ClassInfo> list = repo.selectSearch(map);
+			List<ClassInfo> list = cRepo.selectSearch(map);
 			map.put("list", list);
 			model.addAttribute("map", map);
+			this.listCome(model, request);
 			return "searchForm";
 		}
 		
@@ -119,12 +123,21 @@ public class ClassController {
 			HttpSession session = request.getSession();
 			String user_id = (String)session.getAttribute("loginId");
 			ClassUser user = new ClassUser(0, classNum, user_id, "");
-			ClassUser checkUser = repo.selectDuplicateCheckOne(user);
+			ClassUser checkUser = cRepo.selectDuplicateCheckOne(user);
 			if(checkUser == null) {
-				swt = repo.insertClassUser(user);
+				swt = cRepo.insertClassUser(user);
 				return swt;
 			} else {
 				return swt;
 			}
+		}
+		public void listCome(Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession(); 
+			String id = (String)session.getAttribute("loginId");
+			model.addAttribute("id", id);
+			List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
+			List<ClassInfo> myStudentList = cRepo.myStudentList(id);
+			model.addAttribute("myTeacherList", myTeacherList);
+			model.addAttribute("myStudentList", myStudentList);
 		}
 }

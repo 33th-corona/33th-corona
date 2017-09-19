@@ -17,5 +17,5 @@ public interface UsersDAO {
 	public int update(Users user);
 	public int unregister(Users quitUser);         //삭제처리1-1 (is_deleted = 'Y')
 	public int delete_class_user(Users quitUser);  //삭제처리1-2 (class_user 테이블삭제)
-	public List<ClassInfo> myTeacherList(String id);
+	public List<Users> allList();
 }

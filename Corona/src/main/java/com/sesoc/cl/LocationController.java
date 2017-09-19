@@ -20,6 +20,7 @@ import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.ClassUser;
+import com.sesoc.cl.vo.Users;
 
 @Controller
 public class LocationController {
@@ -50,7 +51,7 @@ public class LocationController {
 		model.addAttribute("name", name);
 		model.addAttribute("userImg", userImg);
 		model.addAttribute("email", email);
-		List<ClassInfo> myTeacherList = repo.myTeacherList(id);
+		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
 		List<ClassInfo> myStudentList = cRepo.myStudentList(id);
 		model.addAttribute("myTeacherList", myTeacherList);
 		model.addAttribute("myStudentList", myStudentList);
@@ -119,9 +120,12 @@ public class LocationController {
 	
 	@RequestMapping(value="teacherFormLocation", method=RequestMethod.GET)
 	public String teacherForm(Model model, HttpServletRequest request, int num){
-		System.out.println("여기와?");
 		this.listCome(model, request);
 		ClassInfo classinfo = cRepo.selectClassOne(num);
+		List<ClassUser> list = cRepo.selectRequestClassOne(num);
+		List<Users> allList = repo.allList();
+		model.addAttribute("allList", allList);
+		model.addAttribute("userList", list);
 		model.addAttribute("classInfo", classinfo);
 		return "teacherForm";
 	}
@@ -130,7 +134,7 @@ public class LocationController {
 		HttpSession session = request.getSession(); 
 		String id = (String)session.getAttribute("loginId");
 		model.addAttribute("id", id);
-		List<ClassInfo> myTeacherList = repo.myTeacherList(id);
+		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
 		List<ClassInfo> myStudentList = cRepo.myStudentList(id);
 		model.addAttribute("myTeacherList", myTeacherList);
 		model.addAttribute("myStudentList", myStudentList);

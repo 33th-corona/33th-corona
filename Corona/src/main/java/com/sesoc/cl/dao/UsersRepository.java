@@ -91,11 +91,9 @@ public class UsersRepository {
 		
 		return result;
 	}
-	public List<ClassInfo> myTeacherList(String id){
+	public List<Users> allList(){
 		UsersDAO dao = sqlSession.getMapper(UsersDAO.class);
-		
-		List<ClassInfo> result = dao.myTeacherList(id);
-		
+		List<Users> result = dao.allList();
 		return result;
 	}
 }

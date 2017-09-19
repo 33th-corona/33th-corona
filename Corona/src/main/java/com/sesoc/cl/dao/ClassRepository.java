@@ -80,4 +80,15 @@ public class ClassRepository {
 		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
 		return dao.myStudentList(id);
 	}
+	public List<ClassUser> selectRequestClassOne(int num){
+		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
+		return dao.selectRequestClassOne(num);
+	}
+	public List<ClassInfo> myTeacherList(String id){
+		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
+		
+		List<ClassInfo> result = dao.myTeacherList(id);
+		
+		return result;
+	}
 }

@@ -84,8 +84,8 @@
 <select id="unregisterCheck" parameterType="map" resultType="Users">
 	Select * from Users where id = #{id} AND password = #{password}
 </select>
-<select id="myTeacherList" parameterType="String" resultType="ClassInfo">
-	Select * from Class_Info where Teacher_id = #{id} order by num
-</select>
 
+<select id="allList" resultType="Users">
+	Select * from Users
+</select>
 </mapper>
