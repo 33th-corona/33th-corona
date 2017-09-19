@@ -59,7 +59,11 @@
 				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-right-radius: 50%; border-top-right-radius: 50%;">과제 작성<i class="icon-edit"></i></a>
 				</div>
 				<div class="col-md-4">
-				<a href="#" class="button button-3d button-xlarge button-reveal button-aqua button-rounded tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의실 입장</a>
+				<form action="lessonJoin" method="POST" id="lesson">
+				<input type="hidden" value="${id}" name="studentId">
+				<input type="hidden" value="${classInfo.num}" name="classNum">
+				<a href="#" id="lessonbtn" class="button button-3d button-xlarge button-reveal button-aqua button-rounded tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의실  입장</a>
+				</form>
 				</div> 
 				</div>
 			</div>
@@ -147,6 +151,9 @@
 				    } ]
 				, "bSortClasses" : false
 		});
+		$('#lessonbtn').on('click', function() {
+			$('#lesson').submit();
+		})
 	})
 	</script>
 </body>
