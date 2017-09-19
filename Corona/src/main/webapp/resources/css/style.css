@@ -7073,17 +7073,6 @@ body:not(.device-touch) .button.button-full strong {
 	border-color: #C02942;
 }
 
-.button-orange { background-color: #ff9800; }
-.button-3d.button-orange:hover,
-.button-reveal.button-orange:hover,
-.button-border.button-orange:hover,
-.button-border.button-orange.button-fill:before { background-color:#ff9800 !important; }
-
-.button-border.button-orange {
-	color: #ff9800;
-	border-color: #ff9800;
-}
-
 
 .button-teal { background-color: #53777A; }
 .button-3d.button-teal:hover,

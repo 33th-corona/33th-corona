@@ -5,14 +5,22 @@
 <head>
 <style type="text/css">
 #primary-menu ul li:hover > a,
-#primary-menu ul li.current > a { color: #ffffff !important; }
+#primary-menu ul li.current > a { color: #ff9800 !important; }
+
+
+.menu{
+	color : white !important;
+}
+.menu i:hover {
+	color: #ff9800 !important;
+}
 </style>
 </head>
 <body class="stretched">
 <div class="body-overlay"></div>
-<header id="header" class="full-header" data-sticky-class="not-dark">
+<header id="header" class="full-header" data-sticky-class="not-dark" style="background-color: #000530">
 
-			<div id="header-wrap" class="w3-container w3-orange" style="padding-left: 0;">
+			<div id="header-wrap" class="w3-container" style="padding-left: 0; background-color: #000530">
 
 				<div class="container nomargin nopadding">
 
@@ -20,20 +28,20 @@
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm;   /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white w3-orange">
+					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm; background-color: #000530  /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white">
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="standard-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="retina-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
 					============================================= -->
-					<nav id="primary-menu" class="style dark w3-orange" >
+					<nav id="primary-menu" class="style dark" style="background-color: #000530" >
 						
-						<ul >
-							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 30px !important;"><div><i class="icon-home2 topmenubtn" style="font-size: 20px !important;"></i>Home</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/createClassLocation" style="font-size: 30px !important;"><div><i class="icon-pencil2 topmenubtn" style="font-size: 20px !important;"></i>반 생성</div></a></li>
-							<li><a href="#" style="font-size: 30px !important;"><div><i class="icon-flag2 topmenubtn" style="font-size: 20px !important;"></i>사용법</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 30px !important;"><div><i class="icon-search3 topmenubtn" style="font-size: 20px !important;"></i>반 검색</div></a>
+						<ul class="menu">
+							<li class="menu"><a href="${pageContext.request.contextPath}/afterLoginLocation" class="menu" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn menu" style="font-size: 15px !important;"></i>Home</div></a></li>
+							<li class="menu"><a href="${pageContext.request.contextPath}/createClassLocation"  class="menu" style="font-size: 20px !important;"><div><i class="icon-pencil2 topmenubtn menu" style="font-size: 15px !important;"></i>반 생성</div></a></li>
+							<li class="menu"><a href="#" style="font-size: 20px !important;" class="menu"><div><i class="icon-flag2 topmenubtn menu" style="font-size: 15px !important;"></i>사용법</div></a></li>
+							<li class="menu"><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important;" class="menu"><div><i class="icon-search3 topmenubtn menu" style="font-size: 15px !important;"></i>반 검색</div></a>
 						</ul>
 
 						<!-- Top Search
