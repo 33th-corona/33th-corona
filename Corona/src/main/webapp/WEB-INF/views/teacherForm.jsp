@@ -90,18 +90,20 @@
 						</tfoot>
 						<tbody>
 							<c:forEach items="${userList}" var="uList">
+								<c:if test="${uList.status == 'request'}">
 								<tr>
 									<th>${uList.user_id}</th>
-									<th class="center">
+									<th class="center result">
 										<c:if test="${uList.status eq 'request'}">
 											<button num="${uList.num}" status="student" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>승낙</button>
 										</c:if>
 									</th>
-									<th class="center">
+									<th class="center result">
 										<c:if test="${uList.status eq 'request'}">
 											<button num="${uList.num}" status="withdraw" class="button button-rounded button-reveal button-small button-border button-red tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>거부</button>
 										</c:if>
 									</th>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -111,7 +113,7 @@
 							<!-- Default panel contents -->
 
 							<!-- Table -->
-							<table class="table">
+							<table id="datatable4" class="table">
 								<thead>
 									<tr>
 										<th>Num</th>
@@ -131,7 +133,7 @@
 											<th>${all.email}</th>
 											</c:if>
 											</c:forEach>
-											<th><button num="${sList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin commit"><i class="icon-angle-right" style="width: 20px "></i>탈퇴</button></th>
+											<th><button num="${sList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin retired"><i class="icon-angle-right" style="width: 20px "></i>탈퇴</button></th>
 										</tr>
 										</c:if>
 									</c:forEach>
@@ -197,31 +199,36 @@
 								"bSortClasses" : false
 							});
 			$('#datatable3 tbody').on('click', '.status', status);
+			$('#datatable4 tbody').on('click', '.retired', retired);
 		});
 		function status() {
 			var num = $(this).attr('num');
 			var statusChange = $(this).attr('status');
 			var btn = $(this);
+			var result = confirm(statusChange + " : 실행 하시겠습니까?");
+			if(result){
 			$.ajax({
 						url : 'status',
 						method : 'POST',
 						data : 'num=' + num + '&status=' + statusChange,
 						success : function(repo) {
 							if(repo == 'student'){
-								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
-								$('button.status').find('button').each(function(index) {
+								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+								$('th.result').find('button').each(function(index) {
 									var wnum = $(this).attr('num');
-									if(num == wnum){
-										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+									var wstatusChange = $(this).attr('status');
+									if(wstatusChange == 'withdraw' && num == wnum){
+										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
 									}
 								})
 							}
 							if(repo == 'withdraw'){
 								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
-								$('button.status').find('button').each(function(index) {
-									var wnum = $(this).attr('num');
-									if(num == wnum){
-										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
+								$('th.result').find('button').each(function(index) {
+									var snum = $(this).attr('num');
+									var sstatusChange = $(this).attr('status');
+									if(sstatusChange == 'student' && num == snum){
+										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
 									}
 								})
 							}
@@ -230,6 +237,30 @@
 							alert("오류 : " + repo)
 						}
 				});
+			} else {
+				return false;
+			}
+		}
+		
+		function retired(){
+			var num = $(this).attr('num');
+			var btn = $(this);
+			var result = confirm("retired : 실행 하시겠습니까?");
+			if(result){
+			$.ajax({
+				url : 'retired',
+				data : 'num=' + num,
+				method : 'POST',
+				success : function(repo) {
+					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>탈퇴완료</button>');
+				},
+				error : function(repo) {
+					alert("오류 : " + repo)
+				}
+			})
+			} else{
+				return false;
+			}
 		}
 		
 	</script>
