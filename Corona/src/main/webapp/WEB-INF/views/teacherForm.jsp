@@ -65,15 +65,15 @@
 }
 </style>
 </head>
-
-<body class="stretched side-panel-left">
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
+<body class="stretched side-panel-left" style="background-image: url('images/back.jpg'); background-size: 1600px;">
+
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix">
+		<div id="wrapper" class="clearfix opaci">
 			<section id="page-title">
 
-			<div class="container center clearfix">
+			<div class="container center clearfix" >
 				<h1>${classInfo.name}</h1>
 			</div>
 			</section>
@@ -289,6 +289,7 @@
 				$(this).find('a').css('color','white');
 				$(this).css('background-color', '#000530');
 			})
+			$('.opaci').css('opacity','0.9');
 		});
 		function status() {
 			var num = $(this).attr('num');
