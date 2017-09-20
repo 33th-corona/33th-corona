@@ -199,7 +199,8 @@ public class CustomerController {
 						String email = (String)session.getAttribute("email");
 						model.addAttribute("loginId", id);
 						model.addAttribute("name", name);
-						model.addAttribute("userImg", userImg);
+						model.addAttribute("userImg", user.getImg_name());
+						session.setAttribute("userImg", user.getImg_name());
 						model.addAttribute("email", email);
 						repo.update(user);
 				} else {
@@ -207,10 +208,11 @@ public class CustomerController {
 					String email = (String)session.getAttribute("email");
 					model.addAttribute("loginId", id);
 					model.addAttribute("name", name);
-					model.addAttribute("userImg", userImg);
 					model.addAttribute("email", email);
 					String originalName = FileService.originalSaveFile(upload, path, id);
 					user.setImg_name(originalName);
+					session.setAttribute("userImg", user.getImg_name());
+					model.addAttribute("userImg", user.getImg_name());
 					repo.update(user);
 				}
 				break;
