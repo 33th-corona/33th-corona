@@ -204,20 +204,19 @@
 
 		<!-- Content
 		============================================= -->
-		<section id="content">
+		<section id="content" style="background-image: url(images/after1.jpg); background-size: 1400px; height: 580px;">
 
 			<div class="content-wrap">
 
 				<div class="container clearfix">
 
 					<div class="center">
-						
-						<br>
+						<h1>Welcome to Corona!</h1>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section id="content">
+		<section id="content" style="background-color: rgba(255, 152, 0, 1);">
 
 			<div class="content-wrap">
 
@@ -289,7 +288,6 @@
 		</footer><!-- #footer end -->
 
 	</div><!-- #wrapper end -->
-
 	<!-- Go To Top
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
