@@ -58,17 +58,7 @@ background-color: white;
 	
 		<div class="body-overlay"></div>
 		
-		
-		
-		<section id="page-title" class="page-title-mini">
-			<div class="container clearfix">
-				<h1>Search</h1>
-			</div>
-		</section>
-		
-		
-		
-		<section id="page-title" class="page-title-parallax page-title-dark page-title-video">
+		<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="margin-top: 20px;">
 			<div class="video-wrap" style="z-index: 0">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
 					<source src='images/videos/search.mp4' type='video/mp4' />

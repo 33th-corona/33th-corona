@@ -117,14 +117,8 @@
 	
 		
 		<div class="body-overlay"></div>
-	
-		<section id="page-title" class="page-title-mini">
-			<div class="container clearfix">
-				<h1>Class Create</h1>
-			</div>
-		</section>
-	
-	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0;">
+
+	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
 					<source src='images/videos/classCreateForm.webm' type='video/webm' />

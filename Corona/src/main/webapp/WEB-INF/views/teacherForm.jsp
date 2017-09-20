@@ -74,12 +74,20 @@
 
 	<div class="body-overlay"></div>
 		<div id="wrapper" class="clearfix opaci" >
-			<section id="page-title">
 
-			<div class="container center clearfix" >
-				<h1>${classInfo.name}</h1>
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
+			<div class="video-wrap">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; opacity: 0.8">
+					<source src='images/videos/teacher.mp4' type='video/webm' />
+				</video>
+				<div class="video-overlay"></div>
 			</div>
-			</section>
+			<div class="container clearfix" style="z-index: 1;">
+					<div class="emphasis-title">
+							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#222 !important;">${classInfo.name}</span>
+					</div>
+			</div>
+	</section>
 		<section id="content">
 
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">
