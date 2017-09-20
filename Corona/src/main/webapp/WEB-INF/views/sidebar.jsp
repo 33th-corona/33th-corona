@@ -284,9 +284,9 @@
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 </style>
-<body class="stretched">
+<body class="stretched no-transition">
 <div class="body-overlay"></div>
-<div id="vertical-nav" class=" w3-container" style="padding-top: 70px;">
+<div id="vertical-nav" class=" w3-container animated fadeIn" style="padding-top: 70px;">
 				<div class="modal1 mfp-hide" id="modal-register-form">
 						<div class="block divcenter" style="padding: 30px; background-color: #FFF; max-width: 500px; max-height : 800px">
 							<h3>My page</h3>

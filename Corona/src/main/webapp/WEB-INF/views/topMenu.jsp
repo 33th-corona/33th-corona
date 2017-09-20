@@ -29,7 +29,7 @@ body {
 }
 </style>
 </head>
-<body class="stretched">
+<body class="stretched no-transition">
 <div class="body-overlay"></div>
 <header id="header" class="full-header" data-sticky-class="not-dark" style="background-color: #000530">
 

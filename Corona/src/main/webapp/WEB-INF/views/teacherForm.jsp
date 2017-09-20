@@ -68,12 +68,21 @@
     opacity: 0;
     
 }
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0.8;
+	}
+}
 </style>
 </head>
-<body class="stretched side-panel-left" style="background-image: url('images/back2.jpeg'); background-size: 1600px;" >
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back2.jpeg'); background-size: 1600px;" >
 
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix opaci" >
+		<div id="wrapper" class="clearfix animated fadeIn" >
 
 			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
 			<div class="video-wrap">
