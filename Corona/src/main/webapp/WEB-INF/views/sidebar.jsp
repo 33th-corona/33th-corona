@@ -9,7 +9,7 @@
 	============================================= -->
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="resources/style.css" type="text/css" />
+<!-- 	<link rel="stylesheet" href="resources/style.css" type="text/css" /> -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<!-- One Page Module Specific Stylesheet -->
 	<link rel="stylesheet" href="css/onepage.css" type="text/css" />
@@ -28,16 +28,6 @@
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
-	#primary-menu ul li > a {
-		display: block;
-		line-height: 22px;
-		color: #444;
-		font-weight: bold;
-		font-size: 13px;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		font-family: 'Raleway', sans-serif;
-	}
 	#searchIcon:hover {
 	background-color: #999999;
 	color: #FFF;
