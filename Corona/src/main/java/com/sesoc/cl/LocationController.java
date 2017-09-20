@@ -23,7 +23,6 @@ import com.sesoc.cl.drive.DriveRepository;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.ClassUser;
 import com.sesoc.cl.vo.Users;
-/*ㅇㅇ*/
 @Controller
 public class LocationController {
 	@Autowired

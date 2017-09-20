@@ -204,16 +204,25 @@
 
 		<!-- Content
 		============================================= -->
-		<section id="content" style="background-image: url(images/after1.jpg); background-size: 1400px; height: 580px;">
+		<section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+			<div class="slider-parallax-inner">
 
-			<div class="content-wrap">
-
-				<div class="container clearfix">
-
-					<div class="center">
-						<h1>Welcome to Corona!</h1>
+				<div class="swiper-container swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark" style="background-image: url('images/after1.jpg');">
+							<div class="container clearfix" style="margin-left: 300px;">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-caption-animate="fadeInUp">Welcome to Corona</h2>
+									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스 화면을 실시간 확인하여<br>학생의 이클립스 화면으로 전송합니다.</p>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
+
+				<a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow" style="margin-left: 110px;"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+
 			</div>
 		</section>
 		<section id="content" style="background-color: rgba(255, 152, 0, 1);">
