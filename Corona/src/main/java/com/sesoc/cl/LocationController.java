@@ -85,6 +85,8 @@ public class LocationController {
 		return "createHomeWorkForm";
 	}
 	
+	
+	
 	@RequestMapping(value="boardLocation", method=RequestMethod.GET)
 	public String boardForm(
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,

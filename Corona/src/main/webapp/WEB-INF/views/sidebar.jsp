@@ -9,7 +9,7 @@
 	============================================= -->
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-<!-- 	<link rel="stylesheet" href="resources/style.css" type="text/css" /> -->
+	<link rel="stylesheet" href="resources/style.css" type="text/css" />
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<!-- One Page Module Specific Stylesheet -->
 	<link rel="stylesheet" href="css/onepage.css" type="text/css" />
@@ -33,6 +33,7 @@
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 	box-shadow: 0 0 0 rgba(0,0,0,0.2);
+	
 	}
 	#vertical-nav {
 	position: fixed;
@@ -336,7 +337,7 @@
 									</c:if>
 									</div>
 									<div class="col_half col_last divcenter" id="originalImgBtn">
-									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border button-orange tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>이미지 바꾸기</a>
+									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>이미지 바꾸기</a>
 									</div>
 									<div id="changeImg" class="col_full">
 									<label for="register-form-img">Choose a Img:</label><input id="input-2" name="upload" type="file" class="file" data-show-preview="false">
@@ -408,7 +409,8 @@
 					</ul>
 				</nav>
 			</div>
-		<script type="text/javascript" src="js/jquery.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
 	
 	<!-- Bootstrap File Upload Plugin -->
@@ -418,6 +420,8 @@
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="resources/jquery.videoBG.js"></script>
+	<!-- Footer Scripts
+	============================================= -->
 	<script>
 	$(function() {
 		$( '#vertical-nav nav ul li:has(ul)' ).addClass('sub-menu');

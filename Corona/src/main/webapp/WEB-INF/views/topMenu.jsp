@@ -7,7 +7,7 @@
 #primary-menu ul li > a {
 	display: block;
 	line-height: 22px;
-	color: white;
+	color: white !important;
 	font-weight: bold;
 	font-size: 13px;
 	letter-spacing: 1px;
@@ -18,9 +18,6 @@
 #primary-menu ul li:hover > a,
 #primary-menu ul li.current > a { color: #ff9800 !important; }
 
-.menu>li>a>div:hover {
-	color: #ff9800 !important;
-}
 @font-face{
  font-family: 'NewGohtic';
  src:url('fonts/NewGothic.ttf');
@@ -51,7 +48,7 @@ body {
 
 					<!-- Primary Navigation
 					============================================= -->
-					<nav id="primary-menu" class="style dark" style="background-color: #000530" >
+					<nav id="primary-menu" style="background-color: #000530" >
 						
 						<ul class="menu">
 							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn" style="font-size: 15px !important; "></i>Home</div></a></li>
