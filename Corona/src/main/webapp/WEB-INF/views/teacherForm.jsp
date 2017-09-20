@@ -69,16 +69,17 @@
     opacity: 0;
     
 }
-
+#wrapper {
+	background-color: rgba(255, 255, 255, 0);
+}
 
 </style>
 </head>
-<body class="stretched no-transition" >
+<body class="stretched no-transition" style="background-image: url('images/back2.jpeg'); background-size: 1600px; background-repeat: no-repeat;" >
 	<div class="body-overlay"></div>
-	<div style="width:1600px; height:1000px; background-image: url('images/back2.jpeg'); position: absolute; background-size: 1600px; background-repeat: repeat;" ></div>
-		<div id="wrapper" class="clearfix animated fadeIn">
+		<div id="wrapper" class="clearfix">
 			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px; ">
-			<div class="video-wrap">
+			<div class="video-wrap" id="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; ">
 					<source src='images/videos/teacher.mp4' type='video/webm' />
 				</video>
@@ -305,6 +306,11 @@
 				$(this).css('background-color', '#000530');
 			})
 			$('.location').on('click', locationStatus);
+			
+			$('#wrapper').animate({
+				backgroundColor: "rgba(255, 255, 255, 0.9)"
+			}, 1500);
+			
 		});
 		function locationStatus(){
 			var status= $(this).attr('status');
