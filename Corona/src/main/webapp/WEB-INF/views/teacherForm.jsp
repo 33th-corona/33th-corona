@@ -97,7 +97,7 @@
 				<form action="#">
 				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="#" style="background-color: transparent;"><i class="icon-stack i-alt"></i></a>
+								<a href="#" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
 							</div>
 							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">자료실</h2></div>
 				
@@ -108,7 +108,7 @@
 				<form action="#">
 				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="#" style="background-color: transparent;"><i class="icon-stack i-alt"></i></a>
+								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
 							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 시작</h2></div>
 				

@@ -14,6 +14,15 @@
 .menu i:hover {
 	color: #ff9800 !important;
 }
+@font-face{
+ font-family: 'NewGohtic';
+ src:url('fonts/NewGothic.ttf');
+ font-weight: normal;
+ font-style: normal;
+}
+body {
+	font-family: NewGohtic;
+}
 </style>
 </head>
 <body class="stretched">
@@ -38,7 +47,7 @@
 					<nav id="primary-menu" class="style dark" style="background-color: #000530" >
 						
 						<ul class="menu">
-							<li class="menu"><a href="${pageContext.request.contextPath}/afterLoginLocation" class="menu" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn menu" style="font-size: 15px !important;"></i>Home</div></a></li>
+							<li class="menu"><a href="${pageContext.request.contextPath}/afterLoginLocation" class="menu" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn menu" style="font-size: 15px !important; "></i>Home</div></a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath}/createClassLocation"  class="menu" style="font-size: 20px !important;"><div><i class="icon-pencil2 topmenubtn menu" style="font-size: 15px !important;"></i>반 생성</div></a></li>
 							<li class="menu"><a href="#" style="font-size: 20px !important;" class="menu"><div><i class="icon-flag2 topmenubtn menu" style="font-size: 15px !important;"></i>사용법</div></a></li>
 							<li class="menu"><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important;" class="menu"><div><i class="icon-search3 topmenubtn menu" style="font-size: 15px !important;"></i>반 검색</div></a>
