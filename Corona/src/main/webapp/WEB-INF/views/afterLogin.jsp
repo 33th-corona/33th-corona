@@ -35,16 +35,6 @@
 		top: 110px;
 		left: 30px;
 	}
-	#primary-menu ul li > a {
-		display: block;
-		line-height: 22px;
-		color: #444;
-		font-weight: bold;
-		font-size: 13px;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		font-family: 'Raleway', sans-serif;
-	}
 
 #vertical-nav {
 	position: fixed;
