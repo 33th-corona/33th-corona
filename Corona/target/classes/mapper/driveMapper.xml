@@ -38,4 +38,7 @@
 	<delete id="deleteFile" parameterType="int">
 		delete from drive_file where num = #{fileNum}
 	</delete>
+	<delete id="delete_drive" parameterType="int">
+		delete from drive where num = #{num}
+	</delete>
 </mapper>

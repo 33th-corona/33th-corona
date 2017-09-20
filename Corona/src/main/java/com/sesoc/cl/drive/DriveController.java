@@ -5,9 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -35,34 +33,19 @@ public class DriveController {
 	
 	final String uploadPath = "/drivefile";
 	
-	/*
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
-		List<Drive> list = repo.selectDriveAll();
-		model.addAttribute("list", list);
-		return "drive";
-	} 
-	*/
-	
 	//업로드 폼으로 이동
 	@RequestMapping(value = "driveWrite", method = RequestMethod.GET)
 	public String uploadForm(Model model) {
-		System.out.println("자료실 글 작성폼으로");
-		//model.addAttribute("user_id", user_id);
 		return "driveWrite";
 	}
 
 	//업로드폼에서 등록버튼을 누르면
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
 	public String upload(Model model,HttpServletRequest request, MultipartFile file1, MultiFiles multiFiles, HttpSession session, String title, String content) {
-		System.out.println("upload 컨트롤러 진입");
 		int seq = repo.seq();
-		System.out.println("시퀀스");
 		String user_id = (String) session.getAttribute("loginId");
 		Drive drive =  new Drive(seq, 1, user_id , title, content, "", "", "", 0);
-		System.out.println("드라이브객체"+drive);
 		repo.insert(drive);
-		System.out.println("db에 드라이브 객체 저장");
 		//파일 다중 첨부시  for문으로 돌려서 insert 저장
 		for(MultipartFile file : multiFiles.getFile1()) {
 			String originalName = file.getOriginalFilename();
@@ -71,7 +54,6 @@ public class DriveController {
 			drive.setSaved_filename(savedFileName);
 			repo.insert_file(drive);
 		}//for
-		System.out.println("for문 종료 리스트로");
 		return "redirect:boardLocation?status=drive";
 	}
 	
@@ -83,50 +65,82 @@ public class DriveController {
 		List<Drive> list = repo.selectDrive_fileAll(drive.getNum());
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
-		System.out.println("자료실 수정폼으로 이동");
 		return "driveUpdate";
 	}
 	
 	//수정
 	@RequestMapping(value = "driveUpdate", method = RequestMethod.POST)
 	public String update(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames) {
-		System.out.println("자료실 driveupdate 진입");
+		//System.out.println("자료실 driveupdate 파일이름 "+fileNames.getOriginal_filename());
 		Drive drive = repo.selectOne(num);
 		drive.setTitle(title);
 		drive.setContent(content);
 		repo.updateOne(drive);
 		//게시판 num과 같은 drive_file리스트를 가져옴
 		List<Drive> list = repo.selectDrive_fileAll(num);
+		
 		//삭제 처리 
-		for(Drive driveFile : list) {
-			int check = 0; //스위치
-			String originalSavedFile = driveFile.getOriginal_filename();
-			for(String original_filename : fileNames.getOriginal_filename()) {
-				if(originalSavedFile.equals(original_filename)) {
-					//첨부된 파일 이름과 DB에 저장된 이름을 검사해서 같으면 스위치 걸어줌
-					check = 1;
+		if(fileNames.getOriginal_filename() != null){
+			for(Drive driveFile : list) {
+				int check = 0; //스위치
+				String originalSavedFile = driveFile.getOriginal_filename();
+				for(String original_filename : fileNames.getOriginal_filename()) {
+					if(originalSavedFile.equals(original_filename)) {
+						//첨부된 파일 이름과 DB에 저장된 이름을 검사해서 같으면 스위치 걸어줌
+						check = 1;
+					}
+				}
+				if(check == 0) {
+					//첨부된 파일이름이 DB안에 없을경우 기존파일을 일단 삭제
+					FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
+					repo.deleteFile(driveFile.getNum());
 				}
 			}
-			if(check == 0) {
-				//첨부된 파일이름이 DB안에 없을경우 일단 삭제
-				FileService.deleteFile(driveFile.getSaved_filename());
+		}
+		
+		//파일이름 null로 넘어오면
+		if(fileNames.getOriginal_filename() == null){
+			//귀찮으니 기존 파일 전부 다 삭제
+			for(Drive driveFile : list) {
+				FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
 				repo.deleteFile(driveFile.getNum());
 			}
 		}
+		
 		//수정 처리
 		if(!(file1 == null)){
 			//삽입 처리와 같은 방식으로 수정 처리 시작
-		for(MultipartFile file : multifiles.getFile1()) {
-			String originalName = file.getOriginalFilename();
-			String savedFileName = FileService.saveFile(file, uploadPath);
-			drive.setOriginal_filename(originalName);
-			drive.setSaved_filename(savedFileName);
-			repo.insert_file(drive);
-		}
+			for(MultipartFile file : multifiles.getFile1()) {
+				String originalName = file.getOriginalFilename();
+				String savedFileName = FileService.saveFile(file, uploadPath);
+				drive.setOriginal_filename(originalName);
+				drive.setSaved_filename(savedFileName);
+				repo.insert_file(drive);
+			}
 		}
 		
 		return "redirect:boardLocation?status=drive";
 	}
+	
+	//삭제
+	@RequestMapping(value = "driveDelete", method = RequestMethod.GET)
+	public String delete(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames) {
+		//Drive drive = repo.selectOne(num);
+		
+		//게시판 num과 같은 drive_file리스트를 가져옴
+		List<Drive> list = repo.selectDrive_fileAll(num);
+		
+		//삭제 처리
+		for(Drive driveFile : list) {
+			FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
+			repo.deleteFile(driveFile.getNum());
+		}
+		//게시글 삭제
+		repo.delete_drive(num);
+		return "redirect:boardLocation?status=drive";
+	}
+	
+	
 	//게시판 글 자세히 보기
 	@RequestMapping(value="driveDetail", method = RequestMethod.GET)
 	public String driveDetailForm(int num, Model model) {

@@ -117,6 +117,8 @@ public class FileService {
 	public static boolean deleteFile(String fullPath){
 		boolean result = false;
 		
+		System.out.println("풀패스 "+fullPath);
+		
 		File delFile = new File(fullPath);
 		if(delFile.isFile()){
 			delFile.delete();

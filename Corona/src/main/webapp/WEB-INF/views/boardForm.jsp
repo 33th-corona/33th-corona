@@ -23,11 +23,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 <title>Insert title here</title>
+
 <style>
 	table{
 		 white-space: nowrap;
 	}
 </style>
+
 </head>
 <body class="stretched">
 	<input id="tableSet" type="hidden" value="${status}">
@@ -160,6 +162,7 @@
 								<th>Title</th>
 								<th>Final Date</th>
 								<th>File</th>
+								<th>ddd</th>
 							</tr>
 						</thead>
 						<tfoot>
@@ -168,6 +171,7 @@
 								<th>Title</th>
 								<th>Final Date</th>
 								<th>File</th>
+									<th>ddd</th>
 							</tr>
 						</tfoot>
 						<tbody>
@@ -176,12 +180,14 @@
 								<td>System Architect</td>
 								<td>Edinburgh</td>
 								<td>61</td>
+								<td>dd</td>
 							</tr>
 							<tr>
 								<td>A</td>
 								<td>System Architect</td>
 								<td>Edinburgh</td>
 								<td>61</td>
+								<td>dd</td>
 							</tr>
 						</tbody>
 					</table>

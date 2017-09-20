@@ -36,6 +36,11 @@ public class DriveRepository {
 		return dao.deleteFile(fileNum);
 	}
 	
+	public int delete_drive(int num) {
+		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
+		return dao.delete_drive(num);
+	}
+	
 	public int updateOne(Drive drive) {
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
 		return dao.updateOne(drive);

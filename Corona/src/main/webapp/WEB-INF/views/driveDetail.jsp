@@ -51,7 +51,7 @@
 	function deleteForm(){
 		var del = confirm("정말 삭제하시겠습니까?")
 		if(del){
-			location.href="drivedelete?num=${board.num}";
+			location.href="driveDelete?num=${drive.num}";
 		}
 		return;
 	}

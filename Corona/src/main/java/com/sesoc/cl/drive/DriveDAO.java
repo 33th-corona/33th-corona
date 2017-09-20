@@ -15,4 +15,5 @@ public interface DriveDAO {
 	public int seq();
 	public int insert(Drive drive);
 	public int insert_file(Drive drive);
+	public int delete_drive(int num);
 }
