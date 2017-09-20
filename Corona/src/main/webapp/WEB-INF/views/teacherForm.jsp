@@ -74,7 +74,7 @@
 	}
 
 	100% {
-		opacity: 0.8;
+		opacity: 0.9;
 	}
 }
 </style>
@@ -84,9 +84,9 @@
 	<div class="body-overlay"></div>
 		<div id="wrapper" class="clearfix animated fadeIn" >
 
-			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px; ">
 			<div class="video-wrap">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; opacity: 0.8">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; ">
 					<source src='images/videos/teacher.mp4' type='video/webm' />
 				</video>
 				<div class="video-overlay"></div>
