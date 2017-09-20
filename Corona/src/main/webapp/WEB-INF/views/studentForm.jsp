@@ -32,7 +32,11 @@
 .button-3d.button-orange:hover,
 .button-reveal.button-orange:hover,
 .button-border.button-orange:hover,
-.button-border.button-orange.button-fill:before { background-color: #ff9800 !important; }
+.button-border.button-orange.button-fill:before { background-color: #000530 !important; }
+
+.btn:hover{
+	background-color : #000530 !important;
+}
 </style>
 </head>
 
@@ -53,16 +57,16 @@
 
 				<div class="container clearfix">
 				<div class="col-md-8">
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-left-radius: 50%; border-top-left-radius: 50%;">일반 게시판<i class="icon-list"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin">자료실<i class="icon-line-paper"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin">과제 게시판<i class="icon-gift"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-right-radius: 50%; border-top-right-radius: 50%;">과제 작성<i class="icon-edit"></i></a>
+				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-left-radius: 50%; border-top-left-radius: 50%;">일반 게시판<i class="icon-list"></i></a>
+				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin">자료실<i class="icon-line-paper"></i></a>
+				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin">과제 게시판<i class="icon-gift"></i></a>
+				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-right-radius: 50%; border-top-right-radius: 50%;">과제 작성<i class="icon-edit"></i></a>
 				</div>
 				<div class="col-md-4">
 				<form action="lessonJoin" method="POST" id="lesson">
 				<input type="hidden" value="${id}" name="studentId">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
-				<a href="#" id="lessonbtn" class="button button-3d button-xlarge button-reveal button-aqua button-rounded tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의실  입장</a>
+				<a href="#" id="lessonbtn" class="button button-3d button-xlarge button-reveal button-rounded button-orange tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의실  입장</a>
 				</form>
 				</div> 
 				</div>

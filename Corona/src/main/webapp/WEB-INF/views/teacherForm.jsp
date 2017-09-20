@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<!--오늘은 여기까지  -->
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
 
@@ -28,11 +28,41 @@
 	<link rel="stylesheet" href="css/customHeader.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
-.button-orange { background-color: #ff9800; }
+.button-orange { background-color: #ff9800 !important; }
+
 .button-3d.button-orange:hover,
 .button-reveal.button-orange:hover,
 .button-border.button-orange:hover,
-.button-border.button-orange.button-fill:before { background-color: #ff9800 !important; }
+.button-border.button-orange.button-fill:before { background-color: #000530 !important; }
+.button.button-3d:hover {
+	background-color: #000530 !important;
+	opacity: 0.9;
+}
+
+.feature-box .fbox-icon i,
+.feature-box .fbox-icon img {
+	border-radius: 50%;
+	background-color: #000000 !important;
+}
+.feature-box.fbox-outline .fbox-icon {
+    border: 1px solid #000530 !important;
+    border-radius: 50%;
+    padding: 3px;
+}
+.fbox-effect .fbox-icon i:after {
+    top: -3px;
+    left: -3px;
+    padding: 3px;
+    box-shadow: 0 0 0 2px #fff !important;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.3s, opacity 0.3s;
+    transform: scale(.8);
+    opacity: 0;
+}
 </style>
 </head>
 
@@ -52,19 +82,63 @@
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">
 
 				<div class="container clearfix">
-				<div class="col-md-8">
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-left-radius: 50%; border-top-left-radius: 50%;">일반 게시판<i class="icon-list"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin">자료실<i class="icon-line-paper"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin">과제 게시판<i class="icon-gift"></i></a>
-				<a href="#" class="button  button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-right-radius: 50%; border-top-right-radius: 50%;">과제 작성<i class="icon-edit"></i></a>
+				<div class="col-md-2" style="margin-left: 100px;">
+				<form action="#">
+				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-stack i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">일반 게시판</h2></div>
+				
 				</div>
-				<div class="col-md-4">
+				</form>
+				</div>
+				<div class="col-md-2" style="margin-top: 100px;">
+				<form action="#">
+				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">자료실</h2></div>
+				
+				</div>
+				</form>
+				</div>
+				<div class="col-md-2">
+				<form action="#">
+				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 시작</h2></div>
+				
+				</div>
+				</form>
+				</div>
+				
+				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="lessonStart" method="POST" id="lesson">
 				<input type="hidden" value="${classInfo.teacher_id}" name="teacher_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
-				<a href="#" id="lessonbtn" class="button button-3d button-xlarge button-reveal button-aqua button-rounded tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의 시작</a>
+				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-stack i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">과제 확인</h2></div>
+				</div>
 				</form>
 				</div> 
+				<div class="col-md-2">
+				<form action="#">
+				<div class="feature-box fbox-outline fbox-effect nomargin col_full" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-stack i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">과제 만들기</h2></div>
+				
+				</div>
+				</form>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -205,7 +279,15 @@
 			$('#datatable3 tbody').on('click', '.status', status);
 			$('#datatable4 tbody').on('click', '.retired', retired);
 			$('#lessonbtn').on('click', function() {
-				$('#lesson').submit();
+				$()
+			})
+			$('.feature-box').mouseover(function() {
+				$(this).find('a').css('color','#ff9800');
+				$(this).css('background-color', '#ff9800');
+			})
+			$('.feature-box').mouseout(function() {
+				$(this).find('a').css('color','white');
+				$(this).css('background-color', '#000530');
 			})
 		});
 		function status() {

@@ -44,6 +44,10 @@ background-color: white;
 .dataTables_paginate {
  color: orange;
 }
+.color th{
+	background-color: #000530;
+	color: white;
+}
 </style>
 </head>
 
@@ -107,7 +111,7 @@ background-color: white;
 						class="table table-striped table-bordered datatable"
 						cellspacing="0" width="100%">
 						<thead>
-							<tr>
+							<tr class="color">
 								<th>Num</th>
 								<th>ClassName</th>
 								<th>Teacher_ID</th>
@@ -116,7 +120,7 @@ background-color: white;
 							</tr>
 						</thead>
 						<tfoot>
-							<tr>
+							<tr class="color">
 								<th>Num</th>
 								<th>ClassName</th>
 								<th>Teacher_ID</th>

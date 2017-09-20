@@ -102,6 +102,7 @@
 	color: #fff;
 }
 
+
 #vertical-nav nav ul ul { display: none; }
 
 #vertical-nav nav ul ul a {
@@ -281,9 +282,15 @@
   background: #fff;
   min-height: 460px;
 }
-.button.button-3d:hover {
+.btn {
 	background-color: #ff9800 !important;
 	opacity: 0.9;
+}
+.btn.button:hover{
+	background-color: #000530 !important;
+	opacity: 0.9;
+	color: #FFF;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 </style>
 <body class="stretched">
@@ -357,7 +364,7 @@
 							</form>
 						</div>
 					</div>
-			<div id="userPick" class="thumbnail" style="height: 180px; padding: 0;">
+			<div id="userPick" class="thumbnail" style="height: 220px; padding: 0;">
 				<div class="caption" style="height: 200px;">
 				<!-- <div class="col-md-7" style="padding-left: 0;" >
 					<img id="profileImg" src="imgStatus" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
@@ -373,13 +380,13 @@
 						${email}
 					</div>
 				</div>
-					<div class="col_half" style="margin-bottom: 0; margin-top: 0;">
+					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					<a href="#modal-register-form" id="myPagebtn"
-						class="button button-3d button-reveal button-mini button-rounded w3-amber tright" role="button" data-lightbox="inline"><i class="icon-angle-right" style="width: 15px"></i>마이 페이지</a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline"><i class="icon-angle-right" style="width: 15px"></i>마이 페이지</a>
 					</div>
-					<div class="col_half col_last" style="margin-bottom: 0; margin-top: 0;">
+					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					 <a href="${pageContext.request.contextPath}/logout"
-						class="button button-3d button-reveal button-mini button-rounded w3-amber tright"><i class="icon-angle-right" style="width: 15px"></i>로그아웃</a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px;">로그아웃<i class="icon-angle-right" style="width: 15px"></i></a>
 					</div>
 				</div>
 			</div>

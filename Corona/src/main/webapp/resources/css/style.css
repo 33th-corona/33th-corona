@@ -6797,7 +6797,7 @@ body:not(.device-touch) .button {
 }
 
 .button.button-3d:hover {
-	background-color: #1ABC9C !important;
+	background-color: #1ABC9C;
 	opacity: 0.9;
 }
 
@@ -7071,17 +7071,6 @@ body:not(.device-touch) .button.button-full strong {
 .button-border.button-red {
 	color: #C02942;
 	border-color: #C02942;
-}
-
-.button-orange { background-color: #ff9800; }
-.button-3d.button-orange:hover,
-.button-reveal.button-orange:hover,
-.button-border.button-orange:hover,
-.button-border.button-orange.button-fill:before { background-color:#ff9800 !important; }
-
-.button-border.button-orange {
-	color: #ff9800;
-	border-color: #ff9800;
 }
 
 
