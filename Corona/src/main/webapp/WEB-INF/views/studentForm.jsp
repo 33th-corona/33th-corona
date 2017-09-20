@@ -79,20 +79,20 @@
 <body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1600px;">
 
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix animated fadeIn">
-			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
+		<div id="wrapper" class="clearfix animated fadeIn" >
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 30px; margin-top: 20px;">
 			<div class="video-wrap">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; opacity: 0.8">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
 					<source src='images/videos/student.mp4' type='video/webm' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-			<div class="container clearfix" style="z-index: 1;">
+			<div class="container clearfix">
 					<div class="emphasis-title">
 							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#222 !important;">${classInfo.name}</span>
 					</div>
 			</div>
-	</section>
+		</section>
 		<section id="content">
 
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">

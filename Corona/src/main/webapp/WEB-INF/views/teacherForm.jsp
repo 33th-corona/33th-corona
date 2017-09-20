@@ -34,15 +34,16 @@
 <style type="text/css">
 .button-orange { background-color: #ff9800 !important; }
 
-.button-3d.button-orange:hover,
-.button-reveal.button-orange:hover,
-.button-border.button-orange:hover,
-.button-border.button-orange.button-fill:before { background-color: #000530 !important; }
+.button-3d.boran:hover,
+.button-reveal.boran:hover,
+.button-border.boran:hover,
+.button-border.boran.button-fill:before { background-color: #ff9800 !important; }
 .button.button-3d:hover {
 	background-color: #000530 !important;
-	opacity: 0.9;
 }
-
+.boran{
+	border-color: #ff9800 !important
+}
 .feature-box .fbox-icon i,
 .feature-box .fbox-icon img {
 	border-radius: 50%;
@@ -68,22 +69,14 @@
     opacity: 0;
     
 }
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
 
-	100% {
-		opacity: 0.9;
-	}
-}
+
 </style>
 </head>
-<body class="stretched side-panel-left no-transition" style="background-image: url('images/back2.jpeg'); background-size: 1600px;" >
-
+<body class="stretched no-transition" >
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix animated fadeIn" >
-
+	<div style="width:1600px; height:1000px; background-image: url('images/back2.jpeg'); position: absolute; background-size: 1600px; background-repeat: repeat;" ></div>
+		<div id="wrapper" class="clearfix animated fadeIn">
 			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px; ">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; ">
@@ -97,7 +90,7 @@
 					</div>
 			</div>
 	</section>
-		<section id="content">
+		<section id="content" style="background-color: transparent;">
 
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">
 
@@ -194,12 +187,12 @@
 									<th>${uList.user_id}</th>
 									<th class="center result">
 										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="student" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>승낙</button>
+											<button num="${uList.num}" status="student" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin status boran"><i class="icon-angle-right" style="width:20px;"></i>승낙</button>
 										</c:if>
 									</th>
 									<th class="center result">
 										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="withdraw" class="button button-rounded button-reveal button-small button-border button-red tright nomargin status"><i class="icon-angle-right" style="width: 20px "></i>거부</button>
+											<button num="${uList.num}" status="withdraw" class="button button-rounded button-reveal button-small button-border button-red tright nomargin status"><i class="icon-angle-right" style="width:20px;"></i>거부</button>
 										</c:if>
 									</th>
 								</c:if>
@@ -254,7 +247,6 @@
 			</div>
 
 		</footer><!-- #footer end -->
-		
 	</div><!-- #wrapper end -->
 	<!-- Go To Top
 	============================================= -->
@@ -312,7 +304,6 @@
 				$(this).find('a').css('color','white');
 				$(this).css('background-color', '#000530');
 			})
-			$('.opaci').css('opacity','0.9');
 			$('.location').on('click', locationStatus);
 		});
 		function locationStatus(){
