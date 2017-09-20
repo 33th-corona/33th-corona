@@ -70,7 +70,7 @@
 <body class="stretched side-panel-left" style="background-image: url('images/back.jpg'); background-size: 1600px;">
 
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix opaci">
+		<div class="clearfix opaci">
 			<section id="page-title">
 
 			<div class="container center clearfix" >
