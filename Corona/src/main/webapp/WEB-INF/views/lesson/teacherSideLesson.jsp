@@ -40,9 +40,10 @@ var sock = null;
 
 $(document).ready(function() {
 	//현재 사용자의 IP를 로딩
-	var connIp = ip();
+// 	var connIp = ip();
 	//테스트 용 IP 설정 (== localhost)
 // 	var connIp = '127.0.0.1';
+	var connIp = '172.20.10.3';
 	//web editor 객체 생성 (Code part)
 	var editor = ace.edit("editor");
 	//web editor 객체 생성 (Console part)
@@ -80,7 +81,7 @@ $(document).ready(function() {
 		//서버에 명령 전달이 성공하면 실행
 		if(startResult == 1) {
 			//웹소켓 연결 후 수켓 객체를 sock에 저장
-			sock = new WebSocket("ws://" + window.location.host +"/test/ws/teacherSideLesson");
+			sock = new WebSocket("ws://" + window.location.host +"/cl/ws/teacherSideLesson");
 			
 			//웹소켓 생성 직후 실행
 			sock.onopen = function() {

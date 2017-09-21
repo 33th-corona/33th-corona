@@ -40,7 +40,7 @@ public class StudentLessonController {
 		return "lesson/lessonJoin";
 	}
 	
-	@RequestMapping(value = "/lessonStart", method = RequestMethod.POST)
+	@RequestMapping(value = "/lessonJoin", method = RequestMethod.POST)
 	public String joinLesson(String student_Id, int classNum, Model model) {
 		model.addAttribute("student_Id", student_Id);
 		model.addAttribute("classNum", classNum);

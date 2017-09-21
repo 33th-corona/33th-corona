@@ -316,6 +316,8 @@
 			var status= $(this).attr('status');
 			if(status == 'normal' || status == "drive"){
 				location.href = "${pageContext.request.contextPath}/boardLocation?status=" + status;
+			} else if(status == 'study') {
+				$('#lesson').submit();
 			}
 		}
 		

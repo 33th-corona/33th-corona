@@ -52,7 +52,7 @@ $(document).ready(function() {
 	var consoleView = ace.edit("console");
 
 	//웹소켓 연결 후 소켓 객체를 sock에 저장
-	sock = new WebSocket("ws://" + window.location.host	+ "/test/ws/studentSideLesson");
+	sock = new WebSocket("ws://" + window.location.host	+ "/cl/ws/studentSideLesson");
 
 	//웹소켓 생성 직 후 실행
 	sock.onopen = function() {
