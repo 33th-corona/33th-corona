@@ -123,8 +123,8 @@
 				
 				
 				<div class="col-md-2" >
-				<form action="lessonStart" method="POST" id="lesson">
-				<input type="hidden" value="${classInfo.teacher_id}" name="teacher_id">
+				<form action="lessonJoin" method="POST" id="lesson">
+				<input type="hidden" value="${id}" name="student_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
 				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
@@ -244,18 +244,26 @@
 		});
 		$('#lessonbtn').on('click', function() {
 			$('#lesson').submit();
-		})
+		});
 		$('.feature-box').mouseover(function() {
 				$(this).find('h2').css('color', '#000000');
 				$(this).find('a').css('color','#ff9800');
 				$(this).css('background-color', '#ff9800');
-			})
-			$('.feature-box').mouseout(function() {
-				$(this).find('h2').css('color', '#ffffff');
-				$(this).find('a').css('color','white');
-				$(this).css('background-color', '#000530');
-			})
-	})
+		});
+		$('.feature-box').mouseout(function() {
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','white');
+			$(this).css('background-color', '#000530');
+		});
+		$('.location').on('click', locationStatus);
+	});
+	
+	function locationStatus(){
+		var status= $(this).attr('status');
+		if(status == 'study') {
+			$('#lesson').submit();
+		}
+	}
 	</script>
 </body>
 </html>

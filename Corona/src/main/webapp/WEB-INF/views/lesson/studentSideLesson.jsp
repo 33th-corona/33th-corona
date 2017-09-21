@@ -43,9 +43,10 @@ $(document).ready(function() {
 // 	console.log('${classNum}');
 // 	console.log('${studentId}');
 	//현재 사용자의 IP를 로딩
-	var connIp = ip();
+// 	var connIp = ip();
 	//테스트 용 IP 설정 (== localhost)
-	// 	var connIp = '127.0.0.1';
+// 	var connIp = '127.0.0.1';
+	var connIp = '172.20.10.3';
 	//web editor 객체 생성 (Code part)
 	var editor = ace.edit("editor");
 	//web editor 객체 생성 (Console part)
@@ -57,7 +58,7 @@ $(document).ready(function() {
 	//웹소켓 생성 직 후 실행
 	sock.onopen = function() {
 		//학생의 id와 선생의 id를 로딩
-		var id = '${student_Id}';
+		var id = '${student_id}';
 		var classNum = '${classNum}';
 
 		//서버에게 보낼 메세지를 객체로 만듦
