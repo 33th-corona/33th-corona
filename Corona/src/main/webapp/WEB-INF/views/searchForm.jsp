@@ -32,6 +32,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 <title>Insert title here</title>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp"%>
 <style type="text/css">
 th {
 background-color: white;
@@ -48,12 +50,14 @@ background-color: white;
 	background-color: #000530;
 	color: white;
 }
+#wrapper {
+	background-color: rgba(255, 255, 255, 0);
+}
 </style>
 </head>
 
-<body class="stretched">
-<%@ include file="topMenu.jsp" %>
-<%@ include file="sidebar.jsp"%>
+<body class="stretched  no-transition" style="background-image: url('images/searchback.jpg'); background-size: 1600px; background-repeat: no-repeat;">
+
 	<div id="wrapper" class="clearfix">
 	
 		<div class="body-overlay"></div>
@@ -216,6 +220,9 @@ background-color: white;
 		});
 		$("#searchIcon").click(search);
 		$('#datatable3 tbody').on('click', '.request', request);
+		$('#wrapper').animate({
+			backgroundColor: "rgba(255, 255, 255, 0.9)"
+		}, 1500);
 	});
 	
 	function search() {

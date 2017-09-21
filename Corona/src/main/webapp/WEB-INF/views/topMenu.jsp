@@ -51,10 +51,9 @@ body {
 					<nav id="primary-menu" style="background-color: #000530" >
 						
 						<ul class="menu">
-							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn" style="font-size: 15px !important; "></i>Home</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/createClassLocation" style="font-size: 20px !important;"><div><i class="icon-pencil2 topmenubtn" style="font-size: 15px !important;"></i>반 생성</div></a></li>
-							<li><a href="#" style="font-size: 20px !important;"><div><i class="icon-flag2 topmenubtn" style="font-size: 15px !important;"></i>사용법</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important;"><div><i class="icon-search3 topmenubtn" style="font-size: 15px !important;"></i>반 검색</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-home2 topmenubtn" style="font-size: 15px !important; "></i>Home</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/createClassLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-pencil2 topmenubtn" style="font-size: 15px !important;"></i>반 생성</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-search3 topmenubtn" style="font-size: 15px !important;"></i>반 검색</div></a></li>
 						</ul>
 
 						<!-- Top Search

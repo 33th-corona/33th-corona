@@ -64,22 +64,16 @@
     opacity: 0;
     
 }
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 0.9;
-	}
+#wrapper {
+	background-color: rgba(255, 255, 255, 0);
 }
 </style>
 </head>
 
-<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1600px;">
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1600px; background-repeat: no-repeat;">
 
 	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix animated fadeIn" >
+		<div id="wrapper" class="clearfix" >
 			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 30px; margin-top: 20px;">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
@@ -93,7 +87,7 @@
 					</div>
 			</div>
 		</section>
-		<section id="content">
+		<section id="content" style="background-color: transparent;">
 
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">
 
@@ -256,6 +250,9 @@
 			$(this).css('background-color', '#000530');
 		});
 		$('.location').on('click', locationStatus);
+		$('#wrapper').animate({
+			backgroundColor: "rgba(255, 255, 255, 0.5)"
+		}, 1500);
 	});
 	
 	function locationStatus(){

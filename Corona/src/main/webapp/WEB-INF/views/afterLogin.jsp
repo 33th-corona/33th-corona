@@ -210,7 +210,7 @@
 				<div class="swiper-container swiper-parent">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide dark" style="background-image: url('images/after1.jpg');">
-							<div class="container clearfix" style="margin-left: 240px;">
+							<div class="container clearfix" style="margin-left: 320px;">
 								<div class="slider-caption slider-caption-center">
 									<h2 data-caption-animate="fadeInUp">Welcome to Corona</h2>
 									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스 화면을 실시간 확인하여<br>학생의 이클립스 화면으로 전송합니다.</p>
@@ -285,7 +285,32 @@
 					</div>
 
 				</div>
+				
+				<div class="row clearfix">
 
+					<div class="col-md-6 nopadding" data-animate="bounceInLeft" style="background : url('images/after4.jpg') center center no-repeat; background-size: cover; height: 600px; ">
+						<div style="background-color: rgba(255,255,255, 0.2); height: 600px;">
+						<div>&nbsp;</div>
+						<h1 style="color: #000; opacity: 1; font-weight: bold;" class="center">선생님 사용 설명서</h1>
+						<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:20px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">1.</span>위 홈페이지로 가셔서 Jsp파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 jsr파일을 넣으십시오.</p>
+						<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:40px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">2.</span>클래스 페이지로 입장하셔서 '강의 시작'버튼을 누르세요.</p>
+						<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:60px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">3.</span>이클립스 상단 메뉴 안 Class Ready에 존재하는 Start버튼을<br>눌러 강의를 시작하세요.</p>
+						<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:30px; margin-bottom: 10px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">4.</span>강의가 끝났을 시, 상단 메뉴 안 Class Ready에 존재하는 <br>End버튼을 눌러 강의를 종료하세요.</p>
+						<p class="center" style="font-size: 20px; color: #000; opacity: 1; font-weight: bold;">혹시 반 생성을 아직 안하셨나요?</p>
+						</div>
+					</div>
+					<canvas id="chart-doughnut"></canvas>
+					<div class="col-md-6 nopadding" data-delay="200" data-animate="bounceInRight" style="background : url('images/after5.jpg') center center no-repeat; background-size: cover; height: 600px;">
+						<div style="background-color: rgba(255,255,255, 0.2); height: 600px;">
+						<div>&nbsp;</div>
+						<h1 style="color: #000; opacity: 1; font-weight: bold;" class="center">학생 사용 설명서</h1>
+												<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:20px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">1.</span>위 홈페이지로 가셔서 Jsp파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 jsr파일을 넣으십시오.</p>
+						<p style="color: #000; opacity: 1; font-weight: bold; margin-left: 20px; margin-top:40px; font-size: 20px;"><span class="dropcap" style="font-size: 60px;">2.</span>클래스 페이지로 입장하셔서 '강의 참여'버튼을 눌러 강의에 참여하세요. 
+						</div>
+					</div>
+
+				</div>	
+				
 				<div class="row clearfix common-height">
 
 					<div class="col-md-6 center col-padding" style="background: url('images/services/main-bg.jpg') center center no-repeat; background-size: cover;">
@@ -921,8 +946,62 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/chart.js"></script>
+	<script type="text/javascript" src="js/chart-utils.js"></script>
 	<script>
-	
+	var randomScalingFactor = function() {
+		return Math.round(Math.random() * 100);
+	};
+
+	var config = {
+		type: 'doughnut',
+		data: {
+			datasets: [{
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+				],
+				backgroundColor: [
+					window.chartColors.red,
+					window.chartColors.orange,
+					window.chartColors.yellow,
+					window.chartColors.green,
+					window.chartColors.blue,
+				],
+				label: 'Dataset 1'
+			}],
+			labels: [
+				"Red",
+				"Orange",
+				"Yellow",
+				"Green",
+				"Blue"
+			]
+		},
+		options: {
+			responsive: true,
+			legend: {
+				display: false,
+				position: 'absolute'
+			},
+			title: {
+				display: false,
+				text: 'Doughnut Chart'
+			},
+			animation: {
+				animateScale: true,
+				animateRotate: true
+			}
+		}
+	};
+	window.onload = function() {
+		var ctx = document.getElementById("chart-doughnut").getContext("2d");
+		window.myDoughnut = new Chart(ctx, config);
+		window.myRadar = new Chart(document.getElementById("chart-radar"), configRadar);
+	};
 	</script>
 </body>
 </html>

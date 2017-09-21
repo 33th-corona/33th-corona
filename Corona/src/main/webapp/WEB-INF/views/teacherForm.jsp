@@ -72,7 +72,6 @@
 #wrapper {
 	background-color: rgba(255, 255, 255, 0);
 }
-
 </style>
 </head>
 <body class="stretched no-transition" style="background-image: url('images/back2.jpeg'); background-size: 1600px; background-repeat: no-repeat;" >
@@ -308,7 +307,7 @@
 			$('.location').on('click', locationStatus);
 			
 			$('#wrapper').animate({
-				backgroundColor: "rgba(255, 255, 255, 0.9)"
+				backgroundColor: "rgba(255, 255, 255, 0.5)"
 			}, 1500);
 			
 		});
