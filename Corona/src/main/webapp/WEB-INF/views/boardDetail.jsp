@@ -6,19 +6,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
 
-<script type="text/javascript" src="js/jquery.js"></script>
 
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-	<script type="text/javascript" src="resources/textEditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	
+	
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="resources/style.css" type="text/css" />
+	
+	 <script type="text/javascript" src="resources/textEditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
+
 <style>
-	div#wrapper{
-		width : 800px;
+	
+	div#ddddwrapper{
 		margin : 0 auto;
 	}
 	pre {
@@ -26,16 +37,124 @@
 		overflow: auto;
 		background-color: white;
 	}
-	table.reply {
-		width : 800px;
-	}
 	span {
 		display: inline-block;
 		margin : 5px;
 	}
+	
+	.bbb {
+		background-color: blue !important;
+	}
+	#sese{
+	outline: gray;
+	outline-style: solid;
+	box-shadow: 1px 1px 5px black;
+	}
+	
+	
 </style>
 
+</head>
 
+<body class="stretched">
+
+<div id="wrapper"  class="clearfix">
+<div class="body-overlay"></div>
+<section id="content">
+
+	<div class="content-wrap">
+	<div class="container clearfix">
+	
+	<section id = "sese">
+	
+	sdfadf
+	</section>
+	
+	
+	
+	<div class="center">
+	<h2>[ 게시판 글보기 ]// 클래스명 받아와서 뿌려주기</h2>
+	</div>
+	<form action="boardUpdateForm" id="Form" method="POST" >
+	<input type="hidden" name="num" value="${board.num}">
+	
+	<table class="Bordered table">
+		<tr >
+			<th colspan="3">${board.title} [${board.reply_count}]</th>
+		</tr>
+		<tr id="photo_td">
+			<td rowspan="3" class="col-md-3" >프로필사진</td>
+			<td >${board.user_id}작성자</td>
+			<td rowspan="3" >빈 공간 무엇을 추가할까</td>
+		</tr>
+		
+		<tr>
+			<th>${board.register_time}</th>
+		</tr>	
+		<tr>
+			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<pre id="context">${board.content}</pre>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1">
+				<a href="boardLocation?status=${status}">≪목록으로</a>
+			</td>
+			<td></td>
+			<td align="right">	
+				<input type="submit" class="btn btn-primary bbb" value="글수정">
+				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
+				<a class="btn btn-primary" href="boardWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
+			</td>
+		</tr>
+	</table>
+	</form>
+	<span>댓글 수 : </span><span id="replycount">${board.reply_count}</span> <span>조회수 : ${board.hit}</span>
+	<!-- 댓글 입력 / 로그인한 사람만 댓글을 달 수 있다. -->
+		<form id="replyWrite" action="replyWrite" method="POST">
+		<input type="hidden" name="action" value="replyWrite" />
+		<input type="hidden" name="board_num" value="${board.num}" />
+		<table id="replyinput" class="reply">
+			<tbody>
+			<tr>
+				<td>
+				<label class="col-md-1">유저네임</label>
+				<textarea class="col-md-8 row-md-4" id="reply_text" name="reply_text" maxlength="400" cols="150" rows="3" placeholder="댓글을 입력해주세요"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<a class="btn btn-primary col-md-2" id="reply_submit" role="button"><i class="icon-ok"></i>등록</a>
+				</td>
+			</tr>
+			</tbody>	
+		</table>
+		</form>
+
+	<!-- 댓글 출력 -->
+	<div id="replydisplay">
+	</div><!-- end #replydisplay -->
+</div> <!-- end #wrapper -->
+</div>
+</section>
+</div>
+<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/ellipsis.js"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
+
+	<!-- Bootstrap Data Table Plugin -->
+	<script type="text/javascript" src="js/components/bs-datatable.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="js/functions.js"></script>
 <script>
 	$(function(){
 		init();
@@ -61,11 +180,11 @@
 		var data = "<table class='Bordered table'>";
 		$.each(resp, function(index,reply){
 			data += "<tr>";
-			data += "<td class='col-md-2'>";
+			data += "<td class='col-md-1'>";
 			if(reply.parent != 0) data+= "└ "; //답글이면 ㄴ 추가, 후에 이미지로 대체
 			data += reply.user_id+"</td>"; 
-			data += "<td class='col-md-7'>"+reply.content+"</td>";
-			data += "<td class='col-md-3'>"+reply.register_time;
+			data += "<td class='col-md-3'>"+reply.content+"</td>";
+			data += "<td class='col-md-2'>"+reply.register_time;
 			var delBtn = "del"+reply.num;
 			var updateBtn = "update"+reply.num;
 			if(reply.user_id == "${loginId}"){
@@ -185,118 +304,5 @@
 		return;
 	}	
 </script>
-
-<!--
-<script type="text/javascript">
-	var oEditors = [];
-	
-	nhn.husky.EZCreator.createInIFrame({
-	
-	oAppRef: oEditors,
-	
-	elPlaceHolder: "content",
-	
-	fOnAppLoad : function(){
-	    //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-	    oEditors.getById["content"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문구"]);
-	    
-	};
-</script> -->
-</head>
-<body>
-
-<div id="wrapper">
-	<div class="center">
-	<h2>[ 게시판 글보기 ]</h2>
-	</div>
-	<form action="boardUpdateForm" id="Form" method="POST" >
-	<input type="hidden" name="num" value="${board.num}">
-	<table class="Bordered table">
-		<tr>
-			<th colspan="3">${board.title} [${board.reply_count}]</th>
-		</tr>
-		<tr id="photo_td">
-			<td rowspan="3" class="col-md-3">프로필사진</td>
-			<td class="col-md-5">${board.user_id}작성자</td>
-			<td rowspan="3" class="col-md-4">빈 공간 무엇을 추가할까</td>
-		</tr>
-		
-		<tr>
-			<th>${board.register_time}</th>
-		</tr>	
-		<tr>
-			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<pre class="col-md-12 row-md-5" id="context">${board.content}</pre>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="1">
-				<a href="boardLocation?status=${status}">목록으로</a>
-			</td>
-			<td></td>
-			<td align="right">	
-				<input type="submit" class="btn btn-primary" value="글수정">
-				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="boardWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
-			</td>
-		</tr>
-	</table>
-	</form>
-	<span>댓글 수 : </span><span id="replycount">${board.reply_count}</span> <span>조회수 : ${board.hit}</span>
-	<!-- 댓글 입력 / 로그인한 사람만 댓글을 달 수 있다. -->
-		<form id="replyWrite" action="replyWrite" method="POST">
-		<input type="hidden" name="action" value="replyWrite" />
-		<input type="hidden" name="board_num" value="${board.num}" />
-		<table id="replyinput" class="reply">
-			<tr>
-				<td>
-				<label class="col-md-2">유저네임</label>
-				<textarea class="col-md-9" id="reply_text" name="reply_text" maxlength="400"></textarea>
-				<a class="btn btn-primary col-md-1" id="reply_submit" role="button"><i class="icon-ok"></i>등록</a>
-				</td>
-			</tr>
-		</table>
-		</form>
-
-	<!-- 댓글 출력 -->
-	<div id="replydisplay">
-		<!--
-		<table class="Bordered table">
-		<tr>
-			<td class="col-md-2">작성자</td>
-			<td class="col-md-6">댓글내용&nbsp;<a><i class='reReply icon-plus' data-rno='reply.num' data-prt='reply.parent'></i></a></td>
-			<td class="col-md-4" align="right">2017-09-11
-				<i class='delete icon-remove' data-rno='reply.num'></i>
-				<i class='update icon-legal' data-rno='reply.num' data-con='reply.content'></i>
-			</td>
-		</tr>
-		
-		<tr>
-			<td class="col-md-2">작성자2</td>
-			<td class="col-md-6">댓글내용2ddddddddddddddddddd&nbsp;<a><i class='reReply icon-plus' data-rno='reply.num' data-prt='reply.parent'></i></a></td>
-			<td class="col-md-4" align="right">2017-09-11
-				<i class='delete icon-remove' data-rno='reply.num'></i>
-				<i class='update icon-legal' data-rno='reply.num' data-con='reply.content'></i>
-			</td>
-		</tr>
-		
-		<tr>
-			<td class="col-md-2">작성자3</td>
-			<td class="col-md-6">댓글내용3</td>
-			<td class="col-md-4" align="right">2017-09-11
-				<input type='button' data-rno='"+reply.num+"'class='delete' value='삭제'>
-				<input type='button' class='update' data-rno='"+reply.num+"' data-con='"+reply.content+"' value='수정'>
-				<input type='button' class='reReply' data-rno='"+reply.num+"' data-prt='"+reply.parent+"' value='답글'>
-			</td>
-		</tr>
-		</table>
-		-->
-	</div><!-- end #replydisplay -->
-</div> <!-- end #wrapper -->
-
-
 </body>
 </html>

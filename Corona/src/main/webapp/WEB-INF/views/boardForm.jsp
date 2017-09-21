@@ -28,9 +28,13 @@
 	table{
 		 white-space: nowrap;
 	}
+	
+	
 </style>
 
 </head>
+<%@ include file="topMenu.jsp" %>
+	<%@ include file="sidebar.jsp" %>
 <body class="stretched">
 	<input id="tableSet" type="hidden" value="${status}">
 	<div id="wrapper" class="clearfix">
@@ -223,6 +227,7 @@
 	<script>
 	
 	$(function() {
+		
 		var status = $('#tableSet').val();
 		$('#normal').css('display', 'none');
 		$('#drive').css('display', 'none');

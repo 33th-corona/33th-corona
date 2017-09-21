@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -59,6 +60,7 @@
 	
 </script>
 </head>
+
 <body>
 
 <div id="wrapper">

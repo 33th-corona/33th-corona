@@ -98,7 +98,8 @@ public class LocationController {
 			model.addAttribute("boardList", boardList);
 			model.addAttribute("status", status);
 			System.out.println("노말모델 넘김 :"+boardList.get(0));
-			return "boardForm";
+			//return "boardForm";
+			return "entry";
 			
 		}else if(status.equals("drive")) {
 			System.out.println("자료실 입장");
