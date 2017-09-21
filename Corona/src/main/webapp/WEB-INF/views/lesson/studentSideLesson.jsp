@@ -45,8 +45,8 @@ $(document).ready(function() {
 	//현재 사용자의 IP를 로딩
 // 	var connIp = ip();
 	//테스트 용 IP 설정 (== localhost)
-// 	var connIp = '127.0.0.1';
-	var connIp = '172.20.10.3';
+	var connIp = '127.0.0.1';
+// 	var connIp = '172.20.10.3';
 	//web editor 객체 생성 (Code part)
 	var editor = ace.edit("editor");
 	//web editor 객체 생성 (Console part)
