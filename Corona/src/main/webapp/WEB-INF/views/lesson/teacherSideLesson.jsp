@@ -137,6 +137,7 @@ $(document).ready(function() {
 					$('div#studentList select').html(listHtml);
 					//student 버튼을 누르면 학생의 eclipse에 접속
 					$('input#startStudentView').on('click', function() {
+						$('input#stopStudentView').trigger('click');
 						var sendMessage = {};
 						sendMessage.action = "viewStudentEclipse";
 						sendMessage.ip = $('select option:selected').attr("user-ip");
@@ -237,6 +238,7 @@ $(document).ready(function() {
 					$('#chatMessage').scrollTop(999999);
 				}
 				else if (action == 'disconnect') {
+					$('input#stopStudentView').trigger('click');
 					alert('수업이 종료되었습니다.');
 					location.href = 'teacherFormLocation?num=${classNum}';
 				}
@@ -353,6 +355,7 @@ function saveEditorOption(editor) {
 </head>
 <%@ include file="../topMenu.jsp" %>
 	<%@ include file="../sidebar.jsp" %>
+<script src="js/jquery.fancytree.js/"></script>
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>
 		
@@ -477,6 +480,5 @@ function saveEditorOption(editor) {
 	<input type="hidden" name="indentGuides">
 </form>
 
-</div>
 </body>
 </html>

@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.StudentConn;
@@ -207,6 +208,12 @@ public class LessonThread implements Runnable{
 				//Eclipse가 종료되거나 강의가 종료되었을 경우 실행
 				case "disconnection":
 					sendToLessonPage.sendToLessonPage("disconnect");
+					
+					Map<String, Object> sendMap = new HashMap<>();
+					sendMap.put("action", "disconnect");
+					String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
+					teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
+					
 					disconnect();
 					break;
 				}
