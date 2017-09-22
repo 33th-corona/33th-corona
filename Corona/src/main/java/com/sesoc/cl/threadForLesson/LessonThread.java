@@ -7,12 +7,14 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.StudentConn;
@@ -45,6 +47,7 @@ public class LessonThread implements Runnable{
 	
 	private long startTime;
 	private boolean stop;
+	private String savedFileName;
 	
 	/**
 	 * 클래스 Thread의 생성자, 실행에 필요한 요소들의 객체를 생성
@@ -65,6 +68,8 @@ public class LessonThread implements Runnable{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
+		savedFileName = init.getSavedFileName();
+		
 		initStream();
 		init.initStreamCheck();
 		init.startAudioRecord();
@@ -207,6 +212,14 @@ public class LessonThread implements Runnable{
 				//Eclipse가 종료되거나 강의가 종료되었을 경우 실행
 				case "disconnection":
 					sendToLessonPage.sendToLessonPage("disconnect");
+					
+					Map<String, Object> sendMap = new HashMap<>();
+					sendMap.put("action", "disconnect");
+					sendMap.put("savedFileName", savedFileName);
+					sendMap.put("lessonTitle", teacherConn.getTitle());
+					String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
+					teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
+					
 					disconnect();
 					break;
 				}
@@ -370,6 +383,14 @@ public class LessonThread implements Runnable{
 
 	public void setSendChatMessage(SendChatMessage sendChatMessage) {
 		this.sendChatMessage = sendChatMessage;
+	}
+	
+	public String getSavedFileName() {
+		return savedFileName;
+	}
+
+	public void setSavedFileName(String savedFileName) {
+		this.savedFileName = savedFileName;
 	}
 
 	public long getStartTime() {

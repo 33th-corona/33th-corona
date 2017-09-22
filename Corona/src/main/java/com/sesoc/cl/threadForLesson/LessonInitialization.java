@@ -6,6 +6,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,16 @@ public class LessonInitialization {
 	 */
 	public LessonInitialization(LessonThread lessonThread) {
 		this.lessonThread = lessonThread;
+	}
+	
+	public String getSavedFileName() {
+		String result = null;
+		String classNum = lessonThread.getTeacherConn().getclassNum();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd-hh_mm_ss");
+		String nowTime = dateFormat.format(cal.getTime());
+		result = classNum + "-" + nowTime;
+		return result;
 	}
 	
 	/**

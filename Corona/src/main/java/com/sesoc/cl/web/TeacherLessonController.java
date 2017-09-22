@@ -1,9 +1,14 @@
 package com.sesoc.cl.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskRejectedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sesoc.cl.async.AsyncConfig;
 import com.sesoc.cl.connInfo.TeacherConn;
 import com.sesoc.cl.connInfo.TeacherConnList;
+import com.sesoc.cl.dao.ClassRepository;
+import com.sesoc.cl.dao.PassedLessonRepository;
+import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.socket.LessonMainSocket;
+import com.sesoc.cl.vo.ClassInfo;
+import com.sesoc.cl.vo.SavedLessonInfo;
 
 /**
  * 강의 관련 선생님 쪽 Controller 
@@ -22,6 +32,11 @@ import com.sesoc.cl.socket.LessonMainSocket;
  */
 @Controller
 public class TeacherLessonController {
+	
+	@Autowired
+	ClassRepository cRepo;
+	@Autowired
+	PassedLessonRepository pRepo;
 	
 	private static final Logger logger = LoggerFactory.getLogger(TeacherLessonController.class);
 	
@@ -36,8 +51,10 @@ public class TeacherLessonController {
 	public String viewTeacherLessonPage(
 			String teacher_id, 
 			String classNum,
-			Model model) 
+			Model model,
+			HttpServletRequest request) 
 	{
+		listCome(model, request);
 		model.addAttribute("teacher_id", teacher_id);
 		model.addAttribute("classNum", classNum);
 		return "lesson/teacherSideLesson";
@@ -105,5 +122,23 @@ public class TeacherLessonController {
 		}
 		
 		return resultInt;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="saveLesson", method=RequestMethod.POST)
+	public int saveLesson(SavedLessonInfo savedLessonInfo) {
+		int result = 0;
+		result = pRepo.saveLesson(savedLessonInfo);
+		return result;
+	}
+	
+	public void listCome(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(); 
+		String id = (String)session.getAttribute("loginId");
+		model.addAttribute("id", id);
+		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
+		List<ClassInfo> myStudentList = cRepo.myStudentList(id);
+		model.addAttribute("myTeacherList", myTeacherList);
+		model.addAttribute("myStudentList", myStudentList);
 	}
 }

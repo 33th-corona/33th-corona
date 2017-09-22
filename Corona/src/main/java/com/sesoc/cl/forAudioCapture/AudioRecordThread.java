@@ -30,9 +30,6 @@ public class AudioRecordThread implements Runnable {
 	
 	// 파일 내보내기
 	// 녹음된 wav파일과 녹음 후 컨버팅할 mp3파일의 경로설정
-//	private File tempFile = new File("c:/webRecoderTest/tempFile.dat"); // 소켓으로 받아온 데이터 실시간으로 저장할 임시 dat파일
-//	private File wavFile = new File("c:/webRecoderTest/RecordAudio.wav"); // dat --> wav
-//	private File result = new File("c:/webRecoderTest/finalmp3.mp3"); // wav파일을 컨버팅한 최종 mp3파일
 	private File tempFile;
 	private File wavFile;
 	private File result;
@@ -67,11 +64,15 @@ public class AudioRecordThread implements Runnable {
 	
 	// ButeArrayOutputStream에 마이크로부터 입력받은 오디오 데이터를 저장하는 메소드
 	public void captureAudio() {
-		String teacherID = lessonThread.getTeacherConn().getId();
-		tempFile = new File("c:/webRecoderTest/tempFile" + teacherID + ".dat"); // 소켓으로 받아온 데이터 실시간으로 저장할 임시 dat파일
-		wavFile = new File("c:/webRecoderTest/RecordAudio" + teacherID + ".wav"); // dat --> wav
-		result = new File("c:/webRecoderTest/finalmp3" + teacherID + ".mp3"); // wav파일을 컨버팅한 최종 mp3파일
-
+		String savedFileName = lessonThread.getSavedFileName();
+		String directory = "C:\\Corona Save Folder\\passed_lesson\\audio";
+		
+		File pathFile = new File(directory);
+		if (!(pathFile.isDirectory())) pathFile.mkdirs();
+		
+		tempFile = new File(directory + "\\" + savedFileName + ".dat"); // 소켓으로 받아온 데이터 실시간으로 저장할 임시 dat파일
+		wavFile = new File(directory + "\\" + savedFileName + ".wav"); // dat --> wav
+		result = new File(directory + "\\" + savedFileName + ".mp3"); // wav파일을 컨버팅한 최종 mp3파일
 		
 		// 캡쳐의 모든 설정
 		AudioFormat audioFormat = getAudioFormat(); // ex)PCM_SIGNED 44100.0 Hz, 16 bit, stereo, 4 bytes/frame, little-endian

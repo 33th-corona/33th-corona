@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Teacher Lesson</title>
 <link rel="stylesheet" href="css/bootstrap.css">
 <!-- FancyTree Skin -->
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	//web editor 객체 생성 (Console part)
 	var consoleView = ace.edit("console");
 	
-	$('input#start').on('click', function() {
+	$('a#start').on('click', function() {
 		//강의 제목 입력
 		var title = $('input#title').val();
 		//선생님 id 입력
@@ -137,6 +137,7 @@ $(document).ready(function() {
 					$('div#studentList select').html(listHtml);
 					//student 버튼을 누르면 학생의 eclipse에 접속
 					$('input#startStudentView').on('click', function() {
+						$('input#stopStudentView').trigger('click');
 						var sendMessage = {};
 						sendMessage.action = "viewStudentEclipse";
 						sendMessage.ip = $('select option:selected').attr("user-ip");
@@ -237,7 +238,27 @@ $(document).ready(function() {
 					$('#chatMessage').scrollTop(999999);
 				}
 				else if (action == 'disconnect') {
+					$('input#stopStudentView').trigger('click');
+					var savedFileName = parsedData.savedFileName;
+					var lessonTitle = parsedData.lessonTitle;
+					$.ajax({
+						url : "saveLesson"
+						, async: false
+						, method : "post"
+						, data : {
+							"class_num" : '${classNum}',
+							"title" : lessonTitle,
+							"saved_code" : savedFileName + ".zip", 
+							"saved_audio" : savedFileName + ".mp3", 
+						}
+						, success : function(resp) {
+							console.log(resp);
+							saveResult = resp;
+						}
+					});
+// 					console.log(savedFileName);
 					alert('수업이 종료되었습니다.');
+					location.href = 'teacherFormLocation?num=${classNum}';
 				}
 			}
 		} else if(startResult == 0) {
@@ -245,7 +266,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('input#cancel').on('click', function() {
+	$('a#cancel').on('click', function() {
 		var cancelResult = -100;
 		
 		//서버에 강의 시작 명령 전달(Server Socket생성 및 대기, 선생님의 기본 정보 등록)
@@ -255,12 +276,13 @@ $(document).ready(function() {
 			, method : "post"
 			, success : function(resp) {
 				cancelResult = resp;
-				console.log(result);
+// 				console.log(cancelResult);
 			}
 		});
 		
 		if(cancelResult == 1) {
 			$('div#connInfo').append('<br>강의 시작을 취소하였습니다.');
+			location.href = 'teacherFormLocation?num=${classNum}';
 		}
 	});
 	
@@ -349,19 +371,46 @@ function saveEditorOption(editor) {
 }
 </script>
 </head>
-<body>
-<div id="startDiv">
-	<div id="lessonStartForm">
-		강의 제목<input type="text" name="title" id="title"><br>
-		선생님 id<input type="text" name="id" id="id"><br>
-		반 번호<input type="text" name="classNum" id="classNum"><br>
-		<input type="button" id="start" value="start">
-		<input type="button" id="cancel" value="cancel">
+<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
+<script src="js/jquery.fancytree.js/"></script>
+<body class="stretched side-panel-left">
+<div class="body-overlay"></div>
+		
+<!-- Page Title
+============================================= -->
+<section id="page-title" class="page-title-mini bottommargin-sm">
+	<div class="container clearfix">
+		<h1>Lesson Page (Teacher Side)</h1>
+		<span>Lesson Page (Teacher Side)</span>
 	</div>
-	<div id="connInfo"></div>
+</section>
+
+
+<div id="startDiv">
+	<section id="content">
+		<div class="container clearfix divcenter">
+			<div id="lessonStartForm" class="divcenter editorArea bottommargin-sm" style="width: 300px; height: 300px; text-align: center; padding-top: 30px;">
+				<h4>강의 제목</h4>
+				<input type="text" name="title" id="title" class="bottommargin-sm"><br>
+				<a href="#" id="start"
+						class="button button-3d button-xlarge button-rounded button-amber tright">
+							<i class="icon-angle-right" style="width: 15px"></i>강의 시작
+				</a>
+				<br>
+				<a href="#" id="cancel"
+						class="button button-3d button-xlarge button-rounded button-amber tright">
+							<i class="icon-angle-right" style="width: 15px"></i>강의 취소
+				</a>
+			</div>
+			<div id="connInfo" style="text-align: center;"></div>
+		</div>
+	</section>
 </div>
 
-<div id="lessonDiv" class="container" style="display: none">
+<div id="lessonDiv" style="display: none">
+<section id="content">
+<div class="container clearfix">
 	<div class="row">
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
@@ -438,6 +487,8 @@ function saveEditorOption(editor) {
 			</div>
 		</div>
 	</div>
+</div>
+</section>
 </div>
 
 <form id="codeForm" action="sourceCode" method="POST" target="">

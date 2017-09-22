@@ -11,6 +11,7 @@
 		<typeAlias type="com.sesoc.cl.board.Board" alias="Board"/>
 		<typeAlias type="com.sesoc.cl.board.Board_Reply" alias="Reply"/>    
    		<typeAlias type="com.sesoc.cl.drive.Drive" alias="Drive"/>
+   		<typeAlias type="com.sesoc.cl.vo.SavedLessonInfo" alias="SavedLessonInfo"/>
    </typeAliases>
    <mappers>
       <mapper resource="mapper/usersmapper.xml"/>
@@ -18,5 +19,6 @@
       <mapper resource="mapper/boardMapper.xml" />
       <mapper resource="mapper/replyMapper.xml" />
       <mapper resource="mapper/driveMapper.xml" />
+      <mapper resource="mapper/passedLessonMapper.xml"/>
    </mappers>
 </configuration>

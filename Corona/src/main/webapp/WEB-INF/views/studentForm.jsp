@@ -130,11 +130,11 @@
 				</div> 
 				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="#">
-				<div status="homeworkCheck" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
+								<a href="${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">과제 확인</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">지난 강의</h2></div>
 				
 				</div>
 				</form>
@@ -145,7 +145,7 @@
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">과제 만들기</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">과제 게시판</h2></div>
 				
 				</div>
 				</form>

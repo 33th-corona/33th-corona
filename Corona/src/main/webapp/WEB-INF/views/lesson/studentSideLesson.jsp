@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,6 +193,7 @@ $(document).ready(function() {
 		}
 		else if (action == 'disconnect') {
 			alert('수업이 종료되었습니다.');
+			location.href = 'studentFormLocation?num=${classNum}';
 		}
 	}
 
@@ -272,8 +274,23 @@ function saveEditorOption(editor) {
 }
 </script>
 </head>
-<body>
-<div class="container">
+<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
+<script src="js/jquery.fancytree.js/"></script>
+<body class="stretched side-panel-left">
+<div class="body-overlay"></div>
+
+<!-- Page Title
+============================================= -->
+<section id="page-title" class="page-title-mini bottommargin-sm">
+	<div class="container clearfix">
+		<h1>Lesson Page (Student Side)</h1>
+		<span>Lesson Page (Student Side)</span>
+	</div>
+</section>
+
+<section id="content">
+<div class="container clearfix">
 	<div class="row">
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
@@ -342,15 +359,10 @@ function saveEditorOption(editor) {
 					<input type="button" id="sendMessage" value="전송" />
 				</div>
 			</div>
-<!-- 			<div id="rightThirdPanel" class="row editorArea"> -->
-<!-- 				<div id="connStudentEclipse"> -->
-<!-- 					<input type="button" value="conn">  -->
-<!-- 					<input type="button" value="disconn"> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
 		</div>
 	</div>
 </div>
+</section>
 
 <form id="codeForm" action="sourceCode" method="POST" target="">
 	<input type="hidden" name="code">
@@ -358,5 +370,6 @@ function saveEditorOption(editor) {
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+
 </body>
 </html>
