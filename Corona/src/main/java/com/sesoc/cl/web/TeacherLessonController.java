@@ -34,8 +34,6 @@ import com.sesoc.cl.vo.SavedLessonInfo;
 public class TeacherLessonController {
 	
 	@Autowired
-	UsersRepository uRepo;
-	@Autowired
 	ClassRepository cRepo;
 	@Autowired
 	PassedLessonRepository pRepo;

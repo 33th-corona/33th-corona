@@ -21,6 +21,12 @@
 		#{saved_audio}
 	)
 </insert>
-	
+
+<select id="loadSavedLesson" parameterType="int" resultType="SavedLessonInfo">
+	select *
+	from passed_lesson
+	where class_num = #{class_num}
+</select>
+
 	
 </mapper>

@@ -36,8 +36,6 @@ import com.sesoc.cl.vo.ClassInfo;
 public class StudentLessonController {
 	
 	@Autowired
-	UsersRepository repo;
-	@Autowired
 	ClassRepository cRepo;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StudentLessonController.class);
