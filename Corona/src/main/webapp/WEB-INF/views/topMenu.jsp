@@ -41,7 +41,7 @@ body {
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm; background-color: #000530  /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white">
+					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm; background-color: #000530  /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */">
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="standard-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="retina-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 					</div><!-- #logo end -->
