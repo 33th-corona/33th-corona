@@ -216,6 +216,7 @@ public class LessonThread implements Runnable{
 					Map<String, Object> sendMap = new HashMap<>();
 					sendMap.put("action", "disconnect");
 					sendMap.put("savedFileName", savedFileName);
+					sendMap.put("lessonTitle", teacherConn.getTitle());
 					String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
 					teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
 					

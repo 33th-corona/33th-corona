@@ -239,6 +239,24 @@ $(document).ready(function() {
 				}
 				else if (action == 'disconnect') {
 					$('input#stopStudentView').trigger('click');
+					var savedFileName = parsedData.savedFileName;
+					var lessonTitle = parsedData.lessonTitle;
+					$.ajax({
+						url : "saveLesson"
+						, async: false
+						, method : "post"
+						, data : {
+							"class_num" : '${classNum}',
+							"title" : lessonTitle,
+							"saved_code" : savedFileName + ".zip", 
+							"saved_audio" : savedFileName + ".mp3", 
+						}
+						, success : function(resp) {
+							console.log(resp);
+							saveResult = resp;
+						}
+					});
+// 					console.log(savedFileName);
 					alert('수업이 종료되었습니다.');
 					location.href = 'teacherFormLocation?num=${classNum}';
 				}

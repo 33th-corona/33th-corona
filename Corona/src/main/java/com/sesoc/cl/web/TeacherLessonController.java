@@ -20,9 +20,11 @@ import com.sesoc.cl.async.AsyncConfig;
 import com.sesoc.cl.connInfo.TeacherConn;
 import com.sesoc.cl.connInfo.TeacherConnList;
 import com.sesoc.cl.dao.ClassRepository;
+import com.sesoc.cl.dao.PassedLessonRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.socket.LessonMainSocket;
 import com.sesoc.cl.vo.ClassInfo;
+import com.sesoc.cl.vo.SavedLessonInfo;
 
 /**
  * 강의 관련 선생님 쪽 Controller 
@@ -32,9 +34,11 @@ import com.sesoc.cl.vo.ClassInfo;
 public class TeacherLessonController {
 	
 	@Autowired
-	UsersRepository repo;
+	UsersRepository uRepo;
 	@Autowired
 	ClassRepository cRepo;
+	@Autowired
+	PassedLessonRepository pRepo;
 	
 	private static final Logger logger = LoggerFactory.getLogger(TeacherLessonController.class);
 	
@@ -120,6 +124,14 @@ public class TeacherLessonController {
 		}
 		
 		return resultInt;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="saveLesson", method=RequestMethod.POST)
+	public int saveLesson(SavedLessonInfo savedLessonInfo) {
+		int result = 0;
+		result = pRepo.saveLesson(savedLessonInfo);
+		return result;
 	}
 	
 	public void listCome(Model model, HttpServletRequest request) {
