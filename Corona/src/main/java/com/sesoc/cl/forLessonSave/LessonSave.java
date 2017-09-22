@@ -48,16 +48,16 @@ public class LessonSave {
 	// 이클립스 실행시 파일 저장
 	public boolean startFile() {
 		boolean result = false;
-		String teacherID = lessonThread.getTeacherConn().getId();
-		zipName = "c:\\test\\" + teacherID + ".zip";
-		fileName = "c:\\test\\" + teacherID + ".vtt";
-		
-//		String txt = "﻿WEBVTT\r\n" + "\r\n" + "00:00:00.000 --> ";
-		String txt = "﻿WEBVTT\r\n" + "\r\n";
-		String directory = fileName.substring(0, fileName.lastIndexOf("\\"));
+		String savedFileName = lessonThread.getSavedFileName();
+		String directory = "C:\\Corona Save Folder\\passed_lesson\\text";
+		zipName = directory + "\\" + savedFileName + ".zip";
+		fileName = directory + "\\" + savedFileName + ".vtt";
 		
 		File pathFile = new File(directory);
 		if (!(pathFile.isDirectory())) pathFile.mkdirs();
+		
+		
+		String txt = "﻿WEBVTT\r\n" + "\r\n";
 		
 		File file = new File(fileName);
 		if (!(file.exists())) trueFile(txt, false);
@@ -78,7 +78,7 @@ public class LessonSave {
 //		System.out.println("startTime: " + startTime);
 		
 		boolean endOfFile = false;
-		System.out.println("part: " + part);
+//		System.out.println("part: " + part);
 		switch (part) {
 		case "initProjectExplorer":
 			lectureData.put("projectExplorer", currentLessonPage.getProjectExplorerList());

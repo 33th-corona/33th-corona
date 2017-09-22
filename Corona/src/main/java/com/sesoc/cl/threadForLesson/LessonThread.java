@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,7 @@ public class LessonThread implements Runnable{
 	
 	private long startTime;
 	private boolean stop;
+	private String savedFileName;
 	
 	/**
 	 * 클래스 Thread의 생성자, 실행에 필요한 요소들의 객체를 생성
@@ -66,6 +68,8 @@ public class LessonThread implements Runnable{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
+		savedFileName = init.getSavedFileName();
+		
 		initStream();
 		init.initStreamCheck();
 		init.startAudioRecord();
@@ -211,6 +215,7 @@ public class LessonThread implements Runnable{
 					
 					Map<String, Object> sendMap = new HashMap<>();
 					sendMap.put("action", "disconnect");
+					sendMap.put("savedFileName", savedFileName);
 					String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
 					teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
 					
@@ -377,6 +382,14 @@ public class LessonThread implements Runnable{
 
 	public void setSendChatMessage(SendChatMessage sendChatMessage) {
 		this.sendChatMessage = sendChatMessage;
+	}
+	
+	public String getSavedFileName() {
+		return savedFileName;
+	}
+
+	public void setSavedFileName(String savedFileName) {
+		this.savedFileName = savedFileName;
 	}
 
 	public long getStartTime() {
