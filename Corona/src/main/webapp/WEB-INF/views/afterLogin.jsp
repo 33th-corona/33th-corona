@@ -236,8 +236,8 @@
 						<div class="swiper-slide dark" style="background-image: url('images/after1.jpg');">
 							<div class="container clearfix" style="margin-left: 320px;">
 								<div class="slider-caption slider-caption-center">
-									<h2 data-caption-animate="fadeInUp">Welcome to Corona</h2>
-									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스 화면을 실시간 확인하여<br>학생의 이클립스 화면으로 전송합니다.</p>
+									<h2 data-caption-animate="fadeInUp" style="text-transform: capitalize;">Welcome to Corona</h2>
+									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스를 실시간으로 확인하여<br>학생의 웹 페이지로 전송합니다.</p>
 								</div>
 							</div>
 						</div>
@@ -325,7 +325,7 @@
 				<div class="col-md-6 nopadding">
 				 <div class="col_full" style="margin-left: 30px;">
 				 <ol class="olColor">
-   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">Jsp파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jsr파일을 넣으십시오.</p></li>
+   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jar파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jar파일을 넣으십시오.</p></li>
     				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">클래스 페이지로 입장하셔서 '강의 시작'버튼을 누르세요.</p>
     				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">이클립스 상단 메뉴 안 Class Ready에 존재하는 Start버튼을 눌러 강의를 시작하세요.</p>
     				 <li class="liFont"><span class="spanFont">4.</span><p class="pFont">강의가 끝났을 시, 상단 메뉴 안 Class Ready에 존재하는 <br>End버튼을 눌러 강의를 종료하세요.</p>
@@ -335,7 +335,7 @@
 					<div class="col-md-6 nopadding">
 					<div class="col_full" style="margin-left: 30px;">
 				  <ol class="olColor">
-   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">Jsp파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jsr파일을 넣으십시오.</p></li>
+   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jar파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jar파일을 넣으십시오.</p></li>
     				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">클래스 페이지로 입장하셔서 '강의 참여'버튼을 눌러 강의에 참여하세요.</p>
     				 </ol>
  				 </div>
