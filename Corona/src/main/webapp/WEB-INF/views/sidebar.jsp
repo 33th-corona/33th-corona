@@ -28,21 +28,12 @@
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
-	#primary-menu ul li > a {
-		display: block;
-		line-height: 22px;
-		color: #444;
-		font-weight: bold;
-		font-size: 13px;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		font-family: 'Raleway', sans-serif;
-	}
 	#searchIcon:hover {
 	background-color: #999999;
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 	box-shadow: 0 0 0 rgba(0,0,0,0.2);
+	
 	}
 	#vertical-nav {
 	position: fixed;
@@ -292,10 +283,20 @@
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
+@keyframes fadeIn {
+	0% {
+		opacity : 0;
+	}
+
+	100% {
+		opacity : 0.9;
+	}
+}
 </style>
-<body class="stretched">
+<body class="stretched no-transition">
 <div class="body-overlay"></div>
-<div id="vertical-nav" class=" w3-container" style="padding-top: 70px;">
+<div id="vertical-nav" class="w3-container" style="padding-top: 70px;">
+		
 				<div class="modal1 mfp-hide" id="modal-register-form">
 						<div class="block divcenter" style="padding: 30px; background-color: #FFF; max-width: 500px; max-height : 800px">
 							<h3>My page</h3>
@@ -346,7 +347,7 @@
 									</c:if>
 									</div>
 									<div class="col_half col_last divcenter" id="originalImgBtn">
-									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border button-orange tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>이미지 바꾸기</a>
+									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>이미지 바꾸기</a>
 									</div>
 									<div id="changeImg" class="col_full">
 									<label for="register-form-img">Choose a Img:</label><input id="input-2" name="upload" type="file" class="file" data-show-preview="false">
@@ -418,7 +419,8 @@
 					</ul>
 				</nav>
 			</div>
-		<script type="text/javascript" src="js/jquery.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
 	
 	<!-- Bootstrap File Upload Plugin -->
@@ -428,6 +430,8 @@
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="resources/jquery.videoBG.js"></script>
+	<!-- Footer Scripts
+	============================================= -->
 	<script>
 	$(function() {
 		$( '#vertical-nav nav ul li:has(ul)' ).addClass('sub-menu');
@@ -447,8 +451,9 @@
 		
 		
 			$("#register-form").keydown(function(evt) {
-				if (evt.keyCode == 13)
+				if (evt.keyCode == 13){
 					return false;
+				}
 			});
 			$("#register-form").keyup(function(evt) {
 				if(		$.trim($("#register-form-password").val()) != ""

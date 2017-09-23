@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="css/customHeader.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<%@ include file="topMenu.jsp" %>
+	<%@ include file="sidebar.jsp" %>
 <style type="text/css">
 .button-orange { background-color: #ff9800; }
 .button-3d.button-orange:hover,
@@ -37,38 +39,123 @@
 .btn:hover{
 	background-color : #000530 !important;
 }
+.feature-box .fbox-icon i,
+.feature-box .fbox-icon img {
+	border-radius: 50%;
+	background-color: #000000 !important;
+}
+.feature-box.fbox-outline .fbox-icon {
+    border: 1px solid #000530 !important;
+    border-radius: 50%;
+    padding: 3px;
+}
+.fbox-effect .fbox-icon i:after {
+    top: -3px;
+    left: -3px;
+    padding: 3px;
+    box-shadow: 0 0 0 2px #fff !important;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.3s, opacity 0.3s;
+    transform: scale(.8);
+    opacity: 0;
+    
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0.9;
+	}
+}
 </style>
 </head>
 
-<body class="stretched side-panel-left">
-<%@ include file="topMenu.jsp" %>
-	<%@ include file="sidebar.jsp" %>
-	<div class="body-overlay"></div>
-		<div id="wrapper" class="clearfix">
-			<section id="page-title">
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1600px;">
 
-			<div class="container center clearfix">
-				<h1>${classInfo.name}</h1>
+	<div class="body-overlay"></div>
+		<div id="wrapper" class="clearfix animated fadeIn" >
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 30px; margin-top: 20px;">
+			<div class="video-wrap">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
+					<source src='images/videos/student.mp4' type='video/webm' />
+				</video>
+				<div class="video-overlay"></div>
 			</div>
-			</section>
+			<div class="container clearfix">
+					<div class="emphasis-title">
+							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#222 !important;">${classInfo.name}</span>
+					</div>
+			</div>
+		</section>
 		<section id="content">
 
 			<div class="content-wrap" style="padding-top: 20px; padding-bottom: 20px;">
 
 				<div class="container clearfix">
-				<div class="col-md-8">
-				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-left-radius: 50%; border-top-left-radius: 50%;">일반 게시판<i class="icon-list"></i></a>
-				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin">자료실<i class="icon-line-paper"></i></a>
-				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin">과제 게시판<i class="icon-gift"></i></a>
-				<a href="#" class="btn button button-3d button-xlarge button-rounded button-orange tright nomargin" style="border-bottom-right-radius: 50%; border-top-right-radius: 50%;">과제 작성<i class="icon-edit"></i></a>
+				<div class="col-md-2" style="margin-left: 100px;">
+				<form action="#">
+				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="${pageContext.request.contextPath}/boardLocation?status='normal'" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">일반 게시판</h2></div>
+				
 				</div>
-				<div class="col-md-4">
-				<form action="lessonJoin" method="POST" id="lesson">
-				<input type="hidden" value="${id}" name="studentId">
+				</form>
+				</div>
+				<div class="col-md-2" style="margin-top: 100px;">
+				<form action="#">
+				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="${pageContext.request.contextPath}/boardLocation?status='drive'" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">자료실</h2></div>
+				
+				</div>
+				</form>
+				</div>
+				
+				
+				<div class="col-md-2" >
+				<form action="lessonStart" method="POST" id="lesson">
+				<input type="hidden" value="${classInfo.teacher_id}" name="teacher_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
-				<a href="#" id="lessonbtn" class="button button-3d button-xlarge button-reveal button-rounded button-orange tright center" style="font-size: 40px; font-weight: bold;"><i class="icon-angle-right"></i>강의실  입장</a>
+				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 시작</h2></div>
+				</div>
 				</form>
 				</div> 
+				<div class="col-md-2" style="margin-top: 100px;">
+				<form action="#">
+				<div status="homeworkCheck" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">과제 확인</h2></div>
+				
+				</div>
+				</form>
+				</div>
+				<div class="col-md-2">
+				<form action="#">
+				<div status="homeworkCreate" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
+								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
+							</div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">과제 만들기</h2></div>
+				
+				</div>
+				</form>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -158,6 +245,16 @@
 		$('#lessonbtn').on('click', function() {
 			$('#lesson').submit();
 		})
+		$('.feature-box').mouseover(function() {
+				$(this).find('h2').css('color', '#000000');
+				$(this).find('a').css('color','#ff9800');
+				$(this).css('background-color', '#ff9800');
+			})
+			$('.feature-box').mouseout(function() {
+				$(this).find('h2').css('color', '#ffffff');
+				$(this).find('a').css('color','white');
+				$(this).css('background-color', '#000530');
+			})
 	})
 	</script>
 </body>

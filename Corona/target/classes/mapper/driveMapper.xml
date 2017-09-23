@@ -4,41 +4,92 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sesoc.cl.drive.DriveDAO">
 
-	<select id="selectDriveAll" resultType="Drive">
-		select * from drive order by num desc
+	<select id="selectDriveAll" resultType="Drive" parameterType="map">
+		select
+			class_num,
+			num,
+			user_id,
+			title,
+			content,
+			to_char(register_time,'YYYY-MM-DD') register_time,
+			hit
+		from drive
+		where
+			<choose>
+			<when test="searchtype == 'title'">
+				title
+			</when>
+			<when test="searchtype == 'content'">
+				content
+			</when>
+			<when test="searchtype == 'user_id'">
+				user_id
+			</when>
+			</choose>
+			LIKE '%' || #{searchword} || '%'
+			ORDER BY num DESC
 	</select>
+	
 	<select id="selectOne" parameterType="int" resultType="Drive">
 		select * from drive where num = #{num}
 	</select>
+	
 	<select id="selectDrive_fileAll" parameterType="int" resultType="Drive">
 		select * from drive_file where drive_num = #{drive_num}
 	</select>
+	
 	<select id="selectFileOne" parameterType="int" resultType="Drive">
 		select * from drive_file where num = #{num}
 	</select>
+	
 	<update id="updateHit" parameterType="int">
 		update drive set hit = hit + 1 where num = #{num} 
 	</update>
+	
 	<update id="updateOne" parameterType="Drive">
 		update drive set title = #{title}, content = #{content} where num = #{num}
 	</update>
+	
 	<select id="seq" resultType="int">
 		select drive_seq.NEXTVAL from dual
 	</select>
+	
 	<insert id="insert" parameterType="Drive">
 		insert into drive values(
 			1, #{num}, #{user_id}, #{title}, #{content}, SYSDATE, 0
 		)
 	</insert>
+	
 	<insert id="insert_file" parameterType="Drive">
 		insert into drive_file values(
 			Drive_file_seq.NEXTVAL, #{original_filename}, #{saved_filename}, #{num}
 		)
 	</insert>
+	
 	<delete id="deleteFile" parameterType="int">
 		delete from drive_file where num = #{fileNum}
 	</delete>
+	
 	<delete id="delete_drive" parameterType="int">
 		delete from drive where num = #{num}
 	</delete>
+	
+	<select id="getDriveCount" resultType="int" parameterType="map">
+	select count(*) from drive where 
+	<choose>
+		<when test="searchtype == 'title'">
+			title
+		</when>
+		<when test="searchtype == 'content'">
+			content
+		</when>
+		<when test="searchtype == 'user_id'">
+			user_id
+		</when>
+		</choose>
+	LIKE '%' || #{searchword}||'%'
+	</select>
+	
+	
+	
 </mapper>

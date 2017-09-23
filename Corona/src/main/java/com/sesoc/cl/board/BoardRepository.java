@@ -11,6 +11,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sesoc.cl.drive.Drive;
+import com.sesoc.cl.drive.DriveDAO;
+
 
 @Repository
 public class BoardRepository {
@@ -25,16 +28,16 @@ public class BoardRepository {
 		return dao.login(map);
 	}
 	
-	public List<Board> findAll (String searchtype,String searchword) {
+	public List<Board> findAll (String searchtype,String searchword,int startRecord,int countPerPage) {
 		List<Board> boardList = new ArrayList<Board>();
-		//RowBounds rb = new RowBounds(startRecord, countPerPage);
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
 		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
 		
 		Map<String,String> search = new HashMap<String, String>();
 		search.put("searchtype", searchtype);
 		search.put("searchword", searchword);
 		
-		boardList = dao.select(search);
+		boardList = dao.select(search,rb);
 		return boardList;
 	}
 	
@@ -69,7 +72,6 @@ public class BoardRepository {
 		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("num", num); map.put("amount", amount);
-		System.out.println("레파 : num: "+num+"amount:"+amount);
 		return dao.replyUpdate(map);
 	}
 	
@@ -81,6 +83,33 @@ public class BoardRepository {
 		search.put("searchword", searchword);
 		//select count(*) from board where title='%' ||''||'%'
 		return dao.getBoardCount(search);
+	}
+	
+	//다중파일 업로드
+	public int insert_file(Board_File bf) {
+		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.insert_file(bf);
+	}
+	
+	public int seq() {
+		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.seq();
+	}
+	
+	//업로드 된 파일 리스트 가져오기
+	public List<Board_File> selectBoard_fileAll(int board_num){
+		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.selectBoard_fileAll(board_num);
+	}
+	
+	public int deleteFile(int fileNum) {
+		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.deleteFile(fileNum);
+	}
+
+	public Board_File selectFileOne(int num) {
+		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.selectFileOne(num);
 	}
 	
 }

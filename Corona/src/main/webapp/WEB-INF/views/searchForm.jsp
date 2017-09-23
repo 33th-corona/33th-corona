@@ -58,17 +58,7 @@ background-color: white;
 	
 		<div class="body-overlay"></div>
 		
-		
-		
-		<section id="page-title" class="page-title-mini">
-			<div class="container clearfix">
-				<h1>Search</h1>
-			</div>
-		</section>
-		
-		
-		
-		<section id="page-title" class="page-title-parallax page-title-dark page-title-video">
+		<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="margin-top: 20px;">
 			<div class="video-wrap" style="z-index: 0">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
 					<source src='images/videos/search.mp4' type='video/mp4' />
@@ -132,15 +122,15 @@ background-color: white;
 							<c:forEach items="${map.list}" var="searchList" varStatus="in">
 							<c:if test="${0 == in.index % 2}">
 							<tr>
-								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.num}</th>
-								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.name}</th>
-								<th style="background-color: rgba(255,152,0, 0.4) !important;">${searchList.teacher_id}</th>
+								<th style="background-color: rgba(255,152,0, 1) !important;">${searchList.num}</th>
+								<th style="background-color: rgba(255,152,0, 1) !important;">${searchList.name}</th>
+								<th style="background-color: rgba(255,152,0, 1) !important;">${searchList.teacher_id}</th>
 								<c:forEach items="${map.countList}" var="countList">
 									<c:if test="${searchList.num eq countList.num}">
-										<th style="background-color: rgba(255,152,0, 0.4) !important;">${countList.usernum}</th>		
+										<th style="background-color: rgba(255,152,0, 1) !important;">${countList.usernum}</th>		
 									</c:if>
 								</c:forEach>
-								<th class="center"style="background-color: rgba(255,152,0, 0.4) !important;">
+								<th class="center"style="background-color: rgba(255,152,0, 1) !important;">
 								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin request"><i class="icon-angle-right" style="width: 20px "></i>가입신청</button>
 								</th>
 							</tr>

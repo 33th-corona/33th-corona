@@ -52,7 +52,7 @@
 						<!-- 일반 게시판 -->
 						<div class="entry clearfix" style="margin-bottom: 10px; padding-bottom: 10px;">
 						  <div class="col-md-8"><h2>일반 게시판</h2></div>
-						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/boardLocation?status=normal" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
+						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/boardList" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
 							<div class="table-responsive col_full">
 								<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
@@ -289,7 +289,7 @@
 					<!-- 자료실  -->
 					<div class="entry clearfix" style="margin-bottom: 10px; padding-bottom: 10px;">
 						<div class="col-md-8"><h2>자료실</h2></div>
-						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/boardLocation?status=drive" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
+						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/driveList" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
 							<div class="table-responsive col_full">
 								<table id="datatable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
@@ -327,7 +327,7 @@
 					</div>
 					<div class="entry clearfix" style="margin-bottom: 10px;">
 						<div class="col-md-8"><h2>Home Work</h2></div>
-						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/boardLocation?status=homeWork" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
+						  <div class="col-md-4"><a href="${pageContext.request.contextPath}/taskList" class="button button-3d button-rounded button-leaf"><i class="icon-tags"></i>자세히 보기</a></div>
 							<div class="table-responsive col_full">
 								<table id="datatable3" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>

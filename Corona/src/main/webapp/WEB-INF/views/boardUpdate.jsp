@@ -34,6 +34,23 @@
 
 <script type="text/javascript">
 window.onload = function(){	
+	$('.plus').on('click', plus);
+	$('.cansle').on('click', cansle);
+	
+	function plus() {
+		var html = '<tr><td><label>파일 명</label></td><td>';
+		html += '<input type="file" id="ty"  name="file1" class="upload" />';
+		html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '</td></tr>';
+		$('#plustable').append(html);
+		$('.cansle').on('click', cansle);
+	}
+	
+	function cansle() {
+		$(this).parent().parent().remove();
+	}
+	
+	
 	 var oEditors = [];
 	 
 	 nhn.husky.EZCreator.createInIFrame({
@@ -71,13 +88,29 @@ window.onload = function(){
         alert('글 저장');
     });   
 	 
+}//end window.onload
+
+//삭제 아이콘 누를시 삭제
+function cansle() {
+	$(this).parent().parent().remove();
+}
+//수정 아이콘 누를시  input file로 덮어 씌움
+function modify() {
+	var html = '<td><label>파일 명</label></td><td>';
+	html += '<input type="file" name="file1" class="upload"/>';
+	html += '<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '</td>';
+	$(this).parent().parent().html(html);
+	$('.modify').on('click', modify);
+	$('.cansle').on('click', cansle);
 }
 </script>
 
 <body>
 <div id="wrapper">
 <h2>[ 게시글 수정  ]</h2>
-<form action="boardUpdate" method="POST" id='frm' >
+<form action="boardUpdate" method="POST" id='frm' enctype="multipart/form-data">
 <input type="hidden" name="num" value="${board.num}">
 	<table class="Bordered table">
 	<tr>
@@ -88,6 +121,32 @@ window.onload = function(){
 		<th>작성자</th>
 		<td>${loginId}로그인세션아이디</td>
 	</tr>
+	
+	<tr>
+		<td>
+			<label>파일 추가</label>
+		</td>
+		<td>
+			<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+		</td>
+	</tr>
+		<c:forEach items="${list}" var="fileList" varStatus="check">
+			<tr>
+				<td>
+					<label>파일 명</label>
+				</td>
+				<td>
+					<a href="download?num=${fileList.num}">${fileList.original_filename}</a> 
+					<input type="hidden" name="original_filename" class="original_filename" value="${fileList.original_filename}">
+					<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
+					<img alt="삭제" src="resources/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
+				</td>
+			</tr>
+		</c:forEach>
+		
+	<tbody id="plustable">
+	</tbody>
+	
 	<tr>
 		<td colspan="2"><textarea name="content" id="content" rows="22"></textarea></td>
 	</tr>

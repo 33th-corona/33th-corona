@@ -6,23 +6,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
-
-
-<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	
+	
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-	
-	
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />
 	<link rel="stylesheet" href="resources/style.css" type="text/css" />
-	
-	 <script type="text/javascript" src="resources/textEditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+		
+	<script type="text/javascript" src="resources/textEditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+		
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="topMenu.jsp" %>
 <%@ include file="sidebar.jsp" %>
@@ -50,8 +49,6 @@
 	outline-style: solid;
 	box-shadow: 1px 1px 5px black;
 	}
-	
-	
 </style>
 
 </head>
@@ -64,13 +61,6 @@
 
 	<div class="content-wrap">
 	<div class="container clearfix">
-	
-	<section id = "sese">
-	
-	sdfadf
-	</section>
-	
-	
 	
 	<div class="center">
 	<h2>[ 게시판 글보기 ]// 클래스명 받아와서 뿌려주기</h2>
@@ -94,6 +84,18 @@
 		<tr>
 			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
 		</tr>
+		
+		<c:forEach items="${list}" var="fileList" varStatus="check">
+			<tr>
+				<td>
+					<label>첨부파일${check.index + 1}</label>
+				</td>
+				<td>
+					<a href="downloadbf?num=${fileList.num}">${fileList.original_filename}</a>
+				</td>
+			</tr>
+		</c:forEach>
+		
 		<tr>
 			<td colspan="3">
 				<pre id="context">${board.content}</pre>
@@ -101,7 +103,7 @@
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="boardLocation?status=${status}">≪목록으로</a>
+				<a href="boardList">≪목록으로</a>
 			</td>
 			<td></td>
 			<td align="right">	

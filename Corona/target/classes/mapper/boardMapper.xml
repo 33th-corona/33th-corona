@@ -48,7 +48,7 @@
 	(num,class_num,user_id,title,content)
 	VALUES
 	(
-		board_seq.nextval,
+		#{num},
 		#{class_num},
 		#{user_id},
 		#{title},
@@ -93,5 +93,29 @@
 		</choose>
 	LIKE '%' || #{searchword}||'%'
 	</select>
+	
+	<!-- 다중 파일 업로드 -->
+	<select id="seq" resultType="int">
+		select board_seq.NEXTVAL from dual
+	</select>
+	
+	<insert id="insert_file" parameterType="Board_File">
+		insert into board_file values(
+		board_file_seq.NEXTVAL, #{original_filename}, #{saved_filename}, #{bf_num}
+		)
+	</insert>
+	
+	<select id="selectBoard_fileAll" parameterType="int" resultType="Board_File">
+		select * from board_file where bf_num = #{board_num}
+	</select>
+	
+	<delete id="deleteFile" parameterType="int">
+		delete from board_file where num = #{fileNum}
+	</delete>
+	
+	<select id="selectFileOne" parameterType="int" resultType="Board_File">
+		select * from board_file where num = #{num}
+	</select>
+	
 	
 </mapper>

@@ -23,7 +23,6 @@ import com.sesoc.cl.drive.DriveRepository;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.ClassUser;
 import com.sesoc.cl.vo.Users;
-
 @Controller
 public class LocationController {
 	@Autowired
@@ -85,12 +84,17 @@ public class LocationController {
 		return "createHomeWorkForm";
 	}
 	
-	@RequestMapping(value="boardLocation", method=RequestMethod.GET)
+	
+	
+	@RequestMapping(value="taskList", method=RequestMethod.GET)
 	public String boardForm(
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
 			Model model, String status) {
 		//보드 리스트
+		/*
 		System.out.println("게시판 구분 : "+status);
 		if(status.equals("normal")) {
 			System.out.println(""+ "노말진입");
@@ -98,8 +102,8 @@ public class LocationController {
 			model.addAttribute("boardList", boardList);
 			model.addAttribute("status", status);
 			System.out.println("노말모델 넘김 :"+boardList.get(0));
-			//return "boardForm";
-			return "entry";
+			return "boardForm";
+			//return "entry";
 			
 		}else if(status.equals("drive")) {
 			System.out.println("자료실 입장");
@@ -109,11 +113,10 @@ public class LocationController {
 			System.out.println("다시 자료실로 넘겨주기");
 			return "boardForm";
 		}
-		
+		*/
 		System.out.println("과제 게시판");
 		
-		System.out.println("보드로케이션 끝");
-		return "boradForm";
+		return "taskList";
 	}
 	
 	@RequestMapping("teskWrite")

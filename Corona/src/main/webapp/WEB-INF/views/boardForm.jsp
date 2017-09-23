@@ -57,6 +57,20 @@
 						<div class="center">
 							<h2>일반 게시판</h2>
 						</div>
+						<div class="search">
+						<!-- 특정 글 검색 -->
+							<form id="search" action ="boardLocation" method="GET" >
+							<input type = "hidden" name = "action" value = "boardList">
+							<select name="searchtype">
+								<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
+								<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
+								<option value="content" ${searchtype=='content' ? 'selected' : '' }>내용</option>
+							</select>
+							<input type="text" name="searchword" value="${searchword}" /> 
+							<input class="btn" type="submit" value="검색" />
+							</form>
+						</div>
+						
 						<div class="table-responsive">
 							<table id="datatable1"
 								class="table table-bordered datatable"
@@ -99,6 +113,26 @@
 								class="icon-book3"></i>글쓰기</a>
 						</div>
 						</div>
+						<!-- Paging 출력 부분 -->
+						<div id="navigator">
+						<a href="boardLocation?currentPage= ${navi.currentPage - navi.pagePerGroup}">◁ ◁</a>
+						<a href="boardLocation?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}"> ◀ </a>
+						&nbsp;&nbsp;
+						<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+							<c:if test="${navi.currentPage eq page}">
+								<span style="color:blue; font-weight:bolder; font-size:1.5em;">${page}</span>
+							</c:if>
+							<c:if test="${navi.currentPage ne page}">
+							<a href="boardLocation?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}">${page}</a>
+							</c:if>
+						</c:forEach>  
+						&nbsp;&nbsp;
+						<a href="boardLocation?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}">▶</a> 
+						  
+						<a href="boardLocation?currentPage= ${navi.currentPage + navi.pagePerGroup}">▷ ▷</a> 
+						</div>
+						<hr/>
+						
 						
 					</div>
 

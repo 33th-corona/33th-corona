@@ -11,6 +11,7 @@
 		<typeAlias type="com.sesoc.cl.board.Board" alias="Board"/>
 		<typeAlias type="com.sesoc.cl.board.Board_Reply" alias="Reply"/>    
    		<typeAlias type="com.sesoc.cl.drive.Drive" alias="Drive"/>
+   		<typeAlias type="com.sesoc.cl.board.Board_File" alias="Board_File"/>
    </typeAliases>
    <mappers>
       <mapper resource="mapper/usersmapper.xml"/>

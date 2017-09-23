@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -18,8 +19,11 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sesoc.cl.board.Board_File;
+import com.sesoc.cl.board.PageNavigator;
 import com.sesoc.cl.util.FileService;
 
 
@@ -32,6 +36,26 @@ public class DriveController {
 	DriveRepository repo;
 	
 	final String uploadPath = "/drivefile";
+	
+	
+	@RequestMapping(value="driveList")
+	public String driveList(
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
+			@RequestParam(value="searchword",defaultValue="") String searchword,
+			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
+			Model model){
+		int totalRecordCount= repo.getDriveCount(searchtype,searchword);
+		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
+		List<Drive> drivelist = repo.selectDriveAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage());
+		
+		model.addAttribute("navi",navi);
+		model.addAttribute("countpage",countPerPage);
+		model.addAttribute("searchword",searchword);
+		model.addAttribute("searchtype",searchtype);
+		model.addAttribute("driveList", drivelist);
+		return "driveList";
+	}
 	
 	//업로드 폼으로 이동
 	@RequestMapping(value = "driveWrite", method = RequestMethod.GET)
@@ -54,7 +78,7 @@ public class DriveController {
 			drive.setSaved_filename(savedFileName);
 			repo.insert_file(drive);
 		}//for
-		return "redirect:boardLocation?status=drive";
+		return "redirect:driveList";
 	}
 	
 	
@@ -119,7 +143,7 @@ public class DriveController {
 			}
 		}
 		
-		return "redirect:boardLocation?status=drive";
+		return "redirect:driveList";
 	}
 	
 	//삭제
@@ -137,7 +161,7 @@ public class DriveController {
 		}
 		//게시글 삭제
 		repo.delete_drive(num);
-		return "redirect:boardLocation?status=drive";
+		return "redirect:driveList";
 	}
 	
 	

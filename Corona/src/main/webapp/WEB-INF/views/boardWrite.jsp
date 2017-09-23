@@ -35,6 +35,23 @@
 </head>
 <script type="text/javascript">
 window.onload = function(){	
+	$('.plus').on('click',plus);
+	$('.cansle').on('click', cansle);
+	
+	function plus() {
+		var html = '<tr><td><label>파일 명</label></td><td>';
+		html += '<input type="file" id="ty"  name="file1" class="upload" />';
+		html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '</td></tr>';
+		$('#plustable').append(html);
+		$('.cansle').on('click', cansle);
+	}
+	
+	function cansle() {
+		$(this).parent().parent().remove();
+	}
+	
+	
 	 var oEditors = [];
 
 	 nhn.husky.EZCreator.createInIFrame({
@@ -66,6 +83,17 @@ window.onload = function(){
 	 
 	//저장버튼 클릭시 form 전송
      $("#save").click(function(){
+    	 if($(".upload").val() != null){
+	    	var fileValue = $(".upload").val().split("\\");
+	    	var fileName = fileValue[fileValue.length-1]; // 파일명
+	    	 
+	    	var fileKind = fileName.split(".")[1];
+			if(!(fileKind == 'png' || 'jpg' || 'gif')){
+			alert('이미지 파일형식만 업로드 해주세요');
+	    	return false;
+			}
+    	 }
+    	 
          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          $("#frm").submit();
          alert('글 저장');
@@ -76,7 +104,7 @@ window.onload = function(){
 <body>
 <div id="wrapper">
 <h2>[ 게시판 글쓰기 ]</h2>
-<form action="boardWrite" method="POST" id="frm">
+<form action="boardWrite" method="POST" id="frm" enctype="multipart/form-data">
 	<table class="Bordered table">
 	<tr>
 		<th>제목</th>
@@ -86,6 +114,18 @@ window.onload = function(){
 		<th>작성자</th>
 		<td>${loginId}로그인세션아이디</td>
 	</tr>
+	
+	<tr>
+		<td>
+			<label>파일 추가</label>
+		</td>
+		<td>
+			<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+		</td>
+	</tr>
+	<tbody id="plustable">
+	</tbody>
+	
 	<tr>
 		<td colspan="2"><textarea name="content" id="content" rows="22"></textarea></td>
 	</tr>
