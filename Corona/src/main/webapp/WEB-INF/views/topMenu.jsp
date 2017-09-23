@@ -41,7 +41,7 @@ body {
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm; background-color: #000530  /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */" class="w3-border-right w3-border-white">
+					<div id="logo" style="padding-bottom: 0.11cm; padding-left: 0.52cm; padding-right: 0.52cm; background-color: #000530  /* background:url('images/logoback.jpg') no-repeat; z-index: -1; */">
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="standard-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 						<a href="${pageContext.request.contextPath}/afterLoginLocation" class="retina-logo logoChange" style="z-index: 1" data-dark-logo="images/corona3.png"><img class="logoChange" src="images/corona3.png" alt="CodeLecture Logo"></a>
 					</div><!-- #logo end -->
@@ -51,10 +51,9 @@ body {
 					<nav id="primary-menu" style="background-color: #000530" >
 						
 						<ul class="menu">
-							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 20px !important;"><div><i class="icon-home2 topmenubtn" style="font-size: 15px !important; "></i>Home</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/createClassLocation" style="font-size: 20px !important;"><div><i class="icon-pencil2 topmenubtn" style="font-size: 15px !important;"></i>반 생성</div></a></li>
-							<li><a href="#" style="font-size: 20px !important;"><div><i class="icon-flag2 topmenubtn" style="font-size: 15px !important;"></i>사용법</div></a></li>
-							<li><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important;"><div><i class="icon-search3 topmenubtn" style="font-size: 15px !important;"></i>반 검색</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/afterLoginLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-home2 topmenubtn" style="font-size: 15px !important; "></i>Home</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/createClassLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-pencil2 topmenubtn" style="font-size: 15px !important;"></i>반 생성</div></a></li>
+							<li><a href="${pageContext.request.contextPath}/searchLocation" style="font-size: 20px !important; padding-bottom: 15px;"><div><i class="icon-search3 topmenubtn" style="font-size: 15px !important;"></i>반 검색</div></a></li>
 						</ul>
 
 						<!-- Top Search

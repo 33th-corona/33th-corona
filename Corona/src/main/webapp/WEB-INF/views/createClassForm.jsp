@@ -34,6 +34,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 <title>CreateClass</title>
+
+<%@ include file="topMenu.jsp" %>
+	<%@ include file="sidebar.jsp" %>
 <style>
 #nameOk {
 	cursor: default;
@@ -107,24 +110,20 @@
 	text-shadow: none;
 	color: #FFF;
 }
+
+#wrapper {
+	background-color: rgba(255, 255, 255, 0);
+}
 </style>
 </head>
 
-<body class="stretched">
-<%@ include file="topMenu.jsp" %>
-	<%@ include file="sidebar.jsp" %>
+<body class="stretched no-transition" style="background-image: url('images/classCreate.jpg'); background-size: 1600px; background-repeat: no-repeat;">
 	<div id="wrapper" class="clearfix">
-	
-		
 		<div class="body-overlay"></div>
 	
-		<section id="page-title" class="page-title-mini">
-			<div class="container clearfix">
-				<h1>Class Create</h1>
-			</div>
-		</section>
+		
 	
-	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0;">
+	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
 					<source src='images/videos/classCreateForm.webm' type='video/webm' />
@@ -140,7 +139,7 @@
 	</section>
 	
 	
-	<section id="content">
+	<section id="content" style="background-color: transparent;">
 		
 		<form id="class-form" name="class-form"
 								class="nobottommargin" action="createClass" method="post">
@@ -208,6 +207,9 @@
 	
 	
 	$(function(){
+		$('#wrapper').animate({
+			backgroundColor: "rgba(255, 255, 255, 0.5)"
+		}, 1500);
 		$('.i-circled:hover').unbind(
 					'mouseenter mouseleave mouseover select');
 			$('#nameIcon').on('click', nameFocus);
