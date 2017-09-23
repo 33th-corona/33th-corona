@@ -12,6 +12,9 @@
 		<typeAlias type="com.sesoc.cl.board.Board_Reply" alias="Reply"/>    
    		<typeAlias type="com.sesoc.cl.drive.Drive" alias="Drive"/>
    		<typeAlias type="com.sesoc.cl.board.Board_File" alias="Board_File"/>
+   		<typeAlias type="com.sesoc.cl.vo.SavedLessonInfo" alias="SavedLessonInfo"/>
+   		<typeAlias type="com.sesoc.cl.vo.TaskInfo" alias="TaskInfo"/>
+   		<typeAlias type="com.sesoc.cl.vo.TaskAnswer" alias="TaskAnswer"/>
    </typeAliases>
    <mappers>
       <mapper resource="mapper/usersmapper.xml"/>
@@ -19,5 +22,7 @@
       <mapper resource="mapper/boardMapper.xml" />
       <mapper resource="mapper/replyMapper.xml" />
       <mapper resource="mapper/driveMapper.xml" />
+      <mapper resource="mapper/passedLessonMapper.xml"/>
+      <mapper resource="mapper/taskMapper.xml"/>
    </mappers>
 </configuration>
