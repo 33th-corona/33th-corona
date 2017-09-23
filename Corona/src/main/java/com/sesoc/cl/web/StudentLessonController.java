@@ -75,68 +75,6 @@ public class StudentLessonController {
 		return "lesson/sourceCodePopup";
 	}
 	
-	@RequestMapping(value = "/playForm", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		UnZip zip = new UnZip();
-		zip.start();
-		return "studentPlay";
-	}
-
-	@RequestMapping(value = "/videoPlay", method = RequestMethod.GET)
-	public String video(HttpServletResponse response) {
-		String originalFile = "finalmp31.mp3";
-		try {
-			response.setHeader("Content-Disposition",
-					"attachment; filename=" + URLEncoder.encode(originalFile, "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		String fullPath = "c:/webRecoderTest/finalmp31.mp3";
-		File file = new File(fullPath);
-		try {
-			response.setContentType("audio/mpeg");
-			response.setHeader("Accept-Ranges", "bytes");
-			response.setHeader("Content-Range", "bytes " + 0 + "-" + (file.length()-1) + "/" + file.length());
-			response.setContentLength((int)file.length());
-			
-			FileInputStream filein = new FileInputStream(file);
-			ServletOutputStream sout = response.getOutputStream();
-			FileCopyUtils.copy(filein, sout);
-			filein.close();
-			sout.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@RequestMapping(value = "/captionPlay", method = RequestMethod.GET)
-	public String captionPlay(HttpServletResponse response) {
-		String originalFile = "1.vtt";
-		try {
-			response.setHeader("Content-Disposition",
-					"attachment; filename=" + URLEncoder.encode(originalFile, "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		String fullPath = "c:/test/1.vtt";
-		try {
-			FileInputStream filein = new FileInputStream(fullPath);
-			ServletOutputStream sout = response.getOutputStream();
-			FileCopyUtils.copy(filein, sout);
-			filein.close();
-			sout.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 	public void listCome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		String id = (String)session.getAttribute("loginId");

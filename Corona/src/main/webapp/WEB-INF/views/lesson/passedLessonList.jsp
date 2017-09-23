@@ -6,18 +6,22 @@
 <meta charset="UTF-8">
 <title>Passed Lesson List</title>
 <script>
-$(function() {
-	
-});
 function loadLessonInfo(class_num, saved_code, saved_audio) {
 	var loadForm = $('form#loadForm');
-	var class_numTag = loadForm.find('class_num');
-	var saved_codeTag = loadForm.find('saved_code');
-	var saved_audioTag = loadForm.find('saved_audio');
+	
+	var class_numTag = loadForm.find('input#class_num');
+	var saved_codeTag = loadForm.find('input#saved_code');
+	var saved_audioTag = loadForm.find('input#saved_audio');
+	
+// 	alert(class_num);
+// 	alert(saved_code);
+// 	alert(saved_audio);
 	
 	class_numTag.val(class_num);
 	saved_codeTag.val(saved_code);
-	saved_audioTag.val(class_num);
+	saved_audioTag.val(saved_audio);
+	
+	loadForm.submit();
 }
 </script>
 </head>
@@ -57,9 +61,9 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 </section>
 
 <form action="loadPassedLesson" method="post" id="loadForm">
-<input type="hidden" id="class_num" name="class_num">
-<input type="hidden" id="saved_code" name="saved_code">
-<input type="hidden" id="saved_audio" name="saved_audio">
+	<input type="hidden" id="class_num" name="classNum">
+	<input type="hidden" id="saved_code" name="saved_code">
+	<input type="hidden" id="saved_audio" name="saved_audio">
 </form>
 
 </body>

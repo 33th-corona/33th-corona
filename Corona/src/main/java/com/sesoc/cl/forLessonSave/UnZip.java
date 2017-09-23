@@ -8,14 +8,26 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class UnZip {
-
-	public void start() {
-		String change = "C:/test";
-		String zipFilePath = "C:/test/1.zip";
-		unzip(zipFilePath, change);
+	
+	private String destDir = "C:\\Corona Save Folder\\passed_lesson\\text";
+	private String sourceDir = "C:\\Corona Save Folder\\passed_lesson\\text"; 
+	private String fileName;
+	
+	public UnZip(String fileName) {
+		this.fileName = fileName;
 	}
 
-	private void unzip(String zipFilePath, String destDir) {
+	public int start() {
+		int result = 0;
+		
+		String zipFilePath = sourceDir + "\\" + fileName;
+		result = unzip(zipFilePath, destDir);
+		
+		return result;
+	}
+
+	private int unzip(String zipFilePath, String destDir) {
+		int result = 0;
 		File dir = new File(destDir);
 		// create output directory if it doesn't exist
 		if (!dir.exists()) dir.mkdirs();
@@ -29,7 +41,7 @@ public class UnZip {
 			while (ze != null) {
 				String fileName = ze.getName();
 				File newFile = new File(destDir + File.separator + fileName);
-				System.out.println("Unzipping to " + newFile.getAbsolutePath());
+//				System.out.println("Unzipping to " + newFile.getAbsolutePath());
 				// create directories for sub directories in zip
 				new File(newFile.getParent()).mkdirs();
 				FileOutputStream fos = new FileOutputStream(newFile);
@@ -46,8 +58,17 @@ public class UnZip {
 			zis.closeEntry();
 			zis.close();
 			fis.close();
+			result = 1;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+
+	public void delete() {
+		String rawFileName = fileName.substring(0, fileName.lastIndexOf("."));
+		String vttFilePath = destDir + "\\" + rawFileName + ".vtt";
+		File deleteFile = new File(vttFilePath);
+		if (deleteFile.isFile()) deleteFile.delete();
 	}
 }
