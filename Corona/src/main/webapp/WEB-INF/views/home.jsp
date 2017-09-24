@@ -47,14 +47,13 @@
 	color: #FFF;
 	}
 	.text-stroke {
-    color: #000;
+    color: #fff;
     text-shadow:
     -1px -1px 0 #ff9800,
     1px -1px 0 #ff9800,
     -1px 1px 0 #ff9800,
     1px 1px 0 #ff9800;  
 }
-	/* 그렇잔항요! */
 	</style>
 	
 </head>
@@ -103,24 +102,21 @@
 		</header>
 		<!-- Slider
 		============================================= -->
-		
 		<section id="slider" class="page-title-parallax page-title-dark page-title-video">
 		
-			<div class="col-md-2">
-			</div>
-			<div class="section col-md-8 dark nomargin noborder ohidden content-wrap" style="padding: 120px 0; border-radius: 50%;">
+			<div class="section dark nomargin noborder ohidden content-wrap" style="padding: 120px 0;">
 				<div class="video-wrap" style="z-index: 0">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1050px;">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
 					<source src='images/videos/corona2.webm' type='video/mp4' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-				<div class="container center clearfix" style="width: 1023px;">
+				<div class="container center clearfix"style="width: 1023px; height: 310px;">
 					<div class="emphasis-title">
-						<span class="before-heading opm-medium t300 uppercase font-primary" style="font-weight: bold !important;">We are</span>
+						<span class="before-heading opm-medium t300 uppercase font-primary" style="color: #ff9800; font-weight: bold !important;">We are</span>
 						<h1>
 							<span class="text-rotater nocolor" data-separator="|" data-rotate="fadeInLeft" data-speed="6000">
-								<span class="t-rotate t700 font-body opm-medium-word text-stroke" >Corona|Eclipse|JAVA</span>
+								<span class="t-rotate t700 font-body opm-medium-word text-stroke">Corona|Eclipse|JAVA</span>
 							</span>
 						</h1>
 					</div>
@@ -221,12 +217,11 @@
 										
 				</div>
 			</div>
-			
 		</section><!-- #slider end -->
 
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="dark noborder">
+		<footer id="footer" class="dark noborder" style="padding-top: 55px;">
 
 			<div id="copyrights">
 				<div class="container center clearfix">

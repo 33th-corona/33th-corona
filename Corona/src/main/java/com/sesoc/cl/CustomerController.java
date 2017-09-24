@@ -220,9 +220,9 @@ public class CustomerController {
 			return "redirect:/afterLoginLocation";
 		}
 		
-		//이미지 로직
+		//자신의 이미지 로직
 		@RequestMapping(value="imgStatus", method=RequestMethod.GET)
-		public String download(HttpServletResponse response, HttpServletRequest request){
+		public String download(HttpServletResponse response, HttpServletRequest request, String imgName){
 			HttpSession session = request.getSession();
 			String original_fileName = (String)session.getAttribute("userImg");
 			try {

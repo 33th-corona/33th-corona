@@ -50,7 +50,7 @@
 	background-color: #000000 !important;
 }
 .feature-box.fbox-outline .fbox-icon {
-    border: 1px solid #000530 !important;
+    border: 1px solid #111111 !important;
     border-radius: 50%;
     padding: 3px;
 }
@@ -72,6 +72,7 @@
 #wrapper {
 	background-color: rgba(255, 255, 255, 0);
 }
+/* 왜 터졌지? */
 </style>
 </head>
 <body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: no-repeat;" >
@@ -101,7 +102,7 @@
 				<div class="container clearfix">
 				<div class="col-md-2" style="margin-left: 100px;">
 				<form action="#">
-				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/boardLocation?status='normal'" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
 							</div>
@@ -112,7 +113,7 @@
 				</div>
 				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="#">
-				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/boardLocation?status='drive'" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
 							</div>
@@ -127,7 +128,7 @@
 				<form action="lessonStart" method="POST" id="lesson">
 				<input type="hidden" value="${classInfo.teacher_id}" name="teacher_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
-				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
 							</div>
@@ -137,7 +138,7 @@
 				</div> 
 				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="#">
-				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
@@ -148,7 +149,7 @@
 				</div>
 				<div class="col-md-2">
 				<form action="#">
-				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
@@ -302,14 +303,14 @@
 				$()
 			})
 			$('.feature-box').mouseover(function() {
-				$(this).find('h2').css('color', '#000000');
-				$(this).find('a').css('color','#ff9800');
-				$(this).css('background-color', '#ff9800');
+				$(this).find('h2').css('color', '#ffffff');
+				$(this).find('a').css('color','#000530');
+				$(this).css('background-color', '#000530');
 			})
 			$('.feature-box').mouseout(function() {
 				$(this).find('h2').css('color', '#ffffff');
 				$(this).find('a').css('color','white');
-				$(this).css('background-color', '#000530');
+				$(this).css('background-color', '#111111');
 			})
 			$('.location').on('click', locationStatus);
 			

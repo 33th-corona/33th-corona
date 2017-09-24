@@ -371,7 +371,7 @@
 					<img id="profileImg" src="imgStatus" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 					</div> -->
 					<div class="profile-userpic">
-					<img id="profileImg" src="imgStatus" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+					<img id="profileImg" src="imgStatus?${img_name}" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 				</div>
 				<div class="profile-usertitle nomargin">
 					<div class="profile-usertitle-name">
