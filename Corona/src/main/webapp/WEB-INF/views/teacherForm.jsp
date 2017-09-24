@@ -72,6 +72,7 @@
 #wrapper {
 	background-color: rgba(255, 255, 255, 0);
 }
+/* 왜 터졌지? */
 </style>
 </head>
 <body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: no-repeat;" >
