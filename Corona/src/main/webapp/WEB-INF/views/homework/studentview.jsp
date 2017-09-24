@@ -52,6 +52,7 @@
   border-style: solid;
   border-radius: 10px;
 }
+
 </style>
 
 
@@ -60,8 +61,21 @@
 <body class="scretched">
 	
 	<div id="wrapper" class="clearfix">
-		<div data-animate = "fadeInLeft"> 
-		<div id="body-overlay"></div>
+		<div data-animate = "fadeInLeft">
+		<div id="body-overlay">
+<!-- 			<div class="swiper-wrapper"> -->
+<!-- 						<div class="swiper-slide dark" style="background-image: url('images/homework_img.jpg');"> -->
+<!-- 							<div class="container clearfix" style="margin-left: 320px;"> -->
+<!-- 								<div class="slider-caption slider-caption-center"> -->
+<!-- 									<h2 data-caption-animate="fadeInUp" style="text-transform: capitalize;">Welcome to Corona</h2> -->
+<!-- 									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스를 실시간으로 확인하여<br>학생의 웹 페이지로 전송합니다.</p> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						
+<!-- 					</div> -->
+		
+		
 		
 		<section id = "page-title">
 		
@@ -69,20 +83,22 @@
 			<h1>과제 제출 화면</h1>
 		</div>
 		
-	</section>
+		</section>
 	
 	<section id="content">
 
-	<div class="content-wrap" style="padding-top: 10px;">	</div>
+<!-- 	<div class="content-wrap" style="padding-top: 10px;">	</div> -->
+	<div class="swiper-slide dark" style="background-image: url('images/picture3.jpg'); background-size: cover;">
 	
 	<div class="container clearfix">
+	
 	
 	<div class="row"> <!-- 큰 row 시작 -->
 		<div class="row"> <!-- 중간줄 1번째 시작 -->
 			
 			<div class="col-md-6"> <!-- 서쪽 컬럼 시작 -->
 				<div class="row">
-					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2>과제명</h2></div>
+					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2 style="color: black;">과제명</h2></div>
 				</div>
 				<div class="row">
 					<div class="col-md-10"><input type="text" id="title" name="title"
@@ -92,7 +108,7 @@
 			
 			<div class="col-md-6"> <!-- 동쪽 컬럼 시작 -->
 				<div class="row">
-					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2>과제 내용</h2></div>
+					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2 style="color: black;">과제 내용</h2></div>
 				</div>
 				<div class="row">
 					<div class="col-md-10"><textarea class="form-control" rows="5" id="comment" readonly="readonly">${selectedTask.content}</textarea></div>						
@@ -106,7 +122,7 @@
 		
 		<div class="row"> <!-- 중간줄 2번째 시작 -->
 			<div class="row">
-					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2>과제 코드</h2></div>
+					<div class="col_full"><i class="i-rounded i-light icon-edit"></i><h2 style="color: black;">과제 코드</h2></div>
 			</div>
 			<div class="row">
 				<div id="task_code" class="col_full">${selectedTask.code}</div>
@@ -120,16 +136,26 @@
 				<button type="button" id="task_submit" class="button button-xlarge button-leaf button-rounded tright">과제 제출<i class="icon-line-layout"></i></button>
 				<div id = "submit_button"></div>
 				
-				
 				</div>
+				
+<!-- 			<div class="btn-group btn-group-group col-md-6 col-md-offset-8"> -->
+<!-- 				<button type="button" id="run" class="btn btn-default">실행<i class="icon-circle-arrow-right"></i></button> -->
+<!--  				<button type="button" id="back" class="btn btn-default">뒤로<i class="icon-line-cross"></i></button> -->
+<!-- 				<button type="button" id="task_submit" class="btn btn-default">과제 제출<i class="icon-line-layout"></i></button> -->
+<!-- 			</div> -->
+				
+		
 		</div>  <!-- 중간줄 3번째 끝 -->
 		
 		<div class="line topmargin-sm bottommargin-sm"></div>
 		
 		</div> <!-- 큰 row 끝 -->
 	</div>
+	</div>
 	
 	</section>
+	
+	</div>
 	
 	<footer id="footer" class="dark noborder">
 

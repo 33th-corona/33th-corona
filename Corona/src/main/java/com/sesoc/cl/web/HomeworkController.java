@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.TaskRepository;
@@ -74,6 +75,7 @@ public class HomeworkController {
 		return "homework/homeworkList";
 	}
 	
+	
 	@RequestMapping(value="/homeworkCreateForm", method=RequestMethod.GET)
 	public String homeworkCreateForm(int classNum,
 			Model model,
@@ -81,22 +83,25 @@ public class HomeworkController {
 	{
 //		logger.info("createHomework");
 		listCome(model, request);
+		model.addAttribute("classNum", classNum);
 		
 		return "homework/homeworkCreateForm";
 	}
 	
+	
+	@ResponseBody
 	@RequestMapping(value="/createHomework", method=RequestMethod.POST)
-	public String createHomework(
+	public int createHomework(
 			Task task,
 			Task_Answers task_answers,
 			Model model,
 			HttpServletRequest request) 
 	{
+		int result = 0;
 		String filename = getSavedFileName(task);
 		
 		//파일경로 = 루트+filePath + 파일명 + 확장자(java)
 		String filepath = directory + " \\" + filename + ".java";
-		String message = "";
 		File file = new File(filepath);
 		
 		if(!file.isDirectory()) {
@@ -108,7 +113,6 @@ public class HomeworkController {
 		BufferedWriter bw = null;
 		
 		try {
-			
 			//과제를 파일로 저장 //
 			fos = new FileOutputStream(filepath, true);
 			osw = new OutputStreamWriter(fos);
@@ -118,10 +122,11 @@ public class HomeworkController {
 			//저장한 파일을 서버DB에 기록
 			task.setQuestion_file(filepath);
 			System.out.println(task.toString());
-			int result = tRepo.insertTask(task);
+			result = tRepo.insertTask(task);
 			
 			if(result != 0) {
-				message = "과제가 정상적으로 등록 되었습니다.";
+				
+				result = 0;
 				
 				//과제가 정상적으로 등록되면 과제의 입 출력 해답도 DB에 등록한다.
 				Task recent_task = tRepo.recent_task();
@@ -135,16 +140,15 @@ public class HomeworkController {
 						Task_Answer task_answer = new Task_Answer(0, recent_task.getNum(), input_answers.get(i), output_answers.get(i));
 						int result_answer = tRepo.insertAnswer(task_answer);
 						if(result_answer != 0) {
-							System.out.println("과제의 입출력 값 저장완료!");
+							logger.info("과제의 입출력 값 저장완료!");
+							result = 1;
 						} else {
-							System.out.println("과제의 입출력 값 저장실패.");
+							logger.info("과제의 입출력 값 저장실패.");
+							break;
 						}
 					}
 				}
-			} else {
-				message = "과제 등록에 실패 하였습니다.";
 			}
-			model.addAttribute("message", message);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -156,8 +160,13 @@ public class HomeworkController {
 				e.printStackTrace();
 			}
 		}
-		return "message";
+		
+		if(result == 0) {
+			if(file.isFile()) file.delete();
+		}
+		return result;
 	}
+	
 	
 	public String getSavedFileName(Task task) {
 		String result = null;
@@ -168,6 +177,7 @@ public class HomeworkController {
 		result = classNum + "-" + nowTime;
 		return result;
 	}
+	
 	
 	public void listCome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(); 

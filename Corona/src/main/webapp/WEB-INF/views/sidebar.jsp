@@ -273,10 +273,10 @@
   background: #fff;
   min-height: 460px;
 }
-.btn {
-	background-color: #ff9800 !important;
-	opacity: 0.9;
-}
+/* .btn { */
+/* 	background-color: #ff9800 !important; */
+/* 	opacity: 0.9; */
+/* } */
 .btn.button:hover{
 	background-color: #000530 !important;
 	opacity: 0.9;
@@ -383,11 +383,11 @@
 				</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					<a href="#modal-register-form" id="myPagebtn"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline"><i class="icon-angle-right" style="width: 15px"></i>마이 페이지</a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline" style="background-color: #ff9800 !important; opacity: 0.9;"><i class="icon-angle-right" style="width: 15px"></i>마이 페이지</a>
 					</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					 <a href="${pageContext.request.contextPath}/logout"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px;">로그아웃<i class="icon-angle-right" style="width: 15px"></i></a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9;">로그아웃<i class="icon-angle-right" style="width: 15px"></i></a>
 					</div>
 				</div>
 			</div>

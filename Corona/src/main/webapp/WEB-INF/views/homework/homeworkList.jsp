@@ -8,7 +8,7 @@
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script>
 $(function() {
-	$('#createHomework').on('click', function() {
+	$('#homeworkCreateForm').on('click', function() {
 		location.href = 'homeworkCreateForm?classNum=${classNum}';
 	});
 });
@@ -59,7 +59,7 @@ $(function() {
 	</table>
 	
 	<c:if test="${position eq 'teacher' }">
-		<input type="button" id="createHomework" value="과제 생성">
+		<input type="button" id="homeworkCreateForm" value="과제 생성">
 	</c:if>
 	<input type="button" id="back_main" value="뒤로">
 </div>
