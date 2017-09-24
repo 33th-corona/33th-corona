@@ -10,8 +10,8 @@ public class Drive {
 	private String original_filename;
 	private String register_time;
 	private int hit;
+	
 	public Drive() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Drive(int num, int class_num, String user_id, String title, String content, String saved_filename,

@@ -20,4 +20,5 @@ public interface DriveDAO {
 	public int insert_file(Drive drive);
 	public int delete_drive(int num);
 	public int getDriveCount(Map<String, String> map);
+	public int updateDownCount(int num);
 }

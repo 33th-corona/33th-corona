@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sesoc.cl.board.Board;
 import com.sesoc.cl.board.Board_File;
 import com.sesoc.cl.board.PageNavigator;
 import com.sesoc.cl.util.FileService;
@@ -43,17 +44,30 @@ public class DriveController {
 			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
-			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
+			@RequestParam(value="countpage", defaultValue="9") int countPerPage,
 			Model model){
+		//전체 자료실 게시글 수 가져오기
 		int totalRecordCount= repo.getDriveCount(searchtype,searchword);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
 		List<Drive> drivelist = repo.selectDriveAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage());
+		/*해당 페이지 게시글의 첨부파일 리스트 생성
+		List<List<Drive>> dfList = new ArrayList<>();
+		List<Drive> onelist = new ArrayList<>();
+		for(Drive d :drivelist){
+			onelist = repo.selectDrive_fileAll(d.getNum());
+			dfList.add(onelist);
+			System.out.println("dfList사이즈 : "+dfList.size());
+		}
+		for(int i=0;i<dfList.size();i++){
+			System.out.println(dfList.get(i));
+		}*/
 		
 		model.addAttribute("navi",navi);
 		model.addAttribute("countpage",countPerPage);
 		model.addAttribute("searchword",searchword);
 		model.addAttribute("searchtype",searchtype);
 		model.addAttribute("driveList", drivelist);
+		//model.addAttribute("dfList",dfList);
 		return "driveList";
 	}
 	
@@ -181,6 +195,8 @@ public class DriveController {
 	@RequestMapping(value="download", method=RequestMethod.GET)
 	public String download(int num, HttpServletResponse response){
 		Drive fileDrive = repo.selectFileOne(num);
+		//다운로드 수 갱신
+		repo.updateDownCount(num);
 		String original_fileName = fileDrive.getOriginal_filename();
 		String saved_fileName = fileDrive.getSaved_filename();
 		try {
