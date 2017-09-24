@@ -45,7 +45,7 @@
 	background-color: #000000 !important;
 }
 .feature-box.fbox-outline .fbox-icon {
-    border: 1px solid #000530 !important;
+    border: 1px solid #111111 !important;
     border-radius: 50%;
     padding: 3px;
 }
@@ -66,6 +66,95 @@
 }
 #wrapper {
 	background-color: rgba(255, 255, 255, 0);
+}
+.panel > .list-group .list-group-item:first-child {
+    /*border-top: 1px solid rgb(204, 204, 204);*/
+}
+@media (max-width: 767px) {
+    .visible-xs {
+        display: inline-block !important;
+    }
+    .block {
+        display: block !important;
+        width: 100%;
+        height: 1px !important;
+    }
+}
+#back-to-bootsnipp {
+    position: fixed;
+    top: 10px; right: 10px;
+}
+
+
+.c-search > .form-control {
+   border-radius: 0px;
+   border-width: 0px;
+   border-bottom-width: 1px;
+   font-size: 1.3em;
+   padding: 12px 12px;
+   height: 44px;
+   outline: none !important;
+}
+.c-search > .form-control:focus {
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none;
+}
+.c-search > .input-group-btn .btn {
+   border-radius: 0px;
+   border-width: 0px;
+   border-left-width: 1px;
+   border-bottom-width: 1px;
+   height: 44px;
+}
+
+
+.c-list {
+    padding: 0px;
+    min-height: 44px;
+}
+.title {
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+ul.c-controls {
+    list-style: none;
+    margin: 0px;
+    min-height: 44px;
+}
+
+ul.c-controls li {
+    margin-top: 8px;
+    float: left;
+}
+
+ul.c-controls li a {
+    font-size: 1.7em;
+    padding: 11px 10px 6px;   
+}
+ul.c-controls li a i {
+    min-width: 24px;
+    text-align: center;
+}
+
+ul.c-controls li a:hover {
+    background-color: rgba(51, 51, 51, 0.2);
+}
+
+.c-toggle {
+    font-size: 1.7em;
+}
+
+.name {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.c-info {
+    padding: 5px 10px;
+    font-size: 1.25em;
 }
 </style>
 </head>
@@ -98,7 +187,7 @@
 				<div class="container clearfix">
 				<div class="col-md-2" style="margin-left: 100px;">
 				<form action="#">
-				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/boardLocation?status='normal'" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
 							</div>
@@ -109,7 +198,7 @@
 				</div>
 				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="#">
-				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/boardLocation?status='drive'" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
 							</div>
@@ -124,7 +213,7 @@
 				<form action="lessonJoin" method="POST" id="lesson">
 				<input type="hidden" value="${id}" name="student_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
-				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
 							</div>
@@ -134,7 +223,7 @@
 				</div> 
 				<div class="col-md-2" style="margin-top: 100px;">
 				<form action="#">
-				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
@@ -145,7 +234,7 @@
 				</div>
 				<div class="col-md-2">
 				<form action="#">
-				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
@@ -161,43 +250,70 @@
 			</div>
 		</section>
 		<section>
-			<div class="container clearfix" style="margin-right: 50px;">
-				<div class="panel-heading">
-					<div id="homeWork" class="entry clearfix"
-					style="margin-bottom: 10px; padding-bottom: 10px;">
-					<div class="panel panel-default col_full">
-					<h2>가입자 명단</h2>
-							<!-- Default panel contents -->
-
-							<!-- Table -->
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Num</th>
-										<th>UserId</th>
-										<th>Email</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${userList}" var="sList">
-										<c:if test="${sList.status == 'student'}">
-										<tr>
-											<th>${sList.num}</th>
-											<th>${sList.user_id}</th>
-											<c:forEach items="${allList}" var="all">
-											<c:if test="${all.id == sList.user_id}">
-											<th>${all.email}</th>
-											</c:if>
-											</c:forEach>
-										</tr>
-										</c:if>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="row">
+        <div class="col-xs-12 col-sm-offset-2 col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title">Contacts</span>
+                    <ul class="pull-right c-controls">
+                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-line-search"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="row" style="display: none;">
+                    <div class="col-xs-12">
+                        <div class="input-group c-search">
+                            <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="list-group" id="contact-list">
+                		<c:forEach items="${allList}" var="uList">
+                    	<c:forEach items="${userList}" var="sList">
+                    <li class="list-group-item">
+                        <div class="col-xs-12 col-sm-3">
+                            <img src="imgStatus" alt="Scott Stevens" class="img-responsive img-circle" />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                        	<c:if test="${userList.user_id == allList.id}">
+                            <span class="name">${sList.user_id}</span><br/>
+                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="${uList.name}"></span>
+                            <span class="visible-xs"> <span class="text-muted">${uList.name}</span><br/></span>
+                            <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="${uList.email}"></span>
+                            <span class="visible-xs"> <span class="text-muted">${uList.email}</span><br/></span>
+                            </c:if>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    	</c:forEach>
+                    	</c:forEach>
+                </ul>
+            </div>
+        </div>
+	</div>
+    
+    <div id="cant-do-all-the-work-for-you" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="mySmallModalLabel">Ooops!!!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>I am being lazy and do not want to program an "Add User" section into this snippet... So it looks like you'll have to do that for yourself.</p><br/>
+                    <p><strong>Sorry<br/>
+                    ~ Mouse0270</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScrip Search Plugin -->
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 		</section>
 		<!-- Footer
 		============================================= -->
@@ -247,19 +363,57 @@
 			$('#lesson').submit();
 		});
 		$('.feature-box').mouseover(function() {
-				$(this).find('h2').css('color', '#000000');
-				$(this).find('a').css('color','#ff9800');
-				$(this).css('background-color', '#ff9800');
-		});
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','#000530');
+			$(this).css('background-color', '#000530');
+		})
 		$('.feature-box').mouseout(function() {
 			$(this).find('h2').css('color', '#ffffff');
 			$(this).find('a').css('color','white');
-			$(this).css('background-color', '#000530');
-		});
+			$(this).css('background-color', '#111111');
+		})
 		$('.location').on('click', locationStatus);
 		$('#wrapper').animate({
 			backgroundColor: "rgba(255, 255, 255, 0.5)"
 		}, 1500);
+		 if (window.location == window.parent.location) {
+		        $('#back-to-bootsnipp').removeClass('hide');
+		    }
+		    
+		    
+		    $('[data-toggle="tooltip"]').tooltip();
+		    
+		    $('#fullscreen').on('click', function(event) {
+		        event.preventDefault();
+		        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
+		    });
+		    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
+		        event.preventDefault();
+		        $('#cant-do-all-the-work-for-you').modal('show');
+		    })
+		    
+		    $('[data-command="toggle-search"]').on('click', function(event) {
+		        event.preventDefault();
+		        $(this).toggleClass('hide-search');
+		        
+		        if ($(this).hasClass('hide-search')) {        
+		            $('.c-search').closest('.row').slideUp(100);
+		        }else{   
+		            $('.c-search').closest('.row').slideDown(100);
+		        }
+		    })
+		    
+		    $('#contact-list').searchable({
+		        searchField: '#contact-list-search',
+		        selector: 'li',
+		        childSelector: '.col-xs-12',
+		        show: function( elem ) {
+		            elem.slideDown(100);
+		        },
+		        hide: function( elem ) {
+		            elem.slideUp( 100 );
+		        }
+		    })
 	});
 	
 	function locationStatus(){
