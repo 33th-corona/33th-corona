@@ -87,12 +87,18 @@ public class ClassController {
 			cRepo.updateStatus(map);
 			return status;
 		}
-		//강제 탈퇴
+		//강제 탈퇴(선생님)
 		@ResponseBody
 		@RequestMapping(value = "retired", method = RequestMethod.POST)
-		public int retired(int num) {
+		public int teacherRetired(int num) {
 			int result =  cRepo.deleteRetired(num);
 			return result;
+		}
+		//탈퇴(학생)
+		@RequestMapping(value = "retired", method = RequestMethod.GET)
+		public String studentRetired(int num) {
+			cRepo.deleteRetired(num);
+			return "redirect:afterLoginLocation";
 		}
 		
 		//검색

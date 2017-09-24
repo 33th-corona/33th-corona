@@ -223,15 +223,14 @@ public class CustomerController {
 		//자신의 이미지 로직
 		@RequestMapping(value="imgStatus", method=RequestMethod.GET)
 		public String download(HttpServletResponse response, HttpServletRequest request, String imgName){
-			HttpSession session = request.getSession();
-			String original_fileName = (String)session.getAttribute("userImg");
+
 			try {
-				response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(original_fileName, "UTF-8"));
+				response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(imgName, "UTF-8"));
 				
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			String fullPath = path + "/" + original_fileName;
+			String fullPath = path + "/" + imgName;
 			//파일 가져오기
 			FileInputStream filein = null;
 			//브라우저로 내보내기

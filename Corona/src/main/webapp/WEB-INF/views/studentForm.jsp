@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<!-- 완료  -->
 <html>
 <head>
 
@@ -156,10 +157,13 @@ ul.c-controls li a:hover {
     padding: 5px 10px;
     font-size: 1.25em;
 }
+.text-muted{
+	font-size: 1.2em;
+}
 </style>
 </head>
 
-<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1700px; background-repeat: no-repeat;">
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1700px; background-repeat: repeat;">
 
 	<div class="body-overlay"></div>
 	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
@@ -234,7 +238,7 @@ ul.c-controls li a:hover {
 				</div>
 				<div class="col-md-2">
 				<form action="#">
-				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; background-repeat: space; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
@@ -251,12 +255,23 @@ ul.c-controls li a:hover {
 		</section>
 		<section>
 			<div class="row">
-        <div class="col-xs-12 col-sm-offset-2 col-sm-10">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
+                	<div class="col-xs-12 col-sm-2">
                     <span class="title">Contacts</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                    <span class="title" style="padding-left: 0">아이디</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                    <span class="title" style="padding-left: 0">이름</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                    <span class="title" style="padding-left: 0">이 메일</span>
+                    </div>
                     <ul class="pull-right c-controls">
-                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-line-search"></i></a></li>
+                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>
                     </ul>
                 </div>
                 
@@ -265,55 +280,50 @@ ul.c-controls li a:hover {
                         <div class="input-group c-search">
                             <input type="text" class="form-control" id="contact-list-search">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                                <button class="btn btn-default" type="button"><span class="icon-line-search"></span></button>
                             </span>
                         </div>
                     </div>
                 </div>
                 
                 <ul class="list-group" id="contact-list">
-                		<c:forEach items="${allList}" var="uList">
                     	<c:forEach items="${userList}" var="sList">
                     <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <img src="imgStatus" alt="Scott Stevens" class="img-responsive img-circle" />
+                		<c:forEach items="${allList}" var="uList">
+                        	<c:if test="${sList.user_id == uList.id}">
+                        <div class="col-xs-12 col-sm-2">
+                            <img id="profileImg" src="imgStatus?imgName=${uList.img_name}" alt="Scott Stevens" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" />
                         </div>
-                        <div class="col-xs-12 col-sm-9">
-                        	<c:if test="${userList.user_id == allList.id}">
+                        <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle;">
                             <span class="name">${sList.user_id}</span><br/>
-                            <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="${uList.name}"></span>
-                            <span class="visible-xs"> <span class="text-muted">${uList.name}</span><br/></span>
-                            <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="${uList.email}"></span>
-                            <span class="visible-xs"> <span class="text-muted">${uList.email}</span><br/></span>
-                            </c:if>
+                        </div>
+                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
+                            <span class="text-muted">${uList.name}</span><br/>
+                            </div>
+                            <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
+                            <span class="text-muted">${uList.email}</span><br/>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 5px; vertical-align: middle;">
+                        <c:if test="${uList.id == loginId}">
+                        <div class="feature-box fbox-border fbox-light fbox-effect">
+							<div num="${sList.num}" class="fbox-icon center retired" style="background-color: #eeeeee; margin-left: 40px;">
+								<a href="#"><i class="icon-line-cross"></i></a>
+							</div>
+						</div>
+                        </c:if>
                         </div>
                         <div class="clearfix"></div>
-                    </li>
+                            </c:if>
                     	</c:forEach>
+                    </li>
                     	</c:forEach>
                 </ul>
             </div>
         </div>
 	</div>
+
     
-    <div id="cant-do-all-the-work-for-you" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="mySmallModalLabel">Ooops!!!</h4>
-                </div>
-                <div class="modal-body">
-                    <p>I am being lazy and do not want to program an "Add User" section into this snippet... So it looks like you'll have to do that for yourself.</p><br/>
-                    <p><strong>Sorry<br/>
-                    ~ Mouse0270</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- JavaScrip Search Plugin -->
-    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+
 		</section>
 		<!-- Footer
 		============================================= -->
@@ -340,8 +350,19 @@ ul.c-controls li a:hover {
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 	<script>
 	$(function() {
+		$('.feature-box').mouseover(function() {
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','#000530');
+			$(this).css('background-color', '#000530');
+		});
+		$('.feature-box').mouseout(function() {
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','white');
+			$(this).css('background-color', '#111111');
+		});
 		$('.datatable').dataTable({
 			  "columns": [
 				    { "width": "50%" },
@@ -362,16 +383,7 @@ ul.c-controls li a:hover {
 		$('#lessonbtn').on('click', function() {
 			$('#lesson').submit();
 		});
-		$('.feature-box').mouseover(function() {
-			$(this).find('h2').css('color', '#ffffff');
-			$(this).find('a').css('color','#000530');
-			$(this).css('background-color', '#000530');
-		})
-		$('.feature-box').mouseout(function() {
-			$(this).find('h2').css('color', '#ffffff');
-			$(this).find('a').css('color','white');
-			$(this).css('background-color', '#111111');
-		})
+	
 		$('.location').on('click', locationStatus);
 		$('#wrapper').animate({
 			backgroundColor: "rgba(255, 255, 255, 0.5)"
@@ -414,7 +426,16 @@ ul.c-controls li a:hover {
 		            elem.slideUp( 100 );
 		        }
 		    })
+		    $('.retired').on('click', retired)
 	});
+	
+	function retired(){
+		var result = confirm("정말 탈퇴하시겠습니까?");
+		var num = $(this).attr('num');
+		if(result){
+			location.href = "${pageContext.request.contextPath}/retired?num=" + num;
+		}
+	}
 	
 	function locationStatus(){
 		var status= $(this).attr('status');
