@@ -70,22 +70,26 @@
 </style>
 </head>
 
-<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1600px; background-repeat: no-repeat;">
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1700px; background-repeat: no-repeat;">
 
 	<div class="body-overlay"></div>
+	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+
+			<div class="container clearfix">
+				<h1>${classInfo.name}</h1>
+			</div>
+
+		</section>
 		<div id="wrapper" class="clearfix" >
-			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 30px; margin-top: 20px;">
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 140px;">
 			<div class="video-wrap">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; ">
 					<source src='images/videos/student.mp4' type='video/webm' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-			<div class="container clearfix">
-					<div class="emphasis-title">
-							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#222 !important;">${classInfo.name}</span>
-					</div>
-			</div>
+		</section>
+		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 		</section>
 		<section id="content" style="background-color: transparent;">
 
@@ -151,6 +155,9 @@
 				</form>
 				</div>
 				</div>
+				<div class="col_full center">
+			<a href="#" data-scrollto="#content" data-offset="20" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown" style="color: black;"></i></a>
+			</div>
 			</div>
 		</section>
 		<section>

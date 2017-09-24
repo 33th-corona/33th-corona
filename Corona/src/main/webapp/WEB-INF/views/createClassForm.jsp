@@ -117,27 +117,28 @@
 </style>
 </head>
 
-<body class="stretched no-transition" style="background-image: url('images/classCreate.jpg'); background-size: 1600px; background-repeat: no-repeat;">
+<body class="stretched no-transition" style="background-image: url('images/classCreateBack.jpg'); background-size: 1600px; background-repeat: no-repeat;">
 	<div id="wrapper" class="clearfix">
 		<div class="body-overlay"></div>
-	
+	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+
+			<div class="container clearfix">
+				<h1>반 생성</h1>
+			</div>
+
+		</section>
 		
 	
-	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 30px 0; margin-top: 20px;">
+	<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 100px 0;">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important;">
-					<source src='images/videos/classCreateForm.webm' type='video/webm' />
+					<source src='images/videos/classCreate.mp4' type='video/mp4' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-			<div class="container clearfix" style="z-index: 1;">
-					<div class="emphasis-title">
-							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color:#444 !important;">Create Class</span>
-					</div>
-			</div>
-			
 	</section>
-	
+	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+		</section>
 	
 	<section id="content" style="background-color: transparent;">
 		

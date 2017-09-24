@@ -56,13 +56,19 @@ background-color: white;
 </style>
 </head>
 
-<body class="stretched  no-transition" style="background-image: url('images/searchback.jpg'); background-size: 1600px; background-repeat: no-repeat;">
+<body class="stretched" style="background-image: url('images/searchback.jpg'); background-size: 1600px; background-repeat: no-repeat;">
 
 	<div id="wrapper" class="clearfix">
 	
 		<div class="body-overlay"></div>
-		
-		<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="margin-top: 20px;">
+		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+
+			<div class="container clearfix">
+				<h1>반 검색</h1>
+			</div>
+
+		</section>
+		<section id="page-title" class="page-title-parallax page-title-dark page-title-video">
 			<div class="video-wrap" style="z-index: 0">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
 					<source src='images/videos/search.mp4' type='video/mp4' />
@@ -74,7 +80,7 @@ background-color: white;
 				<div class="container clearfix" style="z-index: 1">
 					<div class="emphasis-title center">
 						<div class="topmargin">
-							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color: #222">Search Class</span>
+							<span class="t-rotate t700 font-body col_full" style="font-size: 60px; color: #222">&nbsp;</span>
 						<div class="col-md-2 nomargin" style="padding:0px;">
 							<select id="searchType" class="typeahead select-1 sm-form-control t-rotate"  dir="auto" style="width:100%; font-weight: bold; height: 1.0796cm; opacity: 0.8; border: 2px solid #DDD; border-right: 0; border-radius: 0 !important; line-height: 1.42857143;position: relative;   ">
 										<option value="name">ClassName</option>
@@ -95,6 +101,8 @@ background-color: white;
 			
 		
 		</section >
+		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+		</section>
 		<section>
 			<div class="container clearfix" style="margin-right: 50px;">
 				<div class="panel-heading">
