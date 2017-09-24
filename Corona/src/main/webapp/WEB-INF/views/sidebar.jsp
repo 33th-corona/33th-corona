@@ -340,10 +340,10 @@
 									<div class="col_half" id="originalImg">
 									<label for="register-form-img">Img:</label>
 									<c:if test="${userImg != null}">
-									<a href="imgStatus">${userImg}</a>
+									<a href="imgStatus?imgName=${userImg}">${userImg}</a>
 									</c:if>
 									<c:if test="${not empty mimetype}">
-									<img src ="imgStatus" style="width: 50px; height: 50px"/>
+									<img src ="imgStatus?imgName=${userImg}" style="width: 50px; height: 50px"/>
 									</c:if>
 									</div>
 									<div class="col_half col_last divcenter" id="originalImgBtn">
@@ -371,7 +371,7 @@
 					<img id="profileImg" src="imgStatus" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 					</div> -->
 					<div class="profile-userpic">
-					<img id="profileImg" src="imgStatus?${img_name}" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+					<img id="profileImg" src="imgStatus?imgName=${userImg}" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
 				</div>
 				<div class="profile-usertitle nomargin">
 					<div class="profile-usertitle-name">

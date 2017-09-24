@@ -156,6 +156,8 @@ public class LocationController {
 	public void listCome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		String id = (String)session.getAttribute("loginId");
+		String img_name = (String)session.getAttribute("userImg");
+		model.addAttribute("img_name", img_name);
 		model.addAttribute("id", id);
 		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
 		List<ClassInfo> myStudentList = cRepo.myStudentList(id);

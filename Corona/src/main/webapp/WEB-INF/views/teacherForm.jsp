@@ -75,7 +75,7 @@
 /* 왜 터졌지? */
 </style>
 </head>
-<body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: no-repeat;" >
+<body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: repeat;" >
 	<div class="body-overlay"></div>
 	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
