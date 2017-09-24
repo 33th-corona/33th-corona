@@ -47,14 +47,14 @@
 	color: #FFF;
 	}
 	.text-stroke {
-    color: #000;
+    color: #fff;
     text-shadow:
     -1px -1px 0 #ff9800,
     1px -1px 0 #ff9800,
     -1px 1px 0 #ff9800,
     1px 1px 0 #ff9800;  
 }
-	/* 그렇잔항요! */
+	
 	</style>
 	
 </head>
@@ -73,7 +73,7 @@
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
-
+	
 		<!-- Header
 		============================================= -->
 		<header id="header" class="full-header static-sticky" data-sticky-offset="0">
@@ -103,19 +103,15 @@
 		</header>
 		<!-- Slider
 		============================================= -->
-		
 		<section id="slider" class="page-title-parallax page-title-dark page-title-video">
-		
-			<div class="col-md-2">
-			</div>
-			<div class="section col-md-8 dark nomargin noborder ohidden content-wrap" style="padding: 120px 0; border-radius: 50%;">
-				<div class="video-wrap" style="z-index: 0">
-				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1050px;">
+
+			<div class="section dark nomargin noborder ohidden content-wrap" style="padding: 120px 0;">
+				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
 					<source src='images/videos/corona2.webm' type='video/mp4' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-				<div class="container center clearfix" style="width: 1023px;">
+				<div class="container center clearfix" style="width: 1023px; height: 310px;">
 					<div class="emphasis-title">
 						<span class="before-heading opm-medium t300 uppercase font-primary" style="font-weight: bold !important;">We are</span>
 						<h1>
@@ -217,16 +213,15 @@
 							</form>
 						</div>
 					</div>
-					
-										
+									
 				</div>
-			</div>
 			
-		</section><!-- #slider end -->
-
+		</section>
+		</div>
+		<!-- #slider end -->
 		<!-- Footer
 		============================================= -->
-		<footer id="footer" class="dark noborder">
+		<footer id="footer" class="dark noborder" style="padding-top:40px;">
 
 			<div id="copyrights">
 				<div class="container center clearfix">
@@ -235,8 +230,7 @@
 			</div>
 
 		</footer><!-- #footer end -->
-
-	</div><!-- #wrapper end -->
+	<!-- #wrapper end -->
 
 	<!-- Go To Top
 	============================================= -->
