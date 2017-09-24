@@ -120,7 +120,7 @@
 }
 .title {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.0em;
     font-weight: bold;
     padding: 5px 15px;
 }
@@ -153,10 +153,9 @@ ul.c-controls li a:hover {
 }
 
 .name {
-    font-size: 1.7em;
+    font-size: 1.2em;
     font-weight: 700;
 }
-
 .c-info {
     padding: 5px 10px;
     font-size: 1.25em;
@@ -164,6 +163,7 @@ ul.c-controls li a:hover {
 .text-muted{
 	font-size: 1.2em;
 }
+.feature-box.fbox-light .fbox-icon i { line-height: 30px !important; }
 /* 왜 터졌지? */
 </style>
 </head>
@@ -262,8 +262,81 @@ ul.c-controls li a:hover {
 					<div id="homeWork" class="entry clearfix"
 					style="margin-bottom: 10px; padding-bottom: 10px;">
 					<div class="table-responsive col-md-6">
-					<h2>가입 신청 정보</h2>
-					<table id="datatable3"
+					<div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                	<div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0; padding-top:5px;">
+                    <span class="title">신청학생</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-3" style="padding-left: 0;">
+                    <span class="title" style="padding-left: 0; padding-top:10px;">&nbsp;&nbsp;&nbsp;아이디</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2" style="padding-left: 0;">
+                    <span class="title" style="padding-left: 0; padding-top:10px;">이름</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 center" style="padding-left: 15px; padding-top:5px;">
+                    <span class="title center" style="padding-left: 0">승낙</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 center" style="padding-left: 15px; padding-top:5px;">
+                    <span class="title center" style="padding-left: 0">거절</span>
+                    </div>
+                    <ul class="pull-right c-controls">
+                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="row" style="display: none;">
+                    <div class="col-xs-12">
+                        <div class="input-group c-search">
+                            <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="icon-line-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="list-group" id="contact-list">
+                    	<c:forEach items="${userList}" var="sList">
+                		<c:forEach items="${allList}" var="uList">
+                        	<c:if test="${sList.status == 'request'}">
+                        	<c:if test="${sList.user_id == uList.id}">
+                        	<c:if test="${sList.user_id != loginId}">
+                    <li class="list-group-item">
+                        <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0;">
+                            <img id="profileImg" src="imgStatus?imgName=${uList.img_name}" alt="Scott Stevens" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" />
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="margin-top: 20px; vertical-align: middle; padding-left: 5px; ">
+                            <span class="name">${sList.user_id}</span><br/>
+                        </div>
+                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
+                            <span class="text-muted">${uList.name}</span><br/>
+                            </div>
+                            <div class="col-xs-12 col-sm-2" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
+                            <div class="feature-box fbox-border fbox-light fbox-effect">
+							<div num="${sList.num}"  status="student" class="fbox-icon center status" style="background-color: #eeeeee; margin-left:25px;  width: 32px; height: 32px;">
+								<a href="#"><i class="icon-checkmark" style="font-size: 20px;"></i></a>
+							</div>
+						</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
+                        <div class="feature-box fbox-border fbox-light fbox-effect">
+							<div num="${sList.num}" status="withdraw" class="fbox-icon center status" style="background-color: #eeeeee; margin-left:31px; width: 32px; height: 32px;">
+								<a href="#"><i class="icon-line-cross" style="font-size: 20px;"></i></a>
+							</div>
+						</div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    		</c:if>
+                    		</c:if>
+                            </c:if>
+                    	</c:forEach>
+                    	</c:forEach>
+                </ul>
+        </div>
+	</div>
+					<%-- <table id="datatable3"
 						class="table table-striped table-bordered datatable"
 						cellspacing="0" width="100%">
 						<thead>
@@ -298,23 +371,23 @@ ul.c-controls li a:hover {
 								</c:if>
 							</c:forEach>
 						</tbody>
-					</table>
+					</table> --%>
 					</div>
 					<div class="col-md-6">
 					<div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
-                	<div class="col-xs-12 col-sm-2">
-                    <span class="title">Contacts</span>
+                	<div class="col-xs-12 col-sm-2" style="padding-top:5px; padding-left: 0; padding-right: 0;">
+                    <span class="title">학생들</span>
                     </div>
-                    <div class="col-xs-12 col-sm-3">
-                    <span class="title" style="padding-left: 0">아이디</span>
+                    <div class="col-xs-12 col-sm-3" style="padding-left: 0; padding-top:5px;">
+                    <span class="title" style="padding-left: 0; padding-top:5px;">&nbsp;&nbsp;&nbsp;아이디</span>
                     </div>
-                    <div class="col-xs-12 col-sm-2">
-                    <span class="title" style="padding-left: 0">이름</span>
+                    <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-top:5px;">
+                    <span class="title" style="padding-left: 0; padding-top:5px;">이름</span>
                     </div>
-                    <div class="col-xs-12 col-sm-3">
-                    <span class="title" style="padding-left: 0">이 메일</span>
+                    <div class="col-xs-12 col-sm-3" style="padding-left: 0; padding-top:5px;">
+                    <span class="title" style="padding-left: 0; padding-top:5px;">이 메일</span>
                     </div>
                     <ul class="pull-right c-controls">
                         <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>
@@ -334,34 +407,35 @@ ul.c-controls li a:hover {
                 
                 <ul class="list-group" id="contact-list">
                     	<c:forEach items="${userList}" var="sList">
-                    <li class="list-group-item">
-                		<c:forEach items="${allList}" var="uList">
+                    	<c:forEach items="${allList}" var="uList">
                         	<c:if test="${sList.user_id == uList.id}">
-                        <div class="col-xs-12 col-sm-2">
+                        	<c:if test="${sList.status == 'student'}">
+                    <li class="list-group-item">
+                		
+                        <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0;">
                             <img id="profileImg" src="imgStatus?imgName=${uList.img_name}" alt="Scott Stevens" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" />
                         </div>
-                        <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle;">
+                        <div class="col-xs-12 col-sm-3" style="margin-top: 20px; vertical-align: middle; padding-left: 5px; ">
                             <span class="name">${sList.user_id}</span><br/>
                         </div>
-                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
+                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
                             <span class="text-muted">${uList.name}</span><br/>
                             </div>
-                            <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
+                            <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
                             <span class="text-muted">${uList.email}</span><br/>
                         </div>
-                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 5px; vertical-align: middle;">
-                        <c:if test="${uList.id == loginId}">
+                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
                         <div class="feature-box fbox-border fbox-light fbox-effect">
-							<div num="${sList.num}" class="fbox-icon center retired" style="background-color: #eeeeee; margin-left: 40px;">
-								<a href="#"><i class="icon-line-cross"></i></a>
+							<div num="${sList.num}" class="fbox-icon center retired" style="background-color: #eeeeee; margin-left: 55px; width: 32px; height: 32px;">
+								<a href="#"><i class="icon-line-cross" style="font-size: 20px;"></i></a>
 							</div>
 						</div>
-                        </c:if>
                         </div>
                         <div class="clearfix"></div>
+                    </li>
+                     </c:if>
                             </c:if>
                     	</c:forEach>
-                    </li>
                     	</c:forEach>
                 </ul>
         </div>
@@ -493,7 +567,7 @@ ul.c-controls li a:hover {
 								} ],
 								"bSortClasses" : false
 							});
-			$('#datatable3 tbody').on('click', '.status', status);
+			$('.status').on('click', status);
 			$('#datatable4 tbody').on('click', '.retired', retired);
 			$('#lessonbtn').on('click', function() {
 				$()
@@ -509,7 +583,7 @@ ul.c-controls li a:hover {
 				$(this).css('background-color', '#111111');
 			})
 			$('.location').on('click', locationStatus);
-			
+			$('.retired').on('click', retired);
 			$('#wrapper').animate({
 				backgroundColor: "rgba(255, 255, 255, 0.5)"
 			}, 1500);
@@ -540,24 +614,12 @@ ul.c-controls li a:hover {
 						data : 'num=' + num + '&status=' + statusChange,
 						success : function(repo) {
 							if(repo == 'student'){
-								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
-								$('th.result').find('button').each(function(index) {
-									var wnum = $(this).attr('num');
-									var wstatusChange = $(this).attr('status');
-									if(wstatusChange == 'withdraw' && num == wnum){
-										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>승인완료</button>');
-									}
-								})
+								alert("승인 하였습니다.");
+								$(btn).parent().parent().parent().remove();
 							}
 							if(repo == 'withdraw'){
-								$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
-								$('th.result').find('button').each(function(index) {
-									var snum = $(this).attr('num');
-									var sstatusChange = $(this).attr('status');
-									if(sstatusChange == 'student' && num == snum){
-										$(this).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>거부완료</button>');
-									}
-								})
+								alert("거부 하였습니다.");
+								$(btn).parent().parent().parent().remove();
 							}
 						},
 						error : function(repo) {
@@ -572,15 +634,17 @@ ul.c-controls li a:hover {
 		function retired(){
 			var num = $(this).attr('num');
 			var btn = $(this);
-			var result = confirm("retired : 실행 하시겠습니까?");
+			var result = confirm("강제 탈퇴 시키겠습니까?");
 			if(result){
 			$.ajax({
 				url : 'retired',
 				data : 'num=' + num,
 				method : 'POST',
-				success : function(repo) {
-					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-blue tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>탈퇴완료</button>');
-				},
+				success : function(repo){
+					alert("탈퇴 완료되었습니다.");
+					$(btn).parent().parent().parent().remove();
+				} 
+				,
 				error : function(repo) {
 					alert("오류 : " + repo)
 				}

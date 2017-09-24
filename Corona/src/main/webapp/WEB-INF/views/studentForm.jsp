@@ -426,7 +426,7 @@ ul.c-controls li a:hover {
 		            elem.slideUp( 100 );
 		        }
 		    })
-		    $('.retired').on('click', retired)
+		    $('.retired').on('click', retired);
 	});
 	
 	function retired(){
