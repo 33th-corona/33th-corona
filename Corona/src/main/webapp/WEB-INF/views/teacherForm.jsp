@@ -257,12 +257,12 @@ ul.c-controls li a:hover {
 			</div>
 		</section>
 		<section>
-			<div class="container clearfix" style="margin-right: 50px;">
-				<div class="panel-heading">
+			<div class="container clearfix" style="margin-right: 85px;">
+				<div class="panel-heading" style="width: 1200px;">
 					<div id="homeWork" class="entry clearfix"
 					style="margin-bottom: 10px; padding-bottom: 10px;">
 					<div class="table-responsive col-md-6">
-					<div class="row">
+					<div class="row" style=" padding-right: 10px;">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                 	<div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0; padding-top:5px;">
@@ -336,45 +336,9 @@ ul.c-controls li a:hover {
                 </ul>
         </div>
 	</div>
-					<%-- <table id="datatable3"
-						class="table table-striped table-bordered datatable"
-						cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>UserId</th>
-								<th>Commit</th>
-								<th>WithDraw</th>
-							</tr>
-						</thead>
-						<tfoot>
-							<tr>
-								<th>UserId</th>
-								<th>Commit</th>
-								<th>WithDraw</th>
-							</tr>
-						</tfoot>
-						<tbody>
-							<c:forEach items="${userList}" var="uList">
-								<c:if test="${uList.status == 'request'}">
-								<tr>
-									<th>${uList.user_id}</th>
-									<th class="center result">
-										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="student" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin status boran"><i class="icon-angle-right" style="width:20px;"></i>승낙</button>
-										</c:if>
-									</th>
-									<th class="center result">
-										<c:if test="${uList.status eq 'request'}">
-											<button num="${uList.num}" status="withdraw" class="button button-rounded button-reveal button-small button-border button-red tright nomargin status"><i class="icon-angle-right" style="width:20px;"></i>거부</button>
-										</c:if>
-									</th>
-								</c:if>
-							</c:forEach>
-						</tbody>
-					</table> --%>
 					</div>
 					<div class="col-md-6">
-					<div class="row">
+					<div class="row" style= "padding-left: 10px;">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                 	<div class="col-xs-12 col-sm-2" style="padding-top:5px; padding-left: 0; padding-right: 0;">
@@ -440,36 +404,7 @@ ul.c-controls li a:hover {
                 </ul>
         </div>
 	</div>
-					<%-- <h2>가입자 명단</h2>
-							<!-- Default panel contents -->
-
-							<!-- Table -->
-							<table id="datatable4" class="table">
-								<thead>
-									<tr>
-										<th>Num</th>
-										<th>UserId</th>
-										<th>Email</th>
-										<th>Retired</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${userList}" var="sList">
-										<c:if test="${sList.status == 'student'}">
-										<tr>
-											<th>${sList.num}</th>
-											<th>${sList.user_id}</th>
-											<c:forEach items="${allList}" var="all">
-											<c:if test="${all.id == sList.user_id}">
-											<th>${all.email}</th>
-											</c:if>
-											</c:forEach>
-											<th><button num="${sList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin retired"><i class="icon-angle-right" style="width: 20px "></i>탈퇴</button></th>
-										</tr>
-										</c:if>
-									</c:forEach>
-								</tbody>
-							</table> --%>
+				
 						</div>
 					</div>
 				</div>
