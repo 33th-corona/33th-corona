@@ -66,7 +66,7 @@
 				============================================= -->
 				<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 				<c:forEach var="board" items="${boardList}" varStatus="stat">
-					<div class="entry clearfix">
+					<div class="entry clearfix col-md-4 col-xs-4 col-sm-4 col-lg-4">
 						<div class="entry-image clearfix">
 							<div class="fslider" data-animation="fade-left-right" data-pagi="true" data-arrows="true"  data-pause="2000" data-lightbox="gallery">
 								<div class="flexslider">
