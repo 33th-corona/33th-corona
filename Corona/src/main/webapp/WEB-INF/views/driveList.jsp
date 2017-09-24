@@ -82,12 +82,19 @@
 							<h2><a href="driveDetail?num=${drive.num}">${drive.title}</a></h2>
 						</div>
 						<ul class="entry-meta clearfix">
+							<li>${drive.user_id}</li>
 							<li><i class="icon-calendar3"></i>${drive.register_time}</li>
 							<li><a href="blog-single.html#comments"><i class="icon-comments"></i></a></li>
 							<li>조회수 : ${drive.hit}</li>
 						</ul>
-						<div class="entry-user_id">
-							<h2>${drive.user_id}</h2>
+						<div class="entry-fileList">
+							<c:forEach var="dfL" items="${dfList}">
+								<c:forEach var="df" items="${dfL}">
+									<c:if test="${df.df_num == drive.num}">
+										<a href="download?num=${df.num}">${df.original_filename}</a>																
+									</c:if>
+								</c:forEach>
+							</c:forEach>
 							<a href="driveDetail?num=${drive.num}" class="more-link">Read More</a>
 						</div>
 					</div>

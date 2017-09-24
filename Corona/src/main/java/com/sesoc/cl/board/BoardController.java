@@ -73,7 +73,6 @@ public class BoardController {
 	
 	@RequestMapping("/boardDetail")
 	public String boardDetail(int num, Model model, String status){
-		System.out.println("디테일 컨트롤러");
 		Board board = repo.findOne(num);
 		repo.updateHits(num); //조회수 업데이트
 		
@@ -81,8 +80,6 @@ public class BoardController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("board",board);
-		model.addAttribute("status", status);
-		System.out.println(board+"/"+status);
 		return "boardDetail";
 	}
 	
@@ -111,12 +108,11 @@ public class BoardController {
 		//class_num는 임시 테스트용으로 1 삽입
 		board.setClass_num(1);
 		board.setNum(seq);
-		System.out.println("보드 객체 : "+board);
+		//보드DB에 게시글 정보만 저장
 		int i = repo.insertBoard(board);
 		
 		if(i == 1 && file1 != null){//성공하면
 			Board_File bf = new Board_File(0,"","",seq);
-			System.out.println("bf : "+bf);
 			//파일 다중 첨부시  for문으로 돌려서 insert 저장
 			for(MultipartFile file : multiFiles.getFile1()) {
 				String originalName = file.getOriginalFilename();
@@ -132,7 +128,6 @@ public class BoardController {
 	
 	@RequestMapping(value="/boardUpdateForm", method=RequestMethod.POST)
 	public String boardUpdate(int num, Model model){
-		System.out.println("업데이트폼 컨트롤러");
 		Board board = repo.findOne(num);
 		List<Board_File> list = repo.selectBoard_fileAll(num);
 		model.addAttribute("board",board);
@@ -142,10 +137,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/boardUpdate", method=RequestMethod.POST)
 	public String boardUpdate(Board board, RedirectAttributes ra, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames){
-		System.out.println("업데이트 컨트롤러"+board);
 		repo.updateBoard(board);
 		//파일을 제외한 정보는 업데이트 끝;
-		
 		List<Board_File> list = repo.selectBoard_fileAll(board.getNum());
 		
 		//삭제 처리 
@@ -169,7 +162,6 @@ public class BoardController {
 		
 		//파일이름 null로 넘어오면
 		if(fileNames.getOriginal_filename() == null){
-			//귀찮으니 기존 파일 전부 다 삭제
 			for(Board_File boardFile : list) {
 				FileService.deleteFile(uploadPath+"/"+boardFile.getSaved_filename());
 				repo.deleteFile(boardFile.getNum());

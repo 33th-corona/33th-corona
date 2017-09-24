@@ -50,24 +50,26 @@ public class DriveController {
 		int totalRecordCount= repo.getDriveCount(searchtype,searchword);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
 		List<Drive> drivelist = repo.selectDriveAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage());
-		/*해당 페이지 게시글의 첨부파일 리스트 생성
-		List<List<Drive>> dfList = new ArrayList<>();
-		List<Drive> onelist = new ArrayList<>();
+		
+		//해당 페이지 게시글의 첨부파일 리스트 생성
+		List<List<Drive_File>> dfList = new ArrayList<>();
+		List<Drive_File> onelist = new ArrayList<>();
 		for(Drive d :drivelist){
 			onelist = repo.selectDrive_fileAll(d.getNum());
 			dfList.add(onelist);
 			System.out.println("dfList사이즈 : "+dfList.size());
 		}
+		
 		for(int i=0;i<dfList.size();i++){
 			System.out.println(dfList.get(i));
-		}*/
+		}
 		
 		model.addAttribute("navi",navi);
 		model.addAttribute("countpage",countPerPage);
 		model.addAttribute("searchword",searchword);
 		model.addAttribute("searchtype",searchtype);
 		model.addAttribute("driveList", drivelist);
-		//model.addAttribute("dfList",dfList);
+		model.addAttribute("dfList",dfList);
 		return "driveList";
 	}
 	
@@ -83,14 +85,16 @@ public class DriveController {
 		int seq = repo.seq();
 		String user_id = (String) session.getAttribute("loginId");
 		Drive drive =  new Drive(seq, 1, user_id , title, content, "", "", "", 0);
-		repo.insert(drive);
+		repo.insert(drive); //드라이브DB
+		
 		//파일 다중 첨부시  for문으로 돌려서 insert 저장
+		Drive_File df = new Drive_File(0,"","",seq);
 		for(MultipartFile file : multiFiles.getFile1()) {
 			String originalName = file.getOriginalFilename();
 			String savedFileName = FileService.saveFile(file, uploadPath);
-			drive.setOriginal_filename(originalName);
-			drive.setSaved_filename(savedFileName);
-			repo.insert_file(drive);
+			df.setOriginal_filename(originalName);
+			df.setSaved_filename(savedFileName);
+			repo.insert_file(df);
 		}//for
 		return "redirect:driveList";
 	}
@@ -100,7 +104,7 @@ public class DriveController {
 	@RequestMapping(value = "driveUpdateForm", method = RequestMethod.GET)
 	public String updateForm(int num, Model model) {
 		Drive drive = repo.selectOne(num);
-		List<Drive> list = repo.selectDrive_fileAll(drive.getNum());
+		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
 		return "driveUpdate";
@@ -115,11 +119,11 @@ public class DriveController {
 		drive.setContent(content);
 		repo.updateOne(drive);
 		//게시판 num과 같은 drive_file리스트를 가져옴
-		List<Drive> list = repo.selectDrive_fileAll(num);
+		List<Drive_File> list = repo.selectDrive_fileAll(num);
 		
 		//삭제 처리 
 		if(fileNames.getOriginal_filename() != null){
-			for(Drive driveFile : list) {
+			for(Drive_File driveFile : list) {
 				int check = 0; //스위치
 				String originalSavedFile = driveFile.getOriginal_filename();
 				for(String original_filename : fileNames.getOriginal_filename()) {
@@ -139,7 +143,7 @@ public class DriveController {
 		//파일이름 null로 넘어오면
 		if(fileNames.getOriginal_filename() == null){
 			//귀찮으니 기존 파일 전부 다 삭제
-			for(Drive driveFile : list) {
+			for(Drive_File driveFile : list) {
 				FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
 				repo.deleteFile(driveFile.getNum());
 			}
@@ -148,12 +152,13 @@ public class DriveController {
 		//수정 처리
 		if(!(file1 == null)){
 			//삽입 처리와 같은 방식으로 수정 처리 시작
+			Drive_File df = new Drive_File(0,"","",drive.getNum());
 			for(MultipartFile file : multifiles.getFile1()) {
 				String originalName = file.getOriginalFilename();
 				String savedFileName = FileService.saveFile(file, uploadPath);
-				drive.setOriginal_filename(originalName);
-				drive.setSaved_filename(savedFileName);
-				repo.insert_file(drive);
+				df.setOriginal_filename(originalName);
+				df.setSaved_filename(savedFileName);
+				repo.insert_file(df);
 			}
 		}
 		
@@ -166,10 +171,10 @@ public class DriveController {
 		//Drive drive = repo.selectOne(num);
 		
 		//게시판 num과 같은 drive_file리스트를 가져옴
-		List<Drive> list = repo.selectDrive_fileAll(num);
+		List<Drive_File> list = repo.selectDrive_fileAll(num);
 		
 		//삭제 처리
-		for(Drive driveFile : list) {
+		for(Drive_File driveFile : list) {
 			FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
 			repo.deleteFile(driveFile.getNum());
 		}
@@ -184,7 +189,8 @@ public class DriveController {
 	public String driveDetailForm(int num, Model model) {
 		repo.updateHit(num);
 		Drive drive = repo.selectOne(num);
-		List<Drive> list = repo.selectDrive_fileAll(drive.getNum());
+		
+		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
 		
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
@@ -194,9 +200,10 @@ public class DriveController {
 	//다운로드 로직
 	@RequestMapping(value="download", method=RequestMethod.GET)
 	public String download(int num, HttpServletResponse response){
-		Drive fileDrive = repo.selectFileOne(num);
+		Drive_File fileDrive = repo.selectFileOne(num);
 		//다운로드 수 갱신
 		repo.updateDownCount(num);
+		
 		String original_fileName = fileDrive.getOriginal_filename();
 		String saved_fileName = fileDrive.getSaved_filename();
 		try {

@@ -29,12 +29,12 @@ public class DriveRepository {
 		return dao.selectOne(num);
 	}
 	
-	public List<Drive> selectDrive_fileAll(int drive_num){
+	public List<Drive_File> selectDrive_fileAll(int drive_num){
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
 		return dao.selectDrive_fileAll(drive_num);
 	}
 	
-	public Drive selectFileOne(int num) {
+	public Drive_File selectFileOne(int num) {
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
 		return dao.selectFileOne(num);
 	}
@@ -74,9 +74,9 @@ public class DriveRepository {
 		System.out.println("dao : "+drive);
 		return dao.insert(drive);
 	}
-	public int insert_file(Drive drive) {
+	public int insert_file(Drive_File df) {
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
-		return dao.insert_file(drive);
+		return dao.insert_file(df);
 	}
 	
 	public int getDriveCount(String searchtype, String searchword) {

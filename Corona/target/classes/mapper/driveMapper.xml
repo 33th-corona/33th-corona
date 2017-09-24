@@ -64,7 +64,7 @@
 		)
 	</insert>
 	
-	<insert id="insert_file" parameterType="Drive">
+	<insert id="insert_file" parameterType="Drive_File">
 		insert into drive_file values(
 			Drive_file_seq.NEXTVAL, #{original_filename}, #{saved_filename}, #{num}
 		)

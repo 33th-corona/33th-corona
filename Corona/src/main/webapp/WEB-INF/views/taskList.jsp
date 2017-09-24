@@ -453,29 +453,15 @@
 	</script>
 	
 	<script type="text/javascript">
-	var d = new Date();
-	var seven = d.getTime(); //1970년부터 지금까지 밀리초
-	var now = Date.now(); //이것도 똑같음
-	//alert(seven+'/'+now);
-	//alert();
+	var now = Date.now(); //1970~밀리초
+	var enddate = +new Date('2017-09-25 20:20:22');
+	var ms = (enddate-now)/1000;
 	
-	var enddate = new Date('2017-09-23 20:41:22');
-	var changems = enddate.setMilliseconds();
-	alert(changems);
-	
-	//alert('밀리세컨드로 변환 :'+changems); //뭐가 나오긴 하는데 좀 다름...
-	
-	var ms = enddate - now;
-	//alert(enddate);
-	
-	
-	var clock = $('#c3').FlipClock(5, {
+	var clock = $('#c3').FlipClock(ms, {
 		clockFace: 'DailyCounter',
 		countdown: true
 	});
 	</script>
-	
-	
 	
 	</div>
 
