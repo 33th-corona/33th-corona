@@ -124,7 +124,7 @@
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 시작</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 참여</h2></div>
 				</div>
 				</form>
 				</div> 
@@ -141,7 +141,7 @@
 				</div>
 				<div class="col-md-2">
 				<form action="#">
-				<div status="homeworkCreate" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #000530; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
@@ -257,8 +257,14 @@
 	
 	function locationStatus(){
 		var status= $(this).attr('status');
-		if(status == 'study') {
+		if(status == 'normal' || status == "drive"){
+			location.href = '${pageContext.request.contextPath}/boardLocation?status=' + status;
+		} else if(status == 'study') {
 			$('#lesson').submit();
+		} else if(status == 'passedLesson') {
+			location.href = '${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}';
+		} else if(status == 'homeworkList') {
+			location.href = '${pageContext.request.contextPath}/homeworkList?classNum=${classInfo.num}';
 		}
 	}
 	</script>
