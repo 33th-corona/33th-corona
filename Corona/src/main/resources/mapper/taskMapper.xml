@@ -5,7 +5,7 @@
 <mapper namespace="com.sesoc.cl.dao.TaskDAO">
 
 <!-- 과제 추가 -->
-<insert id="insertTask" parameterType="TaskInfo">
+<insert id="insertTask" parameterType="Task">
 	INSERT INTO task VALUES(
 		task_seq.nextval,
 		1, <!-- 나중에 class_num으로 정상적으로 바꿔주자 일단은 임시 클래스인 1 -->
@@ -18,7 +18,7 @@
 </insert>
 
 <!-- 과제 목록 불러오기 -->
-<select id="selectAll" resultType="TaskInfo" parameterType="int">
+<select id="selectAll" resultType="Task" parameterType="int">
 	SELECT
 		num,
 		class_num,
@@ -32,7 +32,7 @@
 </select>
 
 <!-- 과제 하나만 불러오기 -->
-<select id="selectOne" resultType="TaskInfo" parameterType="TaskInfo">
+<select id="selectOne" resultType="Task" parameterType="Task">
 	SELECT
 		num,
 		class_num,
@@ -46,7 +46,7 @@
 </select>
 
 <!-- 가장 최근에 저장한 과제를 불러오기 -->
-<select id="recent_task" resultType="TaskInfo" >
+<select id="recent_task" resultType="Task" >
 	SELECT
 		num,
 		class_num,
@@ -69,7 +69,7 @@ WHERE deadline &lt; sysdate
 
 
 <!-- 과제의 입력 값과 출력 값을 등록한다 -->
-<insert id="insertAnswer" parameterType="TaskAnswer">
+<insert id="insertAnswer" parameterType="Task_Answer">
 INSERT INTO task_answer VALUES(
 	task_answer_seq.nextval,
 	#{task_num},
@@ -80,7 +80,7 @@ INSERT INTO task_answer VALUES(
 
 
 <!-- 입력 출력 값을 가져오기 -->
-<select id="io_receive" resultType="TaskAnswer" parameterType="int">
+<select id="io_receive" resultType="Task_Answer" parameterType="int">
 SELECT
 	input_answer,
 	output_answer

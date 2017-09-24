@@ -51,6 +51,25 @@ $(function() {
 	
 	if(unzipTextResult == 1) {
 		
+		var myAudio = document.getElementById('myAudio');
+// 		console.log(myAudio);
+		var req = new XMLHttpRequest();
+		req.open('GET', 'audioPlay?saved_audio=${savedLessonInfo.saved_audio}', true);
+		req.responseType = 'blob';
+		req.onload = function() {
+			console.log('onload');
+			if (this.status === 200) {
+				console.log('status 200');
+				var audioBlob = this.response;
+				console.log(audioBlob);
+				var aud = URL.createObjectURL(audioBlob);
+				
+				myAudio.src = aud;
+			}
+		}
+		req.onerror = function() {}
+		req.send();
+		
 		window.onbeforeunload = function() {
 			$.ajax({
 				url : "deleteText",
@@ -98,7 +117,7 @@ $(function() {
 		consoleView.setDisplayIndentGuides(true);
 		consoleView.$blockScrolling = Infinity;
 		
-		var oVideo = document.getElementById("myVideo");
+		var oVideo = document.getElementById("myAudio");
 		// 자막 리스트들을 가지고 옴
 		var oTrackList = oVideo.textTracks;
 		// 자막 리스트들 중 첫번째 자막 선택
@@ -130,8 +149,8 @@ $(function() {
 					updateProjectExplorer(aa.projectExplorer);
 				}
 				
+				$("#chatMessage").val("");
 				if(aa.chatMessage) {
-					$("#chatMessage").empty();
 					var chatMessages = aa.chatMessage;
 					console.log(chatMessages);
 					var message = '';
@@ -140,8 +159,6 @@ $(function() {
 					}
 					$('#chatMessage').val(message);
 			        $("#chatMessage").scrollTop(99999999);
-				} else {
-					$("#chatMessage").empty();
 				}
 			}
 		}
@@ -228,9 +245,8 @@ function saveEditorOption(editor) {
 	<div class="row">
 		<div id="rightSecondPanel" class="editorArea">
 			<!-- 오디오  -->
-<!-- 				<audio id="myVideo" controls="controls" controlsList="nodownload" preload="auto"> -->
-			<audio id="myVideo" controls="controls" controlsList="nodownload noremote" preload="auto">
-				<source src="videoPlay?saved_audio=${savedLessonInfo.saved_audio}" type="audio/mpeg">
+			<audio id="myAudio" controls="controls" controlsList="nodownload noremote" preload="auto">
+<%-- 				<source src="videoPlay?saved_audio=${savedLessonInfo.saved_audio}" type="audio/mpeg"> --%>
 				<!-- 자막 -->
 				<track id="entrack" src="captionPlay?saved_code=${savedLessonInfo.saved_code}" kind="metadata" default></track>
 			</audio>

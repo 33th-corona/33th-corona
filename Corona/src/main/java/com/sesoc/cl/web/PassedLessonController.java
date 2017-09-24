@@ -90,9 +90,8 @@ public class PassedLessonController {
 		zip.delete();
 	}
 
-	@RequestMapping(value = "/videoPlay", method = RequestMethod.GET)
-	public String videoPlay(HttpServletResponse response, String saved_audio) {
-//		logger.info("videoPlay");
+	@RequestMapping(value = "/audioPlay", method = RequestMethod.GET)
+	public String audioPlay(HttpServletResponse response, String saved_audio) {
 		try {
 			response.setHeader("Content-Disposition",
 					"attachment; filename=" + URLEncoder.encode(saved_audio, "UTF-8"));

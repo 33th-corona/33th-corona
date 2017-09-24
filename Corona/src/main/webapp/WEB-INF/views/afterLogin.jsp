@@ -236,7 +236,7 @@
 						<div class="swiper-slide dark" style="background-image: url('images/after1.jpg');">
 							<div class="container clearfix" style="margin-left: 320px;">
 								<div class="slider-caption slider-caption-center">
-									<h2 data-caption-animate="fadeInUp" style="text-transform: capitalize;">Welcome to Corona</h2>
+									<h2 data-caption-animate="fadeInUp">Welcome to Corona</h2>
 									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스를 실시간으로 확인하여<br>학생의 웹 페이지로 전송합니다.</p>
 								</div>
 							</div>
@@ -324,7 +324,7 @@
 				<div class="row clearfix" style="margin-top: 20px;">
 				<div class="col-md-6 nopadding">
 				 <div class="col_full" style="margin-left: 30px;">
-				 <ol class="olColor">
+				  <ol class="olColor">
    					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jar파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jar파일을 넣으십시오.</p></li>
     				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">클래스 페이지로 입장하셔서 '강의 시작'버튼을 누르세요.</p>
     				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">이클립스 상단 메뉴 안 Class Ready에 존재하는 Start버튼을 눌러 강의를 시작하세요.</p>
@@ -365,7 +365,7 @@
 				<h4 style="margin-top: 0; margin-left: 30px;">Address</h4>
 				<blockquote style="margin-left: 30px;">
 							<p>COEX Convention Center Grand Ball Room 513 Yeongdong-daero, Samseong 1(il)-dong, Gangnam-gu, Seoul, Tel : 02-6002-2005</p>
-							<footer>Poscode : 06164</footer>
+							<footer>Poscode : 06164, CEO : LEE</footer>
 				</blockquote>
 				</div>
 				</div>
@@ -406,9 +406,9 @@
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script>
 	$('#google-map5').gMap({
-		 address: 'Republic Of Korea',
+		 address: 'Yeongdong-daero, Samseong 1(il)-dong, Gangnam-gu, Seoul,Republic Of Korea',
 		 maptype: 'ROADMAP',
-		 zoom: 6,
+		 zoom: 13,
 		 markers: [
 			{	
 				latitude: 37.5120661,
