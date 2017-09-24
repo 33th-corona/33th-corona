@@ -1,16 +1,16 @@
 package com.sesoc.cl.vo;
 
-public class TaskAnswer {
+public class Task_Answer {
 	private int num;
 	private int task_num;
 	private String input_answer;
 	private String output_answer;
 	
-	public TaskAnswer() {
+	public Task_Answer() {
 		
 	}
 
-	public TaskAnswer(int num, int task_num, String input_answer, String output_answer) {
+	public Task_Answer(int num, int task_num, String input_answer, String output_answer) {
 		super();
 		this.num = num;
 		this.task_num = task_num;

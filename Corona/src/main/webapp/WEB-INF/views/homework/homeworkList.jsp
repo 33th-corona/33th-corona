@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Homework List</title>
+<script src="js/jquery-3.2.1.min.js/"></script>
+<script>
+$(function() {
+	$('#createHomework').on('click', function() {
+		location.href = 'homeworkCreateForm?classNum=${classNum}';
+	});
+});
+</script>
 </head>
 <%@ include file="../topMenu.jsp" %>
 	<%@ include file="../sidebar.jsp" %>
@@ -49,6 +57,10 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<c:if test="${position eq 'teacher' }">
+		<input type="button" id="createHomework" value="과제 생성">
+	</c:if>
 	<input type="button" id="back_main" value="뒤로">
 </div>
 </section>

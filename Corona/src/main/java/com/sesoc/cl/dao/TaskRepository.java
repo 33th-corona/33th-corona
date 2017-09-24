@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sesoc.cl.vo.TaskAnswer;
-import com.sesoc.cl.vo.TaskInfo;
+import com.sesoc.cl.vo.Task;
+import com.sesoc.cl.vo.Task_Answer;
 
 @Repository
 public class TaskRepository {
@@ -15,22 +15,22 @@ public class TaskRepository {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public int insertTask(TaskInfo task) {
+	public int insertTask(Task task) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
 		int result = dao.insertTask(task);
 		return result;
 	}
 	
 	
-	public List<TaskInfo> selectAll(int class_num) {
+	public List<Task> selectAll(int class_num) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
-		List<TaskInfo> taskList = dao.selectAll(class_num);
+		List<Task> taskList = dao.selectAll(class_num);
 		return taskList;
 	}
 	
-	public TaskInfo selectOne(TaskInfo task) {
+	public Task selectOne(Task task) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
-		TaskInfo selectedTask = dao.selectOne(task);
+		Task selectedTask = dao.selectOne(task);
 		return selectedTask;
 	}
 	
@@ -40,21 +40,21 @@ public class TaskRepository {
 		return result;
 	}
 	
-	public TaskInfo recent_task() {
+	public Task recent_task() {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
-		TaskInfo selectedTask = dao.recent_task();
+		Task selectedTask = dao.recent_task();
 		return selectedTask;
 	}
 
-	public int insertAnswer(TaskAnswer task_answer) {
+	public int insertAnswer(Task_Answer task_answer) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
 		int result = dao.insertAnswer(task_answer);
 		return result;
 	}
 	
-	public List<TaskAnswer> io_receive(int task_num) {
+	public List<Task_Answer> io_receive(int task_num) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
-		List<TaskAnswer> selectedAnswer = dao.io_receive(task_num);
+		List<Task_Answer> selectedAnswer = dao.io_receive(task_num);
 		return selectedAnswer;
 	}
 

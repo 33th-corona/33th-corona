@@ -2,17 +2,17 @@ package com.sesoc.cl.dao;
 
 import java.util.List;
 
-import com.sesoc.cl.vo.TaskAnswer;
-import com.sesoc.cl.vo.TaskInfo;
+import com.sesoc.cl.vo.Task;
+import com.sesoc.cl.vo.Task_Answer;
 
 public interface TaskDAO {
 	
-	public int insertTask(TaskInfo task);
-	public List<TaskInfo> selectAll(int class_num);
-	public TaskInfo selectOne(TaskInfo task);
+	public int insertTask(Task task);
+	public List<Task> selectAll(int class_num);
+	public Task selectOne(Task task);
 	public int closed_work();
-	public TaskInfo recent_task();
-	public int insertAnswer(TaskAnswer task_answer);
-	public List<TaskAnswer> io_receive(int task_num);
+	public Task recent_task();
+	public int insertAnswer(Task_Answer task_answer);
+	public List<Task_Answer> io_receive(int task_num);
 	
 }

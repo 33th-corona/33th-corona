@@ -1,6 +1,6 @@
 package com.sesoc.cl.vo;
 
-public class TaskInfo {
+public class Task {
 	private int num;                 //과제의 관리 번호
 	private int class_num;           //반의 관리 번호
 	private String title;            //과제의 제목
@@ -10,11 +10,11 @@ public class TaskInfo {
 	private String is_closed;        //과제의 마감 유무
 	private String code;             //과제의 실질 코드
 	
-	public TaskInfo() {
+	public Task() {
 	
 	}
 
-	public TaskInfo(int num, int class_num, String title, String content, String question_file, String deadline,
+	public Task(int num, int class_num, String title, String content, String question_file, String deadline,
 			String is_closed, String code) {
 		super();
 		this.num = num;
