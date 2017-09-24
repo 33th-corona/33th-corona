@@ -87,4 +87,9 @@ public class DriveRepository {
 		return dao.getDriveCount(search);
 	}
 
+	public int updateDownCount(int num) {
+		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
+		return dao.updateDownCount(num);
+	}
+
 }

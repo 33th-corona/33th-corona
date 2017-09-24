@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="ko-KR">
 <head>
@@ -30,6 +30,14 @@
 </head>
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
+	
+<style>
+	.spancon {
+		text-align: left;
+		
+	}
+
+</style>	
 
 <body class="stretched">
 
@@ -86,13 +94,25 @@
 						<div class="entry-title">
 							<h2><a href="boardDetail?num=${board.num}">${board.title}</a></h2>
 						</div>
+						<div>
 						<ul class="entry-meta clearfix">
+							<li>${board.user_id}</li>
 							<li><i class="icon-calendar3"></i>${board.register_time}</li>
 							<li><a href="blog-single.html#comments"><i class="icon-comments"></i><c:if test="${board.reply_count != 0}">${board.reply_count}</c:if></a></li>
 							<li>조회수 : ${board.hit}</li>
 						</ul>
+						</div>
 						<div class="entry-user_id">
-							<h2>${board.user_id}</h2>
+							<p class="spancon">
+						      <c:choose>
+						           <c:when test="${fn:length(board.content) > 14}">
+						           ${fn:substring(board.content,0,13)}...
+						           </c:when>
+						           <c:otherwise>
+						            ${board.content}
+						           </c:otherwise> 
+					          </c:choose>
+					          </p><br>
 							<a href="boardDetail?num=${board.num}" class="more-link">Read More</a>
 						</div>
 					</div>

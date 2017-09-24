@@ -22,7 +22,7 @@
 
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<!-- countdown -->
 	
 
@@ -95,7 +95,7 @@
 				</c:forEach>
 				-->
 				
-				<div class="entry clearfix">
+				<div class="entry clearfix col-md-4 col-xs-4 col-sm-4 col-lg-4">
 						<div class="entry-image">
 							<a href="images/portfolio/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/blog/small/17.jpg" alt="Standard Post with Image"></a>
 						</div>
@@ -108,56 +108,57 @@
 							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-						<div class="clock" id="c1" ></div>
+						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c1"  ></div>
 	
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
 							<a href="blog-single.html"class="more-link">Read More</a>
 						</div>
 					</div>
-
-				   <div class="entry clearfix">
+					
+					
+					
+				  	<div class="entry clearfix col-md-4 col-xs-4 col-sm-64 col-lg-4">
 						<div class="entry-image">
-							<iframe src="http://player.vimeo.com/video/87701971" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							<a href="images/portfolio/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/blog/small/17.jpg" alt="Standard Post with Image"></a>
 						</div>
 						<div class="entry-title">
-							<h2><a href="blog-single-full.html">This is a Standard post with an Embedded Video</a></h2>
+							<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
 						</div>
 						<ul class="entry-meta clearfix">
-							<li><i class="icon-calendar3"></i> 16th Feb 2014</li>
-							<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>
-							<li><a href="#"><i class="icon-film"></i></a></li>
+							<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
+							<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-							<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt!</p>
-							<a href="blog-single-full.html"class="more-link">Read More</a>
+						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c2" ></div>
+	
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
+							<a href="blog-single.html"class="more-link">Read More</a>
 						</div>
 					</div>
-
-					<div class="entry clearfix">
+				
+				
+					<div class="entry clearfix col-md-4 col-xs-4 col-sm-4 col-lg-4">
 						<div class="entry-image">
-							<div class="fslider" data-arrows="false" data-lightbox="gallery">
-								<div class="flexslider">
-									<div class="slider-wrap">
-										<div class="slide"><a href="images/portfolio/full/10.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/masonry/10.jpg" alt="Standard Post with Gallery"></a></div>
-										<div class="slide"><a href="images/portfolio/full/20.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/masonry/20.jpg" alt="Standard Post with Gallery"></a></div>
-										<div class="slide"><a href="images/portfolio/full/21.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/masonry/21.jpg" alt="Standard Post with Gallery"></a></div>
-									</div>
-								</div>
-							</div>
+							<a href="images/portfolio/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/blog/small/17.jpg" alt="Standard Post with Image"></a>
 						</div>
 						<div class="entry-title">
-							<h2><a href="blog-single-small.html">This is a Standard post with a Slider Gallery</a></h2>
+							<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
 						</div>
 						<ul class="entry-meta clearfix">
-							<li><i class="icon-calendar3"></i> 24th Feb 2014</li>
-							<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
-							<li><a href="#"><i class="icon-picture"></i></a></li>
+							<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
+							<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-							<a href="blog-single-small.html"class="more-link">Read More</a>
+						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c3" ></div>
+	
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
+							<a href="blog-single.html"class="more-link">Read More</a>
 						</div>
 					</div>
+				
+
 				
 				
 				
@@ -420,12 +421,13 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	<script type="text/javascript" src="js/jquery.js"></script>
+	
 	<link rel="stylesheet" href="css/flipclock.css">
 	<script src="js/flipclock.js"></script>
 	
 	<div class="forEach">
 	
+	<!-- 
 	<c:forEach var="task" items="${taskList}" varStatus="stat">
 		<script type="text/javascript">
 			var clock = $("#clock"+${stat.count}).FlipClock(6000, {
@@ -434,15 +436,45 @@
 			});
 		</script>
 	</c:forEach>
+	-->
 	
-	<!-- 
 	<script type="text/javascript">
 	var clock = $('#c1').FlipClock(60, {
 		clockFace: 'DailyCounter',
 		countdown: true
 	});
 	</script>
-	-->
+	
+	<script type="text/javascript">
+	var clock = $('#c2').FlipClock(3600, {
+		clockFace: 'DailyCounter',
+		countdown: true
+	});
+	</script>
+	
+	<script type="text/javascript">
+	var d = new Date();
+	var seven = d.getTime(); //1970년부터 지금까지 밀리초
+	var now = Date.now(); //이것도 똑같음
+	//alert(seven+'/'+now);
+	
+	var enddate = new Date('2017-09-23 20:41:22');
+	var changems = enddate.setMilliseconds();
+	alert(changems);
+	
+	//alert('밀리세컨드로 변환 :'+changems); //뭐가 나오긴 하는데 좀 다름...
+	
+	var ms = enddate - now;
+	//alert(enddate);
+	
+	
+	var clock = $('#c3').FlipClock(5, {
+		clockFace: 'DailyCounter',
+		countdown: true
+	});
+	</script>
+	
+	
 	
 	</div>
 

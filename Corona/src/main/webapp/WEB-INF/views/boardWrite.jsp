@@ -94,9 +94,14 @@ window.onload = function(){
 			}
     	 }
     	 
+    	 if($("#title").val() == "") {
+    		 alert('제목을 입력해주세요');
+    		 $("#title").focus();
+    		 return false;
+    	 }
+    	 
          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
          $("#frm").submit();
-         alert('글 저장');
      });   
 	 
 }
@@ -108,7 +113,7 @@ window.onload = function(){
 	<table class="Bordered table">
 	<tr>
 		<th>제목</th>
-		<td><input type="text" name="title" required class="col-md-12"/></td>
+		<td><input type="text" id="title" name="title" required class="col-md-12"/></td>
 	</tr>
 	<tr>
 		<th>작성자</th>

@@ -42,6 +42,10 @@
 		select * from drive_file where num = #{num}
 	</select>
 	
+	<update id="updateDownCount">
+		update drive_file set down_count = down_count + 1 where num = #{num}
+	</update>
+	
 	<update id="updateHit" parameterType="int">
 		update drive set hit = hit + 1 where num = #{num} 
 	</update>
