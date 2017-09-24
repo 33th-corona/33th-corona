@@ -74,6 +74,7 @@
 					
 					<!-- 다운로드 수 -->
 					<div class="counter counter-large" style="color: #e74c3c;">
+					
 						<span data-from="100" data-to="56841" data-refresh-interval="50" data-speed="2500"></span>				
 					</div>
 					
