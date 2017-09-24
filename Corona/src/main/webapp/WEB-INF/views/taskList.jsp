@@ -457,6 +457,7 @@
 	var seven = d.getTime(); //1970년부터 지금까지 밀리초
 	var now = Date.now(); //이것도 똑같음
 	//alert(seven+'/'+now);
+	//alert();
 	
 	var enddate = new Date('2017-09-23 20:41:22');
 	var changems = enddate.setMilliseconds();
