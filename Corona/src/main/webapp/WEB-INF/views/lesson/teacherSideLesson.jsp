@@ -405,7 +405,7 @@ function saveEditorOption(editor) {
 							<i class="icon-switch" style="width: 30px"></i>강의 취소
 				</a>
 			</div>
-			<div id="connInfo" style="text-align: center;"></div>
+			<div id="connInfo" style="text-align: center; background-color: background-color: rgba(255,255,255,0.5); color: white;"></div>
 		</div>
 	</section>
 </div>
