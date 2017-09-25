@@ -18,8 +18,8 @@
 
 <link rel="stylesheet" href="css/dark.css" type="text/css" />
 <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+<link rel="stylesheet" href="css/construction-icons.css" type="text/css">
 <link rel="stylesheet" href="css/animate.css" type="text/css" />
-<link rel="stylesheet" href="css/et-line.css" type="text/css" />
 <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
 <link rel="stylesheet" href="css/fonts.css" type="text/css" />
@@ -46,177 +46,218 @@
 }
 </style>
 </head>
-<%@ include file="../topMenu.jsp"%>
-<%@ include file="../sidebar.jsp"%>
+<%@ include file="../topMenu.jsp" %>
+<%@ include file="../sidebar.jsp" %>
 <body class="stretched">
 <div id="wrapper" class="clearfix">
 <div class="body-overlay"></div>
-<section id="page-title">
+<!-- Page Title
+============================================= -->
+<section id="page-title" class="page-title-mini bottommargin-sm">
 	<div class="container clearfix">
-		<h1>Create Home Work</h1>
+		<h1>Create Home Work Page</h1>
+		<span>Create Home Work Page</span>
 	</div>
 </section>
 
 <section id="content">
-<div class="content-wrap" style="padding-top: 10px;">
 <div class="container clearfix">
 	<div class="row"><!-- 큰 row 시작 -->
-		<form action="#" method="post" class="nobottommargin"><!-- 동 서로 컬럼을 나눈다. -->
-			<div class="col-md-6"><!-- 서쪽 컬럼 시작 -->
-				<div class="row"><!-- 서쪽 1번째 줄 시작 -->
-					<div class="input-daterange travel-date-group bottommargin-sm">
-						<div class="col_full">
-							<div class="col_full">
-								<i class="i-rounded i-light icon-edit"></i>
-								<h2>과제 제목</h2>
-							</div>
-							<div class="row">
-								<div class="col-md-10">
-									<input type="text" type="text" id="class-form-name"
-										name="class-form-name" class="form-control">
-								</div>
-								<div class="col-md-2">
-									<i class="i-circled i-light i-small icon-ok"></i>
-								</div>
-							</div>
+		<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
+			<div class="row"><!-- 서쪽 1번째 줄 시작 -->
+				<div class="col_full">
+					<div class="row">
+						<div class="col-md-12">
+							<i class="i-rounded i-light icon-edit"></i>
+							<h2 class="nobottommargin">과제 제목</h2>
 						</div>
-						<div class="line topmargin-sm bottommargin-sm"></div>
 					</div>
-				</div><!-- 서쪽 1번째 줄 끝 -->
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" id="homeworkTitle" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div><!-- 서쪽 1번째 줄 끝 -->
+			<div class="line bottommargin-sm notopmargin"></div>
 
-				<div class="row"><!-- 서쪽 2번째 줄 시작 -->
+			<div class="row"><!-- 서쪽 2번째 줄 시작 -->
+				<div class="col_full">
+					<div class="row">
+						<div class="col-md-12">
+							<i class="i-rounded i-light icon-edit"></i>
+							<h2 class="nobottommargin">과제 내용</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<textarea id="homeworkContent" rows="5" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+			</div><!-- 서쪽 2번째 줄 끝 -->
+			<div class="line bottommargin-sm notopmargin"></div>
+
+			<div class="row"><!-- 서쪽 3번째 줄 시작 -->
+				<div class="col_full">
+					<div class="row">
+						<div class="col-sm-12">
+							<i class="i-rounded i-light icon-calendar"></i>
+							<h2 class="nobottommargin">날짜 기한</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="clear"></div> 
+							<input type="text" id="homeworkDeadline" class="tleft sm-form-control datatimepicker" placeholder="MM/DD/YYYY 00:00 AM/PM">
+						</div>
+					</div>
+				</div>
+			</div><!-- 서쪽 3번째 줄 끝 -->
+		</div><!-- 서쪽 컬럼 끝 -->
+
+		<div class="col-md-9"><!-- 동쪽 컬럼 시작 -->
+			<div class="row"><!-- 에디터 줄 시작 -->
+				<div class="col-md-12 divcenter">
 					<div class="col_full">
 						<div class="row">
-							<div class="col-md-8">
-								<i class="i-rounded i-light icon-edit"></i>
-								<h2>과제 내용</h2>
+							<div class="col-md-6">
+								<i class="i-rounded i-light icon-laptop"></i>
+								<h2 class="nobottommargin">에디터</h2>
+							</div>
+							<div class="col-md-6 text-right">
+								<input type="button" id="homeworkSubmit" class="button button-xlarge button-leaf button-rounded tright"	value="만들기"> 
+								<input type="button" id="editorReset" class="button button-xlarge button-leaf button-rounded tright" value="리셋">
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-10">
-								<textarea class="form-control" rows="5" id="comment"></textarea>
-							</div>
-							<div class="col-md-2" style="margin-top: 75px">
-								<i class="i-circled i-light i-small icon-ok"></i>
+							<div id="editor" class="col-md-11 divcenter">import java.util.*; 
+
+public class ${classFileName} { 
+	public static void main(String[] args) throws Exception { 
+		Scanner sc = new Scanner(System.in); 
+		String line = sc.nextLine();
+		System.out.println("XXXXXX"); 
+		
+	}
+}</div>
+						</div>
+						<div class="row text-right" id="editorOption" style="margin: 10px">
+							<div class="col-sm-11">
+								<div id="editorThemeChange" style="display: inline-block">
+									Theme <select id="themeChange">
+										<option value="eclipse">Eclipse</option>
+										<option value="xcode">XCode</option>
+										<option value="idle_fingers">idle Fingers</option>
+										<option value="monokai">Monokai</option>
+										<option value="gob">Green on Black</option>
+									</select>
+								</div>
+								&nbsp;
+								<div id="editorShowInvisibles" style="display: inline-block">
+									Invisibles <select id="showInvisibles">
+										<option value="true">on</option>
+										<option value="false" selected="selected">off</option>
+									</select>
+								</div>
+								&nbsp;
+								<div id="editorIndentGuides" style="display: inline-block">
+									IndentGuides <select id="indentGuides">
+										<option value="true">on</option>
+										<option value="false">off</option>
+									</select>
+								</div>
+								&nbsp;
+								<div id="editorShowGutte" style="display: inline-block">
+									Gutte <select id="showGutte">
+										<option value="true">on</option>
+										<option value="false">off</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div><!-- 서쪽 2번째 줄 끝 -->
-			</div><!-- 서쪽 컬럼 끝 -->
-
-			<div class="col-md-6"><!-- 동쪽 컬럼 시작 -->
-				<div class="row"><!-- 동쪽 1번째 줄 시작 -->
-					<i class="i-rounded i-light icon-calendar"></i>
-					<h2>날짜 기한</h2>
-<!-- 					<div class="clear"></div> -->
-<!-- 					<div class="datetimepicker2"></div> -->
-					<input type="text" class="tleft sm-form-control datatimepicker" placeholder="MM/DD/YYYY 00:00 AM/PM">
-				</div><!-- 동쪽 1번째 줄 끝 -->
-			</div><!-- 동쪽 컬럼 끝 -->
-		</form>
+				</div>
+			</div><!-- 에디터 줄 끝 -->
+		</div><!-- 동쪽 컬럼 끝 -->
 	</div><!-- 큰 row 끝 -->
-	<div class="line topmargin-sm bottommargin-sm"></div>
+	<div class="line bottommargin-sm notopmargin"></div>
 
-
+	
 	<div class="row"><!-- 입출력 값 추가 항목 줄 시작 -->
-		<div class="col-md-4"><!-- 입력 값 컬럼 시작 -->
-			<div class="col_full">
-				<i class="i-rounded i-light icon-edit"></i>
-				<h2>입력 값</h2>
-			</div>
-			<div class="col-md-8">
-				<ul>
-					<li><input type="text" id="input_example"
-						class="input1 form-control"></li>
-					<div id="plus_input"></div>
-				</ul>
-			</div>
-		</div><!-- 입력 값 컬럼 끝 -->
+        <div class="col_full">
+            <div class="col-md-4"><!-- 입력 값 컬럼 시작 -->
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <i class="i-rounded i-light icon-edit"></i>
+                            <h2 class="nobottommargin">입력 값</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11" id="plus_input">
+                            <input type="text" placeholder="Input value No.1" class="input1 form-control" style="display: block; margin-bottom: 10px">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- 입력 값 컬럼 끝 -->
+            <div class="col-md-4"><!-- 출력 값 컬럼 시작 -->
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <i class="i-rounded i-light icon-edit"></i>
+                            <h2 class="nobottommargin">출력 값</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11" id="plus_output">
+                            <input type="text" placeholder="Output value No.1" class="output1 form-control" style="display: block; margin-bottom: 10px">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- 출력 값 컬럼 끝 -->
 
-		<div class="col-md-4"><!-- 출력 값 컬럼 시작 -->
-			<div class="col_full">
-				<i class="i-rounded i-light icon-edit"></i>
-				<h2>출력 값</h2>
-			</div>
-			<div class="col-md-8">
-				<ol>
-					<li><input type="text" id="output_example"
-						class="output1 form-control"></li>
-					<div id="plus_output"></div>
-				</ol>
-			</div>
-		</div><!-- 출력 값 컬럼 끝 -->
-
-		<div class="col-md-4"><!-- 입출력 값 추가 버튼 컬럼 시작 -->
-			<div class="row">
-				<div class="col-md-10">
-					<i class="i-rounded i-light icon-line-marquee-plus"></i>
-					<h3>입출력값 추가</h3>
-				</div>
-				<div class="col-md-2" style="margin-top: 10px">
-					<img class="plus" alt="추가" src="resources/images/plus.png"
-						width="35" height="35" style="cursor: pointer;">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10">
-					<i class="i-rounded i-light icon-line-marquee-minus"></i>
-					<h3>입출력값 삭제</h3>
-				</div>
-				<div class="col-md-2" style="margin-top: 10px">
-					<img class="calsle" alt="삭제" src="resources/images/cansle.png"
-						width="35" height="35" style="cursor: pointer;">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10">
-					<i class="i-rounded i-light icon-box"></i>
-					<h3>과제 설명</h3>
-				</div>
-			</div>
-			<div class="row"><!-- 입출력 값 작성 설명 -->
-				<div class="col-md-12"><!--&nbsp 입력 값과 기대하는 출력 값을 입력하면, 학생이 작성한 과제 코드의 결과 값과 기대했던 출력 값과 비교하여 올바르면 제출이 가능하고, 서로 상이한 경우, 다시 과제 코드를 작성하는 방식입니다. 교사가 입력 할 수 있는 입력 값과 출력 값은 여러 개 생성이 가능합니다. -->
-					<ul class="list-unstyled">
-						<li style="margin-top: 20px">1. 입력 값과 기대하는 출력 값을 입력합니다.</li>
-						<li style="margin-top: 20px">2. 입력 값과 출력 값은 여러 개 생성이 가능합니다.</li>
-						<li style="margin-top: 20px">3. 학생이 작성한 과제 코드의 결과 값과 아까 기입한 &nbsp&nbsp 출력 값을 비교합니다.</li>
-						<li style="margin-top: 20px">4. 올바르면 제출이 가능하고, 서로 상이한 경우, 다시 &nbsp&nbsp 과제 코드를 작성하는 방식입니다.</li>
-					</ul>
-				</div>
-			</div>
-		</div><!--  입출력 값 추가 버튼 컬럼 끝 -->
-	</div><!-- 입출력 값 추가 항목 줄 끝 -->
-	<div class="line topmargin-sm bottommargin-sm"></div>
-
-	<div class="row"><!-- 에디터 줄 시작 -->
-		<div class="col_full">
-			<div class="row">
-				<div class="col-md-2">
-					<i class="i-rounded i-light icon-laptop"></i>
-					<h2>에디터</h2>
-				</div>
-				<div class="col-md-10" style="margin-top: 10px">
-					<a href="#" class="button button-3d button-rounded button-leaf">
-						<i class="icon-line-file"></i>클래스 명 에디터에 추가
-					</a>
-					<a href="#" class="button button-3d button-rounded button-leaf">
-						<i class="icon-line-paper"></i>메인 추가
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- Editor 여기다가 넣으세요. -->
-		<div id="editor" class="col-md-11"></div>
-		<div class="col-md-4 col-md-offset-7">
-			<button type="submit" class="button button-xlarge button-leaf button-rounded tright">
-				만들기<i class="icon-circle-arrow-right"></i>
-			</button>
-			<button type="reset" class="button button-xlarge button-leaf button-rounded tright">
-				리셋<i class="icon-line-cross"></i>
-			</button>
-		</div>
-	</div><!-- 에디터 줄 끝 -->
-</div>
+            <div class="col-md-4"><!-- 입출력 값 추가 버튼 컬럼 시작 -->
+                <div class="row plus">
+                    <div class="col-md-10">
+                        <i class="i-rounded i-light icon-line-marquee-plus"></i>
+                        <h3>입출력값 추가</h3>
+                    </div>
+                </div>
+                <div class="row calsle">
+                    <div class="col-md-10">
+                        <i class="i-rounded i-light icon-line-marquee-minus"></i>
+                        <h3>입출력값 삭제</h3>
+                    </div>
+                </div>
+                <div class="row" data-toggle="modal" data-target="#explainHomework">
+                    <div class="col-md-10">
+                        <i class="i-rounded i-light icon-box"></i>
+                        <h3>과제 설명</h3>
+                    </div>
+                </div>
+                <div class="modal fade" tabindex="-1" id="explainHomework" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h2 class="modal-title" id="myModalLabel">작성 방법</h2>
+                                </div>
+                                <div class="modal-body" style="font-size: 20px">
+                                    <p class="nobottommargin">1. 입력 값과 기대하는 출력 값을 입력합니다.</p>
+                                    <p class="nobottommargin">2. 입력 값과 출력 값은 여러 개 생성이 가능합니다.</p>
+                                    <p class="nobottommargin">3. 학생이 작성한 과제 코드의 결과 값과 아까 기입한 출력 값을 비교합니다.</p>
+                                    <p class="nobottommargin">4. 올바르면 제출이 가능하고, 서로 상이한 경우, 다시 과제 코드를 작성하는 방식입니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--  입출력 값 추가 버튼 컬럼 끝 -->
+        </div>
+    </div><!-- 입출력 값 추가 항목 줄 끝 -->
+	
 </div>
 </section>
 
@@ -231,7 +272,7 @@
 
 <div id="gotoTop" class="icon-angle-up"></div>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/plugins.js"></script>
+<!-- <script type="text/javascript" src="js/plugins.js"></script> -->
 
 <!-- Date & Time Picker JS -->
 <script type="text/javascript" src="js/components/moment.js"></script>
@@ -241,14 +282,19 @@
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="js/components/daterangepicker.js"></script>
 
+<!-- <script type="text/javascript" src="js/components/bs-switches.js"></script> -->
+<!-- <script type="text/javascript" src="js/functions.js"></script> -->
 
-<script type="text/javascript" src="js/components/bs-switches.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
+<!-- ACE web editor Library -->
+<script src="js/ace/ace.js"></script>
+<script src="js/ace/ext-language_tools.js"></script>
+
 <script>
 $(function() {
 	
 	$('.datatimepicker').datetimepicker({
-		showClose: true
+		showClose: true,
+		format: "YYYY/MM/DD HH/mm"
 	});
 	
 	//입출력 추가 삭제를 제어하는 변수
@@ -256,32 +302,152 @@ $(function() {
 
 	//입출력값 추가
 	$('.plus').on('click', function() {
-		count += 1;
-
-		var html1 = '<li><input type="text" id="input_example" class="input'+count+' form-control"></li>';
-
-		$("#plus_input").append(html1);
-
-		var html2 = '<li><input type="text" id="output_example" class="output'+count+' form-control"></li>';
-
-		$("#plus_output").append(html2);
-
+        if (count < 3) {
+            count += 1;
+            var html1 = '<input type="text" placeholder="Input value No.'+count+'" class="input'+count+' form-control" style="display: block; margin-bottom: 10px">';
+            $("#plus_input").append(html1);
+            var html2 = '<input type="text" placeholder="Output value No.'+count+'" class="output'+count+' form-control" style="display: block; margin-bottom: 10px">';
+            $("#plus_output").append(html2);
+        }
 	});
 
 	//입출력값 삭제
 	$('.calsle').on('click', function() {
-
 		if (count > 1) {
 			var remove_input = $(".input" + count);
 			var remove_output = $(".output" + count);
 
-			$(remove_input).parent().remove();
-			$(remove_output).parent().remove();
+			$(remove_input).remove();
+			$(remove_output).remove();
 
 			count -= 1;
-		} else {
-			alert("더 이상 입출력 테이블 삭제가 불가합니다.");
 		}
+	});
+	
+	var langTools = ace.require("ace/ext/language_tools");
+	var editor = ace.edit("editor");
+    
+	//web editor의 maxline을 설정
+	editor.setOptions({
+		maxLines : 21,
+		minLines : 21,
+		autoScrollEditorIntoView : true,
+        enableBasicAutocompletion: true,
+		enableSnippets: true,
+		enableLiveAutocompletion: false
+	});
+	//web editor의 syntaxing 언어 설정(java)
+	editor.getSession().setMode("ace/mode/java");
+	//web editor의 테마 설정
+	editor.setTheme("ace/theme/eclipse");
+	editor.setFontSize(20);
+	editor.setHighlightActiveLine(false);
+	editor.renderer.setShowPrintMargin(false);
+	editor.setShowInvisibles(false);
+	editor.setDisplayIndentGuides(true);
+	editor.$blockScrolling = Infinity;
+    
+    var initEditor = editor.getValue();
+    
+    $('input#editorReset').on('click', function() {
+        editor.setValue(initEditor); 
+        editor.clearSelection();
+    });
+    
+    $('select#themeChange').on('change', function() {
+        var selectTheme = "ace/theme/" + $(this).val();
+        editor.setTheme(selectTheme);
+        consoleView.setTheme(selectTheme);
+        saveEditorOption(editor);
+    });
+
+    $('select#showInvisibles').on('change', function() {
+        var showInvisibles = $(this).val();
+        console.log(showInvisibles);
+        if (showInvisibles == 'true') {
+            editor.setShowInvisibles(true);
+            consoleView.setShowInvisibles(true);
+        } else {
+            editor.setShowInvisibles(false);
+            consoleView.setShowInvisibles(false);
+        }
+        saveEditorOption(editor);
+    });
+
+    $('select#indentGuides').on('change', function() {
+        var indentGuides = $(this).val();
+        console.log(indentGuides);
+        if (indentGuides == 'true') {
+            editor.setDisplayIndentGuides(true);
+            consoleView.setDisplayIndentGuides(true);
+        } else {
+            editor.setDisplayIndentGuides(false);
+            consoleView.setDisplayIndentGuides(false);
+        }
+        saveEditorOption(editor);
+    });
+
+    $('select#showGutte').on('change', function() {
+        var showGutte = $(this).val();
+        console.log(showGutte);
+        if (showGutte == 'true') {
+            editor.renderer.setShowGutter(true);
+            consoleView.renderer.setShowGutter(true);
+        } else {
+            editor.renderer.setShowGutter(false);
+            consoleView.renderer.setShowGutter(false);
+        }
+    });
+    
+  //웹 에디터에서 코드를 서버로 전송한다.
+   $("#homeworkSubmit").on('click', function() {
+		var code = editor.getValue();
+		var title = $("#homeworkTitle").val();
+		var explain = $("#homeworkContent").val();
+		var limitTime = $("#homeworkDeadline").val();
+		var classNum = ${classNum};
+		var classFileName = '${classFileName}';
+		
+		var input_answer = [];
+		var output_answer = [];
+
+		for (var i = 1; i <= count; i++) {
+
+			var temp = $(".input" + i).val();
+			input_answer.push(temp); //입력값을 배열에 담는다.
+
+		}
+
+		for (var i = 1; i <= count; i++) {
+
+			var temp = $(".output" + i).val();
+			output_answer.push(temp); //출력값을 배열에 담는다.
+
+		}
+
+		$.ajax({
+			method : "POST",
+			url : "createHomework",
+			data : "title=" + title +
+					"&code=" + code +
+					"&content=" + explain +
+					"&deadline=" + limitTime +
+					"&class_num=" + classNum +
+					"&question_file=" + classFileName +
+				    "&output_answer=" + output_answer +
+					"&input_answer=" + input_answer,
+			success : function(resp) {
+				if(resp == 1) {
+					alert("과제 등록 완료");
+					location.href = "homeworkList?classNum=${classNum}";
+				} else if(resp == 0) {
+					alert("과제 등록 실패!!");
+				}
+			},
+			error : function() {
+				alert("과제 전송에 실패 하였습니다.");
+			}
+		});
 	});
 });
 </script>

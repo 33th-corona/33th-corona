@@ -8,7 +8,7 @@
 <insert id="insertTask" parameterType="Task">
 	INSERT INTO task VALUES(
 		task_seq.nextval,
-		1, <!-- 나중에 class_num으로 정상적으로 바꿔주자 일단은 임시 클래스인 1 -->
+		#{class_num},
 		#{title},
 		#{content},
 		#{question_file},

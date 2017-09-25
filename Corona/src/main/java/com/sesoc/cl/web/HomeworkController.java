@@ -84,10 +84,9 @@ public class HomeworkController {
 //		logger.info("createHomework");
 		listCome(model, request);
 		model.addAttribute("classNum", classNum);
-		
+		model.addAttribute("classFileName", getSavedFileName(classNum));
 		return "homework/homeworkCreateForm";
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping(value="/createHomework", method=RequestMethod.POST)
@@ -98,23 +97,26 @@ public class HomeworkController {
 			HttpServletRequest request) 
 	{
 		int result = 0;
-		String filename = getSavedFileName(task);
+//		logger.info(task.toString());
+//		logger.info(task_answers.getInput_answer().toString());
+//		logger.info(task_answers.getOutput_answer().toString());
 		
 		//파일경로 = 루트+filePath + 파일명 + 확장자(java)
-		String filepath = directory + " \\" + filename + ".java";
-		File file = new File(filepath);
+		String filepath = directory + "\\" + task.getQuestion_file() + ".java";
+		File saveDirectory= new File(directory);
 		
-		if(!file.isDirectory()) {
-			file.mkdirs();
+		if(!saveDirectory.isDirectory()) {
+			saveDirectory.mkdirs();
 		}
 		
+		File file = new File(filepath);
 		FileOutputStream fos = null;
 		OutputStreamWriter osw = null;
 		BufferedWriter bw = null;
 		
 		try {
 			//과제를 파일로 저장 //
-			fos = new FileOutputStream(filepath, true);
+			fos = new FileOutputStream(file);
 			osw = new OutputStreamWriter(fos);
 			bw = new BufferedWriter(osw);
 			bw.write(task.getCode(), 0, task.getCode().length());
@@ -140,10 +142,10 @@ public class HomeworkController {
 						Task_Answer task_answer = new Task_Answer(0, recent_task.getNum(), input_answers.get(i), output_answers.get(i));
 						int result_answer = tRepo.insertAnswer(task_answer);
 						if(result_answer != 0) {
-							logger.info("과제의 입출력 값 저장완료!");
+//							logger.info("과제의 입출력 값 저장완료!");
 							result = 1;
 						} else {
-							logger.info("과제의 입출력 값 저장실패.");
+//							logger.info("과제의 입출력 값 저장실패.");
 							break;
 						}
 					}
@@ -168,13 +170,12 @@ public class HomeworkController {
 	}
 	
 	
-	public String getSavedFileName(Task task) {
+	public String getSavedFileName(int classNum) {
 		String result = null;
-		int classNum = task.getClass_num();
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd-hh_mm_ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
 		String nowTime = dateFormat.format(cal.getTime());
-		result = classNum + "-" + nowTime;
+		result = "Homework_" + classNum + "_" + nowTime;
 		return result;
 	}
 	
