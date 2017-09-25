@@ -38,6 +38,17 @@
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
 
+<style>
+	.flip-clock-divider.minutes .flip-clock-label {
+		display: none;
+	}
+	.flip-clock-divider.seconds .flip-clock-label{
+		display: none;
+	}
+
+
+</style>
+
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -64,7 +75,7 @@
 
 			<div class="content-wrap">
 
-				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="taskWrite">
+				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="homeworkCreateForm">
 					<div class="container clearfix">
 						<i class="icon-plus" style="top:4px;"></i>
 					</div>
@@ -108,7 +119,7 @@
 							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c1"  ></div>
+						<div class="clock" id="c1"  ></div>
 	
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
 							<a href="blog-single.html"class="more-link">Read More</a>
@@ -130,7 +141,7 @@
 							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c2" ></div>
+						<div class="clock" id="c2" ></div>
 	
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
 							<a href="blog-single.html"class="more-link">Read More</a>
@@ -151,7 +162,7 @@
 							<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 						</ul>
 						<div class="entry-content">
-						<div class="clock col-md-4 col-xs-4 col-sm-4 col-lg-4" id="c3" ></div>
+						<div class="clock" id="c3" ></div>
 	
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
 							<a href="blog-single.html"class="more-link">Read More</a>
