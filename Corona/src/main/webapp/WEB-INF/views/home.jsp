@@ -269,7 +269,6 @@
 		});
 		$('#login').keydown(function(evt){
 			if(evt.keyCode == 13){
-				alert('들어가니?');
 				$('#loginbtn').trigger('click');
 			}
 		});

@@ -241,7 +241,6 @@ background-color: white;
 	function request() {
 		var classNum = $(this).attr('num');
 		var btn = $(this);
-		alert(classNum);
 		$.ajax({
 			url : "request"
 			, method : "POST"

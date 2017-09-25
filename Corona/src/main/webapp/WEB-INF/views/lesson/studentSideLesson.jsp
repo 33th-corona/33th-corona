@@ -24,6 +24,27 @@ ul.fancytree-container {
 	border: none !important;
 	outline: none !important;
 }
+.divwhite{
+	background-color: white;
+	border-color: #000530 !important;
+}
+.btn-change6{
+    height: 30px;
+    width: 60px;
+    background: #666666;
+    float: left;
+    border:0px;
+    color:#fff;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: linear;
+    box-shadow:0px 0 0 #000530 inset;
+    border-radius: 10%;
+}
+.btn-change6:hover{
+    box-shadow:0 0 0 25px #000530 inset;
+    -webkit-transform: scale(1);
+}
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script src="js/jquery-ui.js/"></script>
@@ -91,8 +112,8 @@ $(document).ready(function() {
 		if (action == 'LessonJoinSuccess') {
 			//web editor의 maxline을 설정
 			editor.setOptions({
-				maxLines : 25,
-				minLines : 25,
+				maxLines : 22,
+				minLines : 22,
 				autoScrollEditorIntoView : true
 			});
 			//web editor의 syntaxing 언어 설정(java)
@@ -100,7 +121,7 @@ $(document).ready(function() {
 			//web editor의 테마 설정
 			editor.setTheme("ace/theme/eclipse");
 			//web editor를 읽기 전용으로 설정
-			editor.setFontSize(13);
+			editor.setFontSize(15);
 			editor.setReadOnly(true);
 			editor.setHighlightActiveLine(false);
 			editor.renderer.setShowPrintMargin(false);
@@ -111,8 +132,8 @@ $(document).ready(function() {
 			saveEditorOption(editor);
 			
 			consoleView.setOptions({
-				maxLines : 3,
-				minLines : 3,
+				maxLines : 4,
+				minLines : 4,
 				autoScrollEditorIntoView : true
 			});
 			consoleView.getSession().setMode(
@@ -277,7 +298,7 @@ function saveEditorOption(editor) {
 <%@ include file="../topMenu.jsp" %>
 	<%@ include file="../sidebar.jsp" %>
 <script src="js/jquery.fancytree.js/"></script>
-<body class="stretched side-panel-left">
+<body class="stretched side-panel-left" style="background-image: url('images/studentLessonBack.jpg'); background-size: 1300px;">
 <div class="body-overlay"></div>
 
 <!-- Page Title
@@ -289,21 +310,23 @@ function saveEditorOption(editor) {
 	</div>
 </section>
 
-<section id="content">
-<div class="container clearfix">
-	<div class="row">
+<section id="content" style="background-color: rgba(255,255,255,0);" >
+<div class="container clearfix" style="background-color: #eeeeee; border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
+	background-size: 100% 100%;
+	" >
+	<div class="row" >
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea"	style="height: 440px; overflow: auto;">
+				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 440px; overflow: auto; ">
 					<div id="tree"></div>
 				</div>
 				<div id="editorPanel" class="col-sm-9">
-					<div id="fileNamePanel" class="row editorArea">
+					<div id="fileNamePanel" class="row editorArea divwhite">
 						<a id="fileName" style="color: black">FilePath</a>
 					</div>
-					<div id="editor" class="row editorArea"></div>
-					<div id="editorOption" class="row editorArea text-right">
-						<div id="editorThemeChange">
+					<div id="editor" class="row editorArea divwhite" ></div>
+					<div id="editorOption" class="row editorArea text-right divwhite">
+						<div id="editorThemeChange" class="divwhite">
 							Theme 
 							<select id="themeChange">
 								<option value="eclipse">Eclipse</option>
@@ -340,23 +363,23 @@ function saveEditorOption(editor) {
 					</div>
 				</div>
 			</div>
-			<div id="leftLowerPanel" class="row">
-				<div id="console" class="editorArea"></div>
+			<div id="leftLowerPanel" class="row divwhite">
+				<div id="console" class="editorArea divwhite"></div>
 			</div>
 		</div>
-		<div id="rightPanel" class="col-sm-2">
-			<div id="rightFirstPanel" class="row editorArea">
+		<div id="rightPanel" class="col-sm-2 divwhite divwhite">
+			<div id="rightFirstPanel" class="row editorArea divwhite">
 				참여학생목록
 				<div id="studentList">
 					<select size="10" style="width: 150px; height: 200px"></select>
 				</div>
 			</div>
-			<div id="rightSecondPanel" class="row editorArea">
+			<div id="rightSecondPanel" class="row editorArea divwhite">
 				채팅창
 				<div id="chatDiv">
-					<textarea id="chatMessage" cols="19" rows="7"></textarea>
+					<textarea id="chatMessage" cols="19" rows="7" readonly="readonly"></textarea>
 					<input type="text" id="message" size="15" placeholder="메시지 내용" />
-					<input type="button" id="sendMessage" value="전송" />
+					<button id="sendMessage" class="btn-change6">전송</button>
 				</div>
 			</div>
 		</div>
@@ -364,12 +387,20 @@ function saveEditorOption(editor) {
 </div>
 </section>
 
-<form id="codeForm" action="sourceCode" method="POST" target="">
+<form id="codeForm" action="sourceCode" method="POST" target="" class="divwhite">
 	<input type="hidden" name="code">
 	<input type="hidden" name="theme">
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+<footer id="footer" class="dark noborder">
 
+			<div id="copyrights">
+				<div class="container center clearfix">
+					Copyright HanJo 2017 | All Rights Reserved
+				</div>
+			</div>
+
+		</footer>
 </body>
 </html>
