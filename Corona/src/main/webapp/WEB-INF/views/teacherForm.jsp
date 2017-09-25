@@ -32,8 +32,6 @@
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
 <style type="text/css">
-.button-orange { background-color: #ff9800 !important; }
-
 .button-3d.boran:hover,
 .button-reveal.boran:hover,
 .button-border.boran:hover,
