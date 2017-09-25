@@ -27,5 +27,6 @@
       <mapper resource="mapper/driveMapper.xml" />
       <mapper resource="mapper/passedLessonMapper.xml"/>
       <mapper resource="mapper/taskMapper.xml"/>
+      <mapper resource="mapper/taskSubmitMapper.xml"/>
    </mappers>
 </configuration>

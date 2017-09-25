@@ -88,5 +88,11 @@ FROM task_Answer
 WHERE task_num = #{task_num}
 </select>
 
+<select id="submittedTask" resultType="Task" parameterType="Task_Submit">
+select t.num
+from task t, task_submit s
+where t.num = s.task_num
+and s.user_id = #{user_id}
+</select>
 
 </mapper>

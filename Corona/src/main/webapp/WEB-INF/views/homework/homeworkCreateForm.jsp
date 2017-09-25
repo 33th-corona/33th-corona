@@ -361,7 +361,7 @@ $(function() {
 
     $('select#showInvisibles').on('change', function() {
         var showInvisibles = $(this).val();
-        console.log(showInvisibles);
+//         console.log(showInvisibles);
         if (showInvisibles == 'true') {
             editor.setShowInvisibles(true);
             consoleView.setShowInvisibles(true);
@@ -373,7 +373,7 @@ $(function() {
 
     $('select#indentGuides').on('change', function() {
         var indentGuides = $(this).val();
-        console.log(indentGuides);
+//         console.log(indentGuides);
         if (indentGuides == 'true') {
             editor.setDisplayIndentGuides(true);
             consoleView.setDisplayIndentGuides(true);

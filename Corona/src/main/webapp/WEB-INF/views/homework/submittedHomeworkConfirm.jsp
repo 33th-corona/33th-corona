@@ -25,7 +25,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Submit Homework Page</title>
+<title>Submitted Task Confirm Page</title>
 <style>
 #editor {
 	clear: left;
@@ -49,13 +49,13 @@
 ============================================= -->
 <section id="page-title" class="page-title-mini bottommargin-sm">
 	<div class="container clearfix">
-		<h1>Submit Homework Page</h1>
-		<span>Submit Homework Page</span>
+		<h1>Submitted Task Confirm Page (Teacher)</h1>
+		<span>Submitted Task Confirm Page (Teacher)</span>
 	</div>
 </section>
 <section id="content">
 	<div class="container clearfix">
-		<div class="row"><!-- 큰 row 시작 -->
+		<div class="row bottommargin"><!-- 큰 row 시작 -->
 			<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
 				<div class="row"><!-- 서쪽 1번째 줄 시작 -->
 					<div class="col_full">
@@ -114,17 +114,19 @@
 					<div class="col-md-12 divcenter">
 						<div class="col_full nobottommargin">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-3">
 									<i class="i-rounded i-light icon-laptop"></i>
 									<h2 class="nobottommargin">에디터</h2>
 								</div>
-								<div class="col-md-6 text-right">
-									<input type="button" id="homeworkSubmit" class="button button-xlarge button-leaf button-rounded tright" value="테스트"> 
-									<input type="button" id="editorReset" class="button button-xlarge button-leaf button-rounded tright" value="리셋">
+								<div class="col-md-5 tright" id="submitTime">
+								</div>
+								<div class="col-md-4">
+								<h4>제출학생 <select id="submittedStudent">
+									</select></h4>
 								</div>
 							</div>
 							<div class="row">
-								<div id="editor" class="col-md-11 divcenter">${task.code}</div>
+								<div id="editor" class="col-md-11 divcenter"></div>
 							</div>
 							<div class="row text-right" id="editorOption"
 								style="margin: 10px">
@@ -166,44 +168,6 @@
 				</div><!-- 에디터 줄 끝 -->
 			</div><!-- 동쪽 컬럼 끝 -->
 		</div><!-- 큰 row 끝 -->
-
-
-		<div class="row bottommargin">
-			<div class="col_full">
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-9"></div>
-						<div class="col-md-3" data-toggle="modal" data-target="#explainHomework">
-							<i class="i-rounded i-light icon-box"></i>
-							<h2>과제 설명</h2>
-						</div>
-					</div>
-					<div class="modal fade" tabindex="-1" id="explainHomework" role="dialog" aria-labelledby="mySmallModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-body">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">&times;</button>
-										<h2 class="modal-title" id="myModalLabel">작성 방법</h2>
-									</div>
-									<div class="modal-body" style="font-size: 20px">
-										<p class="nobottommargin">1. 선생님이 작성한 과제 내용을 확인합니다.</p>
-										<p class="nobottommargin">2. 과제 내용을 기반으로 비어있는 부분의 코드를
-											작성합니다.</p>
-										<p class="nobottommargin">3. '테스트' 버튼을 클릭하여 올바르게 코드가
-											작성되어있는지 확인합니다.</p>
-										<p class="nobottommargin">4. 올바르면 제출이 가능하고, 다른 결과가 출력 될
-											경우 다시 작성해 주세요.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div><!--  입출력 값 추가 버튼 컬럼 끝 -->
-			</div>
-		</div><!-- 입출력 값 추가 항목 줄 끝 -->
 	</div>
 </section>
 
@@ -248,6 +212,7 @@ $(function() {
 	editor.getSession().setMode("ace/mode/java");
 	//web editor의 테마 설정
 	editor.setTheme("ace/theme/eclipse");
+	editor.setReadOnly(true);
 	editor.setFontSize(20);
 	editor.setHighlightActiveLine(false);
 	editor.renderer.setShowPrintMargin(false);
@@ -304,48 +269,33 @@ $(function() {
         }
     });
     
-    $('input#homeworkSubmit').on('click', function() {
-    	var code = editor.getValue();
-    	var taskNum = ${task.num};
-    	var question_file = '${task.question_file}';
-    	var userId = '${loginId}';
-    	
-    	$.ajax({
-    		url: "testCode",
-    		method: "post",
-    		data: {
-    			"code" : code, 
-    			"taskNum" : taskNum,
-    			"fileName" : question_file,
-    			"userId" : userId
-    		},
-    		success: function(resp) {
-    			if(resp == 1) {
-    				if(confirm('정답입니다. 코드를 제출 하시겠습니까?')) {
-    					$.ajax({
-    						url: "submitHomework",
-    						method: "post",
-    						data: {
-    							"code" : code,
-    							"taskNum" : taskNum,
-    							"fileName" : question_file,
-    							"userId" : userId
-    						},
-    						success: function(resp) {
-    							if(resp == 1) {
-    								alert("제출 되었습니다.");
-    								location.href = "homeworkList?classNum=${task.class_num}";
-    							} else if(resp == 0) {
-    								alert("제출에 실패하였습니다.");
-    							}
-    						}
-    					});
-    				}
-    			} else {
-    				alert('오답입니다. 다시 작성해 주세요.');
-    			}
+    var homeworkNum = ${task.num};
+    
+    $.ajax({
+    	url: "loadSubmittedList",
+    	method: "post",
+    	data: {"homeworkNum" : homeworkNum},
+    	success: function(resp) {
+    		console.log(resp);
+    		var submitList = resp;
+    		
+    		for(var i in submitList) {
+    			var addHtml = '<option value="' +i +'">' + submitList[i].name + '</option>';
+    			$('select#submittedStudent').append(addHtml);
     		}
-    	});
+    		
+    		
+    		$('div#submitTime').html("<h4>제출시간 : " + submitList[0].submit_time + "</h4>");
+    		editor.setValue(submitList[0].submit_code);
+    		editor.clearSelection();
+    		
+    		$('select#submittedStudent').on('change', function() {
+    			var studentIndex = $(this).val();
+    			editor.setValue(submitList[studentIndex].submit_code);
+    			editor.clearSelection();
+    			$('div#submitTime').html("<h4>제출시간 : " + submitList[studentIndex].submit_time + "</h4>");
+    		});
+		}
     });
 });
 </script>

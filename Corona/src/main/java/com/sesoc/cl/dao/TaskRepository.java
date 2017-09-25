@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sesoc.cl.vo.Task;
 import com.sesoc.cl.vo.Task_Answer;
+import com.sesoc.cl.vo.Task_Submit;
 
 @Repository
 public class TaskRepository {
@@ -57,5 +58,10 @@ public class TaskRepository {
 		List<Task_Answer> selectedAnswer = dao.io_receive(task_num);
 		return selectedAnswer;
 	}
-
+	
+	public List<Task> submittedTask(Task_Submit task_Submit) {
+		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
+		List<Task> submittedTast = dao.submittedTask(task_Submit);
+		return submittedTast;
+	}
 }

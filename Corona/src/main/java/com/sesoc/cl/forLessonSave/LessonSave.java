@@ -49,7 +49,7 @@ public class LessonSave {
 	public boolean startFile() {
 		boolean result = false;
 		String savedFileName = lessonThread.getSavedFileName();
-		String directory = "C:\\Corona Save Folder\\passed_lesson\\text";
+		String directory = "C:\\CoronaSaveFolder\\passed_lesson\\text";
 		zipName = directory + "\\" + savedFileName + ".zip";
 		fileName = directory + "\\" + savedFileName + ".vtt";
 		

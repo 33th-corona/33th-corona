@@ -64,8 +64,8 @@ public class PassedLessonController {
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("savedLessonInfo", savedLessonInfo);
 		
-		logger.info("classNum : " + classNum);
-		logger.info("savedLessonInfo : " + savedLessonInfo);
+//		logger.info("classNum : " + classNum);
+//		logger.info("savedLessonInfo : " + savedLessonInfo);
 		
 		return "lesson/passedLessonPlay";
 	}
@@ -99,7 +99,7 @@ public class PassedLessonController {
 			e.printStackTrace();
 		}
 		
-		String sourceDir = "C:\\Corona Save Folder\\passed_lesson\\audio";
+		String sourceDir = "C:\\CoronaSaveFolder\\passed_lesson\\audio";
 		String fullPath = sourceDir + "\\" + saved_audio;
 		File file = new File(fullPath);
 		try {
@@ -131,7 +131,7 @@ public class PassedLessonController {
 			e.printStackTrace();
 		}
 		
-		String sourceDir = "C:\\Corona Save Folder\\passed_lesson\\text";
+		String sourceDir = "C:\\CoronaSaveFolder\\passed_lesson\\text";
 		String rawFileName = saved_code.substring(0, saved_code.lastIndexOf("."));
 		String fullPath = sourceDir + "\\" + rawFileName + ".vtt";
 		

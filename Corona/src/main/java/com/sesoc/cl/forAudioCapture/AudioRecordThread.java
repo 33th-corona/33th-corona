@@ -65,7 +65,7 @@ public class AudioRecordThread implements Runnable {
 	// ButeArrayOutputStream에 마이크로부터 입력받은 오디오 데이터를 저장하는 메소드
 	public void captureAudio() {
 		String savedFileName = lessonThread.getSavedFileName();
-		String directory = "C:\\Corona Save Folder\\passed_lesson\\audio";
+		String directory = "C:\\CoronaSaveFolder\\passed_lesson\\audio";
 		
 		File pathFile = new File(directory);
 		if (!(pathFile.isDirectory())) pathFile.mkdirs();
