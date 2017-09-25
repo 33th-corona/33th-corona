@@ -35,9 +35,9 @@ public class Task_SubmitRepository {
 	}
 	
 	
-	public Task_Submit selectOne(Task_Submit task_submit) {
+	public Task_Submit selectOne(Task_Submit task_Submit) {
 		Task_SubmitDAO dao = sqlSession.getMapper(Task_SubmitDAO.class);
-		Task_Submit selectedSubmit = dao.selectOne(task_submit);
+		Task_Submit selectedSubmit = dao.selectOne(task_Submit);
 		return selectedSubmit;
 	}
 }

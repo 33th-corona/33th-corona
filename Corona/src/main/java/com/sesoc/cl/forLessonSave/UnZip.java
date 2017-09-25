@@ -9,8 +9,8 @@ import java.util.zip.ZipInputStream;
 
 public class UnZip {
 	
-	private String destDir = "C:\\Corona Save Folder\\passed_lesson\\text";
-	private String sourceDir = "C:\\Corona Save Folder\\passed_lesson\\text"; 
+	private String destDir = "C:\\CoronaSaveFolder\\passed_lesson\\text";
+	private String sourceDir = "C:\\CoronaSaveFolder\\passed_lesson\\text"; 
 	private String fileName;
 	
 	public UnZip(String fileName) {

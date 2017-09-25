@@ -217,11 +217,12 @@
 			<div class="container clearfix">
 				<h1>Main Page</h1>
 				<span>Main Page</span>
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Features</a></li>
-					<li class="active">Side Panel</li>
-				</ol>
+				 <ol class="breadcrumb">
+               <li><a href="#content">Skills</a></li>
+               <li><a href="#manual">Manual</a></li>
+               <li><a href="#location">Location</a></li>
+            </ol>
+
 			</div>
 
 		</section><!-- #page-title end -->
@@ -309,6 +310,7 @@
 					</div>
 
 				</div>
+				<div id="manual"></div> <!-- 라벨 영역 -->
 				<div class="section  topmargin nobottommargin nobottomborder" style="padding-bottom: 15px; padding-top: 15px;">
 					<div class="container clearfix">
 						<div class="col_half heading-block center nomargin">
@@ -351,6 +353,7 @@
 					</div>	
 				
 			</div>
+			<div id="location" ></div> <!-- 라벨 영역 -->
 				<div class="section topmargin nobottommargin nobottomborder" style="padding-bottom: 15px; padding-top: 15px;">
 					<div class="container clearfix">
 						<div class="heading-block center nomargin">

@@ -9,13 +9,14 @@ public class Task {
 	private String deadline;    	 //과제의 마감 기간
 	private String is_closed;        //과제의 마감 유무
 	private String code;             //과제의 실질 코드
+	private boolean submitted;
 	
 	public Task() {
 	
 	}
 
 	public Task(int num, int class_num, String title, String content, String question_file, String deadline,
-			String is_closed, String code) {
+			String is_closed, String code, boolean submitted) {
 		super();
 		this.num = num;
 		this.class_num = class_num;
@@ -25,7 +26,10 @@ public class Task {
 		this.deadline = deadline;
 		this.is_closed = is_closed;
 		this.code = code;
+		this.submitted = submitted;
 	}
+
+
 
 	public int getNum() {
 		return num;
@@ -90,14 +94,20 @@ public class Task {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	public boolean isSubmitted() {
+		return submitted;
+	}
+
+	public void setSubmitted(boolean submitted) {
+		this.submitted = submitted;
+	}
 
 	@Override
 	public String toString() {
 		return "Task [num=" + num + ", class_num=" + class_num + ", title=" + title + ", content=" + content
 				+ ", question_file=" + question_file + ", deadline=" + deadline + ", is_closed=" + is_closed + ", code="
-				+ code + "]";
+				+ code + ", submitted=" + submitted + "]";
 	}
 
-	
-	
 }

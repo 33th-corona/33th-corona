@@ -178,8 +178,8 @@
 								</div>
 
 								<div class="col_full nobottommargin">
-								<button disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>미기입</button>
-								<button style="display: none;" id="register" class="button button-rounded button-reveal button-border button-blue tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
+								<button type="button" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>미기입</button>
+								<button type="button" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-blue tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
 								</div>
 
 							</form>
@@ -258,7 +258,8 @@
 						&& $("#register-form-email").attr('readonly') == 'readonly'
 						&& $.trim($("#register-form-password").val()) != ""
 						&& $.trim($("#register-form-repassword").val())!= "" 
-						&& $.trim($("#register-form-username").val()) != ""){
+						&& $.trim($("#register-form-username").val()) != ""
+						&& $.trim($("#register-form-password").val()) == $.trim($("#register-form-repassword").val())){
 					$("#register").css('display','inline');
 					$("#no").css('display','none');
 				} else{
@@ -269,7 +270,6 @@
 		});
 		$('#login').keydown(function(evt){
 			if(evt.keyCode == 13){
-				alert('들어가니?');
 				$('#loginbtn').trigger('click');
 			}
 		});
@@ -312,7 +312,7 @@
 			});
 			
 			
-			$("#register-form-submit").on('click',check);             
+			$("#register").on('click',check);             
 			$("#idCheck").on('click',function() {      	
 				if($.trim($("#register-form-name").val())=="") {
 					   alert("아이디를 입력하세요!");
@@ -347,13 +347,14 @@
 									&& $("#register-form-email").attr('readonly') == 'readonly'
 									&& $.trim($("#register-form-password").val()) != ""
 									&& $.trim($("#register-form-repassword").val())!= "" 
-									&& $.trim($("#register-form-username").val()) != ""){
+									&& $.trim($("#register-form-username").val()) != ""
+									&& $.trim($("#register-form-password").val()) == $.trim($("#register-form-repassword").val())){
 								$("#register").css('display','inline');
 								$("#no").css('display','none');
-								} else{
-									$("#register").css('display','none');
-									$("#no").css('display','inline');
-								} 
+							} else{
+								$("#register").css('display','none');
+								$("#no").css('display','inline');
+							} 
 							 }
 							 else
 							 {	
@@ -409,13 +410,14 @@
 									&& $("#register-form-email").attr('readonly') == 'readonly'
 									&& $.trim($("#register-form-password").val()) != ""
 									&& $.trim($("#register-form-repassword").val())!= "" 
-									&& $.trim($("#register-form-username").val()) != ""){
+									&& $.trim($("#register-form-username").val()) != ""
+									&& $.trim($("#register-form-password").val()) == $.trim($("#register-form-repassword").val())){
 								$("#register").css('display','inline');
 								$("#no").css('display','none');
-								} else{
+							} else{
 								$("#register").css('display','none');
 								$("#no").css('display','inline');
-								} 
+							} 
 							 }
 							 else
 							 {	

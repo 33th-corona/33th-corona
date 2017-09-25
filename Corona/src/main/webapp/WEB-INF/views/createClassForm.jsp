@@ -64,11 +64,6 @@
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
 }
 
-.button.button-dark:hover {
-	background-color: #ff9800 !important;
-}
-
-
 .id-i-circled {
 	display: block;
 	float: left;
@@ -178,8 +173,8 @@
 			   <div class="divcenter postcontent clearfix" >
 					<div class="col_full">
 						<div class="center" >
-								<button type="submit" class="button button-xlarge button-dark button-rounded tright">Create!<i class="icon-circle-arrow-right"></i></button>
-								&nbsp<button type="reset" id="re" class="button button-xlarge button-dark button-rounded tright">Reset!<i class="icon-line-cross"></i></button>
+								<button id="createbtn" disabled="disabled" type="submit" class="button button-xlarge button-rounded tright" style="background-color: #444;">Create!<i class="icon-circle-arrow-right"></i></button>
+								&nbsp;<button type="reset" id="re" class="button button-xlarge button-blue button-rounded tright" style="background-color: #444">Reset!<i class="icon-line-cross"></i></button>
 						</div>
 			   		</div>	   
 			</div>
@@ -208,6 +203,12 @@
 	
 	
 	$(function(){
+		$('#createbtn').mouseover(
+				$('#createbtn').css('background-color','#444 ')	
+			);
+			$('#createbtn').mouseout(
+					$('#createbtn').css('background-color','#444')	
+			);
 		$('#wrapper').animate({
 			backgroundColor: "rgba(255, 255, 255, 0.5)"
 		}, 1500);
@@ -215,7 +216,11 @@
 					'mouseenter mouseleave mouseover select');
 			$('#nameIcon').on('click', nameFocus);
 			$('#nameOk').unbind('hover');
-
+			$('#class-form-name').keydown(function(evt) {
+				if(evt.keycode == 13){
+					return false;
+				}
+			});
 			$('#class-form-name').keyup(
 					function(evt) {
 						var checkName = $('#class-form-name').val();
@@ -235,6 +240,10 @@
 											$('#nameOk').addClass("hoveri-circled") , 
 											$('#nameOk').removeClass("name-i-light") 
 									);
+									$('#createbtn').attr('disabled', false);
+									$('#createbtn').hover(
+										$('#createbtn').css('background-color','#ff9800')
+									)
 								} else {
 									$('#nameOk').css({
 										'background-color' : '#F5F5F5',
@@ -242,10 +251,19 @@
 										'text-shadow' : '1px 1px 1px rgba(0,0,0,0.3)',
 										'box-shadow' : '0 0 0 rgba(0,0,0,0.2)'
 									})
+									$('#createbtn').attr('disabled', 'disabled');
 									$('#nameOk').hover(
 											$('#nameOk').removeClass("hoveri-circled"),
 											$('#nameOk').addClass("name-i-light")
 									);
+									$('#createbtn').mouseover(
+											$('#createbtn').css('background-color','#444 ')	
+										);
+										$('#createbtn').mouseout(
+												$('#createbtn').css('background-color','#444')	
+										);
+									
+									
 								}
 							},
 							error : function(repo) {
