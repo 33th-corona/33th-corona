@@ -388,19 +388,21 @@ function saveEditorOption(editor) {
 
 
 <div id="startDiv">
-	<section id="content">
-		<div class="container clearfix divcenter">
-			<div id="lessonStartForm" class="divcenter editorArea bottommargin-sm" style="width: 300px; height: 300px; text-align: center; padding-top: 30px;">
-				<h4>강의 제목</h4>
-				<input type="text" name="title" id="title" class="bottommargin-sm"><br>
+	<section id="content" >
+		<div class="container clearfix divcenter" style="width:1200px; height:700px; background-image: url(images/teacherLessonBack.jpg); background-size: 1200px;">
+			<div  style="left: 380px; top: 5px; width:500px; height: 800px; position: absolute; background-image: url(images/tablet.png); background-size: 430px; background-repeat: no-repeat;">
+			</div>
+			<div id="lessonStartForm" class="divcenter  bottommargin-sm" style="width: 300px; height: 300px; text-align: center; background-color: rgba(255,255,255,0.5); border-radius:5%; padding-top: 30px; margin-top: 150px;">
+				<h3>강의 제목</h3>
+				<input type="text" name="title" id="title" class="bottommargin-sm form-control center" style="margin-left: 10px; margin-right: 10px; width: 280px; background-color: rgba(255,255,255,0.5);" ><br>
 				<a href="#" id="start"
-						class="button button-3d button-xlarge button-rounded button-amber tright">
-							<i class="icon-angle-right" style="width: 15px"></i>강의 시작
+						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
+							<i class="icon-line-play" style="width: 30px"></i>강의 시작
 				</a>
 				<br>
 				<a href="#" id="cancel"
-						class="button button-3d button-xlarge button-rounded button-amber tright">
-							<i class="icon-angle-right" style="width: 15px"></i>강의 취소
+						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
+							<i class="icon-switch" style="width: 30px"></i>강의 취소
 				</a>
 			</div>
 			<div id="connInfo" style="text-align: center;"></div>
@@ -497,6 +499,14 @@ function saveEditorOption(editor) {
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+<footer id="footer" class="dark noborder">
 
+			<div id="copyrights">
+				<div class="container center clearfix">
+					Copyright HanJo 2017 | All Rights Reserved
+				</div>
+			</div>
+
+		</footer><!-- #footer end -->
 </body>
 </html>

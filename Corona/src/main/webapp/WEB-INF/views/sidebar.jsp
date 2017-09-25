@@ -279,9 +279,7 @@
 /* } */
 .btn.button:hover{
 	background-color: #000530 !important;
-	opacity: 0.9;
 	color: #FFF;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 @keyframes fadeIn {
 	0% {
@@ -394,8 +392,6 @@
 			<nav>
 					
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/everyBoardLocation"><i class="icon-list"></i>전체 게시판</a></li>
-						<li><a href="${pageContext.request.contextPath}/createHomeWorkLocation"><i class="icon-paperclip"></i>과제 만들기</a></li>
 						<li><a href="#"><i class="icon-briefcase"></i>내가 선생일 때</a>
 							<ul>
 									<c:if test="${empty myTeacherList}">

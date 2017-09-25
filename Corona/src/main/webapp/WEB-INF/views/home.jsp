@@ -43,7 +43,6 @@
 	<title>Corona</title>
 	<style type="text/css">
 	.button {
-	background-color: #ff9800 !important;
 	color: #FFF;
 	}
 	.text-stroke {
@@ -191,7 +190,7 @@
 					<div class="modal1 mfp-hide" id="modal-login-form">
 						<div class="block divcenter col-padding" style="background-color: #FFF; max-width: 400px;">
 							<h4 class="uppercase ls1">Login to your Account</h4>
-							<form action="login" class="nobottommargin clearfix" style="max-width: 300px;" method="POST">
+							<form id="login" action="login" class="nobottommargin clearfix" style="max-width: 300px;" method="POST">
 								<div class="col_full">
 									<label for="" class="capitalize t600">ID:</label>
 									<input type="text" id="template-op-form-id" name="id" value="" class="sm-form-control" />
@@ -203,7 +202,7 @@
 								<div class="col_full nobottommargin">
 									<div class="row">
 										<div class="col-xs-6">
-											<input type="button" id="loginbtn" class="button button-rounded button-light button-reveal button-small button-dark nomargin" value="login">
+											<input type="button" id="loginbtn" class="button button-rounded button-reveal button-light  button-small button-black nomargin" value="login">
 										</div>
 										<div class="col-xs-6">
 											<p class="nobottommargin tright"><small class="t300"><em><a href="#">Forgot Password?</a></em></small></p>
@@ -268,7 +267,12 @@
 				} 
 			});
 		});
-		
+		$('#login').keydown(function(evt){
+			if(evt.keyCode == 13){
+				alert('들어가니?');
+				$('#loginbtn').trigger('click');
+			}
+		});
 	/* about 내용 */
 	var about = '<div id="content">about</div>';
 	
@@ -525,9 +529,9 @@
 	binary = binary.split("");
 
 	var font_size = 10;
-	var columns = c.width/font_size; //number of columns for the rain
-	//an array of drops - one per column
+	var columns = c.width/font_size; 
 	var drops = [];
+	
 	//x below is the x coordinate
 	//1 = y co-ordinate of the drop(same for every drop initially)
 	for(var x = 0; x < columns; x++)
