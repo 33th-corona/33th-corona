@@ -29,6 +29,26 @@
 	<title>Corona - 자료실</title>
 
 </head>
+<style>
+.profile-down{
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+  border : solid;
+}
+
+.counter{
+margin : 0 auto;
+float: none;
+width: 20%;
+}
+</style>
+
+
 <%@ include file="topMenu.jsp" %>
 	<%@ include file="sidebar.jsp" %>
 
@@ -67,18 +87,22 @@
 				============================================= -->
 				<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 				
-				<!-- 글 작성 끝 -->
+				<!-- 글 작성 시작 -->
 				<c:forEach var="drive" items="${driveList}" varStatus="stat">
 					<div class="entry clearfix">
-					
-					
 					<!-- 다운로드 수 -->
-					<div class="counter counter-large" style="color: #e74c3c;">
-					
-						<span data-from="100" data-to="56841" data-refresh-interval="50" data-speed="2500"></span>				
-					</div>
-					
-					
+						<c:set var = "sum" value = "0" />
+						<c:forEach var="dfL" items="${dfList}">
+							<c:forEach var="df" items="${dfL}">
+								<c:if test="${df.drive_num == drive.num}">
+									<c:set var= "sum" value="${sum + df.down_count}"/>
+								</c:if>
+							</c:forEach>
+						</c:forEach>
+						<div class="counter counter-large" style="color: #e74c3c;">
+							<span data-from="100" data-to="${sum}" data-refresh-interval="50" data-speed="2500"></span>				
+						</div>
+						
 						<div class="entry-title">
 							<h2><a href="driveDetail?num=${drive.num}">${drive.title}</a></h2>
 						</div>
@@ -91,7 +115,7 @@
 						<div class="entry-fileList">
 							<c:forEach var="dfL" items="${dfList}">
 								<c:forEach var="df" items="${dfL}">
-									<c:if test="${df.df_num == drive.num}">
+									<c:if test="${df.drive_num == drive.num}">
 										<a href="download?num=${df.num}">${df.original_filename}</a>																
 									</c:if>
 								</c:forEach>

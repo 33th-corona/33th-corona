@@ -34,11 +34,11 @@
 		select * from drive where num = #{num}
 	</select>
 	
-	<select id="selectDrive_fileAll" parameterType="int" resultType="Drive">
+	<select id="selectDrive_fileAll" parameterType="int" resultType="Drive_File">
 		select * from drive_file where drive_num = #{drive_num}
 	</select>
 	
-	<select id="selectFileOne" parameterType="int" resultType="Drive">
+	<select id="selectFileOne" parameterType="int" resultType="Drive_File">
 		select * from drive_file where num = #{num}
 	</select>
 	
@@ -66,7 +66,7 @@
 	
 	<insert id="insert_file" parameterType="Drive_File">
 		insert into drive_file values(
-			Drive_file_seq.NEXTVAL, #{original_filename}, #{saved_filename}, #{num}
+			Drive_file_seq.NEXTVAL, #{original_filename}, #{saved_filename}, #{drive_num},0
 		)
 	</insert>
 	

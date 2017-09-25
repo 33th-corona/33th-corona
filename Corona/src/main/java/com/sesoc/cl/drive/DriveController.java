@@ -57,11 +57,6 @@ public class DriveController {
 		for(Drive d :drivelist){
 			onelist = repo.selectDrive_fileAll(d.getNum());
 			dfList.add(onelist);
-			System.out.println("dfList사이즈 : "+dfList.size());
-		}
-		
-		for(int i=0;i<dfList.size();i++){
-			System.out.println(dfList.get(i));
 		}
 		
 		model.addAttribute("navi",navi);
@@ -85,17 +80,19 @@ public class DriveController {
 		int seq = repo.seq();
 		String user_id = (String) session.getAttribute("loginId");
 		Drive drive =  new Drive(seq, 1, user_id , title, content, "", "", "", 0);
-		repo.insert(drive); //드라이브DB
+		int i = repo.insert(drive); //드라이브DB
 		
 		//파일 다중 첨부시  for문으로 돌려서 insert 저장
-		Drive_File df = new Drive_File(0,"","",seq);
-		for(MultipartFile file : multiFiles.getFile1()) {
-			String originalName = file.getOriginalFilename();
-			String savedFileName = FileService.saveFile(file, uploadPath);
-			df.setOriginal_filename(originalName);
-			df.setSaved_filename(savedFileName);
-			repo.insert_file(df);
-		}//for
+		if(i == 1 && file1 != null){
+			Drive_File df = new Drive_File(0,"","",seq,0);
+			for(MultipartFile file : multiFiles.getFile1()) {
+				String originalName = file.getOriginalFilename();
+				String savedFileName = FileService.saveFile(file, uploadPath);
+				df.setOriginal_filename(originalName);
+				df.setSaved_filename(savedFileName);
+				repo.insert_file(df);
+			}//for
+		}
 		return "redirect:driveList";
 	}
 	
@@ -152,7 +149,7 @@ public class DriveController {
 		//수정 처리
 		if(!(file1 == null)){
 			//삽입 처리와 같은 방식으로 수정 처리 시작
-			Drive_File df = new Drive_File(0,"","",drive.getNum());
+			Drive_File df = new Drive_File(0,"","",drive.getNum(),0);
 			for(MultipartFile file : multifiles.getFile1()) {
 				String originalName = file.getOriginalFilename();
 				String savedFileName = FileService.saveFile(file, uploadPath);
