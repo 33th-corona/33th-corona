@@ -1,8 +1,13 @@
 package com.sesoc.cl.web;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
@@ -122,8 +127,8 @@ public class HomeworkController {
 			bw.write(task.getCode(), 0, task.getCode().length());
 			
 			//저장한 파일을 서버DB에 기록
-			task.setQuestion_file(filepath);
-			System.out.println(task.toString());
+//			task.setQuestion_file(filepath);
+//			System.out.println(task.toString());
 			result = tRepo.insertTask(task);
 			
 			if(result != 0) {
@@ -167,6 +172,58 @@ public class HomeworkController {
 			if(file.isFile()) file.delete();
 		}
 		return result;
+	}
+	
+	
+	@RequestMapping(value="homeworkDetail", method=RequestMethod.GET)
+	public String homeworkDetail(int homeworkNum,
+			Model model,
+			HttpServletRequest request) 
+	{
+		listCome(model, request);
+		Task tempTask = new Task();
+		tempTask.setNum(homeworkNum);
+		tempTask = tRepo.selectOne(tempTask);
+//		logger.info(tempTask.toString());
+		
+		String filepath = directory + "\\" + tempTask.getQuestion_file() + ".java";
+		File file = new File(filepath);
+		
+		FileReader fr = null;
+		BufferedReader br = null;
+		String code = "";
+		boolean fileReader = true;
+		try {
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+			while(true) {
+				String tempCode = br.readLine();
+				if(tempCode == null) {
+					break;
+				} else {
+					code += tempCode + "\n";
+				}
+			}
+			br.close();
+			fr.close();
+		} catch (FileNotFoundException e) {
+			fileReader = false;
+			e.printStackTrace();
+		} catch (IOException e) {
+			fileReader = false;
+			e.printStackTrace();
+		}
+		
+		if(!fileReader) {
+			model.addAttribute("classNum", tempTask.getClass_num());
+			return "redirect:homeworkList";
+		}
+		
+		tempTask.setCode(code);
+		model.addAttribute("task", tempTask);
+		
+		logger.info(tempTask.toString());
+		return "homework/homeworkSubmitForm";
 	}
 	
 	

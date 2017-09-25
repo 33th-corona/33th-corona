@@ -18,7 +18,6 @@
 
 <link rel="stylesheet" href="css/dark.css" type="text/css" />
 <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-<link rel="stylesheet" href="css/construction-icons.css" type="text/css">
 <link rel="stylesheet" href="css/animate.css" type="text/css" />
 <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
@@ -32,7 +31,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Insert title here</title>
+<title>Create Homework Page</title>
 <style>
 #editor {
 	clear: left;
@@ -55,8 +54,8 @@
 ============================================= -->
 <section id="page-title" class="page-title-mini bottommargin-sm">
 	<div class="container clearfix">
-		<h1>Create Home Work Page</h1>
-		<span>Create Home Work Page</span>
+		<h1>Create Homework Page</h1>
+		<span>Create Homework Page</span>
 	</div>
 </section>
 
@@ -109,7 +108,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="clear"></div> 
-							<input type="text" id="homeworkDeadline" class="tleft sm-form-control datatimepicker" placeholder="MM/DD/YYYY 00:00 AM/PM">
+							<input type="text" id="homeworkDeadline" class="tleft sm-form-control datatimepicker" placeholder="YYYY/MM/DD HH/mm">
 						</div>
 					</div>
 				</div>
@@ -358,7 +357,6 @@ $(function() {
         var selectTheme = "ace/theme/" + $(this).val();
         editor.setTheme(selectTheme);
         consoleView.setTheme(selectTheme);
-        saveEditorOption(editor);
     });
 
     $('select#showInvisibles').on('change', function() {
@@ -371,7 +369,6 @@ $(function() {
             editor.setShowInvisibles(false);
             consoleView.setShowInvisibles(false);
         }
-        saveEditorOption(editor);
     });
 
     $('select#indentGuides').on('change', function() {
@@ -384,12 +381,10 @@ $(function() {
             editor.setDisplayIndentGuides(false);
             consoleView.setDisplayIndentGuides(false);
         }
-        saveEditorOption(editor);
     });
 
     $('select#showGutte').on('change', function() {
         var showGutte = $(this).val();
-        console.log(showGutte);
         if (showGutte == 'true') {
             editor.renderer.setShowGutter(true);
             consoleView.renderer.setShowGutter(true);
