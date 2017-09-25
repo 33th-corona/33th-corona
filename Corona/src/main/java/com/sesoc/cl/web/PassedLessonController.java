@@ -22,8 +22,10 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sesoc.cl.board.PageNavigator;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.PassedLessonRepository;
 import com.sesoc.cl.forLessonSave.UnZip;
@@ -41,18 +43,33 @@ public class PassedLessonController {
 	
 	@RequestMapping(value="passedLessonList", method=RequestMethod.GET)
 	public String passedLessonList(
-			int classNum,
-			Model model,
-			HttpServletRequest request) 
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			@RequestParam(value="searchword",defaultValue="") String searchword,
+			@RequestParam(value="countpage", defaultValue="6") int countPerPage,
+			@RequestParam(value="classNum", required=false)int classNum, 
+			Model model, HttpServletRequest request) 
 	{
-		List<SavedLessonInfo> savedLessonInfos = pRepo.loadSavedLesson(classNum);
-//		logger.info(savedLessonInfos.toString());
+		System.out.println(classNum);
+		//전체 글 개수
+		int totalRecordCount = pRepo.getPassedLessonCount(searchword,classNum);
+		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
+		//해당하는 게시글 리스트 불러오기
+		List<SavedLessonInfo> savedLessonInfos = pRepo.loadSavedLesson(searchword,navi.getStartRecord(),navi.getCountPerPage(),classNum);
+		//		logger.info(savedLessonInfos.toString());
+		
 		listCome(model, request);
+		for(int i=0;i<savedLessonInfos.size();i++){
+			System.out.println("사이즈 : "+savedLessonInfos.size());
+			System.out.println(savedLessonInfos.get(i));
+		}
+		
+		
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("savedLessonInfos", savedLessonInfos);
 		return "lesson/passedLessonList";
 	}
 	
+	//글보기
 	@RequestMapping(value="loadPassedLesson", method=RequestMethod.POST)
 	public String loadPassedLesson(
 			int classNum,
