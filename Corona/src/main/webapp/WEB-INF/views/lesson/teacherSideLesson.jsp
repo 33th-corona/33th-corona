@@ -220,6 +220,10 @@ $(document).ready(function() {
 			consoleView.renderer.setShowGutter(false);
 		}
 	});
+	
+	window.onbeforeunload = function() {
+		$('button#stopStudentView').trigger('click');
+	}
 });
 
 function lessonStart(startResult, existLesson) {
