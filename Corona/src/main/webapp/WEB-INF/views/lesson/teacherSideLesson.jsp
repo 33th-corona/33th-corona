@@ -169,7 +169,7 @@ $(document).ready(function() {
 	});
 	
 	//학생 eclipse 접속 종료
-	$('input#stopStudentView').on('click', function() {
+	$('button#stopStudentView').on('click', function() {
 		var sendMessage = {};
 		sendMessage.action = "closeStudentEclipse";
 		var sendMessageJSON = JSON.stringify(sendMessage);

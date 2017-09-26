@@ -185,7 +185,7 @@ public class ${classFileName} {
 								</div>
 								&nbsp;
 								<div id="editorShowGutte" class="textChange" style="display: inline-block">
-									Gutte <select id="showGutte">
+									Gutte <select id="showGutte" style="color: black;">
 										<option value="true">on</option>
 										<option value="false">off</option>
 									</select>
