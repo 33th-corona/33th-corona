@@ -124,6 +124,27 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 				}
 			}
 			break;
+		case "join":
+			//client에게 보낼 실행 결과 객체 생성
+			Map<String, Object> sendMap = new HashMap<>();
+			//client에게 보낼 실행 결과 설정
+			sendMap.put("action", "eclipseConnSuccess");
+			//JSON String으로 변환
+			String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
+			//Client에게 강의 참여 결과를 전송
+			session.sendMessage(new TextMessage(JSONStringSendMessage));
+			
+			//client에게 받은 ip를 저장
+			String teacherId = (String) jsonObject.get("id");
+			for(LessonThread lt : LessonList.getLessonList()) {
+				if(lt.getTeacherConn().getId().equals(teacherId)) {
+					lt.getTeacherConn().setSession(session);
+					lt.sendStudentList();
+					break;
+				}
+			}
+			
+			break;
 		//학생의 eclipse에 접속 요청을 하였을 경우 실행
 		case "viewStudentEclipse":
 			//접속하려는 학생의 ip를 저장

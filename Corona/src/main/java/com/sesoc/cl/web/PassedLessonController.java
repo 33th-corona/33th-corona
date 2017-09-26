@@ -49,7 +49,7 @@ public class PassedLessonController {
 			@RequestParam(value="classNum", required=false)int classNum, 
 			Model model, HttpServletRequest request) 
 	{
-		System.out.println(classNum);
+		System.out.println("레슨 리스트 컨트롤러 진입"+classNum);
 		//전체 글 개수
 		int totalRecordCount = pRepo.getPassedLessonCount(searchword,classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
@@ -58,12 +58,11 @@ public class PassedLessonController {
 		//		logger.info(savedLessonInfos.toString());
 		
 		listCome(model, request);
-		for(int i=0;i<savedLessonInfos.size();i++){
-			System.out.println("?ъ씠利?: "+savedLessonInfos.size());
-			System.out.println(savedLessonInfos.get(i));
-		}
 		
-		
+		System.out.println("countPerPage : "+countPerPage+" searchword : "+searchword);
+		model.addAttribute("navi",navi);
+		model.addAttribute("searchword",searchword);
+		model.addAttribute("countPerPage",countPerPage);
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("savedLessonInfos", savedLessonInfos);
 		return "lesson/passedLessonList";
@@ -72,16 +71,16 @@ public class PassedLessonController {
 	//디테일
 	@RequestMapping(value="loadPassedLesson", method=RequestMethod.POST)
 	public String loadPassedLesson(
-			int classNum,
+			int class_Num,
 			SavedLessonInfo savedLessonInfo,
 			Model model,
 			HttpServletRequest request) 
 	{
 		listCome(model, request);
-		model.addAttribute("classNum", classNum);
+		model.addAttribute("classNum", class_Num);
 		model.addAttribute("savedLessonInfo", savedLessonInfo);
 		
-		logger.info("classNum : " + classNum);
+		logger.info("classNum : " + class_Num);
 		logger.info("savedLessonInfo : " + savedLessonInfo);
 		
 		return "lesson/passedLessonPlay";
