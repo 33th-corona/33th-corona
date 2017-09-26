@@ -24,6 +24,9 @@ ul.fancytree-container {
 	border: none !important;
 	outline: none !important;
 }
+.backWhite{
+	background-color: white;
+}
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script src="js/jquery-ui.js/"></script>
@@ -233,17 +236,17 @@ function saveEditorOption(editor) {
 
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
 		<h1>Passed Lesson</h1>
 		<span>Passed Lesson</span>
 	</div>
 </section>
 
-<section id="content">
+<section id="content" style="background-image: url('images/passedlessonback.jpg'); background-size: 1300px;">
 <div class="container clearfix">
-	<div class="row">
-		<div id="rightSecondPanel" class="editorArea">
+	<div class="row" style="margin-top: 30px;">
+		<div id="rightSecondPanel" class="editorArea" style="background-image: url('images/audioback.jpg'); background-size: 1300px;">
 			<!-- 오디오  -->
 			<audio id="myAudio" controls="controls" controlsList="nodownload noremote" preload="auto">
 <%-- 				<source src="videoPlay?saved_audio=${savedLessonInfo.saved_audio}" type="audio/mpeg"> --%>
@@ -252,18 +255,18 @@ function saveEditorOption(editor) {
 			</audio>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-bottom: 30px;">
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea"	style="height: 440px; overflow: auto;">
+				<div id="treePanel" class="col-sm-3 editorArea backWhite"	style="height: 440px; overflow: auto;">
 					<div id="tree"></div>
 				</div>
 				<div id="editorPanel" class="col-sm-9">
-					<div id="fileNamePanel" class="row editorArea">
+					<div id="fileNamePanel" class="row editorArea backWhite">
 						<a id="fileName" style="color: black">FilePath</a>
 					</div>
 					<div id="editor" class="row editorArea"></div>
-					<div id="editorOption" class="row editorArea text-right">
+					<div id="editorOption" class="row editorArea text-right backWhite">
 						<div id="editorThemeChange">
 							Theme 
 							<select id="themeChange">
@@ -306,7 +309,7 @@ function saveEditorOption(editor) {
 			</div>
 		</div>
 		<div id="rightPanel" class="col-sm-2">
-			<div id="rightFirstPanel" class="row editorArea">
+			<div id="rightFirstPanel" class="row editorArea backWhite">
 				채팅창
 				<div id="chatDiv">
 					<textarea id="chatMessage" cols="18" rows="7"></textarea>
@@ -317,12 +320,20 @@ function saveEditorOption(editor) {
 </div>
 </section>
 
-<form id="codeForm" action="sourceCode" method="POST" target="">
+<form id="codeForm" action="sourceCode" method="POST" target="" style="margin: 0px;">
 	<input type="hidden" name="code">
 	<input type="hidden" name="theme">
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+<footer id="footer" class="dark noborder">
 
+			<div id="copyrights">
+				<div class="container center clearfix">
+					Copyright HanJo 2017 | All Rights Reserved
+				</div>
+			</div>
+
+		</footer>
 </body>
 </html>
