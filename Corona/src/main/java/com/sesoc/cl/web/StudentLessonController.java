@@ -22,10 +22,13 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.forLessonSave.UnZip;
+import com.sesoc.cl.threadForLesson.LessonThread;
 import com.sesoc.cl.vo.ClassInfo;
 
 /**
@@ -52,6 +55,23 @@ public class StudentLessonController {
 		model.addAttribute("student_id", student_id);
 		model.addAttribute("classNum", classNum);
 		return "lesson/studentSideLesson";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "checkOpenLesson", method = RequestMethod.POST)
+	public int checkOpenLesson(int classNum) {
+		int result = 0;
+		String classNumString = classNum + "";
+		
+		
+		for(LessonThread lt : LessonList.getLessonList()) {
+			if(lt.getTeacherConn().getclassNum().equals(classNumString)) {
+				result = 1;
+				break;
+			}
+		}
+		
+		return result;
 	}
 	
 	/**

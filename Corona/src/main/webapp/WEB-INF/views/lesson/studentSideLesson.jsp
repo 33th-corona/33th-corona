@@ -61,6 +61,18 @@ ul.fancytree-container {
 <script>
 var sock = null;
 
+$.ajax({
+	url: "checkOpenLesson",
+	method: "post",
+	data: {"classNum" : '${classNum}'},
+	success: function(resp) {
+		if(resp == 0) {
+			alert('수업이 시작되지 않았습니다.');
+			location.href = "studentFormLocation?num=${classNum}";
+		}
+	}
+});
+
 $(document).ready(function() {
 // 	console.log('${classNum}');
 // 	console.log('${studentId}');
