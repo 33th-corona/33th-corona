@@ -18,7 +18,7 @@
 </insert>
 
 <!-- 과제 목록 불러오기 -->
-<select id="selectAll" resultType="Task" parameterType="int">
+<select id="selectAll" resultType="Task" parameterType="map">
 	SELECT
 		num,
 		class_num,
@@ -28,7 +28,8 @@
 		deadline,
 		is_closed
 	FROM task
-	where class_num = #{class_num}
+	where class_num = #{class_num} and
+	title LIKE '%' || #{searchword}||'%'
 </select>
 
 <!-- 과제 하나만 불러오기 -->
@@ -99,5 +100,12 @@ and s.user_id = #{user_id}
 delete from task
 where question_file = #{question_file}
 </delete>
+
+<!-- 조건에 맞는 게시글 수 -->
+<select id="getTaskCount" resultType="int" parameterType="map">
+	select count(*) from task where 
+	class_num = #{class_num} and
+	title LIKE '%' || #{searchword}||'%'
+</select>
 
 </mapper>

@@ -61,26 +61,21 @@ $(function() {
 	<section id="content">
 		<!-- 특정 글 검색 -->
 		<div class="search">
-			<form id="search" action ="taskList" method="GET" >
-			<input type = "hidden" name = "action" value = "taskList">
-			<select name="searchtype">
-				<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
-				<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
-				<option value="content" ${searchtype=='content' ? 'selected' : '' }>내용</option>
-			</select>
+			<form id="search" action ="homeworkList" method="GET" >
+			<input type="hidden" name="classNum" value="${classNum}" />
 			<input type="text" name="searchword" value="${searchword}" /> 
 			<input class="btn" type="submit" value="검색" />
 			</form>
 		</div>
 	
 		<div class="content-wrap">
-	
-			<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="homeworkCreateForm">
-				<div class="container clearfix">
-					<i class="icon-plus" style="top:4px;"></i>
-				</div>
-			</a>
-	
+			<c:if test="${position eq 'teacher' }">
+				<a class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm">
+					<div class="container clearfix">
+						<i class="icon-plus" style="top:4px;"></i>
+					</div>
+				</a>
+			</c:if>
 		<!-- 게시판 시작 -->
 		<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 		
@@ -90,7 +85,7 @@ $(function() {
 			<div class="entry clearfix">
 			<div class="clock" id="clock${stat.count}" ></div>
 				<div class="entry-title">
-					<h2><a href="taskDetail?num=${task.num}">${taskInfo.title}</a></h2>
+					<h3><a href="taskDetail?num=${task.num}">[${taskInfo.title}]</a></h3>
 				</div>
 				
 				<c:if test="${position eq 'student' }">
@@ -116,23 +111,25 @@ $(function() {
 		</c:forEach>
 		</div><!-- #posts end -->
 	</div><!-- end content-wrap end -->
+	
 	<!-- 페이징 시작 -->
 	<div id="navigator">
 		<ul class="pagination pagination-lg">
-			<li><a href="taskList?currentPage= ${navi.currentPage - navi.pagePerGroup}">◁ ◁</a></li>
-			<li><a href="taskList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}"> ◀ </a></li>
+			<li><a href="homeworkList?currentPage= ${navi.currentPage - navi.pagePerGroup}&classNum=${classNum}">◁ ◁</a></li>
+			<li><a href="homeworkList?currentPage= ${navi.currentPage-1}&searchword=${searchword}&classNum=${classNum}"> ◀ </a></li>
 		<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
 			<c:if test="${navi.currentPage eq page}">
 				<li class="active"><a href="#">${page}</a></li>
 			</c:if>
 			<c:if test="${navi.currentPage ne page}">
-				<li><a href="taskList?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}">${page}</a></li>
+				<li><a href="homeworkList?currentPage=${page}&searchword=${searchword}&classNum=${classNum}">${page}</a></li>
 			</c:if>
 		</c:forEach>
-		<li><a href="taskList?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}">▶</a> </li>
-		<li><a href="taskList?currentPage= ${navi.currentPage + navi.pagePerGroup}">▷ ▷</a></li>  
+		<li><a href="homeworkList?currentPage= ${navi.currentPage+1}&searchword=${searchword}&countPerPage=${countPerPage}&classNum=${classNum}">▶</a> </li>
+		<li><a href="homeworkList?currentPage= ${navi.currentPage + navi.pagePerGroup}&classNum=${classNum}">▷ ▷</a></li>  
 		</ul> 
 	</div><!-- end paging -->
+	
 </section><!-- end content section -->
 
 <link rel="stylesheet" href="css/flipclock.css">
@@ -142,7 +139,12 @@ $(function() {
 	<c:forEach var="taskInfo" items="${taskInfoList}" varStatus="stat">
 	<script type="text/javascript">
 	var end = +new Date('${taskInfo.deadline}');
-	var ms = (end-now)/1000;
+	var ms =0;
+	if(now<end){
+	ms = (end-now)/1000;
+	} else {
+		ms =0;
+	}
 	var clock = $('#clock${stat.count}').FlipClock(ms, {
 		clockFace: 'DailyCounter',
 		countdown: true
@@ -185,9 +187,6 @@ $(function() {
 		</c:forEach>
 	</table>
 	
-	<c:if test="${position eq 'teacher' }">
-		<input type="button" id="homeworkCreateForm" value="과제 생성">
-	</c:if>
 </div>
 </section>
 
