@@ -25,7 +25,7 @@
 <script>
 function loadLessonInfo(class_num, saved_code, saved_audio) {
 	var loadForm = $('form#loadForm');
-	alert(class_num);
+//	alert(class_num);
 	var class_numTag = loadForm.find('input#class_num');
 	var saved_codeTag = loadForm.find('input#saved_code');
 	var saved_audioTag = loadForm.find('input#saved_audio');
@@ -62,9 +62,9 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 	<!-- 특정 글 검색 -->
 	<div class="search">
 		<form id="search" action ="passedLessonList" method="GET" >
-		<input type="hidden" name="classNum" value="${classNum}" /> 
-		<input type="text" name="searchword" value="${searchword}" /> 
-		<input class="btn" type="submit" value="검색" />
+			<input type="hidden" name="classNum" value="${classNum}" /> 
+			<input type="text" name="searchword" value="${searchword}" /> 
+			<input class="btn" type="submit" value="검색" />
 		</form>
 	</div><br><br>
 	
@@ -76,6 +76,7 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 	<c:if test="${savedLessonInfos != null}">
 	<c:forEach var="savedLessonInfo" items="${savedLessonInfos}">
 		<div class="entry clearfix">
+			<!-- 
 			<div class="entry-image">
 				<div class="fslider" data-arrows="false" data-lightbox="gallery" data-pause="2000">
 					<div class="flexslider">
@@ -87,16 +88,14 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="entry-title">
 				<h2><a href="#" onclick="loadLessonInfo('${savedLessonInfo.class_num}', '${savedLessonInfo.saved_code}', '${savedLessonInfo.saved_audio}')">${savedLessonInfo.title}</a></h2>
 			</div>
 			<ul class="entry-meta clearfix">
 				<li><i class="icon-calendar3"></i> ${savedLessonInfo.savetime}</li>
-				<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
-				<li><a href="#"><i class="icon-picture"></i></a></li>
 			</ul>
 			<div class="entry-content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
 				<a href="#" onclick="loadLessonInfo('${savedLessonInfo.class_num}', '${savedLessonInfo.saved_code}', '${savedLessonInfo.saved_audio}')">Read More</a>
 			</div>
 		</div>

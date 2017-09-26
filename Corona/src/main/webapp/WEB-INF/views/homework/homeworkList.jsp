@@ -28,6 +28,15 @@ $(function() {
 	</div>
 </section>
 
+<!-- 특정 글 검색 -->
+	<div class="search">
+		<form id="search" action ="passedLessonList" method="GET" >
+			<input type="hidden" name="classNum" value="${classNum}" /> 
+			<input type="text" name="searchword" value="${searchword}" /> 
+			<input class="btn" type="submit" value="검색" />
+		</form>
+	</div>	
+
 <section id="content">
 <div class="container clearfix">
 	<table border="1">
