@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sesoc.cl.async.AsyncConfig;
+import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.TeacherConn;
 import com.sesoc.cl.connInfo.TeacherConnList;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.PassedLessonRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.socket.LessonMainSocket;
+import com.sesoc.cl.threadForLesson.LessonThread;
 import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.SavedLessonInfo;
 
@@ -59,6 +61,24 @@ public class TeacherLessonController {
 		model.addAttribute("classNum", classNum);
 		return "lesson/teacherSideLesson";
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="checkExistLesson", method=RequestMethod.POST)
+	public int checkExistLesson(String id) {
+		int result = 0;
+		
+		List<LessonThread> lessonList = LessonList.getLessonList();
+		for(LessonThread lt : lessonList) {
+			if(lt.getTeacherConn().getId().equals(id)) {
+				result = 1;
+				break;
+			}
+		}
+		
+		return result;
+	}
+	
 	
 	/**
 	 * 강의 시작 요청 시 실행

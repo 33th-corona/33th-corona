@@ -58,234 +58,70 @@ ul.fancytree-container {
 <script src="js/customJS/project_explorer.js/"></script>
 <script>
 var sock = null;
+var existLesson = -100;
+var title;
+var id = '${teacher_id}';
+var classNum = '${classNum}';
+var connIp;
+
+$.ajax({
+	url: "checkExistLesson",
+	method: "post",
+	async: false,
+	data: {"id" : '${teacher_id}'},
+	success: function(resp) {
+		existLesson = resp;
+		console.log('existLesson : ' + existLesson);
+	}
+});
 
 $(document).ready(function() {
+	
 	//현재 사용자의 IP를 로딩
 // 	var connIp = ip();
 	//테스트 용 IP 설정 (== localhost)
-	var connIp = '127.0.0.1';
+	connIp = '127.0.0.1';
 // 	var connIp = '172.20.10.3';
 	//web editor 객체 생성 (Code part)
 	var editor = ace.edit("editor");
 	//web editor 객체 생성 (Console part)
 	var consoleView = ace.edit("console");
 	
-	$('a#start').on('click', function() {
-		//강의 제목 입력
-		var title = $('input#title').val();
-		//선생님 id 입력
-// 		var id = $('input#id').val();
-		var id = '${teacher_id}';
-		//강의 번호 입력
-// 		var classNum = $('input#classNum').val();
-		var classNum = '${classNum}';
-		
-		//서버에 보낼 메세지를 객체로 만듦
-		var teacherInfo = {};
-		teacherInfo.classNum = classNum;
-		teacherInfo.title = title;
-		teacherInfo.id = id;
-		teacherInfo.ip = connIp;
-		
-		var startResult = -100;
-		//서버에 강의 시작 명령 전달(Server Socket생성 및 대기, 선생님의 기본 정보 등록)
-		$.ajax({
-			url : "startLesson"
-			, async: false
-			, method : "post"
-			, data : teacherInfo
-			, success : function(resp) {
-				startResult = resp;
-			}
+	if(existLesson == 0) {
+		$('a#start').on('click', function() {
+			//강의 제목 입력
+			title = $('input#title').val();
+			//선생님 id 입력
+	// 		var id = $('input#id').val();
+// 			var id = '${teacher_id}';
+			//강의 번호 입력
+	// 		var classNum = $('input#classNum').val();
+// 			var classNum = '${classNum}';
+			
+			//서버에 보낼 메세지를 객체로 만듦
+			var teacherInfo = {};
+			teacherInfo.classNum = classNum;
+			teacherInfo.title = title;
+			teacherInfo.id = id;
+			teacherInfo.ip = connIp;
+			
+			var startResult = -100;
+			//서버에 강의 시작 명령 전달(Server Socket생성 및 대기, 선생님의 기본 정보 등록)
+			$.ajax({
+				url : "startLesson"
+				, async: false
+				, method : "post"
+				, data : teacherInfo
+				, success : function(resp) {
+					startResult = resp;
+				}
+			});
+			
+			lessonStart(startResult, existLesson);
 		});
-		
-		//서버에 명령 전달이 성공하면 실행
-		if(startResult == 1) {
-			//웹소켓 연결 후 수켓 객체를 sock에 저장
-			sock = new WebSocket("ws://" + window.location.host +"/cl/ws/teacherSideLesson");
-			
-			//웹소켓 생성 직후 실행
-			sock.onopen = function() {
-				//서버에 보낼 메세지를 객체로 만듦
-				var sendMessage = {};
-				sendMessage.action = "init";
-				sendMessage.title = title;
-				sendMessage.id = id;
-				sendMessage.ip = connIp;
-				
-				//JSON 형태로 변환
-				var sendMessageJSON = JSON.stringify(sendMessage);
-// 				console.log(sendMessageJSON);
-				
-				//웹소켓을 통해 서버에서 메세지 전달
-				sock.send(sendMessageJSON);
-				console.log('websocket connected');
-			}
-			
-			//사용자에게 다음 행동 지시(알림)
-			$('div#connInfo').empty();
-			$('div#connInfo').append('<br>Eclipse를 켜서 강의를 시작해 주세요.');
-			
-			//웹소켓을 통해 서버에서 메세지가 전송 되었을 때 실행
-			sock.onmessage = function(evt) {
-// 				console.log(evt.data);
-
-				//받은 메세지를 JSON 객체로 parsing
-				var parsedData = JSON.parse(evt.data);
-				//메시지의 action 부분을 추출
-				var action = parsedData.action;
-				
-				//action 부분의 내용에 따라 다른 코드 실행
-				//서버에 웹소켓 등록 완료 후 실행
-				if(action == 'initSuccess') {
-					$('div#connInfo').append('<br>웹소켓에 ip등록 완료하였습니다.');
-				} 
-				//선생님 Eclipse와 연결 완료 및 클래스 Thread 실행 후 실행
-				else if(action == 'eclipseConnSuccess') {
-					$('div#startDiv').css('display', 'none');
-					$('div#lessonDiv').css('display', 'block');
-// 					$('div#connInfo').append('<br>eclipse와 연결 완료하였습니다. 강의를 시작합니다.');
-				}
-				//학생이 강의에 참가하면 실행
-				else if(action == 'studentListUpdate') {
-					var studentList = parsedData.data;
-// 					console.log(studentList);
-					//select tag에 접속 한 학생의 아이디 등록
-					var listHtml;
-					for(var index in studentList) {
-						listHtml += '<option user-ip="' + studentList[index].ip + '">' + studentList[index].id + '</option>';
-					}
-					$('div#studentList select').html(listHtml);
-					//student 버튼을 누르면 학생의 eclipse에 접속
-					$('input#startStudentView').on('click', function() {
-						$('input#stopStudentView').trigger('click');
-						var sendMessage = {};
-						sendMessage.action = "viewStudentEclipse";
-						sendMessage.ip = $('select option:selected').attr("user-ip");
-						var sendMessageJSON = JSON.stringify(sendMessage);
-						sock.send(sendMessageJSON);
-					});
-				} 
-				//action 부분의 내용에 따라 다른 코드 실행
-				//학생 eclipse 접속 성공 시 실행
-				else if(action == 'connStudentEclipseSuccess') {
-					//web editor의 maxline을 설정
-					editor.setOptions({
-						maxLines : 25,
-						minLines : 25,
-						autoScrollEditorIntoView : true
-					});
-					//web editor의 syntaxing 언어 설정(java)
-					editor.getSession().setMode("ace/mode/java");
-					//web editor의 테마 설정
-					editor.setTheme("ace/theme/eclipse");
-					//web editor를 읽기 전용으로 설정
-					editor.setFontSize(13);
-					editor.setReadOnly(true);
-					editor.setHighlightActiveLine(false);
-					editor.renderer.setShowPrintMargin(false);
-					editor.setShowInvisibles(true);
-					editor.setDisplayIndentGuides(true);
-					editor.$blockScrolling = Infinity;
-					
-					saveEditorOption(editor);
-					
-					consoleView.setOptions({
-						maxLines : 3,
-						minLines : 3,
-						autoScrollEditorIntoView : true
-					});
-					consoleView.getSession().setMode(
-							"ace/mode/text");
-					consoleView.setTheme("ace/theme/eclipse");
-					consoleView.setFontSize(13);
-					consoleView.setReadOnly(true);
-					consoleView.setHighlightActiveLine(false);
-					consoleView.renderer.setShowPrintMargin(false);
-					consoleView.setDisplayIndentGuides(true);
-					consoleView.$blockScrolling = Infinity;
-				} 
-				//학생 eclipse 접속 직후 Project Explorer 정보 로딩
-				else if(action == 'initProjectExplorer') {
-//	 				console.log(parsedData.projectExplorer);
-					projectExplorerObject = parsedData.projectExplorer;
-					initProjectExplorer(parsedData.projectExplorer);
-				} 
-				//학생 eclipse 접속 직후 활성화 된 Editor 정보 로딩
-				else if(action == 'initActivatedEditor') {
-					//활성화된 Editor의 파일 경로 표시
-					$('a#fileName').html(parsedData.nowPath);
-					//받은 코드를 현재 editor에 그대로 덮어쓰기
-					editor.setValue(parsedData.nowCode);
-					editor.clearSelection();
-				} 
-				//학생 Eclipse의 Editor에서 변화가 일어 났을 때 실행
-				else if(action == 'changeCode') {
-					//받은 코드를 현재 editor에 그대로 덮어쓰기
-					editor.setValue(parsedData.code);
-					editor.clearSelection();
-				} 
-				//학생 Eclipse의 Console에서 변화가 일어 났을 때 실행
-				else if(action == 'changeConsole') {
-					//받은 코드를 현재 editor에 그대로 덮어쓰기
-					consoleView.setValue(parsedData.console);
-					editor.clearSelection();
-				} 
-				//학생 Eclipse의 활성화 Editor가 바뀌었을 때 실행
-				else if(action == 'changeActivatedEditor') {
-					//활성화된 Editor의 파일 경로 표시
-					$('a#fileName').html(parsedData.nowPath);
-					//받은 코드를 현재 editor에 그대로 덮어쓰기
-					editor.setValue(parsedData.nowCode);
-					editor.clearSelection();
-				} 
-				//파일, 패키지, 프로젝트의 변화가 생겼을 때 실행
-				else if(action == 'changeProject') {
-//	 				console.log(parsedData.projectExplorer);
-					projectExplorerObject = parsedData.projectExplorer;
-					updateProjectExplorer(parsedData.projectExplorer);
-				}
-				else if(action == 'chatMessage') {
-					var existMessage = $('#chatMessage').val();
-					var message = parsedData.from + ": " + parsedData.chatMessage;
-					
-					if(existMessage == '') {
-						existMessage = message;
-					} else {
-						existMessage = existMessage + '\n' + message;
-					}
-					
-					$('#chatMessage').val(existMessage);
-					$('#chatMessage').scrollTop(999999);
-				}
-				else if (action == 'disconnect') {
-					$('input#stopStudentView').trigger('click');
-					var savedFileName = parsedData.savedFileName;
-					var lessonTitle = parsedData.lessonTitle;
-					$.ajax({
-						url : "saveLesson"
-						, async: false
-						, method : "post"
-						, data : {
-							"class_num" : '${classNum}',
-							"title" : lessonTitle,
-							"saved_code" : savedFileName + ".zip", 
-							"saved_audio" : savedFileName + ".mp3", 
-						}
-						, success : function(resp) {
-							console.log(resp);
-							saveResult = resp;
-						}
-					});
-// 					console.log(savedFileName);
-					alert('수업이 종료되었습니다.');
-					location.href = 'teacherFormLocation?num=${classNum}';
-				}
-			}
-		} else if(startResult == 0) {
-			$('div#connInfo').append('<br>서버소켓이 사용 중 입니다. 다음에 다시 연결하세요.');
-		}
-	});
+	} else if(existLesson == 1) {
+		lessonStart(1, existLesson);
+	}
 	
 	$('a#cancel').on('click', function() {
 		var cancelResult = -100;
@@ -379,6 +215,212 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function lessonStart(startResult, existLesson) {
+	
+	console.log('startResult : ' + startResult);
+	console.log('existLesson : ' + existLesson);
+	
+	//서버에 명령 전달이 성공하면 실행
+	if(startResult == 1) {
+		//웹소켓 연결 후 수켓 객체를 sock에 저장
+		sock = new WebSocket("ws://" + window.location.host +"/cl/ws/teacherSideLesson");
+		
+		//웹소켓 생성 직후 실행
+		sock.onopen = function() {
+			if(existLesson == 0) {
+				//서버에 보낼 메세지를 객체로 만듦
+				var sendMessage = {};
+				sendMessage.action = "init";
+				sendMessage.title = title;
+				sendMessage.id = id;
+				sendMessage.ip = connIp;
+				
+				//JSON 형태로 변환
+				var sendMessageJSON = JSON.stringify(sendMessage);
+//					console.log(sendMessageJSON);
+				
+				//웹소켓을 통해 서버에서 메세지 전달
+				sock.send(sendMessageJSON);
+				console.log('websocket connected');
+				
+				//사용자에게 다음 행동 지시(알림)
+				$('div#connInfo').empty();
+				$('div#connInfo').append('<br>Eclipse를 켜서 강의를 시작해 주세요.');
+			} else if(existLesson == 1) {
+				var sendMessage = {};
+				sendMessage.action = "join";
+				sendMessage.id = id;
+				
+				//JSON 형태로 변환
+				var sendMessageJSON = JSON.stringify(sendMessage);
+//					console.log(sendMessageJSON);
+				
+				//웹소켓을 통해 서버에서 메세지 전달
+				sock.send(sendMessageJSON);
+			}
+		}
+		
+		//웹소켓을 통해 서버에서 메세지가 전송 되었을 때 실행
+		sock.onmessage = function(evt) {
+//				console.log(evt.data);
+
+			//받은 메세지를 JSON 객체로 parsing
+			var parsedData = JSON.parse(evt.data);
+			//메시지의 action 부분을 추출
+			var action = parsedData.action;
+			
+			//action 부분의 내용에 따라 다른 코드 실행
+			//서버에 웹소켓 등록 완료 후 실행
+			if(action == 'initSuccess') {
+				$('div#connInfo').append('<br>웹소켓에 ip등록 완료하였습니다.');
+			} 
+			//선생님 Eclipse와 연결 완료 및 클래스 Thread 실행 후 실행
+			else if(action == 'eclipseConnSuccess') {
+				$('div#startDiv').css('display', 'none');
+				$('div#lessonDiv').css('display', 'block');
+//					$('div#connInfo').append('<br>eclipse와 연결 완료하였습니다. 강의를 시작합니다.');
+			}
+			//학생이 강의에 참가하면 실행
+			else if(action == 'studentListUpdate') {
+				var studentList = parsedData.data;
+//					console.log(studentList);
+				//select tag에 접속 한 학생의 아이디 등록
+				var listHtml;
+				for(var index in studentList) {
+					listHtml += '<option user-ip="' + studentList[index].ip + '">' + studentList[index].id + '</option>';
+				}
+				$('div#studentList select').html(listHtml);
+				//student 버튼을 누르면 학생의 eclipse에 접속
+				$('input#startStudentView').on('click', function() {
+					$('input#stopStudentView').trigger('click');
+					var sendMessage = {};
+					sendMessage.action = "viewStudentEclipse";
+					sendMessage.ip = $('select option:selected').attr("user-ip");
+					var sendMessageJSON = JSON.stringify(sendMessage);
+					sock.send(sendMessageJSON);
+				});
+			} 
+			//action 부분의 내용에 따라 다른 코드 실행
+			//학생 eclipse 접속 성공 시 실행
+			else if(action == 'connStudentEclipseSuccess') {
+				//web editor의 maxline을 설정
+				editor.setOptions({
+					maxLines : 25,
+					minLines : 25,
+					autoScrollEditorIntoView : true
+				});
+				//web editor의 syntaxing 언어 설정(java)
+				editor.getSession().setMode("ace/mode/java");
+				//web editor의 테마 설정
+				editor.setTheme("ace/theme/eclipse");
+				//web editor를 읽기 전용으로 설정
+				editor.setFontSize(13);
+				editor.setReadOnly(true);
+				editor.setHighlightActiveLine(false);
+				editor.renderer.setShowPrintMargin(false);
+				editor.setShowInvisibles(true);
+				editor.setDisplayIndentGuides(true);
+				editor.$blockScrolling = Infinity;
+				
+				saveEditorOption(editor);
+				
+				consoleView.setOptions({
+					maxLines : 3,
+					minLines : 3,
+					autoScrollEditorIntoView : true
+				});
+				consoleView.getSession().setMode(
+						"ace/mode/text");
+				consoleView.setTheme("ace/theme/eclipse");
+				consoleView.setFontSize(13);
+				consoleView.setReadOnly(true);
+				consoleView.setHighlightActiveLine(false);
+				consoleView.renderer.setShowPrintMargin(false);
+				consoleView.setDisplayIndentGuides(true);
+				consoleView.$blockScrolling = Infinity;
+			} 
+			//학생 eclipse 접속 직후 Project Explorer 정보 로딩
+			else if(action == 'initProjectExplorer') {
+// 				console.log(parsedData.projectExplorer);
+				projectExplorerObject = parsedData.projectExplorer;
+				initProjectExplorer(parsedData.projectExplorer);
+			} 
+			//학생 eclipse 접속 직후 활성화 된 Editor 정보 로딩
+			else if(action == 'initActivatedEditor') {
+				//활성화된 Editor의 파일 경로 표시
+				$('a#fileName').html(parsedData.nowPath);
+				//받은 코드를 현재 editor에 그대로 덮어쓰기
+				editor.setValue(parsedData.nowCode);
+				editor.clearSelection();
+			} 
+			//학생 Eclipse의 Editor에서 변화가 일어 났을 때 실행
+			else if(action == 'changeCode') {
+				//받은 코드를 현재 editor에 그대로 덮어쓰기
+				editor.setValue(parsedData.code);
+				editor.clearSelection();
+			} 
+			//학생 Eclipse의 Console에서 변화가 일어 났을 때 실행
+			else if(action == 'changeConsole') {
+				//받은 코드를 현재 editor에 그대로 덮어쓰기
+				consoleView.setValue(parsedData.console);
+				editor.clearSelection();
+			} 
+			//학생 Eclipse의 활성화 Editor가 바뀌었을 때 실행
+			else if(action == 'changeActivatedEditor') {
+				//활성화된 Editor의 파일 경로 표시
+				$('a#fileName').html(parsedData.nowPath);
+				//받은 코드를 현재 editor에 그대로 덮어쓰기
+				editor.setValue(parsedData.nowCode);
+				editor.clearSelection();
+			} 
+			//파일, 패키지, 프로젝트의 변화가 생겼을 때 실행
+			else if(action == 'changeProject') {
+// 				console.log(parsedData.projectExplorer);
+				projectExplorerObject = parsedData.projectExplorer;
+				updateProjectExplorer(parsedData.projectExplorer);
+			}
+			else if(action == 'chatMessage') {
+				var existMessage = $('#chatMessage').val();
+				var message = parsedData.from + ": " + parsedData.chatMessage;
+				
+				if(existMessage == '') {
+					existMessage = message;
+				} else {
+					existMessage = existMessage + '\n' + message;
+				}
+				
+				$('#chatMessage').val(existMessage);
+				$('#chatMessage').scrollTop(999999);
+			}
+			else if (action == 'disconnect') {
+				$('input#stopStudentView').trigger('click');
+				var savedFileName = parsedData.savedFileName;
+				var lessonTitle = parsedData.lessonTitle;
+				$.ajax({
+					url : "saveLesson"
+					, async: false
+					, method : "post"
+					, data : {
+						"class_num" : '${classNum}',
+						"title" : lessonTitle,
+						"saved_code" : savedFileName + ".zip", 
+						"saved_audio" : savedFileName + ".mp3", 
+					}
+					, success : function(resp) {
+						console.log(resp);
+						saveResult = resp;
+					}
+				});
+//					console.log(savedFileName);
+				alert('수업이 종료되었습니다.');
+				location.href = 'teacherFormLocation?num=${classNum}';
+			}
+		}
+	} else if(startResult == 0) {
+		$('div#connInfo').append('<br>서버소켓이 사용 중 입니다. 다음에 다시 연결하세요.');
+	}
+}
 
 function saveEditorOption(editor) {
 	var editorTheme = editor.getTheme();
