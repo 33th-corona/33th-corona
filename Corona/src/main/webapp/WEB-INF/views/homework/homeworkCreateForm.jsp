@@ -78,7 +78,7 @@
 
 <section id="content" style="background-image: url('images/homeworkback.jpg'); background-size: 1300px;">
 <div class="container clearfix">
-	<div class="row" style="margin-top: 20px;"><!-- 큰 row 시작 -->
+	<div class="row"><!-- 큰 row 시작 -->
 		<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
 			<div class="row"><!-- 서쪽 1번째 줄 시작 -->
 				<div class="col_full">
@@ -277,7 +277,7 @@ public class ${classFileName} {
 </div>
 </section>
 
-<footer id="footer" class="dark noborder">
+<footer id="footer" class="dark noborder" >
 	<div id="copyrights">
 		<div class="container center clearfix">
 			Copyright HanJo 2017 | All Rights Reserved
