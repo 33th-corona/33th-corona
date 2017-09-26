@@ -30,6 +30,7 @@ $(function() {
 	editor.setDisplayIndentGuides(${indentGuides});
 	editor.$blockScrolling = Infinity;
 });
+
 </script>
 </head>
 <body>
