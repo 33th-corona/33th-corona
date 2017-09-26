@@ -44,6 +44,9 @@ ul.fancytree-container {
     box-shadow:0 0 0 25px #000530 inset;
     -webkit-transform: scale(1);
 }
+.textChange{
+	color : #ffffff;
+}
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script src="js/jquery-ui.js/"></script>
@@ -414,16 +417,16 @@ function saveEditorOption(editor) {
 			<div  style="left: 380px; top: 5px; width:500px; height: 800px; position: absolute; background-image: url(images/tablet.png); background-size: 430px; background-repeat: no-repeat;">
 			</div>
 			<div id="lessonStartForm" class="divcenter  bottommargin-sm" style="width: 300px; height: 300px; text-align: center; background-color: rgba(255,255,255,0.5); border-radius:5%; padding-top: 30px; margin-top: 150px;">
-				<h3>강의 제목</h3>
+				<h3 class="textChange">강의 제목</h3>
 				<input type="text" name="title" id="title" class="bottommargin-sm form-control center" style="margin-left: 10px; margin-right: 10px; width: 280px; background-color: rgba(255,255,255,0.5);" ><br>
 				<a href="#" id="start"
 						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
-							<i class="icon-line-play" style="width: 30px"></i>강의 시작
+							<i class="icon-line-play textChange" style="width: 30px"></i>강의 시작
 				</a>
 				<br>
 				<a href="#" id="cancel"
 						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
-							<i class="icon-switch" style="width: 30px"></i>강의 취소
+							<i class="icon-switch textChange" style="width: 30px"></i>강의 취소
 				</a>
 			</div>
 			<div id="connInfo" style="text-align: center; background-color: background-color: rgba(255,255,255,0.5); color: white;"></div>
@@ -448,7 +451,7 @@ function saveEditorOption(editor) {
 					</div>
 					<div id="editor" class="row editorArea divwhite" ></div>
 					<div id="editorOption" class="row editorArea text-right divwhite">
-						<div id="editorThemeChange" class="divwhite">
+						<div id="editorThemeChange" class="divwhite textChange">
 							Theme 
 							<select id="themeChange">
 								<option value="eclipse">Eclipse</option>
@@ -459,7 +462,7 @@ function saveEditorOption(editor) {
 							</select>
 						</div>
 						&nbsp;
-						<div id="editorShowInvisibles">
+						<div id="editorShowInvisibles" class="textChange">
 							Invisibles 
 							<select id="showInvisibles">
 								<option value="true">on</option>
@@ -467,7 +470,7 @@ function saveEditorOption(editor) {
 							</select>
 						</div>
 						&nbsp;
-						<div id="editorIndentGuides">
+						<div id="editorIndentGuides" class="textChange">
 							IndentGuides 
 							<select id="indentGuides">
 								<option value="true">on</option>
@@ -475,7 +478,7 @@ function saveEditorOption(editor) {
 							</select>
 						</div>
 						&nbsp;
-						<div id="editorShowGutte">
+						<div id="editorShowGutte" class="textChange">
 							Gutte 
 							<select id="showGutte">
 								<option value="true">on</option>
@@ -490,7 +493,7 @@ function saveEditorOption(editor) {
 			</div>
 		</div>
 		<div id="rightPanel" class="col-sm-2 divwhite divwhite">
-			<div id="rightFirstPanel" class="row editorArea divwhite">
+			<div id="rightFirstPanel" class="row editorArea divwhite textChange">
 				참여학생목록
 				<div id="studentList">
 					<select size="10" style="width: 150px; height: 200px"></select>

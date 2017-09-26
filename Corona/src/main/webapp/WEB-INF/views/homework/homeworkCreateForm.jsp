@@ -49,9 +49,16 @@
 	color: #ffffff !important;
 }
 .i-rounded.i-light:hover{
-	
 	background-color: #dddddd !important;
 	color: #000000 !important;
+}
+.textChange{
+	color : #ffffff;
+}
+.button.button-xlarge.button-white:hover {
+	background-color: #000530;
+	color: #fff !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 </style>
 </head>
@@ -62,23 +69,23 @@
 <div class="body-overlay"></div>
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
 		<h1>Create Homework Page</h1>
 		<span>Create Homework Page</span>
 	</div>
 </section>
 
-<section id="content">
+<section id="content" style="background-image: url('images/homeworkback.jpg'); background-size: 1300px;">
 <div class="container clearfix">
-	<div class="row"><!-- 큰 row 시작 -->
+	<div class="row" style="margin-top: 20px;"><!-- 큰 row 시작 -->
 		<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
 			<div class="row"><!-- 서쪽 1번째 줄 시작 -->
 				<div class="col_full">
 					<div class="row">
 						<div class="col-md-12">
 							<i class="i-rounded i-light icon-edit"></i>
-							<h2 class="nobottommargin">과제 제목</h2>
+							<h2 class="nobottommargin textChange">과제 제목</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -95,7 +102,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<i class="i-rounded i-light icon-edit"></i>
-							<h2 class="nobottommargin">과제 내용</h2>
+							<h2 class="nobottommargin textChange">과제 내용</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -112,7 +119,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<i class="i-rounded i-light icon-calendar"></i>
-							<h2 class="nobottommargin">날짜 기한</h2>
+							<h2 class="nobottommargin textChange">날짜 기한</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -132,11 +139,11 @@
 						<div class="row">
 							<div class="col-md-6">
 								<i class="i-rounded i-light icon-laptop"></i>
-								<h2 class="nobottommargin">에디터</h2>
+								<h2 class="nobottommargin textChange">에디터</h2>
 							</div>
 							<div class="col-md-6 text-right">
-								<input type="button" id="homeworkSubmit" class="button button-xlarge button-leaf button-rounded tright"	value="만들기"> 
-								<input type="button" id="editorReset" class="button button-xlarge button-leaf button-rounded tright" value="리셋">
+								<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000"	value="만들기"> 
+								<input type="button" id="editorReset" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="리셋">
 							</div>
 						</div>
 						<div class="row">
@@ -153,8 +160,8 @@ public class ${classFileName} {
 						</div>
 						<div class="row text-right" id="editorOption" style="margin: 10px">
 							<div class="col-sm-11">
-								<div id="editorThemeChange" style="display: inline-block">
-									Theme <select id="themeChange">
+								<div id="editorThemeChange" class="textChange" style="display: inline-block ">
+									Theme <select id="themeChange" style="color: black;">
 										<option value="eclipse">Eclipse</option>
 										<option value="xcode">XCode</option>
 										<option value="idle_fingers">idle Fingers</option>
@@ -163,21 +170,21 @@ public class ${classFileName} {
 									</select>
 								</div>
 								&nbsp;
-								<div id="editorShowInvisibles" style="display: inline-block">
-									Invisibles <select id="showInvisibles">
+								<div id="editorShowInvisibles" class="textChange" style="display: inline-block">
+									Invisibles <select id="showInvisibles" style="color: black;">
 										<option value="true">on</option>
 										<option value="false" selected="selected">off</option>
 									</select>
 								</div>
 								&nbsp;
-								<div id="editorIndentGuides" style="display: inline-block">
-									IndentGuides <select id="indentGuides">
+								<div id="editorIndentGuides" class="textChange" style="display: inline-block">
+									IndentGuides <select id="indentGuides" style="color: black;">
 										<option value="true">on</option>
 										<option value="false">off</option>
 									</select>
 								</div>
 								&nbsp;
-								<div id="editorShowGutte" style="display: inline-block">
+								<div id="editorShowGutte" class="textChange" style="display: inline-block">
 									Gutte <select id="showGutte">
 										<option value="true">on</option>
 										<option value="false">off</option>
@@ -200,7 +207,7 @@ public class ${classFileName} {
                     <div class="row">
                         <div class="col-md-11">
                             <i class="i-rounded i-light icon-edit"></i>
-                            <h2 class="nobottommargin">입력 값</h2>
+                            <h2 class="nobottommargin textChange">입력 값</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -215,7 +222,7 @@ public class ${classFileName} {
                     <div class="row">
                         <div class="col-md-11">
                             <i class="i-rounded i-light icon-edit"></i>
-                            <h2 class="nobottommargin">출력 값</h2>
+                            <h2 class="nobottommargin textChange">출력 값</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -230,19 +237,19 @@ public class ${classFileName} {
                 <div class="row plus">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-line-marquee-plus"></i>
-                        <h3>입출력값 추가</h3>
+                        <h3 class="textChange">입출력값 추가</h3>
                     </div>
                 </div>
                 <div class="row calsle">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-line-marquee-minus"></i>
-                        <h3>입출력값 삭제</h3>
+                        <h3 class="textChange">입출력값 삭제</h3>
                     </div>
                 </div>
                 <div class="row" data-toggle="modal" data-target="#explainHomework">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-box"></i>
-                        <h3>과제 설명</h3>
+                        <h3 class="textChange">과제 설명</h3>
                     </div>
                 </div>
                 <div class="modal fade" tabindex="-1" id="explainHomework" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
