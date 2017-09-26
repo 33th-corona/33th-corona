@@ -50,7 +50,7 @@ ul.fancytree-container {
 <script src="js/jquery-ui.js/"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- 접속한 사용자의 ip를 알기위한 외부 사이트 주소 -->
-<script src="http://jsgetip.appspot.com"></script>
+<!-- <script src="http://jsgetip.appspot.com"></script> -->
 <!-- ACE web editor Library -->
 <script src="js/ace/ace.js"></script>
 <!-- FancyTree Library -->
