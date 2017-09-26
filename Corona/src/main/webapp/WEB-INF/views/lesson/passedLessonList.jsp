@@ -37,7 +37,6 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 	class_numTag.val(class_num);
 	saved_codeTag.val(saved_code);
 	saved_audioTag.val(saved_audio);
-	alert(class_numTag.val()+' 서브밋 전');
 	loadForm.submit();
 	
 } 
@@ -73,6 +72,9 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 <div class="container clearfix">
 	
 	<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
+	
+	<c:if test="${savedLessonInfos != null}">
+	<c:forEach var="savedLessonInfo" items="${savedLessonInfos}">
 		<div class="entry clearfix">
 			<div class="entry-image">
 				<div class="fslider" data-arrows="false" data-lightbox="gallery" data-pause="2000">
@@ -86,10 +88,10 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 				</div>
 			</div>
 			<div class="entry-title">
-				<h2><a href="blog-single-small.html">This is a Standard post with a Slider Gallery</a></h2>
+				<h2><a href="#" onclick="loadLessonInfo('${savedLessonInfo.class_num}', '${savedLessonInfo.saved_code}', '${savedLessonInfo.saved_audio}')">${savedLessonInfo.title}</a></h2>
 			</div>
 			<ul class="entry-meta clearfix">
-				<li><i class="icon-calendar3"></i> 24th Feb 2014</li>
+				<li><i class="icon-calendar3"></i> ${savedLessonInfo.savetime}</li>
 				<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
 				<li><a href="#"><i class="icon-picture"></i></a></li>
 			</ul>
@@ -98,7 +100,8 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 				<a href="blog-single-small.html"class="more-link">Read More</a>
 			</div>
 		</div>
-		
+	</c:forEach>
+	</c:if>
 		
 		<div class="entry clearfix">
 			<div class="entry-image">
@@ -150,7 +153,6 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 	</c:if>
 </table>
 </div><!-- container -->
-
 
 	<!-- 페이징 시작 -->
 	<div id="navigator">
