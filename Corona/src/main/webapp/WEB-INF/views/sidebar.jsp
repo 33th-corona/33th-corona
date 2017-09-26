@@ -395,7 +395,7 @@
 						<li><a href="#"><i class="icon-briefcase"></i>내가 선생일 때</a>
 							<ul>
 									<c:if test="${empty myTeacherList}">
-									<li><a>너 선생아니다!!</a></li>
+									<li><a>선생으로 참여한 반이 없습니다.</a></li>
 									</c:if>
 								<c:forEach items="${myTeacherList}" var="teacherList">
 									<li><a href="${pageContext.request.contextPath}/teacherFormLocation?num=${teacherList.num}"><i class="icon-magic"></i>${teacherList.name}</a></li>
@@ -405,7 +405,7 @@
 						<li><a href="#"><i class="icon-study"></i>내가 학생일 때</a>
 							<ul>
 								<c:if test="${empty myStudentList}">
-									<li><a>너 학생아니다!!!</a></li>
+									<li><a>학생으로 참여한 반이 없습니다.</a></li>
 								</c:if>
 								<c:forEach items="${myStudentList}" var="studentList">
 									<li><a href="${pageContext.request.contextPath}/studentFormLocation?num=${studentList.num}"><i class="icon-pencil2"></i>${studentList.name}</a></li>
