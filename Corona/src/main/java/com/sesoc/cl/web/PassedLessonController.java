@@ -49,7 +49,7 @@ public class PassedLessonController {
 			@RequestParam(value="classNum", required=false)int classNum, 
 			Model model, HttpServletRequest request) 
 	{
-		System.out.println(classNum);
+		System.out.println("레슨 리스트 컨트롤러 진입"+classNum);
 		//전체 글 개수
 		int totalRecordCount = pRepo.getPassedLessonCount(searchword,classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
@@ -59,6 +59,10 @@ public class PassedLessonController {
 		
 		listCome(model, request);
 		
+		System.out.println("countPerPage : "+countPerPage+" searchword : "+searchword);
+		model.addAttribute("navi",navi);
+		model.addAttribute("searchword",searchword);
+		model.addAttribute("countPerPage",countPerPage);
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("savedLessonInfos", savedLessonInfos);
 		return "lesson/passedLessonList";

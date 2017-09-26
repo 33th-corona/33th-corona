@@ -65,7 +65,7 @@ public class BoardController {
 		model.addAttribute("navi",navi);
 		model.addAttribute("boardList",boardList);
 		model.addAttribute("bfList", bfList);
-		model.addAttribute("countpage",countPerPage);
+		model.addAttribute("countPerPage",countPerPage);
 		model.addAttribute("searchword",searchword);
 		model.addAttribute("searchtype",searchtype);
 		return "boardList";
