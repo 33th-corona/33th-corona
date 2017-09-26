@@ -67,7 +67,6 @@ function modify() {
 
 //게시판 글 및 첨부파일 유무 유효성 검사
 function check(){
-	alert('체크');
 	var title = $('#title').val();
 	var file1 = $('.upload');
 	var original_filename = $('.original_filename');
@@ -95,7 +94,6 @@ function check(){
 		alert('내용을 적어주세요');
 		return;
 	}
-	alert('유효성검사 끝');
 	$('#dup').submit();
 }
 
@@ -113,6 +111,7 @@ function back() {
 <form id="dup" action="driveUpdate" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="num" value="${drive.num}">
 <input type="hidden" id="user_id" name="user_id" class="user_id" value="${drive.user_id}">
+<input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 		<thead>
 			<tr>
@@ -127,7 +126,7 @@ function back() {
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${loginId}로그인세션아이디</td>
+			<td>${loginId}</td>
 		</tr>
 		<tr>
 			<td>

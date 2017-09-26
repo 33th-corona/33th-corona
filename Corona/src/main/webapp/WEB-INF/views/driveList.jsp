@@ -104,7 +104,7 @@ width: 20%;
 						</div>
 						
 						<div class="entry-title">
-							<h2><a href="driveDetail?num=${drive.num}">${drive.title}</a></h2>
+							<h2><a href="driveDetail?num=${drive.num}&classNum=${classNum}">${drive.title}</a></h2>
 						</div>
 						<ul class="entry-meta clearfix">
 							<li>${drive.user_id}</li>
@@ -120,7 +120,7 @@ width: 20%;
 									</c:if>
 								</c:forEach>
 							</c:forEach>
-							<a href="driveDetail?num=${drive.num}" class="more-link">Read More</a>
+							<a href="driveDetail?num=${drive.num}&classNum=${classNum}" class="more-link">Read More</a>
 						</div>
 					</div>
 				</c:forEach>

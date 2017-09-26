@@ -47,14 +47,14 @@
 
 	function update() {
 		var num = $('#num').val();
-		location.href = "${pageContext.request.contextPath}/driveUpdateForm?num=" + num;
+		location.href = "${pageContext.request.contextPath}/driveUpdateForm?num="+num+"&classNum=${classNum}";
 	}
 	
 	//글삭제
 	function deleteForm(){
 		var del = confirm("정말 삭제하시겠습니까?")
 		if(del){
-			location.href="driveDelete?num=${drive.num}";
+			location.href="driveDelete?num=${drive.num}&classNum=${classNum}";
 		}
 		return;
 	}
@@ -83,7 +83,7 @@
 	<input type="hidden" id="num" name="num" value="${drive.num}">
 	<table class="Bordered table">
 		<tr>
-			<th colspan="3">${drive.title}제목제목</th>
+			<th colspan="3">${drive.title}</th>
 		</tr>
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3"><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>

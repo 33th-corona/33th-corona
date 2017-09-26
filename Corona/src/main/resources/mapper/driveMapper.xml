@@ -60,8 +60,10 @@
 	</select>
 	
 	<insert id="insert" parameterType="Drive">
-		insert into drive values(
-			1, #{class_num}, #{user_id}, #{title}, #{content}, SYSDATE, 0
+		insert into drive 
+		(class_num, num, user_id, title, content, register_time, hit)
+		values(
+			#{class_num}, #{num}, #{user_id}, #{title}, #{content}, SYSDATE, 0
 		)
 	</insert>
 	

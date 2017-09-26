@@ -77,6 +77,7 @@ public class DriveRepository {
 	}
 	public int insert_file(Drive_File df) {
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
+		System.out.println("레파: "+df);
 		return dao.insert_file(df);
 	}
 	

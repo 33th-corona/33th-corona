@@ -122,7 +122,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<a href="boardLocation?status=drive" class="btn btn-primary">취소</a>
+				<a href="driveList?claaNum=${classNum}" class="btn btn-primary">취소</a>
 				<input type="button" class="btn btn-primary" id="check" value='등록하기'>
 			</td>
 		</tr>

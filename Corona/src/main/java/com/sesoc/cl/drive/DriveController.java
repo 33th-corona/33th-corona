@@ -89,7 +89,7 @@ public class DriveController {
 		String user_id = (String) session.getAttribute("loginId");
 		Drive drive =  new Drive(seq, classNum, user_id , title, content, "", "", "", 0);
 		int i = repo.insert(drive); //드라이브DB
-		
+		System.out.println("업로드 : "+drive);
 		//파일 다중 첨부시  for문으로 돌려서 insert 저장
 		if(i == 1 && file1 != null){
 			Drive_File df = new Drive_File(0,"","",seq,0);
@@ -98,31 +98,36 @@ public class DriveController {
 				String savedFileName = FileService.saveFile(file, uploadPath);
 				df.setOriginal_filename(originalName);
 				df.setSaved_filename(savedFileName);
+				System.out.println("드라이브 파일 "+df);
 				repo.insert_file(df);
 			}//for
 		}
+		model.addAttribute("classNum",classNum);
 		return "redirect:driveList";
 	}
 	
 	
 	//수정 폼으로 이동
 	@RequestMapping(value = "driveUpdateForm", method = RequestMethod.GET)
-	public String updateForm(int num, Model model) {
+	public String updateForm(int num, Model model,int classNum) {
+		System.out.println("업뎃 폼 이동 : "+classNum);
 		Drive drive = repo.selectOne(num);
 		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
+		model.addAttribute("classNum",classNum);
 		return "driveUpdate";
 	}
 	
 	//수정
 	@RequestMapping(value = "driveUpdate", method = RequestMethod.POST)
-	public String update(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames) {
-		//System.out.println("자료실 driveupdate 파일이름 "+fileNames.getOriginal_filename());
+	public String update(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
+			int num, CheckOriginalFileNames fileNames,int classNum) {
 		Drive drive = repo.selectOne(num);
 		drive.setTitle(title);
 		drive.setContent(content);
 		repo.updateOne(drive);
+		System.out.println("업뎃 컨트롤러"+drive);
 		//게시판 num과 같은 drive_file리스트를 가져옴
 		List<Drive_File> list = repo.selectDrive_fileAll(num);
 		
@@ -147,7 +152,7 @@ public class DriveController {
 		
 		//파일이름 null로 넘어오면
 		if(fileNames.getOriginal_filename() == null){
-			//귀찮으니 기존 파일 전부 다 삭제
+			//기존 파일 전부 다 삭제
 			for(Drive_File driveFile : list) {
 				FileService.deleteFile(uploadPath+"/"+driveFile.getSaved_filename());
 				repo.deleteFile(driveFile.getNum());
@@ -166,15 +171,14 @@ public class DriveController {
 				repo.insert_file(df);
 			}
 		}
-		
+		model.addAttribute("classNum",classNum);
 		return "redirect:driveList";
 	}
 	
 	//삭제
 	@RequestMapping(value = "driveDelete", method = RequestMethod.GET)
-	public String delete(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames) {
-		//Drive drive = repo.selectOne(num);
-		
+	public String delete(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
+			int num, CheckOriginalFileNames fileNames, int classNum) {
 		//게시판 num과 같은 drive_file리스트를 가져옴
 		List<Drive_File> list = repo.selectDrive_fileAll(num);
 		
@@ -185,16 +189,16 @@ public class DriveController {
 		}
 		//게시글 삭제
 		repo.delete_drive(num);
+		model.addAttribute("classNum",classNum);
 		return "redirect:driveList";
 	}
 	
 	
 	//게시판 글 자세히 보기
 	@RequestMapping(value="driveDetail", method = RequestMethod.GET)
-	public String driveDetailForm(int num, Model model) {
+	public String driveDetailForm(int num, Model model,int classNum) {
 		repo.updateHit(num);
 		Drive drive = repo.selectOne(num);
-		
 		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
 		//작성자의 프로필 사진 가져오기
 		String id = drive.getUser_id();
@@ -206,6 +210,7 @@ public class DriveController {
 		model.addAttribute("userImg",userImg);
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
+		model.addAttribute("classNum",classNum);
 		return "driveDetail";
 	}
 	
