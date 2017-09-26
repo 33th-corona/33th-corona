@@ -47,7 +47,7 @@
 	color: #000000 !important;
 }
 .textChange{
-	color : #ffffff;
+	color : #000000;
 }
 .button.button-xlarge.button-white:hover {
 	background-color: #000530;
@@ -79,7 +79,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin">과제 제목</h2>
+								<h2 class="nobottommargin textChange">과제 제목</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -96,7 +96,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin">과제 내용</h2>
+								<h2 class="nobottommargin textChange">과제 내용</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -113,7 +113,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<i class="i-rounded i-light icon-calendar"></i>
-								<h2 class="nobottommargin">날짜 기한</h2>
+								<h2 class="nobottommargin textChange">날짜 기한</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -133,12 +133,12 @@
 							<div class="row">
 								<div class="col-md-3">
 									<i class="i-rounded i-light icon-laptop"></i>
-									<h2 class="nobottommargin">에디터</h2>
+									<h2 class="nobottommargin textChange">에디터</h2>
 								</div>
 								<div class="col-md-5 tright" id="submitTime">
 								</div>
 								<div class="col-md-4">
-								<h4>제출학생 <select id="submittedStudent">
+								<h4 class="textChange">제출학생 <select id="submittedStudent">
 									</select></h4>
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 							<div class="row text-right" id="editorOption"
 								style="margin: 10px">
 								<div class="col-sm-11">
-									<div id="editorThemeChange" style="display: inline-block">
+									<div id="editorThemeChange" class="textChange" style="display: inline-block">
 										Theme <select id="themeChange">
 											<option value="eclipse">Eclipse</option>
 											<option value="xcode">XCode</option>
@@ -158,21 +158,21 @@
 										</select>
 									</div>
 									&nbsp;
-									<div id="editorShowInvisibles" style="display: inline-block">
+									<div id="editorShowInvisibles" class="textChange" style="display: inline-block">
 										Invisibles <select id="showInvisibles">
 											<option value="true">on</option>
 											<option value="false" selected="selected">off</option>
 										</select>
 									</div>
 									&nbsp;
-									<div id="editorIndentGuides" style="display: inline-block">
+									<div id="editorIndentGuides" class="textChange" style="display: inline-block">
 										IndentGuides <select id="indentGuides">
 											<option value="true">on</option>
 											<option value="false">off</option>
 										</select>
 									</div>
 									&nbsp;
-									<div id="editorShowGutte" style="display: inline-block">
+									<div id="editorShowGutte" class="textChange" style="display: inline-block">
 										Gutte <select id="showGutte">
 											<option value="true">on</option>
 											<option value="false">off</option>
