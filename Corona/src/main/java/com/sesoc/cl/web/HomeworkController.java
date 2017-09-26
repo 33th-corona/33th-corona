@@ -193,6 +193,7 @@ public class HomeworkController {
 		
 		if(result == 0) {
 			if(file.isFile()) file.delete();
+			tRepo.deleteTask(task);
 		}
 		return result;
 	}

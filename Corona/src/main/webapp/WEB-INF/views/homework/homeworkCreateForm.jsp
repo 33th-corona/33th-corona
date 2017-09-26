@@ -422,21 +422,30 @@ $(function() {
 		
 		var input_answer = [];
 		var output_answer = [];
-
+		
+		if(!title) {
+			alert('과제 제목을 입력하세요.');
+			return;
+		} else if(!explain) {
+			alert('과제 설명을 입력하세요.');
+			return;
+		} else if(!limitTime) {
+			alert('마감 기한을 입력하세요.');
+			return;
+		}
+		
 		for (var i = 1; i <= count; i++) {
-
 			var temp = $(".input" + i).val();
 			input_answer.push(temp); //입력값을 배열에 담는다.
-
 		}
 
 		for (var i = 1; i <= count; i++) {
-
 			var temp = $(".output" + i).val();
 			output_answer.push(temp); //출력값을 배열에 담는다.
-
 		}
-
+		
+		
+		
 		$.ajax({
 			method : "POST",
 			url : "createHomework",

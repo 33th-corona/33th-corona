@@ -16,4 +16,5 @@ public interface TaskDAO {
 	public int insertAnswer(Task_Answer task_answer);
 	public List<Task_Answer> io_receive(int task_num);
 	public List<Task> submittedTask(Task_Submit task_Submit);
+	public int deleteTask(Task task);
 }

@@ -95,4 +95,9 @@ where t.num = s.task_num
 and s.user_id = #{user_id}
 </select>
 
+<delete id="deleteTask" parameterType="Task">
+delete from task
+where question_file = #{question_file}
+</delete>
+
 </mapper>

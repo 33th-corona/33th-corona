@@ -64,4 +64,9 @@ public class TaskRepository {
 		List<Task> submittedTast = dao.submittedTask(task_Submit);
 		return submittedTast;
 	}
+	
+	public int deleteTask(Task task) {
+		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
+		return dao.deleteTask(task);
+	}
 }
