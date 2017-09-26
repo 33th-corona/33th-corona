@@ -1,7 +1,10 @@
 package com.sesoc.cl.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,9 +26,13 @@ public class TaskRepository {
 	}
 	
 	
-	public List<Task> selectAll(int class_num) {
+	public List<Task> selectAll(String searchword, int startRecord,int countPerPage,int class_num) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
-		List<Task> taskList = dao.selectAll(class_num);
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		Map<String,Object> getMap = new HashMap<String, Object>();
+		getMap.put("searchword", searchword);
+		getMap.put("class_num", class_num);
+		List<Task> taskList = dao.selectAll(getMap, rb);
 		return taskList;
 	}
 	
@@ -68,5 +75,14 @@ public class TaskRepository {
 	public int deleteTask(Task task) {
 		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
 		return dao.deleteTask(task);
+	}
+
+
+	public int getTaskCount(String searchword, int classNum) {
+		TaskDAO dao = sqlSession.getMapper(TaskDAO.class);
+		Map<String,Object> getMap = new HashMap<String, Object>();
+		getMap.put("searchword", searchword);
+		getMap.put("class_num", classNum);	
+		return dao.getTaskCount(getMap);
 	}
 }

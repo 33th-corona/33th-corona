@@ -23,8 +23,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sesoc.cl.board.PageNavigator;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.TaskRepository;
 import com.sesoc.cl.dao.Task_SubmitRepository;
@@ -55,6 +57,9 @@ public class HomeworkController {
 	
 	@RequestMapping(value="/homeworkList", method=RequestMethod.GET)
 	public String homeworkList(
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
+			@RequestParam(value="searchword",defaultValue="") String searchword,
+			@RequestParam(value="countpage", defaultValue="6") int countPerPage,
 			int classNum,
 			Model model,
 			HttpServletRequest request) 
@@ -66,9 +71,12 @@ public class HomeworkController {
 		if(result != 0) {
 //			System.out.println("기한 지난 과제들 제출불가 처리!");
 		}
-		
+		//전체 글 개수
+		int totalRecordCount = tRepo.getTaskCount(searchword,classNum);
+		//페이징
+		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
 		//과제 목록 불러오기
-		List<Task> taskInfoList = tRepo.selectAll(classNum);
+		List<Task> taskInfoList = tRepo.selectAll(searchword,navi.getStartRecord(),navi.getCountPerPage(),classNum);
 //		logger.info(taskInfoList.toString());
 		
 		String position = "student";
@@ -95,10 +103,12 @@ public class HomeworkController {
 			}
 		}
 		
+		model.addAttribute("navi",navi);
+		model.addAttribute("searchword",searchword);
+		model.addAttribute("countPerPage",countPerPage);
 		model.addAttribute("taskInfoList", taskInfoList);
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("position", position);
-		
 		return "homework/homeworkList";
 	}
 	
@@ -109,6 +119,7 @@ public class HomeworkController {
 			HttpServletRequest request) 
 	{
 //		logger.info("createHomework");
+		System.out.println("클래스넘 : "+classNum);
 		listCome(model, request);
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("classFileName", getSavedFileName(classNum));

@@ -19,7 +19,7 @@ public class PageNavigator {
 	//생성자
 	public PageNavigator(int currentPage, int totalRecordCount, int countPerPage) {
 		this.totalRecordCount = totalRecordCount;
-		System.out.println("나비"+countPerPage+"총 게시글 : "+totalRecordCount);
+		//System.out.println("나비"+countPerPage+"총 게시글 : "+totalRecordCount);
 		this.setCountPerPage(countPerPage);
 		
 		// 전체 글 개수가 152개라면 몇 페이지? 16페이지
