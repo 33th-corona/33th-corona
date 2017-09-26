@@ -45,7 +45,7 @@ ul.fancytree-container {
     -webkit-transform: scale(1);
 }
 .textChange{
-	color : #ffffff;
+	color : #000000;
 }
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
