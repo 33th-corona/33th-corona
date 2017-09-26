@@ -67,6 +67,9 @@ var id = '${teacher_id}';
 var classNum = '${classNum}';
 var connIp;
 
+var editor;
+var consoleView;
+
 $.ajax({
 	url: "checkExistLesson",
 	method: "post",
@@ -86,9 +89,9 @@ $(document).ready(function() {
 	connIp = '127.0.0.1';
 // 	var connIp = '172.20.10.3';
 	//web editor 객체 생성 (Code part)
-	var editor = ace.edit("editor");
+	editor = ace.edit("editor");
 	//web editor 객체 생성 (Console part)
-	var consoleView = ace.edit("console");
+	consoleView = ace.edit("console");
 	
 	if(existLesson == 0) {
 		$('a#start').on('click', function() {
@@ -287,7 +290,7 @@ function lessonStart(startResult, existLesson) {
 			//학생이 강의에 참가하면 실행
 			else if(action == 'studentListUpdate') {
 				var studentList = parsedData.data;
-//					console.log(studentList);
+// 					console.log(studentList);
 				//select tag에 접속 한 학생의 아이디 등록
 				var listHtml;
 				for(var index in studentList) {
@@ -295,8 +298,8 @@ function lessonStart(startResult, existLesson) {
 				}
 				$('div#studentList select').html(listHtml);
 				//student 버튼을 누르면 학생의 eclipse에 접속
-				$('input#startStudentView').on('click', function() {
-					$('input#stopStudentView').trigger('click');
+				$('button#startStudentView').on('click', function() {
+					$('button#stopStudentView').trigger('click');
 					var sendMessage = {};
 					sendMessage.action = "viewStudentEclipse";
 					sendMessage.ip = $('select option:selected').attr("user-ip");
@@ -397,7 +400,7 @@ function lessonStart(startResult, existLesson) {
 				$('#chatMessage').scrollTop(999999);
 			}
 			else if (action == 'disconnect') {
-				$('input#stopStudentView').trigger('click');
+				$('button#stopStudentView').trigger('click');
 				var savedFileName = parsedData.savedFileName;
 				var lessonTitle = parsedData.lessonTitle;
 				$.ajax({
