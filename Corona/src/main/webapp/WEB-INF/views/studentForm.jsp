@@ -439,8 +439,10 @@ ul.c-controls li a:hover {
 	
 	function locationStatus(){
 		var status= $(this).attr('status');
-		if(status == 'normal' || status == "drive"){
-			location.href = '${pageContext.request.contextPath}/boardLocation?status=' + status;
+		if(status == 'normal'){
+			location.href = '${pageContext.request.contextPath}/boardList?classNum=${classInfo.num}';
+		} else if(status == 'drive'){
+				location.href = "${pageContext.request.contextPath}/driveList?classNum=${classInfo.num}";		
 		} else if(status == 'study') {
 			$('#lesson').submit();
 		} else if(status == 'passedLesson') {

@@ -465,7 +465,7 @@
 	
 	<script type="text/javascript">
 	var now = Date.now(); //1970~밀리초
-	var enddate = +new Date('2017-09-25 20:20:22');
+	var enddate = +new Date('2017-09-27 20:20:22');
 	var ms = (enddate-now)/1000;
 	
 	var clock = $('#c3').FlipClock(ms, {
