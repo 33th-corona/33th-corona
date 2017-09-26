@@ -37,27 +37,44 @@
 	border-style: solid;
 	border-radius: 10px;
 }
+.i-rounded.i-light{
+	border-radius: 50% !important;
+	background-color: #000530 !important;
+	color: #ffffff !important;
+}
+.i-rounded.i-light:hover{
+	background-color: #dddddd !important;
+	color: #000000 !important;
+}
+.textChange{
+	color : #ffffff;
+}
+.button.button-xlarge.button-white:hover {
+	background-color: #000530;
+	color: #fff !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 
 <%@ include file="../topMenu.jsp" %>
 <%@ include file="../sidebar.jsp" %>
-<body class="stretched">
-<div id="wrapper" class="clearfix">
+<body class="stretched" >
+<div id="wrapper" class="clearfix" >
 <div class="body-overlay"></div>
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
 		<h1>Submitted Task Confirm Page (Teacher)</h1>
 		<span>Submitted Task Confirm Page (Teacher)</span>
 	</div>
 </section>
-<section id="content">
-	<div class="container clearfix">
+<section id="content"  style="background-image: url('images/homeworkback.jpg'); background-size: 1300px;">
+	<div class="container clearfix"  style="margin-top: 20px;">
 		<div class="row bottommargin"><!-- 큰 row 시작 -->
 			<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
-				<div class="row"><!-- 서쪽 1번째 줄 시작 -->
+				<div class="row" style="margin-top: 20px;"><!-- 서쪽 1번째 줄 시작 -->
 					<div class="col_full">
 						<div class="row">
 							<div class="col-md-12">
