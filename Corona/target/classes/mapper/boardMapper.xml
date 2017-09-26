@@ -32,7 +32,8 @@
 			user_id
 		</when>
 		</choose>
-		LIKE '%' || #{searchword} || '%'
+		LIKE '%' || #{searchword} || '%' and
+		class_num = #{classNum}
 		ORDER BY num DESC
 	</select>
 	
@@ -91,7 +92,8 @@
 			user_id
 		</when>
 		</choose>
-	LIKE '%' || #{searchword}||'%'
+	LIKE '%' || #{searchword}||'%' and
+	class_num = #{classNum}
 	</select>
 	
 	<!-- 다중 파일 업로드 -->

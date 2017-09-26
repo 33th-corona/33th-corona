@@ -26,7 +26,8 @@
 				user_id
 			</when>
 			</choose>
-			LIKE '%' || #{searchword} || '%'
+			LIKE '%' || #{searchword} || '%' and
+			class_num = #{classNum}
 			ORDER BY num DESC
 	</select>
 	
@@ -60,7 +61,7 @@
 	
 	<insert id="insert" parameterType="Drive">
 		insert into drive values(
-			1, #{num}, #{user_id}, #{title}, #{content}, SYSDATE, 0
+			1, #{class_num}, #{user_id}, #{title}, #{content}, SYSDATE, 0
 		)
 	</insert>
 	
@@ -91,7 +92,8 @@
 			user_id
 		</when>
 		</choose>
-	LIKE '%' || #{searchword}||'%'
+	LIKE '%' || #{searchword}||'%' and
+	class_num = #{classNum}
 	</select>
 	
 	

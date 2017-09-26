@@ -15,12 +15,13 @@ public class DriveRepository {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public List<Drive> selectDriveAll(String searchtype,String searchword,int startRecord,int countPerPage){
+	public List<Drive> selectDriveAll(String searchtype,String searchword,int startRecord,int countPerPage,int classNum){
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		Map<String,String> search = new HashMap<String, String>();
+		Map<String,Object> search = new HashMap<String, Object>();
 		search.put("searchtype", searchtype);
 		search.put("searchword", searchword);
+		search.put("classNum", classNum);
 		return dao.selectDriveAll(search,rb);
 	}
 	
@@ -79,11 +80,12 @@ public class DriveRepository {
 		return dao.insert_file(df);
 	}
 	
-	public int getDriveCount(String searchtype, String searchword) {
+	public int getDriveCount(String searchtype, String searchword,int classNum) {
 		DriveDAO dao = sqlSession.getMapper(DriveDAO.class);
-		Map<String,String> search = new HashMap<String,String>();
+		Map<String,Object> search = new HashMap<String,Object>();
 		search.put("searchtype", searchtype);
 		search.put("searchword", searchword);
+		search.put("classNum", classNum);
 		return dao.getDriveCount(search);
 	}
 

@@ -17,6 +17,8 @@
 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
 <style>
 	div#wrapper{
 		width : 800px;
@@ -63,8 +65,18 @@
 
 <body>
 
-<div id="wrapper">
+<div id="wrapper" class="clearfix">
+
+<div class="body-overlay"></div>
+<section id="content">
+
+	<div class="content-wrap">
+	<div class="container clearfix">
+
 	<div class="center">
+	
+	
+	
 	<h2>[ 자료실 글보기 ]</h2>
 	</div>
 	<form action="driveUpdateForm" id="Form" method="GET" >
@@ -74,13 +86,13 @@
 			<th colspan="3">${drive.title}제목제목</th>
 		</tr>
 		<tr id="photo_td">
-			<td rowspan="3" class="col-md-3">프로필사진</td>
-			<td class="col-md-5">${drive.user_id}작성자</td>
+			<td rowspan="3" class="col-md-3"><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
+			<td class="col-md-5">${drive.user_id}</td>
 			<td rowspan="3" class="col-md-4">빈공간입니다 광고??</td>
 		</tr>
 		
 		<tr>
-			<th>${drive.register_time}글쓴날</th>
+			<th>${drive.register_time}</th>
 		</tr>	
 		<tr>
 			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
@@ -99,7 +111,7 @@
 		
 		<tr>	
 			<td colspan="3">
-				<pre class="col-md-12">${drive.content}글내용</pre>
+				<pre class="col-md-12">${drive.content}</pre>
 			</td>
 		</tr>
 		<tr>
@@ -117,6 +129,8 @@
 	</form>
 
 </div> <!-- end #wrapper -->
+</div>
+</section>
 
 
 </body>

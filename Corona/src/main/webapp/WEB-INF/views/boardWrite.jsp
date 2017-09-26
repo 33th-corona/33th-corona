@@ -75,7 +75,7 @@ window.onload = function(){
      }, 
      fOnAppLoad : function(){
          //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-         oEditors.getById["content"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문구"]);
+         oEditors.getById["content"].exec("PASTE_HTML", [""]);
      },
 	 
 	 fCreator: "createSEditor2"
@@ -110,6 +110,7 @@ window.onload = function(){
 <div id="wrapper">
 <h2>[ 게시판 글쓰기 ]</h2>
 <form action="boardWrite" method="POST" id="frm" enctype="multipart/form-data">
+<input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 	<tr>
 		<th>제목</th>
@@ -117,7 +118,7 @@ window.onload = function(){
 	</tr>
 	<tr>
 		<th>작성자</th>
-		<td>${loginId}로그인세션아이디</td>
+		<td>${loginId}</td>
 	</tr>
 	
 	<tr>

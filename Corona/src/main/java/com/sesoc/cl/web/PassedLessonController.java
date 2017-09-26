@@ -49,7 +49,6 @@ public class PassedLessonController {
 			@RequestParam(value="classNum", required=false)int classNum, 
 			Model model, HttpServletRequest request) 
 	{
-		System.out.println("레슨 리스트 컨트롤러 진입"+classNum);
 		//전체 글 개수
 		int totalRecordCount = pRepo.getPassedLessonCount(searchword,classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);

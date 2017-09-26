@@ -25,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sesoc.cl.board.Board;
 import com.sesoc.cl.board.Board_File;
 import com.sesoc.cl.board.PageNavigator;
+import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.util.FileService;
+import com.sesoc.cl.vo.Users;
 
 
 /**
@@ -36,6 +38,9 @@ public class DriveController {
 	@Autowired
 	DriveRepository repo;
 	
+	@Autowired
+	UsersRepository ur;
+	
 	final String uploadPath = "/drivefile";
 	
 	
@@ -45,11 +50,11 @@ public class DriveController {
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
 			@RequestParam(value="countpage", defaultValue="9") int countPerPage,
-			Model model){
+			Model model, int classNum){
 		//전체 자료실 게시글 수 가져오기
-		int totalRecordCount= repo.getDriveCount(searchtype,searchword);
+		int totalRecordCount= repo.getDriveCount(searchtype,searchword, classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
-		List<Drive> drivelist = repo.selectDriveAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage());
+		List<Drive> drivelist = repo.selectDriveAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage(),classNum);
 		
 		//해당 페이지 게시글의 첨부파일 리스트 생성
 		List<List<Drive_File>> dfList = new ArrayList<>();
@@ -60,7 +65,8 @@ public class DriveController {
 		}
 		
 		model.addAttribute("navi",navi);
-		model.addAttribute("countpage",countPerPage);
+		model.addAttribute("classNum",classNum);
+		model.addAttribute("countPerPage",countPerPage);
 		model.addAttribute("searchword",searchword);
 		model.addAttribute("searchtype",searchtype);
 		model.addAttribute("driveList", drivelist);
@@ -70,16 +76,18 @@ public class DriveController {
 	
 	//업로드 폼으로 이동
 	@RequestMapping(value = "driveWrite", method = RequestMethod.GET)
-	public String uploadForm(Model model) {
+	public String uploadForm(Model model, int classNum) {
+		model.addAttribute("classNum",classNum);
 		return "driveWrite";
 	}
 
 	//업로드폼에서 등록버튼을 누르면
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
-	public String upload(Model model,HttpServletRequest request, MultipartFile file1, MultiFiles multiFiles, HttpSession session, String title, String content) {
+	public String upload(Model model,HttpServletRequest request, MultipartFile file1, MultiFiles multiFiles, HttpSession session, 
+			String title, String content,int classNum) {
 		int seq = repo.seq();
 		String user_id = (String) session.getAttribute("loginId");
-		Drive drive =  new Drive(seq, 1, user_id , title, content, "", "", "", 0);
+		Drive drive =  new Drive(seq, classNum, user_id , title, content, "", "", "", 0);
 		int i = repo.insert(drive); //드라이브DB
 		
 		//파일 다중 첨부시  for문으로 돌려서 insert 저장
@@ -188,7 +196,14 @@ public class DriveController {
 		Drive drive = repo.selectOne(num);
 		
 		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
-		
+		//작성자의 프로필 사진 가져오기
+		String id = drive.getUser_id();
+		Users u = new Users();
+		u.setId(id);
+		u =ur.selectOne(u);
+		String userImg = u.getImg_name();
+				
+		model.addAttribute("userImg",userImg);
 		model.addAttribute("drive", drive);
 		model.addAttribute("list", list);
 		return "driveDetail";

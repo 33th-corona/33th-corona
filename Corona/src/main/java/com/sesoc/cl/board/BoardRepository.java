@@ -28,15 +28,15 @@ public class BoardRepository {
 		return dao.login(map);
 	}
 	
-	public List<Board> findAll (String searchtype,String searchword,int startRecord,int countPerPage) {
+	public List<Board> findAll (String searchtype,String searchword,int startRecord,int countPerPage,int classNum) {
 		List<Board> boardList = new ArrayList<Board>();
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
 		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
 		
-		Map<String,String> search = new HashMap<String, String>();
+		Map<String,Object> search = new HashMap<String, Object>();
 		search.put("searchtype", searchtype);
 		search.put("searchword", searchword);
-		
+		search.put("classNum", classNum);
 		boardList = dao.select(search,rb);
 		return boardList;
 	}
@@ -76,12 +76,12 @@ public class BoardRepository {
 	}
 	
 	//전체 글 개수
-	public int getBoardCount(String searchtype,String searchword) {
+	public int getBoardCount(String searchtype,String searchword,int classNum) {
 		BoardDAO dao = sqlSession.getMapper(BoardDAO.class);
-		Map<String,String> search = new HashMap<String,String>();
+		Map<String,Object> search = new HashMap<String,Object>();
 		search.put("searchtype", searchtype);
 		search.put("searchword", searchword);
-		//select count(*) from board where title='%' ||''||'%'
+		search.put("classNum", classNum);
 		return dao.getBoardCount(search);
 	}
 	

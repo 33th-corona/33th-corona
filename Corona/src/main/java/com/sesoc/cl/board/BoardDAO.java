@@ -10,12 +10,12 @@ import com.sesoc.cl.drive.Drive;
 
 public interface BoardDAO {
 
-	public List<Board> select(Map<String,String> search, RowBounds rb);
+	public List<Board> select(Map<String,Object> search, RowBounds rb);
 	public int insert(Board board);
 	public int delete(int num);
 	public int update(Board board);
 	public Board selectOne(int boardnum);
-	public int getBoardCount(Map<String,String> map);
+	public int getBoardCount(Map<String,Object> map);
 	public int updateHits(int boardnum);
 	public int replyUpdate(Map<String,Integer> map);
 	

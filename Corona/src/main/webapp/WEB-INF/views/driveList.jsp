@@ -64,7 +64,7 @@ width: 20%;
 				<!-- 특정 글 검색 -->
 				<div class="search">
 					<form id="search" action ="driveList" method="GET" >
-					<input type = "hidden" name = "action" value = "driveList">
+					<input type = "hidden" name = "classNum" value = "${classNum}">
 					<select name="searchtype">
 						<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
 						<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
@@ -77,7 +77,7 @@ width: 20%;
 
 			<div class="content-wrap">
 
-				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="driveWrite">
+				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="driveWrite?classNum=${classNum}">
 					<div class="container clearfix">
 						<i class="icon-plus" style="top:4px;"></i>
 					</div>
@@ -131,18 +131,18 @@ width: 20%;
 			<!-- 페이징 시작 -->
 			<div id="navigator">
 				<ul class="pagination pagination-lg">
-					<li><a href="driveList?currentPage= ${navi.currentPage - navi.pagePerGroup}">◁ ◁</a></li>
-					<li><a href="driveList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}"> ◀ </a></li>
+					<li><a href="driveList?currentPage= ${navi.currentPage - navi.pagePerGroup}&classNum=${classNum}">◁ ◁</a></li>
+					<li><a href="driveList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}&classNum=${classNum}"> ◀ </a></li>
 				<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
 					<c:if test="${navi.currentPage eq page}">
 						<li class="active"><a href="#">${page}</a></li>
 					</c:if>
 					<c:if test="${navi.currentPage ne page}">
-						<li><a href="driveList?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}">${page}</a></li>
+						<li><a href="driveList?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}&classNum=${classNum}">${page}</a></li>
 					</c:if>
 				</c:forEach>
-				<li><a href="driveList?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}">▶</a> </li>
-				<li><a href="driveList?currentPage= ${navi.currentPage + navi.pagePerGroup}">▷ ▷</a></li>  
+				<li><a href="driveList?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}&classNum=${classNum}">▶</a> </li>
+				<li><a href="driveList?currentPage= ${navi.currentPage + navi.pagePerGroup}&classNum=${classNum}">▷ ▷</a></li>  
 				</ul> 
 			</div><!-- end paging -->
 			

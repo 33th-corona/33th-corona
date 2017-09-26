@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.drive.CheckOriginalFileNames;
 import com.sesoc.cl.drive.Drive;
 import com.sesoc.cl.drive.MultiFiles;
 import com.sesoc.cl.util.FileService;
+import com.sesoc.cl.vo.Users;
 
 
 
@@ -39,6 +41,9 @@ public class BoardController {
 	@Autowired
 	Board_ReplyRepository rr;
 	
+	@Autowired
+	UsersRepository ur;
+	
 	final String uploadPath = "/boardfile";
 	
 	
@@ -48,12 +53,12 @@ public class BoardController {
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
 			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
-			Model model, String status) {
+			Model model, String status, int classNum) {
 		//전체 글 개수
-		int totalRecordCount = repo.getBoardCount(searchtype,searchword);
+		int totalRecordCount = repo.getBoardCount(searchtype,searchword, classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
 		//게시글 리스트 호출
-		List<Board> boardList = repo.findAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage());
+		List<Board> boardList = repo.findAll(searchtype,searchword,navi.getStartRecord(),navi.getCountPerPage(),classNum);
 		//게시글 이미지 파일 호출
 		List<List<Board_File>> bfList = new ArrayList<>();
 		List<Board_File> Filelist = new ArrayList<>();
@@ -62,6 +67,7 @@ public class BoardController {
 			bfList.add(Filelist);
 		}
 		
+		model.addAttribute("classNum",classNum);
 		model.addAttribute("navi",navi);
 		model.addAttribute("boardList",boardList);
 		model.addAttribute("bfList", bfList);
@@ -77,19 +83,30 @@ public class BoardController {
 		repo.updateHits(num); //조회수 업데이트
 		
 		List<Board_File> list = repo.selectBoard_fileAll(num);
+		//작성자의 프로필 사진 가져오기
+		String id = board.getUser_id();
+		Users u = new Users();
+		u.setId(id);
+		u =ur.selectOne(u);
+		String userImg = u.getImg_name();
 		
+		model.addAttribute("userImg",userImg);
 		model.addAttribute("list", list);
 		model.addAttribute("board",board);
 		return "boardDetail";
 	}
 	
 	@RequestMapping("/boardWrite")
-	public String boardWrite(){
+	public String boardWrite(int classNum, Model model){
+		model.addAttribute("classNum",classNum);
 		return "boardWrite";
 	}
 	
 	@RequestMapping(value = "/boardWrite", method=RequestMethod.POST)
-	public String boardWrite(Board board, Model model , HttpSession session,HttpServletRequest request, MultipartFile file1, MultiFiles multiFiles){
+	public String boardWrite(Board board, Model model , HttpSession session,HttpServletRequest request, 
+			MultipartFile file1, MultiFiles multiFiles, int classNum,RedirectAttributes ra)
+	{
+		System.out.println("글쓰기 컨트롤러 / "+classNum);
 		if(file1 != null){
 			String on = file1.getOriginalFilename();
 			MultipartFile f[] = multiFiles.getFile1();
@@ -105,8 +122,8 @@ public class BoardController {
 		String user_id = (String) session.getAttribute("loginId");
 		board.setUser_id(user_id);
 		int seq = repo.seq();
-		//class_num는 임시 테스트용으로 1 삽입
-		board.setClass_num(1);
+		//class_num 입력
+		board.setClass_num(classNum);
 		board.setNum(seq);
 		//보드DB에 게시글 정보만 저장
 		int i = repo.insertBoard(board);
@@ -123,6 +140,7 @@ public class BoardController {
 				repo.insert_file(bf);
 			}//for
 		}
+		ra.addAttribute("classNum",classNum);
 		return "redirect:boardList";
 	}
 	
@@ -231,17 +249,5 @@ public class BoardController {
 		return null;
 	}
 	
-	
-	
-	
-	//한 페이지의 게시글 출력수 조정 메소드
-	@RequestMapping("/pagechange")
-	public String pagechange(RedirectAttributes ra,String selectpage,
-			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
-			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
-			@RequestParam(value="searchword",defaultValue="") String searchword){
-		ra.addAttribute("countpage", selectpage);
-		return "redirect:boardList";
-	}
 	
 }

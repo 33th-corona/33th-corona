@@ -73,8 +73,8 @@
 			<th colspan="3">${board.title} [${board.reply_count}]</th>
 		</tr>
 		<tr id="photo_td">
-			<td rowspan="3" class="col-md-3" >프로필사진</td>
-			<td >${board.user_id}작성자</td>
+			<td rowspan="3" class="col-md-3" ><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
+			<td><strong>${board.user_id}</strong></td>
 			<td rowspan="3" >빈 공간 무엇을 추가할까</td>
 		</tr>
 		
@@ -123,13 +123,13 @@
 			<tbody>
 			<tr>
 				<td>
-				<label class="col-md-1">유저네임</label>
-				<textarea class="col-md-8 row-md-4" id="reply_text" name="reply_text" maxlength="400" cols="150" rows="3" placeholder="댓글을 입력해주세요"></textarea>
+				<label class="col-md-1">${loginId}</label>
+				<textarea class="col-md-10 row-md-4" id="reply_text" name="reply_text" maxlength="400" cols="150" rows="3" placeholder="댓글을 입력해주세요"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>
-				<a class="btn btn-primary col-md-2" id="reply_submit" role="button"><i class="icon-ok"></i>등록</a>
+				<p class="col-md-9"></p><a class="btn btn-primary col-md-2" id="reply_submit" role="button"><i class="icon-ok"></i>등록</a>
 				</td>
 			</tr>
 			</tbody>	
@@ -276,7 +276,6 @@
 	//댓글작성
 	function replywrite() {
 		var d = document.getElementById("reply_text").value;
-		alert(d);
 		
 		if(document.getElementById("reply_text").value == ""){
 			alert("댓글을 입력해주세요");

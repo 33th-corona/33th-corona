@@ -88,6 +88,7 @@
 <div id="wrapper">
 <h2>[ 자료실 글쓰기 ]</h2>
 <form id="upload" action="upload" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 		<thead>
 			<tr>
@@ -102,7 +103,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${loginId}로그인세션아이디</td>
+			<td>${loginId}</td>
 		</tr>
 		<tr>
 			<td>
@@ -117,7 +118,7 @@
 		</tbody>
 		
 		<tr>
-			<td colspan="2"><textarea name="content" cols="60" rows="15" class="col-md-12">simple is best</textarea></td>
+			<td colspan="2"><textarea name="content" cols="60" rows="15" class="col-md-12"></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
