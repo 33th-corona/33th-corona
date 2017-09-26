@@ -43,6 +43,16 @@
 	border-style: solid;
 	border-radius: 10px;
 }
+.i-rounded.i-light{
+	border-radius: 50% !important;
+	background-color: #000530 !important;
+	color: #ffffff !important;
+}
+.i-rounded.i-light:hover{
+	
+	background-color: #dddddd !important;
+	color: #000000 !important;
+}
 </style>
 </head>
 <%@ include file="../topMenu.jsp" %>

@@ -431,7 +431,7 @@ function saveEditorOption(editor) {
 	</section>
 </div>
 
-<div id="lessonDiv" style="background-image: url('images/teacherLessonBack.gif'); style="display: none">
+<div id="lessonDiv" style="background-image: url('images/teacherLessonBack.gif'); display: none;">
 <section id="content" style="background-color: rgba(255,255,255,0);">
 <div class="container clearfix" style="background-color: #eeeeee; border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
 	background-size: 100% 100%;
