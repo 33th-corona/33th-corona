@@ -20,11 +20,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 <title>Passed Lesson List</title>
+<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
 <script>
-/* function loadLessonInfo(class_num, saved_code, saved_audio) {
+function loadLessonInfo(class_num, saved_code, saved_audio) {
 	var loadForm = $('form#loadForm');
 	alert(class_num);
-	var class_numTag = loadForm.find('input#`_num');
+	var class_numTag = loadForm.find('input#class_num');
 	var saved_codeTag = loadForm.find('input#saved_code');
 	var saved_audioTag = loadForm.find('input#saved_audio');
 	
@@ -35,14 +37,13 @@
 	class_numTag.val(class_num);
 	saved_codeTag.val(saved_code);
 	saved_audioTag.val(saved_audio);
-	
+	alert(class_numTag.val()+' 서브밋 전');
 	loadForm.submit();
 	
-} */
+} 
 </script>
 </head>
-<%@ include file="../topMenu.jsp" %>
-	<%@ include file="../sidebar.jsp" %>
+
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>
 
@@ -151,28 +152,28 @@
 </div><!-- container -->
 
 
-	<!-- 페이징 시작
+	<!-- 페이징 시작 -->
 	<div id="navigator">
 		<ul class="pagination pagination-lg">
-			<li><a href="boardList?currentPage= ${navi.currentPage - navi.pagePerGroup}">◁ ◁</a></li>
-			<li><a href="boardList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}"> ◀ </a></li>
+			<li><a href="passedLessonList?currentPage= ${navi.currentPage - navi.pagePerGroup}">◁ ◁</a></li>
+			<li><a href="passedLessonList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}"> ◀ </a></li>
 		<c:forEach var="page" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
 			<c:if test="${navi.currentPage eq page}">
 				<li class="active"><a href="#">${page}</a></li>
 			</c:if>
 			<c:if test="${navi.currentPage ne page}">
-				<li><a href="boardList?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}">${page}</a></li>
+				<li><a href="passedLessonList?currentPage=${page}&searchtype=${searchtype}&searchword=${searchword}">${page}</a></li>
 			</c:if>
 		</c:forEach>
-		<li><a href="boardList?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}">▶</a> </li>
-		<li><a href="boardList?currentPage= ${navi.currentPage + navi.pagePerGroup}">▷ ▷</a></li>  
+		<li><a href="passedLessonList?currentPage= ${navi.currentPage+1}&searchtype=${searchtype}&searchword=${searchword}&countPerPage=${countPerPage}">▶</a> </li>
+		<li><a href="passedLessonList?currentPage= ${navi.currentPage + navi.pagePerGroup}">▷ ▷</a></li>  
 		</ul> 
-	</div><!-- end paging -->
+	</div>
 	
 </section> 
 
 <form action="loadPassedLesson" method="post" id="loadForm">
-	<input type="hidden" id="class_num" name="class_Num" value="${classNum}">
+	<input type="hidden" id="class_num" name="class_Num">
 	<input type="hidden" id="saved_code" name="saved_code">
 	<input type="hidden" id="saved_audio" name="saved_audio">
 </form>

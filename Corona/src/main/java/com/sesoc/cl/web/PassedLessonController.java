@@ -58,11 +58,6 @@ public class PassedLessonController {
 		//		logger.info(savedLessonInfos.toString());
 		
 		listCome(model, request);
-		for(int i=0;i<savedLessonInfos.size();i++){
-			System.out.println("?ъ씠利?: "+savedLessonInfos.size());
-			System.out.println(savedLessonInfos.get(i));
-		}
-		
 		
 		model.addAttribute("classNum", classNum);
 		model.addAttribute("savedLessonInfos", savedLessonInfos);
@@ -72,16 +67,16 @@ public class PassedLessonController {
 	//디테일
 	@RequestMapping(value="loadPassedLesson", method=RequestMethod.POST)
 	public String loadPassedLesson(
-			int classNum,
+			int class_Num,
 			SavedLessonInfo savedLessonInfo,
 			Model model,
 			HttpServletRequest request) 
 	{
 		listCome(model, request);
-		model.addAttribute("classNum", classNum);
+		model.addAttribute("classNum", class_Num);
 		model.addAttribute("savedLessonInfo", savedLessonInfo);
 		
-		logger.info("classNum : " + classNum);
+		logger.info("classNum : " + class_Num);
 		logger.info("savedLessonInfo : " + savedLessonInfo);
 		
 		return "lesson/passedLessonPlay";
