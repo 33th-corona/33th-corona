@@ -202,7 +202,9 @@ $(function() {
 				</c:if><!-- end student -->
 				
 				<c:if test="${position eq 'teacher' }">
-					<a href="submittedHomeworkConfirm?homeworkNum=${taskInfo.num}">제출자 확인</a>
+				 <div class="col-sm-3">
+					<a href="submittedHomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" style="font-size: 40px; height: 75px;"><span class="fa fa-home" ></span>제출자 확인</a>
+				</div>		
 				</c:if>
 				
 			</div>
