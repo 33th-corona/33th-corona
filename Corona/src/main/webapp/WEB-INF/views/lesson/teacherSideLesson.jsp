@@ -312,13 +312,18 @@ function lessonStart(startResult, existLesson) {
 			//학생이 강의에 참가하면 실행
 			else if(action == 'studentListUpdate') {
 				var studentList = parsedData.data;
-// 					console.log(studentList);
+					console.log(studentList);
 				//select tag에 접속 한 학생의 아이디 등록
 				var listHtml;
-				for(var index in studentList) {
-					listHtml += '<option user-ip="' + studentList[index].ip + '">' + studentList[index].id + '</option>';
+				if(studentList.length == 0) {
+					listHtml="";
+				} else {
+					for(var index in studentList) {
+						listHtml += '<option user-ip="' + studentList[index].ip + '">' + studentList[index].id + '</option>';
+					}
 				}
 				$('div#studentList select').html(listHtml);
+				
 				//student 버튼을 누르면 학생의 eclipse에 접속
 				$('button#startStudentView').on('click', function() {
 					$('button#stopStudentView').trigger('click');

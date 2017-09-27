@@ -201,12 +201,16 @@ $(document).ready(function() {
 		} 
 		else if (action == 'studentListUpdate') {
 			var studentList = parsedData.data;
-			//console.log(studentList);
+			console.log(studentList);
 			var listHtml;
-			for ( var index in studentList) {
-				listHtml += '<option user-ip="' + studentList[index].ip + '">'
-						+ studentList[index].id
-						+ '</option>';
+			if(studentList.length == 0) {
+				listHtml="";
+			} else {
+				for ( var index in studentList) {
+					listHtml += '<option user-ip="' + studentList[index].ip + '">'
+							+ studentList[index].id
+							+ '</option>';
+				}
 			}
 			$('div#studentList select').html(listHtml);
 		} 
