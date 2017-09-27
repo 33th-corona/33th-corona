@@ -71,10 +71,10 @@ $(function() {
 		
 	
 		<div class="content-wrap" style="padding-top: 0px;">
-		<div class="search col_full">
-			<form id="search" action ="homeworkList" method="GET" >
+		<div class="search col_full nomargin">
+			<form id="search" action ="homeworkList" method="GET" class="nomargin">
 			<input type="hidden" name="classNum" value="${classNum}" />
-			<div class="col_full">
+			<div class="col_full nomargin">
 			<input class="typeahead sm-form-control tt-input col-md-5" type="text" name="searchword" value="${searchword}" /> 
 			<input class="btn col-md-1" type="submit" value="검색" />
 			</div>
