@@ -211,21 +211,15 @@ public class LessonThread implements Runnable{
 				
 				//Eclipse가 종료되거나 강의가 종료되었을 경우 실행
 				case "disconnection":
-					sendToLessonPage.sendToLessonPage("disconnect");
-					
-					Map<String, Object> sendMap = new HashMap<>();
-					sendMap.put("action", "disconnect");
-					sendMap.put("savedFileName", savedFileName);
-					sendMap.put("lessonTitle", teacherConn.getTitle());
-					String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
-					teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
-					
+					System.out.println("강의전송소켓 정상 종료");
+					audioRecordThread.stop();
 					disconnect();
 					break;
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("강의전송소켓 강제 종료");
 			disconnect();
 		}
 	}
@@ -252,9 +246,21 @@ public class LessonThread implements Runnable{
 	 * Eclipse가 종료되거나 강의가 종료되었을 경우 실행, 현재 Thread를 종료 시키고, 학생에게 강의 종료를 알림
 	 */
 	private void disconnect() {
-		sendToLessonPage.sendToLessonPage("disconnection", null, null);
+		
+		sendToLessonPage.sendToLessonPage("disconnect");
+		
+		Map<String, Object> sendMap = new HashMap<>();
+		sendMap.put("action", "disconnect");
+		sendMap.put("savedFileName", savedFileName);
+		sendMap.put("lessonTitle", teacherConn.getTitle());
+		String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
+		try {
+			teacherConn.getSession().sendMessage(new TextMessage(JSONStringSendMessage));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		close();
-		audioRecordThread.stop();
 		StudentConnList.getList().removeAll(studentConnList);
 		currentLessonPage.close();
 		LessonList.getLessonList().remove(this);

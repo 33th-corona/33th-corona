@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
@@ -36,6 +37,8 @@ public class AudioRecordThread implements Runnable {
 
 	// 오디오파일의 포맷지정
 	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
+	
+	FileOutputStream fos;
 
 	public AudioRecordThread(LessonThread lessonThread) {
 		this.lessonThread = lessonThread;
@@ -87,7 +90,7 @@ public class AudioRecordThread implements Runnable {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			int cnt = 0;
 
-			FileOutputStream fos = new FileOutputStream(tempFile, true);
+			fos = new FileOutputStream(tempFile, true);
 			
 			while (!stopCapture) {
 				cnt = is.read(tempBuffer, 0, tempBuffer.length);
@@ -102,27 +105,35 @@ public class AudioRecordThread implements Runnable {
 					}
 				} // end if
 			} // end while
-			System.out.println("녹음끝");
-			fos.close();
-			byte[] b = new byte[(int) tempFile.length()];
-
-			FileInputStream fis = new FileInputStream(tempFile);
-			fis.read(b);
-			fis.close();
-			ByteArrayInputStream bais = new ByteArrayInputStream(b);
-			InputStream audioIs = bais;
-
-			AudioInputStream ais = new AudioInputStream(audioIs, getAudioFormat(), tempFile.length());
-			System.out.println("파일저장시작");
-			AudioSystem.write(ais, fileType, wavFile);
-			ais.close();
-			System.out.println("파일저장 끝");
-			boolean result1 = mp3Converter.WavToMp3(wavFile, result);
-			if (result1 == true) {
-				System.out.println("컨버팅 완료");
-			}
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("음성소켓 강제 종료");
+		} finally {
+			try {
+				System.out.println("녹음끝");
+				fos.close();
+				byte[] b = new byte[(int) tempFile.length()];
+	
+				FileInputStream fis = new FileInputStream(tempFile);
+				fis.read(b);
+				fis.close();
+				ByteArrayInputStream bais = new ByteArrayInputStream(b);
+				InputStream audioIs = bais;
+	
+				AudioInputStream ais = new AudioInputStream(audioIs, getAudioFormat(), tempFile.length());
+				System.out.println("파일저장시작");
+				AudioSystem.write(ais, fileType, wavFile);
+				ais.close();
+				System.out.println("파일저장 끝");
+				boolean result1 = mp3Converter.WavToMp3(wavFile, result);
+				if (result1 == true) {
+					System.out.println("컨버팅 완료");
+				}
+				close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}// end captureAudio method
@@ -148,8 +159,7 @@ public class AudioRecordThread implements Runnable {
 	public void stop() {
 		// 마이크 캡쳐 종료
 		stopCapture = true;
-		close();
-		System.out.println("종료");
+		System.out.println("음성소켓 정상 종료");
 	}
 	
 	private void close() {
