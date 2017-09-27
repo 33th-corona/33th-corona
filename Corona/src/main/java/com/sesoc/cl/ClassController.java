@@ -119,7 +119,7 @@ public class ClassController {
 			map.put("list", list);
 			model.addAttribute("map", map);
 			this.listCome(model, request);
-			return "searchForm";
+			return "customer/searchForm";
 		}
 		
 		//반 가입 신청
