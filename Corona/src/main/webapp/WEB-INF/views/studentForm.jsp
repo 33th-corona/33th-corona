@@ -193,7 +193,7 @@ ul.c-controls li a:hover {
 				<form action="#">
 				<div status="normal" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="${pageContext.request.contextPath}/boardLocation?status='normal'" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
+								<a href="#" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
 							</div>
 							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">일반 게시판</h2></div>
 				
@@ -204,7 +204,7 @@ ul.c-controls li a:hover {
 				<form action="#">
 				<div status="drive" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="${pageContext.request.contextPath}/boardLocation?status='drive'" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
+								<a href="#" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
 							</div>
 							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">자료실</h2></div>
 				
@@ -229,7 +229,7 @@ ul.c-controls li a:hover {
 				<form action="#">
 				<div status="passedLesson" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
-								<a href="${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}" style="background-color: transparent;"><i class="icon-study"></i></a>
+								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
 							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">지난 강의</h2></div>
 				
