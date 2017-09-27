@@ -345,10 +345,10 @@
 					</div>
 				<div class="col_full center nomargin">
 						<div class="col_half">
-						 <button class="btn btn-default btn-lg button button-xlarge button-circle button-3d"><i class="fa fa-circle-o-notch fa-spin"></i>Teacher Plug-In Dowload!</button>
+						 <button type="button" id="teacherDownload" class="btn btn-default btn-lg button button-xlarge button-circle button-3d"><i class="fa fa-circle-o-notch fa-spin"></i>Teacher Plug-In Download!</button>
 						</div>
 						<div class="col_half col_last">
-						 <button class="btn btn-default btn-lg button button-xlarge button-circle button-3d"><i class="fa fa-circle-o-notch fa-spin"></i>Student Plug-In Dowload!</button>
+						 <button type="button" id="studentDownload" class="btn btn-default btn-lg button button-xlarge button-circle button-3d"><i class="fa fa-circle-o-notch fa-spin"></i>Student Plug-In Download!</button>
 						</div>
 					</div>	
 				
@@ -408,6 +408,8 @@
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script>
+		
+	
 	$('#google-map5').gMap({
 		 address: 'Yeongdong-daero, Samseong 1(il)-dong, Gangnam-gu, Seoul,Republic Of Korea',
 		 maptype: 'ROADMAP',
@@ -445,7 +447,12 @@
 
 
 		jQuery(window).load( function(){
-
+			$('#teacherDownload').on('click', function() {
+				window.open("https://drive.google.com/open?id=0Bw2ah5jN6fZ9SDJxZ3V3YWc1M2M");
+			});
+			$('#studentDownload').on('click', function() {
+				window.open("https://drive.google.com/file/d/0Bw2ah5jN6fZ9cHI5dDZYRkdIaDA/view?usp=sharing");
+			});
 			var t = setTimeout( function(){
 				if(navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function(position) {
