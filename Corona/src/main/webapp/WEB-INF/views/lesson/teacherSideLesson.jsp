@@ -119,6 +119,11 @@ $(document).ready(function() {
 	// 		var classNum = $('input#classNum').val();
 // 			var classNum = '${classNum}';
 			
+			if(title.trim() == "") {
+				alert('강의 제목을 입력해 주세요.');
+				return;
+			}
+			
 			//서버에 보낼 메세지를 객체로 만듦
 			var teacherInfo = {};
 			teacherInfo.classNum = classNum;

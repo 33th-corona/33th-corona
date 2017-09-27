@@ -74,8 +74,8 @@ WHERE deadline &lt; sysdate
 INSERT INTO task_answer VALUES(
 	task_answer_seq.nextval,
 	#{task_num},
-	#{output_answer},
-	#{input_answer}
+	#{input_answer},
+	#{output_answer}
 )
 </insert>
 
