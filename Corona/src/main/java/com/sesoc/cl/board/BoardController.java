@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.drive.CheckOriginalFileNames;
 import com.sesoc.cl.drive.Drive;
 import com.sesoc.cl.drive.MultiFiles;
 import com.sesoc.cl.util.FileService;
+import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.Users;
 
 
@@ -44,6 +46,9 @@ public class BoardController {
 	@Autowired
 	UsersRepository ur;
 	
+	@Autowired
+	ClassRepository cRepo;
+	
 	final String uploadPath = "/boardfile";
 	
 	
@@ -53,7 +58,8 @@ public class BoardController {
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
 			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
-			Model model, String status, int classNum) {
+			Model model, HttpServletRequest request, String status, int classNum) {
+		this.listCome(model, request);
 		//전체 글 개수
 		int totalRecordCount = repo.getBoardCount(searchtype,searchword, classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
@@ -78,7 +84,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardDetail")
-	public String boardDetail(int num, Model model, String status){
+	public String boardDetail(int num, Model model, HttpServletRequest request, String status){
+		this.listCome(model, request);
 		Board board = repo.findOne(num);
 		repo.updateHits(num); //조회수 업데이트
 		
@@ -97,15 +104,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardWrite")
-	public String boardWrite(int classNum, Model model){
+	public String boardWrite(int classNum, Model model, HttpServletRequest request){
+		this.listCome(model, request);
 		model.addAttribute("classNum",classNum);
 		return "boardWrite";
 	}
 	
 	@RequestMapping(value = "/boardWrite", method=RequestMethod.POST)
-	public String boardWrite(Board board, Model model , HttpSession session,HttpServletRequest request, 
+	public String boardWrite(Board board,Model model, HttpServletRequest request, HttpSession session,
 			MultipartFile file1, MultiFiles multiFiles, int classNum,RedirectAttributes ra)
-	{
+	{this.listCome(model, request);
 		System.out.println("글쓰기 컨트롤러 / "+classNum);
 		if(file1 != null){
 			String on = file1.getOriginalFilename();
@@ -145,7 +153,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/boardUpdateForm", method=RequestMethod.POST)
-	public String boardUpdate(int num, Model model){
+	public String boardUpdate(int num, Model model, HttpServletRequest request){
+		this.listCome(model, request);
 		Board board = repo.findOne(num);
 		List<Board_File> list = repo.selectBoard_fileAll(num);
 		model.addAttribute("board",board);
@@ -154,7 +163,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/boardUpdate", method=RequestMethod.POST)
-	public String boardUpdate(Board board, RedirectAttributes ra, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames){
+	public String boardUpdate(Board board, Model model, HttpServletRequest request, RedirectAttributes ra, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames){
+		this.listCome(model, request);
 		repo.updateBoard(board);
 		//파일을 제외한 정보는 업데이트 끝;
 		List<Board_File> list = repo.selectBoard_fileAll(board.getNum());
@@ -204,7 +214,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/deleteForm", method=RequestMethod.GET)
-	public String boardDelete(Board board){
+	public String boardDelete(Board board, Model model, HttpServletRequest request){
+		this.listCome(model, request);
 		List<Board_File> list = repo.selectBoard_fileAll(board.getNum());
 		
 		//파일 삭제처리
@@ -220,7 +231,8 @@ public class BoardController {
 	
 	//다운로드 로직
 	@RequestMapping(value="downloadbf", method=RequestMethod.GET)
-	public String download(int num, HttpServletResponse response){
+	public String download(int num, Model model, HttpServletRequest request, HttpServletResponse response){
+		this.listCome(model, request);
 		//num은 Board_File의 시퀀스
 		Board_File fileDrive = repo.selectFileOne(num);
 		
@@ -248,6 +260,16 @@ public class BoardController {
 		} 
 		return null;
 	}
-	
+	public void listCome(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(); 
+		String id = (String)session.getAttribute("loginId");
+		String img_name = (String)session.getAttribute("userImg");
+		model.addAttribute("img_name", img_name);
+		model.addAttribute("id", id);
+		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
+		List<ClassInfo> myStudentList = cRepo.myStudentList(id);
+		model.addAttribute("myTeacherList", myTeacherList);
+		model.addAttribute("myStudentList", myStudentList);
+	}
 	
 }
