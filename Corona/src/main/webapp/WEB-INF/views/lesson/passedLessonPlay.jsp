@@ -27,6 +27,16 @@ ul.fancytree-container {
 .backWhite{
 	background-color: white;
 }
+.topPanel {
+	display: table; 
+	width: auto; 
+	height: 50px;
+}
+	
+.topPanelPart {
+	display:table-cell; 
+	vertical-align:middle;
+}
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script src="js/jquery-ui.js/"></script>
@@ -72,6 +82,24 @@ $(function() {
 		}
 		req.onerror = function() {}
 		req.send();
+		
+		$('button#speedUp').on('click', function() {
+			if(myAudio.playbackRate >= 2) {
+				return;
+			}
+			myAudio.playbackRate = myAudio.playbackRate + 0.5;
+			$('pre#nowSpeed').text(myAudio.playbackRate + " 배속");
+			console.log(myAudio.playbackRate);
+		});
+		
+		$('button#speedDown').on('click', function() {
+			if(myAudio.playbackRate <= 0.5) {
+				return;
+			}
+			myAudio.playbackRate = myAudio.playbackRate-0.5;
+			$('pre#nowSpeed').text(myAudio.playbackRate + " 배속");
+			console.log(myAudio.playbackRate);
+		});
 		
 		window.onbeforeunload = function() {
 			$.ajax({
@@ -210,6 +238,7 @@ $(function() {
 				consoleView.renderer.setShowGutter(false);
 			}
 		});
+		
 	}
 });
 
@@ -246,19 +275,24 @@ function saveEditorOption(editor) {
 <section id="content" style="background-image: url('images/passedlessonback.jpg'); background-size: 1300px;">
 <div class="container clearfix">
 	<div class="row" style="margin-top: 30px;">
-		<div id="rightSecondPanel" class="editorArea" style="background-image: url('images/audioback.jpg'); background-size: 1300px;">
+		<div id="rightSecondPanel" class="editorArea topPanel col-sm-12" style="background-image: url('images/audioback.jpg'); background-size: 1300px;">
 			<!-- 오디오  -->
-			<audio id="myAudio" controls="controls" controlsList="nodownload noremote" preload="auto">
+			<audio id="myAudio" class="topPanelPart" controls="controls" controlsList="nodownload noremote" preload="auto" style="display: inline-block;">
 <%-- 				<source src="videoPlay?saved_audio=${savedLessonInfo.saved_audio}" type="audio/mpeg"> --%>
 				<!-- 자막 -->
 				<track id="entrack" src="captionPlay?saved_code=${savedLessonInfo.saved_code}" kind="metadata" default></track>
 			</audio>
+			&nbsp;
+			<pre id="nowSpeed" class="nomargin topPanelPart" style="display: inline-block;">1 배속</pre>
+			&nbsp;
+			<button type="button" id="speedUp" class="topPanelPart">+0.5</button>
+			<button type="button" id="speedDown" class="topPanelPart">-0.5</button>
 		</div>
 	</div>
 	<div class="row" style="margin-bottom: 30px;">
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea backWhite"	style="height: 440px; overflow: auto;">
+				<div id="treePanel" class="col-sm-3 editorArea backWhite" style="height: 520px; overflow: auto;">
 					<div id="tree"></div>
 				</div>
 				<div id="editorPanel" class="col-sm-9">
@@ -312,7 +346,7 @@ function saveEditorOption(editor) {
 			<div id="rightFirstPanel" class="row editorArea backWhite">
 				채팅창
 				<div id="chatDiv">
-					<textarea id="chatMessage" cols="18" rows="7"></textarea>
+					<textarea id="chatMessage" cols="20" rows="23"></textarea>
 				</div>
 			</div>
 		</div>
