@@ -108,6 +108,8 @@ $(document).ready(function() {
 	//web editor 객체 생성 (Console part)
 	consoleView = ace.edit("console");
 	
+	var startResult = -100;
+	
 	if(existLesson == 0) {
 		$('a#start').on('click', function() {
 			//강의 제목 입력
@@ -131,19 +133,20 @@ $(document).ready(function() {
 			teacherInfo.id = id;
 			teacherInfo.ip = connIp;
 			
-			var startResult = -100;
-			//서버에 강의 시작 명령 전달(Server Socket생성 및 대기, 선생님의 기본 정보 등록)
-			$.ajax({
-				url : "startLesson"
-				, async: false
-				, method : "post"
-				, data : teacherInfo
-				, success : function(resp) {
-					startResult = resp;
-				}
-			});
-			
-			lessonStart(startResult, existLesson);
+			if(startResult == -100){
+				//서버에 강의 시작 명령 전달(Server Socket생성 및 대기, 선생님의 기본 정보 등록)
+				$.ajax({
+					url : "startLesson"
+					, async: false
+					, method : "post"
+					, data : teacherInfo
+					, success : function(resp) {
+						startResult = resp;
+					}
+				});
+				
+				lessonStart(startResult, existLesson);
+			}
 		});
 	} else if(existLesson == 1) {
 		lessonStart(1, existLesson);

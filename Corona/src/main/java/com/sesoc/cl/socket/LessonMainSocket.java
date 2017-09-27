@@ -96,16 +96,23 @@ public class LessonMainSocket {
 		}
 	}
 	
-	public void cancelLesson() {
-		repeat = false;
-		try {
-			serverSocket.close();
-			TeacherConnList.getList().remove(teacherConn);
-			teacherConn = null;
-			logger.info("반 생성을 취소합니다.");
-		} catch (IOException e) {
-			e.printStackTrace();
+	public int cancelLesson() {
+		int result = -1;
+		if(serverSocket == null || serverSocket.isClosed()) {
+			result = 0;
+		} else {
+			repeat = false;
+			try {
+				serverSocket.close();
+				TeacherConnList.getList().remove(teacherConn);
+				teacherConn = null;
+				logger.info("반 생성을 취소합니다.");
+				result = 1;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		return result;
 	}
 
 	public TeacherConn getTeacherConn() {

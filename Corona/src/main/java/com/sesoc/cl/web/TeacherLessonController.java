@@ -131,8 +131,7 @@ public class TeacherLessonController {
 		    // 등록 가능 여부 체크
 		    if (AsyncConfig.isTaskExecute()) {
 		        // task 사용
-		    	teacherSocket.cancelLesson();
-				resultInt = 1;
+		    	resultInt = teacherSocket.cancelLesson();
 		    } else {
 		        System.out.println("==============>>>>>>>>>>>> THREAD 개수 초과");
 		    }
