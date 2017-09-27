@@ -11,6 +11,8 @@
 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
 <style>
 	div#wrapper{
 		width : 800px;
@@ -29,18 +31,20 @@
 	div#wrapper table {
 		margin:0 auto;
 	}
+
 </style>
 
 <script>
 	$(function(){
 		$('#check').on('click',check);
 		$('.plus').on('click',plus);
+
 	});
 	
 	function plus() {
-		var html = '<tr><td><label>파일 명</label></td><td>';
-		html += '<input type="file" name="file1" class="upload"/>';
-		html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		var html = '<tr><th style="width: 100px;">파일 명</th><td>';
+		html += '<input type="file" name="file1" class="upload" style="display: inline; margin-right:20px; cursor:pointer;"/>';
+		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
@@ -84,33 +88,35 @@
 </script>
 
 </head>
-<body>
-<div id="wrapper">
-<h2>[ 자료실 글쓰기 ]</h2>
+<body class="stretched">
+<div id="wrapper" class="clearfix">
+<div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>Board Write</h1>
+		<span>Board Write</span>
+	</div>
+</section>
+<section id="content" style="width: 1300px;">
+<div class="content-wrap"  style="padding-top: 10px;  padding-bottom: 10px;">
+	<div class="container clearfix">
 <form id="upload" action="upload" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
-		<thead>
-			<tr>
-				<th colspan="2">
-					<label>파일 업로드 폼</label>
-				</th>
-			</tr>
-		</thead>
 		<tr>
-			<th>제목</th>
+			<th style="width: 100px;">제목</th>
 			<td><input type="text" name="title" required class="col-md-12"/></td>
 		</tr>
 		<tr>
-			<th>작성자</th>
+			<th style="width: 100px;">작성자</th>
 			<td>${loginId}</td>
 		</tr>
 		<tr>
+			<th style="width: 100px;">
+				파일 추가
+			</th>
 			<td>
-				<label>파일 추가</label>
-			</td>
-			<td>
-				<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+				<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 			</td>
 		</tr>
 		
@@ -128,6 +134,16 @@
 		</tr>
 	</table>
 </form>
+</div>
+</div>
+</section>
+<footer id="footer" class="dark noborder">
+	<div id="copyrights">
+		<div class="container center clearfix">
+			Copyright HanJo 2017 | All Rights Reserved
+		</div>
+	</div>
+</footer><!-- #footer end -->
 </div>
 </body>
 </html>
