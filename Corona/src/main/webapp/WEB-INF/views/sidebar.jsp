@@ -466,7 +466,7 @@
 			
 		$('#imgbtn').on('click',changeImg);
 		$('#register').on('click', check);
-		$('#retired').on('click', retired);
+		$('#idDelete').on('click', idDelete);
 	});
 	
 	
