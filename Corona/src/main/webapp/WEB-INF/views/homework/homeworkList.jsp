@@ -21,7 +21,7 @@
 <script type="text/javascript" src="js/plugins.js"></script>	
 	
 <title>Homework List</title>
-
+<!--  -->
 <script>
 $(function() {
 	$('#homeworkCreateForm').on('click', function() {
