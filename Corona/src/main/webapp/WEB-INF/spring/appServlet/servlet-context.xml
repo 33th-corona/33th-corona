@@ -44,25 +44,25 @@
 	</beans:bean>
 	<interceptors>
 		<interceptor>
-			<mapping path="/homeworkCreateForm"/>
-			<mapping path="/homeworkList"/>
-			<mapping path="/homeworkSubmitForm"/>
-			<mapping path="/myhomeworkConfirm"/>
-			<mapping path="/submittedHomeworkConfirm"/>
-			<mapping path="/passedLessonList"/>
-			<mapping path="/passedLessonPlay"/>
-			<mapping path="/sourceCodePopup"/>
-			<mapping path="/studentSideLesson"/>
-			<mapping path="/teacherSideLesson"/>
+			<mapping path="/searchLocation"/>
+			<mapping path="/search"/>
+			<mapping path="/afterLoginLocation"/>
+			<mapping path="/createClassLocation"/>
+			<mapping path="/createHomeWorkLocation"/>
+			<mapping path="/taskList"/>
+			<mapping path="/teskWrite"/>
+			<mapping path="/teskDetail"/>
+			<mapping path="/teacherFormLocation"/>
+			<mapping path="/studentFormLocation"/>
 			<mapping path="/afterLogin"/>
 			<mapping path="/boardDetail"/>
 			<mapping path="/boardForm"/>
 			<mapping path="/boardList"/>
-			<mapping path="/boardUpdate"/>
+			<mapping path="/boardUpdateForm"/>
 			<mapping path="/boardWrite"/>
-			<mapping path="/classJoinForm"/>
-			<mapping path="/createClassForm"/>
-			<mapping path="/driveDetail"/>
+			<mapping path="/boardUpdate"/>
+			<mapping path="/deleteForm"/>
+			<mapping path="/downloadbf"/>
 			<mapping path="/driveList"/>
 			<mapping path="/driveUpdate"/>
 			<mapping path="/driveWrite"/>

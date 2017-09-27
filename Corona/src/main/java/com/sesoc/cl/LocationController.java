@@ -73,11 +73,7 @@ public class LocationController {
 		this.listCome(model, request);
 		return "customer/createClassForm";
 	}
-	@RequestMapping(value="everyBoardLocation", method=RequestMethod.GET)
-	public String everyBoardForm(Model model, HttpServletRequest request) {
-		this.listCome(model, request);
-		return "everyBoardForm";
-	}
+	
 	@RequestMapping(value="createHomeWorkLocation", method=RequestMethod.GET)
 	public String createHomeWorkForm(Model model, HttpServletRequest request) {
 		this.listCome(model, request);
