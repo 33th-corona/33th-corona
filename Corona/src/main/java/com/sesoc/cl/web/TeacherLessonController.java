@@ -57,6 +57,8 @@ public class TeacherLessonController {
 			HttpServletRequest request) 
 	{
 		listCome(model, request);
+		ClassInfo classInfo = cRepo.selectClassOne(Integer.parseInt(classNum));
+		model.addAttribute("classInfo", classInfo);
 		model.addAttribute("teacher_id", teacher_id);
 		model.addAttribute("classNum", classNum);
 		return "lesson/teacherSideLesson";

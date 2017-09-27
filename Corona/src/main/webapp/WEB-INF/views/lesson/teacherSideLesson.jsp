@@ -13,6 +13,7 @@ div#editorOption div {
 	display: inline-block;
 }
 
+
 .editorArea {
 	padding: 5px;
 	border: 1px solid black;
@@ -23,10 +24,12 @@ ul.fancytree-container {
 	border: none !important;
 	outline: none !important;
 }
+/* 각 상자 배경 */
 .divwhite{
 	background-color: white;
 	border-color: #000530 !important;
 }
+/* 버튼 */
 .btn-change6{
     height: 30px;
     width: 60px;
@@ -40,10 +43,12 @@ ul.fancytree-container {
     box-shadow:0px 0 0 #000530 inset;
     border-radius: 10%;
 }
+/* 버튼 hover */
 .btn-change6:hover{
     box-shadow:0 0 0 25px #000530 inset;
     -webkit-transform: scale(1);
 }
+/* 글씨 색깔 */
 .textChange{
 	color : #000000;
 }
@@ -452,10 +457,10 @@ function saveEditorOption(editor) {
 		
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
-		<h1>Lesson Page (Teacher Side)</h1>
-		<span>Lesson Page (Teacher Side)</span>
+		<h1>'${classInfo.name}' Teacher : ${classInfo.teacher_id}</h1>
+		<span>'${classInfo.name}' Teacher : ${classInfo.teacher_id}</span>
 	</div>
 </section>
 
@@ -485,7 +490,7 @@ function saveEditorOption(editor) {
 
 <div id="lessonDiv" style="background-image: url('images/teacherLessonBack.gif'); display: none;">
 <section id="content" style="background-color: rgba(255,255,255,0);">
-<div class="container clearfix" style="background-color: #eeeeee; border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
+<div id="bor" class="container clearfix" style="background: linear-gradient(45deg, #cccccc, #333333); border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
 	background-size: 100% 100%;
 	" >
 	<div class="row" >
@@ -568,7 +573,7 @@ function saveEditorOption(editor) {
 </section>
 </div>
 
-<form id="codeForm" action="sourceCode" method="POST" target="">
+<form id="codeForm" action="sourceCode" method="POST" target="" class="nomargin">
 	<input type="hidden" name="code">
 	<input type="hidden" name="theme">
 	<input type="hidden" name="invisibles">

@@ -315,15 +315,15 @@ function saveEditorOption(editor) {
 
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
-		<h1>Lesson Page (Student Side)</h1>
-		<span>Lesson Page (Student Side)</span>
+		<h1>'${classInfo.name}' Student : ${id}</h1>
+		<span>'${classInfo.name}' Student : ${id}</span>
 	</div>
 </section>
 
 <section id="content" style="background-color: rgba(255,255,255,0);" >
-<div class="container clearfix" style="background-color: #eeeeee; border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
+<div class="container clearfix" style="background: linear-gradient(45deg, #cccccc, #333333); border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
 	background-size: 100% 100%;
 	" >
 	<div class="row" >
@@ -399,7 +399,7 @@ function saveEditorOption(editor) {
 </div>
 </section>
 
-<form id="codeForm" action="sourceCode" method="POST" target="" class="divwhite">
+<form id="codeForm" action="sourceCode" method="POST" target="" class="divwhite nomargin">
 	<input type="hidden" name="code">
 	<input type="hidden" name="theme">
 	<input type="hidden" name="invisibles">
