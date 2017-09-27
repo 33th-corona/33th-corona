@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="js/jquery.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	
@@ -32,6 +31,10 @@
 	}
 	
 </style>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
+
+
 </head>
 <script type="text/javascript">
 window.onload = function(){	
@@ -58,7 +61,7 @@ window.onload = function(){
 	
 	 oAppRef: oEditors,
 
-	 elPlaceHolder: "content", //textarea에서 지정한 id와 일치해야 합니다.
+	 elPlaceHolder: "texts", //textarea에서 지정한 id와 일치해야 합니다.
 
 	 sSkinURI: "resources/textEditor/SmartEditor2Skin.html",
 	 
@@ -75,7 +78,7 @@ window.onload = function(){
      }, 
      fOnAppLoad : function(){
          //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-         oEditors.getById["content"].exec("PASTE_HTML", [""]);
+         oEditors.getById["texts"].exec("PASTE_HTML", [""]);
      },
 	 
 	 fCreator: "createSEditor2"
@@ -100,24 +103,34 @@ window.onload = function(){
     		 return false;
     	 }
     	 
-         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+         oEditors.getById["texts"].exec("UPDATE_CONTENTS_FIELD", []);
          $("#frm").submit();
      });   
 	 
 }
 </script>
-<body>
-<div id="wrapper">
-<h2>[ 게시판 글쓰기 ]</h2>
+<body class="stretched">
+<div id="wrapper" class="clearfix">
+<div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>Board Write</h1>
+		<span>Board Write</span>
+	</div>
+</section>
+<section id="content" style="width: 1300px;">
+
+	<div class="content-wrap"  style="padding-top: 10px; padding-bottom: 10px;">
+	<div class="container clearfix">
 <form action="boardWrite" method="POST" id="frm" enctype="multipart/form-data">
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 	<tr>
-		<th>제목</th>
+		<th style="width: 100px;">제목</th>
 		<td><input type="text" id="title" name="title" required class="col-md-12"/></td>
 	</tr>
 	<tr>
-		<th>작성자</th>
+		<th style="width: 200px;">작성자</th>
 		<td>${loginId}</td>
 	</tr>
 	
@@ -126,14 +139,11 @@ window.onload = function(){
 			<label>파일 추가</label>
 		</td>
 		<td>
-			<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 		</td>
 	</tr>
-	<tbody id="plustable">
-	</tbody>
-	
-	<tr>
-		<td colspan="2"><textarea name="content" id="content" rows="22"></textarea></td>
+	<tr style="margin-left: 100px !important;">
+		<td colspan="2"  style="margin-left: 100px !important;"><textarea name="content" id="texts" rows="22"  style="margin-left: 100px !important; width:100%; height:412px; min-width:610px;"></textarea></td>
 	</tr>
 	
 	<tr>
@@ -145,6 +155,16 @@ window.onload = function(){
 	</table>
 	
 </form>
+</div>
+</div>
+</section>
+<footer id="footer" class="dark noborder">
+	<div id="copyrights">
+		<div class="container center clearfix">
+			Copyright HanJo 2017 | All Rights Reserved
+		</div>
+	</div>
+</footer><!-- #footer end -->
 </div>
 </body>
 
