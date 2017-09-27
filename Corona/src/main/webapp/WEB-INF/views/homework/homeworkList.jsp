@@ -54,7 +54,7 @@ $(function() {
 
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini">
+<section id="page-title" class="page-title-mini" st>
 	<div class="container clearfix">
 		<h1>Homework List Page</h1>
 		<span>Homework List Page</span>
@@ -69,25 +69,26 @@ $(function() {
 		<!-- 특정 글 검색 -->
 		
 	
-		<div class="content-wrap" style="padding-top: 0px;">
-		<div class="search col_full nomargin">
-			<form id="search" action ="homeworkList" method="GET" class="nomargin">
+		<div class="content-wrap" style="padding-top: 0px; margin-bottom: 10px;">
+		<div class="search col_full" style="margin-top:10px; margin-bottom: 25px;">
+			<form id="search" action ="homeworkList" method="GET" style="margin-top:10px; margin-bottom: 25px;">
 			<input type="hidden" name="classNum" value="${classNum}" />
-			<div class="col_full nomargin">
-			<input class="typeahead sm-form-control tt-input col-md-5" type="text" name="searchword" value="${searchword}" /> 
-			<input class="btn col-md-1" type="submit" value="검색" />
-				<div class="feature-box fbox-rounded fbox-effect fbox-dark nomargin col-md-2" style="height: 15px;">
-					<div class="fbox-icon" style="height: 55px;">
-						<a href="#"><i class="icon-search3 i-alt" style="bottom: 15px;"></i></a>
-					</div>
-				</div>
-			</div>
+			<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
+				<div class="col-md-5 nopadding">
+							<input id="searchText" class="typeahead sm-form-control tt-input" type="text" placeholder="Search Text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; margin:0px !important; width:545px; vertical-align: top; opacity: 0.8; color: black;">
+							</div>
+							<div class="col-md-1 nopadding">
+							<a href="#" id = "searchIcon" class="i-rounded i-medium nomargin icon-line-search" 
+							style="width: 40px !important; height: 1.06cm !important;"></a>
+							</div>
+						</div>	
 			</form>
+			</div>
 		</div>
 		
-			<div class="col_full">
+			<div class="col_full" style="margin-top: 10px !important;">
 			<c:if test="${position eq 'teacher' }">
-				<a style="display: inline-block;" class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm">
+				<a style="display: inline-block;" class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm" style="margin-top:10px; margin-bottom: 25px;">
 						<i class="icon-plus" style="top:4px;"></i>
 				</a>
 			</c:if></div>
