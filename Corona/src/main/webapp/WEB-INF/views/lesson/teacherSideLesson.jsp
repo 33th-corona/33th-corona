@@ -52,6 +52,16 @@ ul.fancytree-container {
 .textChange{
 	color : #000000;
 }
+div#readyDiv {
+	display: table; 
+	width: auto; 
+	height: 440px;
+}
+	
+h1#nonConnMsg {
+	display:table-cell; 
+	vertical-align:middle;
+}
 </style>
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script src="js/jquery-ui.js/"></script>
@@ -175,6 +185,9 @@ $(document).ready(function() {
 	
 	//학생 eclipse 접속 종료
 	$('button#stopStudentView').on('click', function() {
+		$('div#leftPanel').css('display', 'none');
+		$('div#leftReadyPanel').css('display', 'block');
+		
 		var sendMessage = {};
 		sendMessage.action = "closeStudentEclipse";
 		var sendMessageJSON = JSON.stringify(sendMessage);
@@ -319,6 +332,9 @@ function lessonStart(startResult, existLesson) {
 			//action 부분의 내용에 따라 다른 코드 실행
 			//학생 eclipse 접속 성공 시 실행
 			else if(action == 'connStudentEclipseSuccess') {
+				$('div#leftPanel').css('display', 'block');
+				$('div#leftReadyPanel').css('display', 'none');
+				
 				//web editor의 maxline을 설정
 				editor.setOptions({
 					maxLines : 25,
@@ -494,56 +510,63 @@ function saveEditorOption(editor) {
 	background-size: 100% 100%;
 	" >
 	<div class="row" >
-		<div id="leftPanel" class="col-sm-10">
+		<div id="leftPanel" class="col-sm-10" style="display: none">
 			<div id="leftUpperPanel" class="row">
 				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 440px; overflow: auto; ">
 					<div id="tree"></div>
 				</div>
-				<div id="editorPanel" class="col-sm-9">
-					<div id="fileNamePanel" class="row editorArea divwhite">
-						<a id="fileName" style="color: black">FilePath</a>
-					</div>
-					<div id="editor" class="row editorArea divwhite" ></div>
-					<div id="editorOption" class="row editorArea text-right divwhite">
-						<div id="editorThemeChange" class="divwhite textChange">
-							Theme 
-							<select id="themeChange">
-								<option value="eclipse">Eclipse</option>
-								<option value="xcode">XCode</option>
-								<option value="idle_fingers">idle Fingers</option>
-								<option value="monokai">Monokai</option>
-								<option value="gob">Green on Black</option>
-							</select>
+				<div id="editorPanel" class="col-sm-9" style="height: 440px; overflow: auto; ">
+					<div id="editorDiv" class="row">
+						<div id="fileNamePanel" class="row editorArea divwhite">
+							<a id="fileName" style="color: black">FilePath</a>
 						</div>
-						&nbsp;
-						<div id="editorShowInvisibles" class="textChange">
-							Invisibles 
-							<select id="showInvisibles">
-								<option value="true">on</option>
-								<option value="false">off</option>
-							</select>
-						</div>
-						&nbsp;
-						<div id="editorIndentGuides" class="textChange">
-							IndentGuides 
-							<select id="indentGuides">
-								<option value="true">on</option>
-								<option value="false">off</option>
-							</select>
-						</div>
-						&nbsp;
-						<div id="editorShowGutte" class="textChange">
-							Gutte 
-							<select id="showGutte">
-								<option value="true">on</option>
-								<option value="false">off</option>
-							</select>
+						<div id="editor" class="row editorArea divwhite" ></div>
+						<div id="editorOption" class="row editorArea text-right divwhite">
+							<div id="editorThemeChange" class="divwhite textChange">
+								Theme 
+								<select id="themeChange">
+									<option value="eclipse">Eclipse</option>
+									<option value="xcode">XCode</option>
+									<option value="idle_fingers">idle Fingers</option>
+									<option value="monokai">Monokai</option>
+									<option value="gob">Green on Black</option>
+								</select>
+							</div>
+							&nbsp;
+							<div id="editorShowInvisibles" class="textChange">
+								Invisibles 
+								<select id="showInvisibles">
+									<option value="true">on</option>
+									<option value="false">off</option>
+								</select>
+							</div>
+							&nbsp;
+							<div id="editorIndentGuides" class="textChange">
+								IndentGuides 
+								<select id="indentGuides">
+									<option value="true">on</option>
+									<option value="false">off</option>
+								</select>
+							</div>
+							&nbsp;
+							<div id="editorShowGutte" class="textChange">
+								Gutte 
+								<select id="showGutte">
+									<option value="true">on</option>
+									<option value="false">off</option>
+								</select>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div id="leftLowerPanel" class="row divwhite">
 				<div id="console" class="editorArea divwhite"></div>
+			</div>
+		</div>
+		<div id="leftReadyPanel" class="col-sm-10">
+			<div id="readyDiv" class="divcenter" >
+				<h1 id="nonConnMsg">During the lecture</h1>
 			</div>
 		</div>
 		<div id="rightPanel" class="col-sm-2 divwhite divwhite">
