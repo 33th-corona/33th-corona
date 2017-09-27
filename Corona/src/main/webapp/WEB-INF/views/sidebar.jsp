@@ -357,7 +357,7 @@
 								<div class="col_full nobottommargin">
 								<a href="#" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-lock3" style="width: 20px"></i>수정 미기입</a>
 								<a href="#" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-orange tright nomargin"><i class="icon-angle-right" style="width: 20px"></i>정보 수정</a>
-								<a href="#" id="retired"  class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-remove-sign" style="width: 20px"></i>탈퇴</a>
+								<a href="#" id="idDelete"  class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-remove-sign" style="width: 20px"></i>탈퇴</a>
 								</div>
 
 							</form>
@@ -504,7 +504,7 @@
 		alert('회원 수정이 완료 되었습니다.');
 		$('#register-form').submit();
 	}
-	function retired() {
+	function idDelete() {
 		if (($.trim($("#register-form-password").val()).length < 6)
 				|| ($.trim($("#register-form-password").val()).length > 21)) {
 			alert("비밀번호는 6~20자리입니다.");
