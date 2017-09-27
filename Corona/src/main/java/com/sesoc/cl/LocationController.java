@@ -39,7 +39,7 @@ public class LocationController {
 	@RequestMapping(value="searchLocation", method=RequestMethod.GET)
 	public String searchForm(Model model, HttpServletRequest request) {
 		this.listCome(model, request);
-		return "searchForm";
+		return "customer/searchForm";
 	}
 
 	@RequestMapping(value="afterLoginLocation", method=RequestMethod.GET)
@@ -65,13 +65,13 @@ public class LocationController {
 			if(mime.contains("image")||mime.contains("octet-stream")){
 				model.addAttribute("mimetype", mime);
 			}
-		return "afterLogin";
+		return "customer/afterLogin";
 	}
 	
 	@RequestMapping(value="createClassLocation", method=RequestMethod.GET)
 	public String createClassForm(Model model, HttpServletRequest request) {
 		this.listCome(model, request);
-		return "createClassForm";
+		return "customer/createClassForm";
 	}
 	@RequestMapping(value="everyBoardLocation", method=RequestMethod.GET)
 	public String everyBoardForm(Model model, HttpServletRequest request) {
@@ -81,7 +81,7 @@ public class LocationController {
 	@RequestMapping(value="createHomeWorkLocation", method=RequestMethod.GET)
 	public String createHomeWorkForm(Model model, HttpServletRequest request) {
 		this.listCome(model, request);
-		return "createHomeWorkForm";
+		return "customer/createHomeWorkForm";
 	}
 	
 	
@@ -143,7 +143,7 @@ public class LocationController {
 		model.addAttribute("allList", allList);
 		model.addAttribute("userList", list);
 		model.addAttribute("classInfo", classinfo);
-		return "teacherForm";
+		return "customer/teacherForm";
 	}
 	
 	@RequestMapping(value="studentFormLocation", method=RequestMethod.GET)
@@ -155,7 +155,7 @@ public class LocationController {
 		model.addAttribute("userList", list);
 		model.addAttribute("allList", allList);
 		model.addAttribute("classInfo", classinfo);
-		return "studentForm";
+		return "customer/studentForm";
 	}
 	
 	public void listCome(Model model, HttpServletRequest request) {
