@@ -84,9 +84,7 @@ width: 20%;
 			<div class="content-wrap">
 
 				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="driveWrite?classNum=${classNum}">
-					<div class="container clearfix">
 						<i class="icon-plus" style="top:4px;"></i>
-					</div>
 				</a>
 
 				<!-- 게시판 시작
@@ -151,8 +149,9 @@ width: 20%;
 				</ul> 
 			</div><!-- end paging -->
 			
-		</section><!-- #content end -->
-
+			
+		</section>
+		
 	</div><!-- #wrapper end -->
 
 	<!-- Go To Top

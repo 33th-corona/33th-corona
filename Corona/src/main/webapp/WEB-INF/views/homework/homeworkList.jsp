@@ -77,12 +77,10 @@ $(function() {
 		<div class="content-wrap">
 			<c:if test="${position eq 'teacher' }">
 				<a class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm">
-					<div class="container clearfix">
 						<i class="icon-plus" style="top:4px;"></i>
-					</div>
 				</a>
 			</c:if>
-		</div>	
+		
 		<!-- 게시판 시작 -->
 		<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 		
@@ -117,6 +115,10 @@ $(function() {
 			</div>
 		</c:forEach>
 		</div><!-- #posts end -->
+	</div><!-- end content-wrap -->
+	
+	
+	
 	
 	<!-- 페이징 시작 -->
 	<div id="navigator">
@@ -135,9 +137,7 @@ $(function() {
 		<li><a href="homeworkList?currentPage= ${navi.currentPage + navi.pagePerGroup}&classNum=${classNum}">▷ ▷</a></li>  
 		</ul> 
 	</div><!-- end paging -->
-	
 </section><!-- end content section -->
-</div><!-- end content-wrap end -->
 	
 
 <link rel="stylesheet" href="css/flipclock.css">
