@@ -25,8 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sesoc.cl.board.Board;
 import com.sesoc.cl.board.Board_File;
 import com.sesoc.cl.board.PageNavigator;
+import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.util.FileService;
+import com.sesoc.cl.vo.ClassInfo;
 import com.sesoc.cl.vo.Users;
 
 
@@ -43,6 +45,8 @@ public class DriveController {
 	
 	final String uploadPath = "/drivefile";
 	
+	@Autowired
+	ClassRepository cRepo;
 	
 	@RequestMapping(value="driveList")
 	public String driveList(
@@ -50,7 +54,8 @@ public class DriveController {
 			@RequestParam(value="searchtype", defaultValue="title") String searchtype,
 			@RequestParam(value="searchword",defaultValue="") String searchword,
 			@RequestParam(value="countpage", defaultValue="9") int countPerPage,
-			Model model, int classNum){
+			Model model, HttpServletRequest request, int classNum){
+		this.listCome(model, request);
 		//전체 자료실 게시글 수 가져오기
 		int totalRecordCount= repo.getDriveCount(searchtype,searchword, classNum);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount,countPerPage);
@@ -76,7 +81,8 @@ public class DriveController {
 	
 	//업로드 폼으로 이동
 	@RequestMapping(value = "driveWrite", method = RequestMethod.GET)
-	public String uploadForm(Model model, int classNum) {
+	public String uploadForm(Model model, HttpServletRequest request, int classNum) {
+		this.listCome(model, request);
 		model.addAttribute("classNum",classNum);
 		return "driveWrite";
 	}
@@ -85,6 +91,7 @@ public class DriveController {
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
 	public String upload(Model model,HttpServletRequest request, MultipartFile file1, MultiFiles multiFiles, HttpSession session, 
 			String title, String content,int classNum) {
+		this.listCome(model, request);
 		int seq = repo.seq();
 		String user_id = (String) session.getAttribute("loginId");
 		Drive drive =  new Drive(seq, classNum, user_id , title, content, "", "", "", 0);
@@ -109,7 +116,8 @@ public class DriveController {
 	
 	//수정 폼으로 이동
 	@RequestMapping(value = "driveUpdateForm", method = RequestMethod.GET)
-	public String updateForm(int num, Model model,int classNum) {
+	public String updateForm(int num, Model model, HttpServletRequest request, int classNum) {
+		this.listCome(model, request);
 		System.out.println("업뎃 폼 이동 : "+classNum);
 		Drive drive = repo.selectOne(num);
 		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
@@ -121,8 +129,9 @@ public class DriveController {
 	
 	//수정
 	@RequestMapping(value = "driveUpdate", method = RequestMethod.POST)
-	public String update(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
+	public String update(Model model, HttpServletRequest request, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
 			int num, CheckOriginalFileNames fileNames,int classNum) {
+		this.listCome(model, request);
 		Drive drive = repo.selectOne(num);
 		drive.setTitle(title);
 		drive.setContent(content);
@@ -177,8 +186,9 @@ public class DriveController {
 	
 	//삭제
 	@RequestMapping(value = "driveDelete", method = RequestMethod.GET)
-	public String delete(Model model, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
+	public String delete(Model model, HttpServletRequest request, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,
 			int num, CheckOriginalFileNames fileNames, int classNum) {
+		this.listCome(model, request);
 		//게시판 num과 같은 drive_file리스트를 가져옴
 		List<Drive_File> list = repo.selectDrive_fileAll(num);
 		
@@ -196,7 +206,8 @@ public class DriveController {
 	
 	//게시판 글 자세히 보기
 	@RequestMapping(value="driveDetail", method = RequestMethod.GET)
-	public String driveDetailForm(int num, Model model,int classNum) {
+	public String driveDetailForm(int num, Model model, HttpServletRequest request,int classNum) {
+		this.listCome(model, request);
 		repo.updateHit(num);
 		Drive drive = repo.selectOne(num);
 		List<Drive_File> list = repo.selectDrive_fileAll(drive.getNum());
@@ -217,6 +228,7 @@ public class DriveController {
 	//다운로드 로직
 	@RequestMapping(value="download", method=RequestMethod.GET)
 	public String download(int num, HttpServletResponse response){
+		
 		Drive_File fileDrive = repo.selectFileOne(num);
 		//다운로드 수 갱신
 		repo.updateDownCount(num);
@@ -249,5 +261,15 @@ public class DriveController {
 		}
 		return null;
 	}
-	
+	public void listCome(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(); 
+		String id = (String)session.getAttribute("loginId");
+		String img_name = (String)session.getAttribute("userImg");
+		model.addAttribute("img_name", img_name);
+		model.addAttribute("id", id);
+		List<ClassInfo> myTeacherList = cRepo.myTeacherList(id);
+		List<ClassInfo> myStudentList = cRepo.myStudentList(id);
+		model.addAttribute("myTeacherList", myTeacherList);
+		model.addAttribute("myStudentList", myStudentList);
+	}
 }
