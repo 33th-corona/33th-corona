@@ -65,7 +65,6 @@ public class HomeworkController {
 			HttpServletRequest request) 
 	{
 		listCome(model, request);
-		
 		//기한 지났으면 다 제출불가 처리 해야한다 여기서!
 		int result = tRepo.closed_work();
 		if(result != 0) {

@@ -21,12 +21,17 @@
 <script type="text/javascript" src="js/plugins.js"></script>	
 	
 <title>Homework List</title>
-<!--  -->
 <script>
 $(function() {
 	$('#homeworkCreateForm').on('click', function() {
 		location.href = 'homeworkCreateForm?classNum=${classNum}';
 	});
+	
+	$('#searchIcon').on('click',function(){
+		$('#search').submit();
+	});
+	
+	
 });
 </script>
 
@@ -48,6 +53,78 @@ $(function() {
 	.typeahead{
 	width: 50%;
 	}
+	.btn{
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding-left: 60px;
+    position: relative;
+    transform: translateZ(0px);
+    transition: all 0.5s ease 0s;
+    
+    width:300px;
+    height:92.9px;
+    font-size: 50px;
+}
+.btn:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 100% 50% 0;
+    transition: all 0.5s ease-out 0s;
+}
+.btn:hover:after{
+    transform: scaleX(1);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+.btn span{
+    width: 40px;
+    height: 100%;
+    line-height: 40px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s linear 0s;
+}
+.btn span:after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin: auto 0;
+    position: absolute;
+    top: 0;
+    right: -6px;
+    bottom: 0;
+    transform: rotate(45deg);
+    transition: all 0.3s linear 0s;
+}
+
+.btn.red{
+    border: 1px solid #fe6d6d;
+    background: #fe6d6d;
+}
+.btn.red:hover,
+.btn.red span{
+    color: #fe6d6d;
+}
+.btn.red:hover span,
+.btn.red:hover span:after{
+    background: #fe6d6d;
+}
+.btn:hover span{
+    color: #fff;
+}
+
+	
 </style>	
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>
@@ -75,23 +152,24 @@ $(function() {
 			<input type="hidden" name="classNum" value="${classNum}" />
 			<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
 				<div class="col-md-5 nopadding">
-							<input id="searchText" class="typeahead sm-form-control tt-input" type="text" placeholder="Search Text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; margin:0px !important; width:545px; vertical-align: top; opacity: 0.8; color: black;">
-							</div>
-							<div class="col-md-1 nopadding">
-							<a href="#" id = "searchIcon" class="i-rounded i-medium nomargin icon-line-search" 
-							style="width: 40px !important; height: 1.06cm !important;"></a>
-							</div>
-						</div>	
+					<input id="searchText" name="searchword" class="typeahead sm-form-control tt-input" type="text" placeholder="Search Text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; margin:0px !important; width:545px; vertical-align: top; opacity: 0.8; color: black;">
+				</div>
+				<div class="col-md-1 nopadding">
+				<a href="#" id = "searchIcon" class="i-rounded i-medium nomargin icon-line-search" 
+				style="width: 40px !important; height: 1.06cm !important;"></a>
+				</div>
+			</div>	
 			</form>
 			</div>
 		</div>
 		
 			<div class="col_full" style="margin-top: 10px !important;">
-			<c:if test="${position eq 'teacher' }">
-				<a style="display: inline-block;" class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm" style="margin-top:10px; margin-bottom: 25px;">
-						<i class="icon-plus" style="top:4px;"></i>
-				</a>
-			</c:if></div>
+				<c:if test="${position eq 'teacher' }">
+					<a style="display: inline-block;" class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm" style="margin-top:10px; margin-bottom: 25px;">
+							<i class="icon-plus" style="top:4px;"></i>
+					</a>
+				</c:if>
+			</div>
 		<!-- 게시판 시작 -->
 		<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 		
@@ -100,20 +178,25 @@ $(function() {
 			<div class="entry clearfix">
 			<div class="clock" id="clock${stat.count}" ></div>
 				<div class="entry-title">
-					<h3><a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}">[${taskInfo.title}]</a></h3>
+					<h3><a href="homeworkDetail?homeworkNum=${taskInfo.num}">[${taskInfo.title}]</a></h3>
 				</div>
 				
 				<c:if test="${position eq 'student' }">
 					<c:if test="${taskInfo.submitted}">
-						<a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}">제출 답안 확인</a>
+					 <div class="col-sm-3">
+							<a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>답안 확인</a>
+					</div>		
 					</c:if>
 					
 					<c:if test="${!taskInfo.submitted}">
 						<c:if test="${taskInfo.is_closed eq 'n'}">
-							<a href="homeworkDetail?homeworkNum=${taskInfo.num}">과제작성</a>
+						 <div class="col-sm-3">
+							<a href="homeworkDetail?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>과제작성</a>
+						</div>		
 						</c:if>
+						
 						<c:if test="${taskInfo.is_closed ne 'n'}">
-							<span>기한마감</span>
+							<img src="images/closed.png">
 						</c:if>
 					</c:if>
 				</c:if><!-- end student -->
@@ -125,8 +208,7 @@ $(function() {
 			</div>
 		</c:forEach>
 		</div><!-- #posts end -->
-	</div><!-- end content-wrap -->
-	
+	<br><br><br>
 	<!-- 페이징 시작 -->
 	<div id="navigator">
 		<ul class="pagination pagination-lg">
