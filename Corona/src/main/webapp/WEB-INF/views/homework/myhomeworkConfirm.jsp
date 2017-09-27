@@ -64,7 +64,7 @@
 <div class="body-overlay"></div>
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
 		<h1>My Homework Confirm Page (Student)</h1>
 		<span>My Homework Confirm Page (Student)</span>
