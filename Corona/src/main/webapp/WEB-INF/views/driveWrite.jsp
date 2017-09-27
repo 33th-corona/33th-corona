@@ -57,7 +57,7 @@
 		var title = $('#title').val();
 		var file1 = $('.upload');
 		
-		var content = $('#content').val();
+		var content = $('#textss').val();
 		if(title == ''){
 			alert('제목을 적으세요.');
 			return;
@@ -93,8 +93,8 @@
 <div class="body-overlay"></div>
 <section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
-		<h1>Board Write</h1>
-		<span>Board Write</span>
+		<h1>Drive Write</h1>
+		<span>Drive Write</span>
 	</div>
 </section>
 <section id="content" style="width: 1300px;">
@@ -124,7 +124,7 @@
 		</tbody>
 		
 		<tr>
-			<td colspan="2"><textarea name="content" cols="60" rows="15" class="col-md-12"></textarea></td>
+			<td colspan="2"><textarea name="content" style="margin: 0px;" id="textss" cols="60" rows="15" class="col-md-12"></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
