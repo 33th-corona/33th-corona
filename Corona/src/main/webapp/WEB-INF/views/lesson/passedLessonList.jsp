@@ -60,7 +60,6 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 	</div>
 </section>
 
-
 <!-- 여기서부터 작업공간 -->
 <section id="content">
 

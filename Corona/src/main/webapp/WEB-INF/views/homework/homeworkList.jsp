@@ -44,13 +44,17 @@ $(function() {
 	#navigator{
 		text-align: center;
 	}
+	
+	.typeahead{
+	width: 50%;
+	}
 </style>	
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>
 
 <!-- Page Title
 ============================================= -->
-<section id="page-title" class="page-title-mini bottommargin-sm">
+<section id="page-title" class="page-title-mini">
 	<div class="container clearfix">
 		<h1>Homework List Page</h1>
 		<span>Homework List Page</span>
@@ -59,38 +63,39 @@ $(function() {
 
 
 <!--  작업시작 -->
+<!-- Content
+============================================= -->
+<section id="content">
 
-<div id="wrapper" class="clearfix">
-	
-	<!-- Content
-	============================================= -->
-	<section id="content">
 		<!-- 특정 글 검색 -->
-		<div class="search">
+		
+	
+		<div class="content-wrap" style="padding-top: 0px;">
+		<div class="search col_full">
 			<form id="search" action ="homeworkList" method="GET" >
 			<input type="hidden" name="classNum" value="${classNum}" />
-			<input type="text" name="searchword" value="${searchword}" /> 
-			<input class="btn" type="submit" value="검색" />
+			<div class="col_full">
+			<input class="typeahead sm-form-control tt-input col-md-5" type="text" name="searchword" value="${searchword}" /> 
+			<input class="btn col-md-1" type="submit" value="검색" />
+			</div>
 			</form>
 		</div>
-	
-		<div class="content-wrap">
+		
+			<div class="col_full">
 			<c:if test="${position eq 'teacher' }">
-				<a class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm">
+				<a style="display: inline-block;" class="button button-full button-purple center tright header-stick bottommargin-lg" id="homeworkCreateForm">
 						<i class="icon-plus" style="top:4px;"></i>
 				</a>
-			</c:if>
-		
+			</c:if></div>
 		<!-- 게시판 시작 -->
 		<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
-		
 		
 		<!-- 과제 forEach -->
 		<c:forEach var="taskInfo" items="${taskInfoList}" varStatus="stat">
 			<div class="entry clearfix">
 			<div class="clock" id="clock${stat.count}" ></div>
 				<div class="entry-title">
-					<h3><a href="taskDetail?num=${task.num}">[${taskInfo.title}]</a></h3>
+					<h3><a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}">[${taskInfo.title}]</a></h3>
 				</div>
 				
 				<c:if test="${position eq 'student' }">
@@ -117,9 +122,6 @@ $(function() {
 		</div><!-- #posts end -->
 	</div><!-- end content-wrap -->
 	
-	
-	
-	
 	<!-- 페이징 시작 -->
 	<div id="navigator">
 		<ul class="pagination pagination-lg">
@@ -138,7 +140,6 @@ $(function() {
 		</ul> 
 	</div><!-- end paging -->
 </section><!-- end content section -->
-	
 
 <link rel="stylesheet" href="css/flipclock.css">
 <script src="js/flipclock.js"></script>
