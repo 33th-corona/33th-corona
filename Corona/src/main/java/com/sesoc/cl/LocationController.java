@@ -92,6 +92,7 @@ public class LocationController {
 			@RequestParam(value="searchword",defaultValue="") String searchword,
 			@RequestParam(value="currentPage", defaultValue="1") int currentPage, 
 			@RequestParam(value="countpage", defaultValue="10") int countPerPage,
+			HttpServletRequest request,
 			Model model, String status) {
 		//보드 리스트
 		/*
@@ -115,17 +116,21 @@ public class LocationController {
 		}
 		*/
 		System.out.println("과제 게시판");
-		
+		this.listCome(model, request);
 		return "taskList";
 	}
 	
 	@RequestMapping("teskWrite")
-	public String teskWrite(){
+	public String teskWrite(HttpServletRequest request,
+			Model model){
+		this.listCome(model, request);
 		return "teskWrite";
 	}
 	
 	@RequestMapping("teskDetail")
-	public String teskDetail(){
+	public String teskDetail(HttpServletRequest request,
+			Model model){
+		this.listCome(model, request);
 		return "teskDetail";
 	}
 	

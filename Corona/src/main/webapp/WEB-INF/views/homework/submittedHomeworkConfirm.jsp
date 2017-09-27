@@ -70,7 +70,7 @@
 		<span>Submitted Task Confirm Page (Teacher)</span>
 	</div>
 </section>
-<section id="content"  style="background-image: url('images/homeworkback.jpg'); background-size: 1300px;">
+<section id="content"  style="background-image: url('images/homeworkcheckback.jpg'); background-size: 1300px;">
 	<div class="container clearfix"  style="margin-top: 20px;">
 		<div class="row bottommargin"><!-- 큰 row 시작 -->
 			<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
