@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<!-- 완료  -->
 <html>
 <head>
-<!--오늘은 여기까지  -->
+
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
 
@@ -21,26 +22,23 @@
 	<link rel="stylesheet" href="css/dark.css" type="text/css" />
 	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
 	<link rel="stylesheet" href="css/animate.css" type="text/css" />
-	<link rel="stylesheet" href="css/et-line.css" type="text/css" />
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 	<link rel="stylesheet" href="css/components/bs-datatable.css" type="text/css" />
 	<!-- Bootstrap File Upload CSS -->
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="css/customHeader.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	
-<%@ include file="topMenu.jsp" %>
-	<%@ include file="sidebar.jsp" %>
+	<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
 <style type="text/css">
-.button-3d.boran:hover,
-.button-reveal.boran:hover,
-.button-border.boran:hover,
-.button-border.boran.button-fill:before { background-color: #ff9800 !important; }
-.button.button-3d:hover {
-	background-color: #000530 !important;
-}
-.boran{
-	border-color: #ff9800 !important
+.button-orange { background-color: #ff9800; }
+.button-3d.button-orange:hover,
+.button-reveal.button-orange:hover,
+.button-border.button-orange:hover,
+.button-border.button-orange.button-fill:before { background-color: #000530 !important; }
+
+.btn:hover{
+	background-color : #000530 !important;
 }
 .feature-box .fbox-icon i,
 .feature-box .fbox-icon img {
@@ -118,7 +116,7 @@
 }
 .title {
     display: inline-block;
-    font-size: 1.0em;
+    font-size: 1.5em;
     font-weight: bold;
     padding: 5px 15px;
 }
@@ -151,9 +149,10 @@ ul.c-controls li a:hover {
 }
 
 .name {
-    font-size: 1.2em;
+    font-size: 1.7em;
     font-weight: 700;
 }
+
 .c-info {
     padding: 5px 10px;
     font-size: 1.25em;
@@ -161,11 +160,11 @@ ul.c-controls li a:hover {
 .text-muted{
 	font-size: 1.2em;
 }
-.feature-box.fbox-light .fbox-icon i { line-height: 30px !important; }
-/* 왜 터졌지? */
 </style>
 </head>
-<body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: repeat;" >
+
+<body class="stretched side-panel-left no-transition" style="background-image: url('images/back.jpg'); background-size: 1700px; background-repeat: repeat;">
+
 	<div class="body-overlay"></div>
 	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
@@ -174,16 +173,16 @@ ul.c-controls li a:hover {
 			</div>
 
 		</section>
-		<div id="wrapper" class="clearfix">
-			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding : 140px 0;">
+		<div id="wrapper" class="clearfix" >
+			<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="z-index: 10; padding : 140px;">
 			<div class="video-wrap">
 				<video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted style="width: 1300px !important; ">
-					<source src='images/videos/teacher.mp4' type='video/mp4' />
+					<source src='images/videos/student.mp4' type='video/webm' />
 				</video>
 				<div class="video-overlay"></div>
 			</div>
-	</section>
-	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
+		</section>
+		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 		</section>
 		<section id="content" style="background-color: transparent;">
 
@@ -215,14 +214,14 @@ ul.c-controls li a:hover {
 				
 				
 				<div class="col-md-2" >
-				<form action="lessonStart" method="POST" id="lesson">
-				<input type="hidden" value="${classInfo.teacher_id}" name="teacher_id">
+				<form action="lessonJoin" method="POST" id="lesson">
+				<input type="hidden" value="${id}" name="student_id">
 				<input type="hidden" value="${classInfo.num}" name="classNum">
 				<div status="study" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 시작</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 참여</h2></div>
 				</div>
 				</form>
 				</div> 
@@ -239,7 +238,7 @@ ul.c-controls li a:hover {
 				</div>
 				<div class="col-md-2">
 				<form action="#">
-				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; cursor: pointer;">
+				<div status="homeworkList" class="feature-box fbox-outline fbox-effect nomargin col_full location" style="padding:5px; position: static !important; background-color: #111111; border-radius: 100%; background-image: url(images/icons/iconalt.svg); background-position: center center; background-size: 100% 100%; background-repeat: space; cursor: pointer;">
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
@@ -255,28 +254,21 @@ ul.c-controls li a:hover {
 			</div>
 		</section>
 		<section>
-			<div class="container clearfix" style="margin-right: 85px;">
-				<div class="panel-heading" style="width: 1200px;">
-					<div id="homeWork" class="entry clearfix"
-					style="margin-bottom: 10px; padding-bottom: 10px;">
-					<div class="table-responsive col-md-6">
-					<div class="row" style=" padding-right: 10px;">
+			<div class="row">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
-                	<div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0; padding-top:5px;">
-                    <span class="title">신청학생</span>
+                	<div class="col-xs-12 col-sm-2">
+                    <span class="title">Contacts</span>
                     </div>
-                    <div class="col-xs-12 col-sm-3" style="padding-left: 0;">
-                    <span class="title" style="padding-left: 0; padding-top:10px;">&nbsp;&nbsp;&nbsp;아이디</span>
+                    <div class="col-xs-12 col-sm-3">
+                    <span class="title" style="padding-left: 0">아이디</span>
                     </div>
-                    <div class="col-xs-12 col-sm-2" style="padding-left: 0;">
-                    <span class="title" style="padding-left: 0; padding-top:10px;">이름</span>
+                    <div class="col-xs-12 col-sm-2">
+                    <span class="title" style="padding-left: 0">이름</span>
                     </div>
-                    <div class="col-xs-12 col-sm-2 center" style="padding-left: 15px; padding-top:5px;">
-                    <span class="title center" style="padding-left: 0">승낙</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-2 center" style="padding-left: 15px; padding-top:5px;">
-                    <span class="title center" style="padding-left: 0">거절</span>
+                    <div class="col-xs-12 col-sm-3">
+                    <span class="title" style="padding-left: 0">이 메일</span>
                     </div>
                     <ul class="pull-right c-controls">
                         <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>
@@ -296,117 +288,42 @@ ul.c-controls li a:hover {
                 
                 <ul class="list-group" id="contact-list">
                     	<c:forEach items="${userList}" var="sList">
+                    <li class="list-group-item">
                 		<c:forEach items="${allList}" var="uList">
-                        	<c:if test="${sList.status == 'request'}">
                         	<c:if test="${sList.user_id == uList.id}">
-                        	<c:if test="${sList.user_id != loginId}">
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0;">
+                        <div class="col-xs-12 col-sm-2">
                             <img id="profileImg" src="imgStatus?imgName=${uList.img_name}" alt="Scott Stevens" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" />
                         </div>
-                        <div class="col-xs-12 col-sm-3" style="margin-top: 20px; vertical-align: middle; padding-left: 5px; ">
+                        <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle;">
                             <span class="name">${sList.user_id}</span><br/>
                         </div>
-                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
+                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
                             <span class="text-muted">${uList.name}</span><br/>
                             </div>
-                            <div class="col-xs-12 col-sm-2" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
-                            <div class="feature-box fbox-border fbox-light fbox-effect">
-							<div num="${sList.num}"  status="student" class="fbox-icon center status" style="background-color: #eeeeee; margin-left:25px;  width: 32px; height: 32px;">
-								<a href="#"><i class="icon-checkmark" style="font-size: 20px;"></i></a>
-							</div>
-						</div>
-                        </div>
-                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
-                        <div class="feature-box fbox-border fbox-light fbox-effect">
-							<div num="${sList.num}" status="withdraw" class="fbox-icon center status" style="background-color: #eeeeee; margin-left:31px; width: 32px; height: 32px;">
-								<a href="#"><i class="icon-line-cross" style="font-size: 20px;"></i></a>
-							</div>
-						</div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    		</c:if>
-                    		</c:if>
-                            </c:if>
-                    	</c:forEach>
-                    	</c:forEach>
-                </ul>
-        </div>
-	</div>
-					</div>
-					<div class="col-md-6">
-					<div class="row" style= "padding-left: 10px;">
-            <div class="panel panel-default">
-                <div class="panel-heading c-list">
-                	<div class="col-xs-12 col-sm-2" style="padding-top:5px; padding-left: 0; padding-right: 0;">
-                    <span class="title">학생들</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-3" style="padding-left: 0; padding-top:5px;">
-                    <span class="title" style="padding-left: 0; padding-top:5px;">&nbsp;&nbsp;&nbsp;아이디</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-top:5px;">
-                    <span class="title" style="padding-left: 0; padding-top:5px;">이름</span>
-                    </div>
-                    <div class="col-xs-12 col-sm-3" style="padding-left: 0; padding-top:5px;">
-                    <span class="title" style="padding-left: 0; padding-top:5px;">이 메일</span>
-                    </div>
-                    <ul class="pull-right c-controls">
-                        <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>
-                    </ul>
-                </div>
-                
-                <div class="row" style="display: none;">
-                    <div class="col-xs-12">
-                        <div class="input-group c-search">
-                            <input type="text" class="form-control" id="contact-list-search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><span class="icon-line-search"></span></button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <ul class="list-group" id="contact-list">
-                    	<c:forEach items="${userList}" var="sList">
-                    	<c:forEach items="${allList}" var="uList">
-                        	<c:if test="${sList.user_id == uList.id}">
-                        	<c:if test="${sList.status == 'student'}">
-                    <li class="list-group-item">
-                		
-                        <div class="col-xs-12 col-sm-2" style="padding-left: 0; padding-right: 0;">
-                            <img id="profileImg" src="imgStatus?imgName=${uList.img_name}" alt="Scott Stevens" class="img-responsive alignleft img-circle img-thumbnail notopmargin nobottommargin" />
-                        </div>
-                        <div class="col-xs-12 col-sm-3" style="margin-top: 20px; vertical-align: middle; padding-left: 5px; ">
-                            <span class="name">${sList.user_id}</span><br/>
-                        </div>
-                        <div class="col-xs-12 col-sm-2" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
-                            <span class="text-muted">${uList.name}</span><br/>
-                            </div>
-                            <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle; line-height: 50px; padding-left: 0;">
+                            <div class="col-xs-12 col-sm-3" style="margin-top: 13px; vertical-align: middle; line-height: 50px;">
                             <span class="text-muted">${uList.email}</span><br/>
                         </div>
-                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 22px; vertical-align: middle; padding-left: 0;">
+                        <div class="col-xs-12 col-sm-2 center" style="margin-top: 5px; vertical-align: middle;">
+                        <c:if test="${uList.id == loginId}">
                         <div class="feature-box fbox-border fbox-light fbox-effect">
-							<div num="${sList.num}" class="fbox-icon center retired" style="background-color: #eeeeee; margin-left: 55px; width: 32px; height: 32px;">
-								<a href="#"><i class="icon-line-cross" style="font-size: 20px;"></i></a>
+							<div num="${sList.num}" class="fbox-icon center retired" style="background-color: #eeeeee; margin-left: 40px;">
+								<a href="#"><i class="icon-line-cross"></i></a>
 							</div>
 						</div>
+                        </c:if>
                         </div>
                         <div class="clearfix"></div>
-                    </li>
-                     </c:if>
                             </c:if>
                     	</c:forEach>
+                    </li>
                     	</c:forEach>
                 </ul>
+            </div>
         </div>
 	</div>
-				
-						</div>
-					</div>
-				</div>
-			</div>
+
+    
+
 		</section>
 		<!-- Footer
 		============================================= -->
@@ -419,6 +336,7 @@ ul.c-controls li a:hover {
 			</div>
 
 		</footer><!-- #footer end -->
+		
 	</div><!-- #wrapper end -->
 	<!-- Go To Top
 	============================================= -->
@@ -432,11 +350,45 @@ ul.c-controls li a:hover {
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
-	<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 	<script>
-
-		$(function() {
-			if (window.location == window.parent.location) {
+	$(function() {
+		$('.feature-box').mouseover(function() {
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','#000530');
+			$(this).css('background-color', '#000530');
+		});
+		$('.feature-box').mouseout(function() {
+			$(this).find('h2').css('color', '#ffffff');
+			$(this).find('a').css('color','white');
+			$(this).css('background-color', '#111111');
+		});
+		$('.datatable').dataTable({
+			  "columns": [
+				    { "width": "50%" },
+				    { "width": "25%", "orderable": false },
+				    { "width": "25%", "orderable": false },
+				  ], scrollY: 300,
+				  scrollCollapse: true,
+				  columnDefs: [ {
+				        targets: 0,
+				        render: function ( data, type, row ) {
+				        return type === 'display' && data.length > 10 ?
+				            data.substr( 0, 10 ) +'…' :
+				            data;
+				    }
+				    } ]
+				, "bSortClasses" : false
+		});
+		$('#lessonbtn').on('click', function() {
+			$('#lesson').submit();
+		});
+	
+		$('.location').on('click', locationStatus);
+		$('#wrapper').animate({
+			backgroundColor: "rgba(255, 255, 255, 0.5)"
+		}, 1500);
+		 if (window.location == window.parent.location) {
 		        $('#back-to-bootsnipp').removeClass('hide');
 		    }
 		    
@@ -474,121 +426,31 @@ ul.c-controls li a:hover {
 		            elem.slideUp( 100 );
 		        }
 		    })
-			
-			$('.datatable')
-					.dataTable(
-							{
-								"columns" : [ {
-									"width" : "50%"
-								}, {
-									"width" : "25%",
-									"orderable" : false
-								}, {
-									"width" : "25%",
-									"orderable" : false
-								}, ],
-								scrollY : 300,
-								scrollCollapse : true,
-								columnDefs : [ {
-									targets : 0,
-									render : function(data, type, row) {
-										return type === 'display'
-												&& data.length > 10 ? data
-												.substr(0, 10)
-												+ '…' : data;
-									}
-								} ],
-								"bSortClasses" : false
-							});
-			$('.status').on('click', status);
-			$('#datatable4 tbody').on('click', '.retired', retired);
-			$('#lessonbtn').on('click', function() {
-				$()
-			})
-			$('.feature-box').mouseover(function() {
-				$(this).find('h2').css('color', '#ffffff');
-				$(this).find('a').css('color','#000530');
-				$(this).css('background-color', '#000530');
-			})
-			$('.feature-box').mouseout(function() {
-				$(this).find('h2').css('color', '#ffffff');
-				$(this).find('a').css('color','white');
-				$(this).css('background-color', '#111111');
-			})
-			$('.location').on('click', locationStatus);
-			$('.retired').on('click', retired);
-			$('#wrapper').animate({
-				backgroundColor: "rgba(255, 255, 255, 0.5)"
-			}, 1500);
-			
-		});
-		function locationStatus(){
-			var status= $(this).attr('status');
-			if(status == 'normal'){
-				location.href = "${pageContext.request.contextPath}/boardList?classNum=${classInfo.num}";
-			} else if(status == 'drive'){
-				location.href = "${pageContext.request.contextPath}/driveList?classNum=${classInfo.num}";					
-			} else if(status == 'study') {
-				$('#lesson').submit();
-			} else if(status == 'passedLesson') {
-				location.href = '${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}';
-			} else if(status == 'homeworkList') {
-				location.href = '${pageContext.request.contextPath}/homeworkList?classNum=${classInfo.num}';
-			}
+		    $('.retired').on('click', retired);
+	});
+	
+	function retired(){
+		var result = confirm("정말 탈퇴하시겠습니까?");
+		var num = $(this).attr('num');
+		if(result){
+			location.href = "${pageContext.request.contextPath}/retired?num=" + num;
 		}
-		
-		function status() {
-			var num = $(this).attr('num');
-			var statusChange = $(this).attr('status');
-			var btn = $(this);
-			var result = confirm(statusChange + " : 실행 하시겠습니까?");
-			if(result){
-			$.ajax({
-						url : 'status',
-						method : 'POST',
-						data : 'num=' + num + '&status=' + statusChange,
-						success : function(repo) {
-							if(repo == 'student'){
-								alert("승인 하였습니다.");
-								$(btn).parent().parent().parent().remove();
-							}
-							if(repo == 'withdraw'){
-								alert("거부 하였습니다.");
-								$(btn).parent().parent().parent().remove();
-							}
-						},
-						error : function(repo) {
-							alert("오류 : " + repo)
-						}
-				});
-			} else {
-				return false;
-			}
+	}
+	
+	function locationStatus(){
+		var status= $(this).attr('status');
+		if(status == 'normal'){
+			location.href = '${pageContext.request.contextPath}/boardList?classNum=${classInfo.num}';
+		} else if(status == 'drive'){
+				location.href = "${pageContext.request.contextPath}/driveList?classNum=${classInfo.num}";		
+		} else if(status == 'study') {
+			$('#lesson').submit();
+		} else if(status == 'passedLesson') {
+			location.href = '${pageContext.request.contextPath}/passedLessonList?classNum=${classInfo.num}';
+		} else if(status == 'homeworkList') {
+			location.href = '${pageContext.request.contextPath}/homeworkList?classNum=${classInfo.num}';
 		}
-		
-		function retired(){
-			var num = $(this).attr('num');
-			var btn = $(this);
-			var result = confirm("강제 탈퇴 시키겠습니까?");
-			if(result){
-			$.ajax({
-				url : 'retired',
-				data : 'num=' + num,
-				method : 'POST',
-				success : function(repo){
-					alert("탈퇴 완료되었습니다.");
-					$(btn).parent().parent().parent().remove();
-				} 
-				,
-				error : function(repo) {
-					alert("오류 : " + repo)
-				}
-			})
-			} else{
-				return false;
-			}
-		}
-		
+	}
 	</script>
 </body>
 </html>

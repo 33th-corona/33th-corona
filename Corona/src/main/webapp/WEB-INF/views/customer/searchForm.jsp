@@ -32,8 +32,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 <title>Insert title here</title>
-<%@ include file="topMenu.jsp" %>
-<%@ include file="sidebar.jsp"%>
+<%@ include file="../topMenu.jsp" %>
+<%@ include file="../sidebar.jsp"%>
 <style type="text/css">
 th {
 background-color: white;

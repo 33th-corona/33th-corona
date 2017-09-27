@@ -39,6 +39,43 @@
 	
 	<context:component-scan base-package="com.sesoc.cl" />
 	
+	<!-- Interceptor -->
+	<beans:bean id ="loginInterceptor" class="com.sesoc.cl.util.LoginInterceptor">
+	</beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/homeworkCreateForm"/>
+			<mapping path="/homeworkList"/>
+			<mapping path="/homeworkSubmitForm"/>
+			<mapping path="/myhomeworkConfirm"/>
+			<mapping path="/submittedHomeworkConfirm"/>
+			<mapping path="/passedLessonList"/>
+			<mapping path="/passedLessonPlay"/>
+			<mapping path="/sourceCodePopup"/>
+			<mapping path="/studentSideLesson"/>
+			<mapping path="/teacherSideLesson"/>
+			<mapping path="/afterLogin"/>
+			<mapping path="/boardDetail"/>
+			<mapping path="/boardForm"/>
+			<mapping path="/boardList"/>
+			<mapping path="/boardUpdate"/>
+			<mapping path="/boardWrite"/>
+			<mapping path="/classJoinForm"/>
+			<mapping path="/createClassForm"/>
+			<mapping path="/driveDetail"/>
+			<mapping path="/driveList"/>
+			<mapping path="/driveUpdate"/>
+			<mapping path="/driveWrite"/>
+			<mapping path="/imgCheckMessage"/>
+			<mapping path="/message"/>
+			<mapping path="/searchForm"/>
+			<mapping path="/sidebar"/>
+			<mapping path="/studentForm"/>
+			<mapping path="/teacherForm"/>
+			<mapping path="/topMenu"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 </beans:beans>

@@ -35,8 +35,8 @@
 	
 <title>CreateClass</title>
 
-<%@ include file="topMenu.jsp" %>
-	<%@ include file="sidebar.jsp" %>
+<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
 <style>
 #nameOk {
 	cursor: default;

@@ -195,8 +195,8 @@
 	
 	</style>
 </head>
-<%@ include file="topMenu.jsp" %>
-	<%@ include file="sidebar.jsp" %>
+<%@ include file="../topMenu.jsp" %>
+	<%@ include file="../sidebar.jsp" %>
 <body class="stretched side-panel-left">
 	<div class="body-overlay"></div>
 	
