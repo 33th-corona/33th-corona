@@ -42,6 +42,11 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 } 
 </script>
 </head>
+<style>
+	#navigator{
+		text-align: center;
+	}
+</style>
 
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>

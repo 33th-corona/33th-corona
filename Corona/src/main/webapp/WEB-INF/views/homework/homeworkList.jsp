@@ -21,6 +21,7 @@
 <script type="text/javascript" src="js/plugins.js"></script>	
 	
 <title>Homework List</title>
+
 <script>
 $(function() {
 	$('#homeworkCreateForm').on('click', function() {
@@ -28,15 +29,20 @@ $(function() {
 	});
 });
 </script>
+
 </head>
 <%@ include file="../topMenu.jsp" %>
 	<%@ include file="../sidebar.jsp" %>
+	
 <style>
 	.flip-clock-divider.minutes .flip-clock-label {
 		display: none;
 	}
 	.flip-clock-divider.seconds .flip-clock-label{
 		display: none;
+	}
+	#navigator{
+		text-align: center;
 	}
 </style>	
 <body class="stretched side-panel-left">
@@ -76,6 +82,7 @@ $(function() {
 					</div>
 				</a>
 			</c:if>
+		</div>	
 		<!-- 게시판 시작 -->
 		<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 		
@@ -98,7 +105,7 @@ $(function() {
 							<a href="homeworkDetail?homeworkNum=${taskInfo.num}">과제작성</a>
 						</c:if>
 						<c:if test="${taskInfo.is_closed ne 'n'}">
-							<span>기한마감<sapn>
+							<span>기한마감</span>
 						</c:if>
 					</c:if>
 				</c:if><!-- end student -->
@@ -110,7 +117,6 @@ $(function() {
 			</div>
 		</c:forEach>
 		</div><!-- #posts end -->
-	</div><!-- end content-wrap end -->
 	
 	<!-- 페이징 시작 -->
 	<div id="navigator">
@@ -131,6 +137,8 @@ $(function() {
 	</div><!-- end paging -->
 	
 </section><!-- end content section -->
+</div><!-- end content-wrap end -->
+	
 
 <link rel="stylesheet" href="css/flipclock.css">
 <script src="js/flipclock.js"></script>

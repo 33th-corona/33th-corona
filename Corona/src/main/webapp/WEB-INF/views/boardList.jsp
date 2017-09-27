@@ -34,7 +34,10 @@
 <style>
 	.spancon {
 		text-align: left;
-		
+	}
+	
+	#navigator{
+		text-align: center;
 	}
 
 </style>	
