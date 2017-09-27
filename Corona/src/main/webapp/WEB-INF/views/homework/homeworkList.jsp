@@ -77,6 +77,11 @@ $(function() {
 			<div class="col_full nomargin">
 			<input class="typeahead sm-form-control tt-input col-md-5" type="text" name="searchword" value="${searchword}" /> 
 			<input class="btn col-md-1" type="submit" value="검색" />
+				<div class="feature-box fbox-rounded fbox-effect fbox-dark nomargin col-md-2" style="height: 15px;">
+					<div class="fbox-icon" style="height: 55px;">
+						<a href="#"><i class="icon-search3 i-alt" style="bottom: 15px;"></i></a>
+					</div>
+				</div>
 			</div>
 			</form>
 		</div>
