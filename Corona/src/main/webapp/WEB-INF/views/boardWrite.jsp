@@ -42,9 +42,9 @@ window.onload = function(){
 	$('.cansle').on('click', cansle);
 	
 	function plus() {
-		var html = '<tr><td><label>파일 명</label></td><td>';
-		html += '<input type="file" id="ty"  name="file1" class="upload" />';
-		html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		var html = '<tr><th>파일 명</th><td>';
+		html += '<input type="file" id="ty"  name="file1" class="upload" style="display:inline; cursor: pointer; margin-right:20px;" />';
+		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
