@@ -142,6 +142,8 @@ window.onload = function(){
 			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 		</td>
 	</tr>
+	<tbody id="plustable">
+	</tbody>
 	<tr style="margin-left: 100px !important;">
 		<td colspan="2"  style="margin-left: 100px !important;"><textarea name="content" id="texts" rows="22"  style="margin-left: 100px !important; width:100%; height:412px; min-width:610px;"></textarea></td>
 	</tr>
