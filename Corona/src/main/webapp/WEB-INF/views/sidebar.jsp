@@ -392,7 +392,7 @@
 			<nav>
 					
 					<ul>
-						<li><a href="#"><i class="icon-briefcase"></i>내가 선생일 때</a>
+						<li><a href="#"><i class="icon-briefcase"></i>Teacher Page</a>
 							<ul>
 									<c:if test="${empty myTeacherList}">
 									<li><a>선생으로 참여한 반이 없습니다.</a></li>
@@ -402,7 +402,7 @@
 								</c:forEach>
 							</ul>
 						</li>
-						<li><a href="#"><i class="icon-study"></i>내가 학생일 때</a>
+						<li><a href="#"><i class="icon-study"></i>Student Page</a>
 							<ul>
 								<c:if test="${empty myStudentList}">
 									<li><a>학생으로 참여한 반이 없습니다.</a></li>

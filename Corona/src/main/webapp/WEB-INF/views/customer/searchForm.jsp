@@ -247,12 +247,12 @@ background-color: white;
 			, data : "classNum=" + classNum
 			, success : function(repo) {
 				if(repo == 1){
-					alert("가입 완료입니다.");
-					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>가입완료</button>');
+					alert("가입 신청 완료입니다.");
+					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>신청완료</button>');
 				}
 				if(repo == 0){
 					alert("이미 가입 하셨습니다.");
-					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>가입완료</button>');
+					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>신청완료</button>');
 				}
 			}
 			,error : function(repo) {
