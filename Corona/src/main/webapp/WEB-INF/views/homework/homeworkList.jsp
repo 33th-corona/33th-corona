@@ -63,7 +63,7 @@ $(function() {
     transition: all 0.5s ease 0s;
     
     width:300px;
-    height:92.9px;
+    height:90px;
     font-size: 50px;
 }
 .btn:after{
@@ -178,7 +178,7 @@ $(function() {
 			<div class="entry clearfix">
 			<div class="clock" id="clock${stat.count}" ></div>
 				<div class="entry-title">
-					<h3><a href="homeworkDetail?homeworkNum=${taskInfo.num}">[${taskInfo.title}]</a></h3>
+					<h3>[${taskInfo.title}]</h3>
 				</div>
 				
 				<c:if test="${position eq 'student' }">

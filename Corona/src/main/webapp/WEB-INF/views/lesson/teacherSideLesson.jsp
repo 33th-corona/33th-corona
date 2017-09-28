@@ -600,7 +600,7 @@ function saveEditorOption(editor) {
 			<div id="rightThirdPanel" class="row editorArea">
 				<div id="connStudentEclipse">
 					<button id="startStudentView" class="btn-change6">출력</button>
-					<button style="margin-left: 45px;" id="stopStudentView" class="btn-change6">해제</button>
+					<button style="margin-left: 35px;" id="stopStudentView" class="btn-change6">해제</button>
 				</div>
 			</div>
 		</div>
