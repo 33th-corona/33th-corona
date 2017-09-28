@@ -13,7 +13,8 @@ $(function() {
 	var editor = ace.edit("editor");
 	//web editor의 maxline을 설정
 	editor.setOptions({
-		maxLines : 30,
+		maxLines : 23,
+		minLines : 23,
 		autoScrollEditorIntoView : true
 	});
 	//web editor의 syntaxing 언어 설정(java)
@@ -22,7 +23,7 @@ $(function() {
 	//web editor의 테마 설정
 	editor.setTheme('${theme}');
 	//web editor를 읽기 전용으로 설정
-	editor.setFontSize(13);
+	editor.setFontSize(17);
 	editor.setReadOnly(true);
 	editor.setHighlightActiveLine(false);
 	editor.renderer.setShowPrintMargin(false);

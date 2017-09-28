@@ -122,7 +122,7 @@ $(function() {
 		//web editor의 테마 설정
 		editor.setTheme("ace/theme/eclipse");
 		//web editor를 읽기 전용으로 설정
-		editor.setFontSize(13);
+		editor.setFontSize(15);
 		editor.setReadOnly(true);
 		editor.setHighlightActiveLine(false);
 		editor.renderer.setShowPrintMargin(false);
@@ -292,7 +292,7 @@ function saveEditorOption(editor) {
 	<div class="row" style="margin-bottom: 30px;">
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea backWhite" style="height: 520px; overflow: auto;">
+				<div id="treePanel" class="col-sm-3 editorArea backWhite" style="height: 510px; overflow: auto;">
 					<div id="tree"></div>
 				</div>
 				<div id="editorPanel" class="col-sm-9">
@@ -346,7 +346,7 @@ function saveEditorOption(editor) {
 			<div id="rightFirstPanel" class="row editorArea backWhite">
 				채팅창
 				<div id="chatDiv">
-					<textarea id="chatMessage" cols="20" rows="23"></textarea>
+					<textarea id="chatMessage" cols="20" rows="22"></textarea>
 				</div>
 			</div>
 		</div>

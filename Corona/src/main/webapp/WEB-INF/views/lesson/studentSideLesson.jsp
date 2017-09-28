@@ -333,7 +333,7 @@ function saveEditorOption(editor) {
 	<div class="row" >
 		<div id="leftPanel" class="col-sm-10">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 440px; overflow: auto; ">
+				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 460px; overflow: auto; ">
 					<div id="tree"></div>
 				</div>
 				<div id="editorPanel" class="col-sm-9">
@@ -393,7 +393,7 @@ function saveEditorOption(editor) {
 			<div id="rightSecondPanel" class="row editorArea divwhite">
 				채팅창
 				<div id="chatDiv">
-					<textarea id="chatMessage" cols="19" rows="7" readonly="readonly"></textarea>
+					<textarea id="chatMessage" cols="19" rows="8" readonly="readonly"></textarea>
 					<input type="text" id="message" size="15" placeholder="메시지 내용" />
 					<button id="sendMessage" class="btn-change6">전송</button>
 				</div>

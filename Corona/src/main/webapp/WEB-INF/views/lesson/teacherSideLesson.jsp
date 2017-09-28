@@ -350,8 +350,8 @@ function lessonStart(startResult, existLesson) {
 				
 				//web editor의 maxline을 설정
 				editor.setOptions({
-					maxLines : 25,
-					minLines : 25,
+					maxLines : 22,
+					minLines : 22,
 					autoScrollEditorIntoView : true
 				});
 				//web editor의 syntaxing 언어 설정(java)
@@ -359,7 +359,7 @@ function lessonStart(startResult, existLesson) {
 				//web editor의 테마 설정
 				editor.setTheme("ace/theme/eclipse");
 				//web editor를 읽기 전용으로 설정
-				editor.setFontSize(13);
+				editor.setFontSize(15);
 				editor.setReadOnly(true);
 				editor.setHighlightActiveLine(false);
 				editor.renderer.setShowPrintMargin(false);
@@ -370,8 +370,8 @@ function lessonStart(startResult, existLesson) {
 				saveEditorOption(editor);
 				
 				consoleView.setOptions({
-					maxLines : 3,
-					minLines : 3,
+					maxLines : 4,
+					minLines : 4,
 					autoScrollEditorIntoView : true
 				});
 				consoleView.getSession().setMode(
@@ -525,16 +525,16 @@ function saveEditorOption(editor) {
 	<div class="row" >
 		<div id="leftPanel" class="col-sm-10" style="display: none">
 			<div id="leftUpperPanel" class="row">
-				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 440px; overflow: auto; ">
+				<div id="treePanel" class="col-sm-3 editorArea divwhite" style="height: 460px; overflow: auto; ">
 					<div id="tree"></div>
 				</div>
-				<div id="editorPanel" class="col-sm-9" style="height: 440px; overflow: auto; ">
+				<div id="editorPanel" class="col-sm-9">
 					<div id="editorDiv" class="row">
-						<div id="fileNamePanel" class="row editorArea divwhite">
+						<div id="fileNamePanel" class="row editorArea divwhite nomargin">
 							<a id="fileName" style="color: black">FilePath</a>
 						</div>
-						<div id="editor" class="row editorArea divwhite" ></div>
-						<div id="editorOption" class="row editorArea text-right divwhite">
+						<div id="editor" class="row editorArea divwhite nomargin" ></div>
+						<div id="editorOption" class="row editorArea text-right divwhite nomargin">
 							<div id="editorThemeChange" class="divwhite textChange">
 								Theme 
 								<select id="themeChange">
@@ -592,7 +592,7 @@ function saveEditorOption(editor) {
 			<div id="rightSecondPanel" class="row editorArea divwhite">
 				채팅창
 				<div id="chatDiv">
-					<textarea id="chatMessage" cols="19" rows="7" readonly="readonly"></textarea>
+					<textarea id="chatMessage" cols="19" rows="8" readonly="readonly"></textarea>
 					<input type="text" id="message" size="15" placeholder="메시지 내용" />
 					<button id="sendMessage" class="btn-change6">전송</button>
 				</div>
