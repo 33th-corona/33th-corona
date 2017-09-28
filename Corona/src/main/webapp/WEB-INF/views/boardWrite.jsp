@@ -150,7 +150,7 @@ window.onload = function(){
 	
 	<tr>
 		<td colspan="2" align="right">
-			<a href="boardList" class="btn btn-primary">취소</a>
+			<a href="boardList?classNum=${classNum}" class="btn btn-primary">취소</a>
 			<input type="button" id="save" class="btn btn-primary" value='등록하기'>
 		</td>
 	</tr>

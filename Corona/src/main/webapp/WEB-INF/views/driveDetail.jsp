@@ -81,6 +81,7 @@
 	</div>
 	<form action="driveUpdateForm" id="Form" method="GET" >
 	<input type="hidden" id="num" name="num" value="${drive.num}">
+	<input type="hidden" id="classNum" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 		<tr>
 			<th colspan="3">${drive.title}</th>
@@ -88,14 +89,14 @@
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3"><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
 			<td class="col-md-5">${drive.user_id}</td>
-			<td rowspan="3" class="col-md-4">빈공간입니다 광고??</td>
+			<td rowspan="3" class="col-md-4"></td>
 		</tr>
 		
 		<tr>
 			<th>${drive.register_time}</th>
 		</tr>	
 		<tr>
-			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
+			<th></th>
 		</tr>
 		
 		<c:forEach items="${list}" var="driveList" varStatus="check">
@@ -116,7 +117,7 @@
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="boardLocation?status=drive" >목록으로</a>
+				<a href="driveList?classNum=${classNum}" >목록으로</a>
 			</td>
 			<td></td>
 			<td align="right">	

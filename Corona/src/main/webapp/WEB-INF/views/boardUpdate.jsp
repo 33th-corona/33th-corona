@@ -85,7 +85,7 @@ window.onload = function(){
     $("#save").click(function(){
         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
         $("#frm").submit();
-        alert('글 저장');
+        alert('수정되었습니다.');
     });   
 	 
 }//end window.onload
@@ -112,6 +112,7 @@ function modify() {
 <h2>[ 게시글 수정  ]</h2>
 <form action="boardUpdate" method="POST" id='frm' enctype="multipart/form-data">
 <input type="hidden" name="num" value="${board.num}">
+<input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 	<tr>
 		<th>제목</th>
@@ -119,7 +120,7 @@ function modify() {
 	</tr>
 	<tr>
 		<th>작성자</th>
-		<td>${loginId}로그인세션아이디</td>
+		<td>${loginId}</td>
 	</tr>
 	
 	<tr>
@@ -152,7 +153,7 @@ function modify() {
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
-			<a href="boardList" class="btn btn-primary">취소</a>
+			<a href="boardList?classNum=${classNum}" class="btn btn-primary">취소</a>
 			<input type="button" id="save" class="btn btn-primary" value='등록하기'>
 		</td>
 	</tr>

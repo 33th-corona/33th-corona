@@ -84,8 +84,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardDetail")
-	public String boardDetail(int num, Model model, HttpServletRequest request, String status){
+	public String boardDetail(int num, Model model, HttpServletRequest request, String status,int classNum){
 		this.listCome(model, request);
+		System.out.println("detail");
 		Board board = repo.findOne(num);
 		repo.updateHits(num); //조회수 업데이트
 		
@@ -100,6 +101,7 @@ public class BoardController {
 		model.addAttribute("userImg",userImg);
 		model.addAttribute("list", list);
 		model.addAttribute("board",board);
+		model.addAttribute("classNum",classNum);
 		return "boardDetail";
 	}
 	
@@ -153,17 +155,19 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/boardUpdateForm", method=RequestMethod.POST)
-	public String boardUpdate(int num, Model model, HttpServletRequest request){
+	public String boardUpdate(int num, Model model, HttpServletRequest request, int classNum){
 		this.listCome(model, request);
 		Board board = repo.findOne(num);
 		List<Board_File> list = repo.selectBoard_fileAll(num);
 		model.addAttribute("board",board);
 		model.addAttribute("list",list);
+		model.addAttribute("classNum",classNum);
 		return "boardUpdate";
 	}
 	
 	@RequestMapping(value="/boardUpdate", method=RequestMethod.POST)
-	public String boardUpdate(Board board, Model model, HttpServletRequest request, RedirectAttributes ra, MultiFiles multifiles, MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames){
+	public String boardUpdate(Board board, Model model, HttpServletRequest request, RedirectAttributes ra, MultiFiles multifiles, 
+			MultipartFile file1, String user_id, String title, String content,int num, CheckOriginalFileNames fileNames,int classNum){
 		this.listCome(model, request);
 		repo.updateBoard(board);
 		//파일을 제외한 정보는 업데이트 끝;
@@ -210,11 +214,12 @@ public class BoardController {
 		}
 		
 		ra.addAttribute("num",board.getNum());
+		ra.addAttribute("classNum",classNum);
 		return "redirect:boardDetail";
 	}
 	
 	@RequestMapping(value="/deleteForm", method=RequestMethod.GET)
-	public String boardDelete(Board board, Model model, HttpServletRequest request){
+	public String boardDelete(Board board, Model model, HttpServletRequest request,RedirectAttributes ra, int classNum){
 		this.listCome(model, request);
 		List<Board_File> list = repo.selectBoard_fileAll(board.getNum());
 		
@@ -226,6 +231,7 @@ public class BoardController {
 		
 		//게시글 삭제처리
 		repo.deleteForm(board.getNum());
+		ra.addAttribute("classNum",classNum);
 		return "redirect:boardList";
 	}
 	

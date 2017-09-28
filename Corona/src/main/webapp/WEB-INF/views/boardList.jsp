@@ -93,7 +93,7 @@
 						</div>
 					<!-- 이미지 삽입 끝 -->	
 						<div class="entry-title">
-							<h2><a href="boardDetail?num=${board.num}">${board.title}</a></h2>
+							<h2><a href="boardDetail?num=${board.num}&classNum=${classNum}">${board.title}</a></h2>
 						</div>
 						<div>
 						<ul class="entry-meta clearfix">

@@ -63,10 +63,11 @@
 	<div class="container clearfix">
 	
 	<div class="center">
-	<h2>[ 게시판 글보기 ]// 클래스명 받아와서 뿌려주기</h2>
+	<h2>[ 게시판 글보기 ]</h2>
 	</div>
 	<form action="boardUpdateForm" id="Form" method="POST" >
 	<input type="hidden" name="num" value="${board.num}">
+	<input type="hidden" name="classNum" value="${classNum}">
 	
 	<table class="Bordered table">
 		<tr >
@@ -75,14 +76,14 @@
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3" ><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
 			<td><strong>${board.user_id}</strong></td>
-			<td rowspan="3" >빈 공간 무엇을 추가할까</td>
+			<td rowspan="3" ></td>
 		</tr>
 		
 		<tr>
 			<th>${board.register_time}</th>
 		</tr>	
 		<tr>
-			<th>부가기능 쓴글보기나 회원정보 뭐..</th>
+			<th></th>
 		</tr>
 		
 		<c:forEach items="${list}" var="fileList" varStatus="check">
@@ -103,7 +104,7 @@
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="boardList">≪목록으로</a>
+				<a href="boardList?classNum=${classNum}">≪목록으로</a>
 			</td>
 			<td></td>
 			<td align="right">	
@@ -300,7 +301,7 @@
 	function deleteForm(){
 		var del = confirm("정말 삭제하시겠습니까?")
 		if(del){
-			location.href="deleteForm?num=${board.num}";
+			location.href="deleteForm?num=${board.num}&classNum=${classNum}";
 		}
 		return;
 	}	
