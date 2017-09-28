@@ -114,7 +114,7 @@
 						           </c:otherwise> 
 					          </c:choose>
 					          </p><br>
-							<a href="boardDetail?num=${board.num}" class="more-link">Read More</a>
+							<a href="boardDetail?num=${board.num}&classNum=${classNum}" class="more-link">Read More</a>
 						</div>
 					</div>
 				</c:forEach><!-- 글 작성 끝 -->

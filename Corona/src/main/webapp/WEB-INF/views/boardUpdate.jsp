@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="js/jquery.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 	
@@ -30,17 +29,19 @@
 		width : 780px;
 	}
 </style>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
 </head>
 
 <script type="text/javascript">
 window.onload = function(){	
 	$('.plus').on('click', plus);
 	$('.cansle').on('click', cansle);
-	
+	$('.modify').on('click', modify);
 	function plus() {
 		var html = '<tr><td><label>파일 명</label></td><td>';
-		html += '<input type="file" id="ty"  name="file1" class="upload" />';
-		html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '<input type="file" id="ty"  name="file1" class="upload" style="display:inline; cursor: pointer;"/>';
+		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
@@ -57,7 +58,7 @@ window.onload = function(){
 	
 	 oAppRef: oEditors,
 
-	 elPlaceHolder: "content", //textarea에서 지정한 id와 일치해야 합니다.
+	 elPlaceHolder: "texts", //textarea에서 지정한 id와 일치해야 합니다.
 
 	 sSkinURI: "resources/textEditor/SmartEditor2Skin.html",
 	 
@@ -74,7 +75,7 @@ window.onload = function(){
     }, 
     fOnAppLoad : function(){
         //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-        oEditors.getById["content"].exec("PASTE_HTML", ['${board.content}']);
+        oEditors.getById["texts"].exec("PASTE_HTML", ['${board.content}']);
 
     },
 	 
@@ -83,7 +84,7 @@ window.onload = function(){
 	 
 	//저장버튼 클릭시 form 전송
     $("#save").click(function(){
-        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+        oEditors.getById["texts"].exec("UPDATE_CONTENTS_FIELD", []);
         $("#frm").submit();
         alert('수정되었습니다.');
     });   
@@ -97,9 +98,9 @@ function cansle() {
 //수정 아이콘 누를시  input file로 덮어 씌움
 function modify() {
 	var html = '<td><label>파일 명</label></td><td>';
-	html += '<input type="file" name="file1" class="upload"/>';
-	html += '<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<input type="file" name="file1" class="upload" style="display: inline; cursor: pointer; margin-right:20px;"/>';
+	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td>';
 	$(this).parent().parent().html(html);
 	$('.modify').on('click', modify);
@@ -107,9 +108,19 @@ function modify() {
 }
 </script>
 
-<body>
-<div id="wrapper">
-<h2>[ 게시글 수정  ]</h2>
+<body class="stretched">
+<div id="wrapper" class="clearfix">
+<div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>Board Update</h1>
+		<span>Board Update</span>
+	</div>
+</section>
+<section id="content" style="width: 1300px;">
+
+	<div class="content-wrap"  style="padding-top: 10px; padding-bottom: 10px;">
+	<div class="container clearfix">
 <form action="boardUpdate" method="POST" id='frm' enctype="multipart/form-data">
 <input type="hidden" name="num" value="${board.num}">
 <input type="hidden" name="classNum" value="${classNum}">
@@ -128,7 +139,7 @@ function modify() {
 			<label>파일 추가</label>
 		</td>
 		<td>
-			<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 		</td>
 	</tr>
 		<c:forEach items="${list}" var="fileList" varStatus="check">
@@ -139,8 +150,8 @@ function modify() {
 				<td>
 					<a href="download?num=${fileList.num}">${fileList.original_filename}</a> 
 					<input type="hidden" name="original_filename" class="original_filename" value="${fileList.original_filename}">
-					<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
-					<img alt="삭제" src="resources/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
+					<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
+					<img alt="삭제" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
 				</td>
 			</tr>
 		</c:forEach>
@@ -148,8 +159,8 @@ function modify() {
 	<tbody id="plustable">
 	</tbody>
 	
-	<tr>
-		<td colspan="2"><textarea name="content" id="content" rows="22"></textarea></td>
+	<tr style="margin-left: 100px !important;">
+		<td colspan="2"  style="margin-left: 100px !important;"><textarea name="content" id="texts" rows="22"  style="margin-left: 100px !important; width:100%; height:412px; min-width:610px;"></textarea></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
@@ -159,6 +170,16 @@ function modify() {
 	</tr>
 	</table>
 </form>
+</div>
+</div>
+</section>
+<footer id="footer" class="dark noborder">
+	<div id="copyrights">
+		<div class="container center clearfix">
+			Copyright HanJo 2017 | All Rights Reserved
+		</div>
+	</div>
+</footer><!-- #footer end -->
 </div>
 
 </body>

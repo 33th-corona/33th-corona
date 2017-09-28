@@ -63,29 +63,26 @@
 </script>
 </head>
 
-<body>
+<body class="stretched">
 
 <div id="wrapper" class="clearfix">
 
 <div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>${drive.title}</h1>
+		<span>${drive.title}</span>
+	</div>
+</section>
 <section id="content">
 
-	<div class="content-wrap">
+	<div class="content-wrap" style="padding-top: 10px; padding-bottom: 10px;">
 	<div class="container clearfix">
 
-	<div class="center">
-	
-	
-	
-	<h2>[ 자료실 글보기 ]</h2>
-	</div>
 	<form action="driveUpdateForm" id="Form" method="GET" >
 	<input type="hidden" id="num" name="num" value="${drive.num}">
 	<input type="hidden" id="classNum" name="classNum" value="${classNum}">
 	<table class="Bordered table">
-		<tr>
-			<th colspan="3">${drive.title}</th>
-		</tr>
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3"><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
 			<td class="col-md-5">${drive.user_id}</td>
@@ -132,7 +129,7 @@
 </div> <!-- end #wrapper -->
 </div>
 </section>
-
+</div>
 
 </body>
 </html>

@@ -57,22 +57,21 @@
 
 <div id="wrapper"  class="clearfix">
 <div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>${board.title} [${board.reply_count}]</h1>
+		<span>${board.title} [${board.reply_count}]</span>
+	</div>
+</section>
 <section id="content">
 
-	<div class="content-wrap">
+	<div class="content-wrap" style="padding-top: 10px; padding-bottom: 10px;">
 	<div class="container clearfix">
-	
-	<div class="center">
-	<h2>[ 게시판 글보기 ]</h2>
-	</div>
 	<form action="boardUpdateForm" id="Form" method="POST" >
 	<input type="hidden" name="num" value="${board.num}">
 	<input type="hidden" name="classNum" value="${classNum}">
 	
 	<table class="Bordered table">
-		<tr >
-			<th colspan="3">${board.title} [${board.reply_count}]</th>
-		</tr>
 		<tr id="photo_td">
 			<td rowspan="3" class="col-md-3" ><img src ="imgStatus?imgName=${userImg}" style="width: 200px; height: 200px"/></td>
 			<td><strong>${board.user_id}</strong></td>

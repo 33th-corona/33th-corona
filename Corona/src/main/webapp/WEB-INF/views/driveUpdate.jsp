@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 <meta charset="UTF-8">
 <title>게시글 수정</title>
+<%@ include file="topMenu.jsp" %>
+<%@ include file="sidebar.jsp" %>
 <style>
 	div#wrapper{
 		width : 800px;
@@ -41,9 +43,9 @@ $(function() {
 //추가 아이콘으로 첨부파일 추가
 function plus() {
 	var html = '<tr><td><label>파일 명</label></td><td>';
-	html += '<input type="file" name="file1" class="upload"/>';
-	html += '<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<input type="file" name="file1" class="upload" style="display: inline;"/>';
+	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td></tr>';
 	$('#plustable').append(html);
 	$('.modify').on('click', modify);
@@ -56,9 +58,9 @@ function cansle() {
 //수정 아이콘 누를시  input file로 덮어 씌움
 function modify() {
 	var html = '<td><label>파일 명</label></td><td>';
-	html += '<input type="file" name="file1" class="upload"/>';
-	html += '<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="resources/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<input type="file" name="file1" class="upload" style="display: inline;/>';
+	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td>';
 	$(this).parent().parent().html(html);
 	$('.modify').on('click', modify);
@@ -105,24 +107,27 @@ function back() {
 </script>
 
 </head>
-<body>
-<div id="wrapper">
-<h2>[ 자료실 수정  ]</h2>
+<body class="stretched">
+<div id="wrapper" class="clearfix">
+<div class="body-overlay"></div>
+<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>Drive Update</h1>
+		<span>Drive Update</span>
+	</div>
+</section>
+
+<section id="content" style="width: 1300px;">
+<div class="content-wrap"  style="padding-top: 10px; padding-bottom: 10px;">
+	<div class="container clearfix">
 <form id="dup" action="driveUpdate" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="num" value="${drive.num}">
 <input type="hidden" id="user_id" name="user_id" class="user_id" value="${drive.user_id}">
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
-		<thead>
-			<tr>
-				<th colspan="2">
-					<label>파일 업로드 폼</label>
-				</th>
-			</tr>
-		</thead>
 		<tr>
-			<th>제목</th>
-			<td><input type="text" name="title" required value="${drive.title}" class="col-md-12"/></td>
+			<th class="col-md-2">제목</th>
+			<td><input type="text" name="title" required value="${drive.title}" class="col-md-9"/></td>
 		</tr>
 		<tr>
 			<th>작성자</th>
@@ -133,7 +138,7 @@ function back() {
 				<label>파일 추가</label>
 			</td>
 			<td>
-				<img class="plus" alt="추가" src="resources/plus.png" width="20" height="20" style="cursor: pointer;">
+				<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 			</td>
 		</tr>
 		<c:forEach items="${list}" var="driveList" varStatus="check">
@@ -144,8 +149,8 @@ function back() {
 				<td>
 					<a href="download?num=${driveList.num}">${driveList.original_filename}</a> 
 					<input type="hidden" name="original_filename" class="original_filename" value="${driveList.original_filename}">
-					<img alt="수정" src="resources/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
-					<img alt="삭제" src="resources/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
+					<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
+					<img alt="삭제" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
 				</td>
 			</tr>
 			</c:forEach>
@@ -165,6 +170,9 @@ function back() {
 		</tr>
 	</table>
 </form>
+</div>
+</div>
+</section>
 </div>
 </body>
 </html>
