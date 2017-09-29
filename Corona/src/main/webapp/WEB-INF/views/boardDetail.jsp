@@ -109,7 +109,7 @@
 			<td align="right">	
 				<input type="submit" class="btn btn-primary bbb" value="글수정">
 				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="boardWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
+				<a class="btn btn-primary" href="boardWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>글쓰기</a>
 			</td>
 		</tr>
 	</table>

@@ -72,7 +72,7 @@ function check(){
 	var title = $('#title').val();
 	var file1 = $('.upload');
 	var original_filename = $('.original_filename');
-	var content = $('#content').val();
+	var content = $('#texts').val();
 	if(title == ''){
 		alert('제목을 적으세요.');
 		return;
@@ -159,7 +159,7 @@ function back() {
 		</tbody>
 		
 		<tr>
-			<td colspan="2"><textarea name="content" cols="60" rows="15" class="col-md-12">${drive.content}</textarea></td>
+			<td colspan="2"><textarea name="content" id="texts" cols="60" rows="15" class="col-md-12">${drive.content}</textarea></td>
 		</tr>
 		
 		<tr>

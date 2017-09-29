@@ -120,7 +120,7 @@
 			<td align="right">	
 				<input type="button" id="update" class="btn btn-primary" value="글수정">
 				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="driveWrite" role="button"><i class="icon-book3"></i>글쓰기</a>
+				<a class="btn btn-primary" href="driveWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>글쓰기</a>
 			</td>
 		</tr>
 	</table>

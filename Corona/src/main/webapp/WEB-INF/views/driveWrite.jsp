@@ -68,7 +68,6 @@
 		}
 		for (var i = 0; i < file1.length; i++) {
 			var check = $(file1[i]).val();
-			alert(check);
 			if(check == null){
 				alert('첨부파일이 없습니다. 확인해주세요');
 				return;	
