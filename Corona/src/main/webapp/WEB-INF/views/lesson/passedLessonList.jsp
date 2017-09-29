@@ -23,6 +23,12 @@
 <%@ include file="../topMenu.jsp" %>
 	<%@ include file="../sidebar.jsp" %>
 <script>
+$(function() {
+	$('#searchIcon').on('click',function(){
+		$('#search').submit();
+	});
+});
+
 function loadLessonInfo(class_num, saved_code, saved_audio) {
 	var loadForm = $('form#loadForm');
 //	alert(class_num);
@@ -64,6 +70,7 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 <section id="content">
 
 	<!-- 특정 글 검색 -->
+	<!-- 
 	<div class="search">
 		<form id="search" action ="passedLessonList" method="GET" >
 			<input type="hidden" name="classNum" value="${classNum}" /> 
@@ -71,9 +78,27 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 			<input class="btn" type="submit" value="검색" />
 		</form>
 	</div><br><br>
+	-->
+	
+	<div class="content-wrap" style="padding-top: 0px; margin-bottom: 10px;">
+		<div class="search col_full" style="margin-top:10px; margin-bottom: 25px;">
+			<form id="search" action ="passedLessonList" method="GET" style="margin-top:10px; margin-bottom: 25px;">
+			<input type="hidden" name="classNum" value="${classNum}" />
+			<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
+				<div class="col-md-5 nopadding">
+					<input id="searchText" name="searchword" class="typeahead sm-form-control tt-input" type="text" value="${searchword}" placeholder="Search Text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; margin:0px !important; width:545px; vertical-align: top; opacity: 0.8; color: black;">
+				</div>
+				<div class="col-md-1 nopadding">
+				<a href="#" id = "searchIcon" class="i-rounded i-medium nomargin icon-line-search" 
+				style="width: 40px !important; height: 1.06cm !important;"></a>
+				</div>
+			</div>	
+			</form>
+		</div>
+	</div>
 	
 
-<div class="container clearfix">
+  <div class="container clearfix">  
 	
 	<div id="posts" class="post-grid grid-container post-masonry post-masonry-full grid-3 clearfix">
 	
@@ -105,13 +130,11 @@ function loadLessonInfo(class_num, saved_code, saved_audio) {
 		</div>
 	</c:forEach>
 	</c:if>
-		
-	
 	</div><!-- end posts -->	
 
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 
-</div><!-- container -->
+</div> <!-- container -->
 
 	<!-- 페이징 시작 -->
 	<div id="navigator">
