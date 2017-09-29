@@ -408,7 +408,7 @@ function lessonStart(startResult, existLesson) {
 			else if(action == 'changeConsole') {
 				//받은 코드를 현재 editor에 그대로 덮어쓰기
 				consoleView.setValue(parsedData.console);
-				editor.clearSelection();
+				consoleView.clearSelection();
 			} 
 			//학생 Eclipse의 활성화 Editor가 바뀌었을 때 실행
 			else if(action == 'changeActivatedEditor') {
