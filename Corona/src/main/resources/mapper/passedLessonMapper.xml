@@ -33,7 +33,7 @@
 	select *
 	from passed_lesson
 	where class_num = #{class_num} and
-	title LIKE '%' || #{searchword}||'%'
+	title LIKE '%' || #{searchword}||'%' order by num desc
 </select>
 
 	
