@@ -47,27 +47,47 @@
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
-
+	
+	<section id="page-title" class="page-title-mini">
+	<div class="container clearfix">
+		<h1>Board List</h1>
+		<span>Board List</span>
+	</div>
+</section>
 		<!-- Content
 		============================================= -->
 		<section id="content">
 				<!-- 특정 글 검색 -->
-				<div class="search">
+				<div class="content-wrap" style="padding-top: 0px; margin-bottom: 10px;">
+				<div class="search" >
 					<form id="search" action ="boardList" method="GET" >
 					<input type = "hidden" name = "classNum" value = "${classNum}">
-					<select name="searchtype">
+					
+					
+				<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
+				<div class="col-md-2 nomargin" style="padding:0px;">
+					<select name="searchtype" id="searchType" class="typeahead select-1 sm-form-control t-rotate"  dir="auto" style="width:100%; font-weight: bold; height: 1.0796cm; opacity: 0.8; border: 2px solid #DDD; border-right: 0; border-radius: 0 !important; line-height: 1.42857143;position: relative;   ">
 						<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
 						<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
 						<option value="content" ${searchtype=='content' ? 'selected' : '' }>내용</option>
 					</select>
-					<input type="text" name="searchword" value="${searchword}" /> 
-					<input class="btn" type="submit" value="검색" />
+						</div>
+				<div class="col-md-5 nopadding">
+					<input id="searchText" name="searchword" class="typeahead sm-form-control tt-input" type="text" placeholder="Search Text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; margin:0px !important; width:545px; vertical-align: top; opacity: 0.8; color: black;">
+				</div>
+				<div class="col-md-1 nopadding">
+				<button type="submit" href="#" id = "searchIcon" class="i-rounded i-medium nomargin icon-line-search" 
+				style="width: 40px !important; height: 1.06cm !important;"></button>
+				</div>
+			</div>	
 					</form>
 				</div>
-
-			<div class="content-wrap">
-
-				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="boardWrite?classNum=${classNum}">
+				
+			
+			</div><!-- end content-wrap end -->
+			
+				
+				<a class="button button-full button-purple center tright header-stick bottommargin-lg" href="boardWrite?classNum=${classNum}" >
 						<i class="icon-plus" style="top:4px;"></i>
 				</a>
 
@@ -119,10 +139,9 @@
 					</div>
 				</c:forEach><!-- 글 작성 끝 -->
 				</div><!-- #posts end -->
-			</div><!-- end content-wrap end -->
 			
 			<!-- 페이징 시작 -->
-			<div id="navigator">
+			<div id="navigator" style="margin-top: 60px;">
 				<ul class="pagination pagination-lg">
 					<li><a href="boardList?currentPage= ${navi.currentPage - navi.pagePerGroup}&classNum=${classNum}">◁ ◁</a></li>
 					<li><a href="boardList?currentPage= ${navi.currentPage-1}&searchtype=${searchtype}&searchword=${searchword}&classNum=${classNum}"> ◀ </a></li>

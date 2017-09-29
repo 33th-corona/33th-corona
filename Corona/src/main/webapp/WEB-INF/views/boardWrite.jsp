@@ -43,7 +43,7 @@ window.onload = function(){
 	
 	function plus() {
 		var html = '<tr><th>파일 명</th><td>';
-		html += '<input type="file" id="ty"  name="file1" class="upload" style="display:inline; cursor: pointer; margin-right:20px;" />';
+		html += '<input type="file" id="input-2"  name="file1" class="upload file" data-show-preview="false" style="display:inline; cursor: pointer; margin-right:20px;" />';
 		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
@@ -140,6 +140,7 @@ window.onload = function(){
 		</td>
 		<td>
 			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
+			
 		</td>
 	</tr>
 	<tbody id="plustable">
