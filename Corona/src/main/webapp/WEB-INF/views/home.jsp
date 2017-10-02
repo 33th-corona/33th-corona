@@ -298,10 +298,10 @@
 					, data : "id=" + id + "&password=" + password
 					, success : function(repo) {
 						if(repo == 0){
-							alert("회원아이디와 패스워드를 확인하십시오.");
+							alert("会員IDと暗証番号を確認してください。");
 						}
 						if(repo == 1){
-							alert("로그인 성공하셨습니다.");
+							alert("ログイン成功しました。");
 							location.href = "${pageContext.request.contextPath}/afterLoginLocation";
 						}
 					}
@@ -315,7 +315,7 @@
 			$("#register").on('click',check);             
 			$("#idCheck").on('click',function() {      	
 				if($.trim($("#register-form-name").val())=="") {
-					   alert("아이디를 입력하세요!");
+					   alert("IDを入力して下さい。");
 					   
 					   $("#register-form-name").val("").focus();
 					   $("")
@@ -323,12 +323,12 @@
 					} 
 				if (($.trim($("#register-form-name").val()).length < 6)
 						|| ($.trim($("#register-form-name").val()).length > 21)) {
-					alert("아이디는 6~20자리입니다.");
+					alert("IDは6~20文字です。");
 					return false;
 				}
 				if (($.trim($("#register-form-name").val()).charAt(0) < 'a')
 						|| ($.trim($("#register-form-name").val()).charAt(0) > 'z')) {
-					alert("아이디 첫 글자는 소문자여야 합니다.");
+					alert("IDの最初の文字は英語の小文字ではなければなりません。");
 					return false;
 				}
 				var check_id = $("#register-form-name").val();
@@ -338,7 +338,7 @@
 					data:"check_id="+check_id,
 					success:function(data){
 						if(data == 'Y'){
-							if(confirm("사용 하실 수 있는 아이디입니다. 사용 하시겠습니까?"))
+							if(confirm("使用できるIDです。使用しますか？ "))
 							 {
 								$("#register-form-name").attr('readonly',true);
 								$("#idCheck").css('display','none');
@@ -362,13 +362,13 @@
 								 return false;
 							 }
 						} else {
-							alert("이미 존재하는 아이디 입니다.");
+							alert("もう存在するIDです。");
 							 $("#register-form-name").val("").focus();
 							 return false;
 						}
 					},
 					error:function(){
-						alert("아이디 중복검사에 문제가 발생하였습니다. 다시 해주세요.");
+						alert("IDの中腹検査に問題が発生しました。もう一度、確認してください。");
 					}
 					
 				});
@@ -383,13 +383,13 @@
 			
 			$("#emailCheck").on('click',function() {      	
 				if ($.trim($("#register-form-email").val()) == "") {
-					alert("이메일을 입력하세요!");
+					alert("E-Mailを入力して下さい。");
 
 					$("#register-form-email").val("").focus();
 					return false;
 				}
 				if (($.trim($("#register-form-email").val()).match(/[@]/g) == null)) {
-					alert("올바른 이메일을 적어주세요.");
+					alert("正しいE-Mailを入力してください。");
 
 					return false;
 				}
@@ -401,7 +401,7 @@
 					data:"check_email="+check_email,
 					success:function(data){
 						if(data == 'Y'){
-							if(confirm("사용 하실 수 있는 이메일입니다. 사용 하시겠습니까?"))
+							if(confirm("使用できるE-Mailです。使用しますか？"))
 							 {
 								$("#register-form-email").attr('readonly',true);
 								$("#emailCheck").css('display','none');
@@ -425,13 +425,13 @@
 								 return false;
 							 }
 						} else {
-							alert("이미 존재하는 이메일 입니다.");
+							alert("もう存在するE-Mailです。");
 							 $("#register-form-email").val("").focus();
 							 return false;
 						}
 					},
 					error:function(){
-						alert("이메일 중복검사에 문제가 발생하였습니다. 다시 해주세요.");
+						alert("E-Mailの中腹検査に問題が発生しました。もう一度、確認してください。");
 					}
 					
 				});
@@ -446,7 +446,7 @@
 	//유효성 검사
 	function check() {
 			if($.trim($("#register-form-name").val())=="") {
-			   alert("아이디를 입력하세요!");
+			   alert("IDを入力してください。");
 			   
 			   $("#register-form-name").val("").focus();
 			   $("")
@@ -454,12 +454,12 @@
 			} 
 			if (($.trim($("#register-form-name").val()).length < 6)
 				|| ($.trim($("#register-form-name").val()).length > 21)) {
-			alert("아이디는 6~20자리입니다.");
+			alert("IDは6~20文字です。");
 			return false;
 			}
 			if (($.trim($("#register-form-name").val()).charAt(0) < 'a')
 				|| ($.trim($("#register-form-name").val()).charAt(0) > 'z')) {
-			alert("아이디 첫 글자는 소문자여야 합니다.");
+			alert("IDの最初の文字は英語の小文字ではなければなりません。");
 			return false;
 			}
 		
@@ -467,7 +467,7 @@
 			//아이디를 입력하지 않았다면
 			//비밀번호를 입력하지 않았다면
 			if ($.trim($("#register-form-password").val()) == "") {
-				alert("비밀번호를 입력하세요!");
+				alert("暗証番号を入力してください。");
 
 				$("#register-form-password").val("").focus();
 
@@ -478,20 +478,20 @@
 			//비밀번호 길이 유효성 검사
 			if (($.trim($("#register-form-password").val()).length < 6)
 					|| ($.trim($("#register-form-password").val()).length > 21)) {
-				alert("비밀번호는 6~20자리입니다.");
+				alert("暗証番号は6~20字です。");
 
 				return false;
 			}
 			if (($.trim($("#register-form-password").val())) != ($.trim($(
 					"#register-form-repassword").val()))) {
-				alert("비밀번호 확인이 같지 않습니다.");
+				alert("暗証番号の確認と合っておりません。");
 
 				return false;
 			}
 
 			//이메일을 입력하지 않았다면
 			if ($.trim($("#register-form-email").val()) == "") {
-				alert("이메일을 입력하세요!");
+				alert("E-Mailを入力して下さい。");
 
 				$("#register-form-email").val("").focus();
 
@@ -501,14 +501,14 @@
 
 			//이메일 유효성 검사 (@이 들어가 있는지 검사)
 			if (($.trim($("#register-form-email").val()).match(/[@]/g) == null)) {
-				alert("올바른 이메일을 적어주세요.");
+				alert("正しいE-Mailを入力してください。");
 
 				return false;
 			}
 			
 			//이름을 입력하지 않았다면
 			if ($.trim($("#register-form-username").val()) == "") {
-				alert("이름을 입력하세요!");
+				alert("名前を入力してください。");
 
 				$("#register-form-username").val("").focus();
 

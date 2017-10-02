@@ -238,7 +238,7 @@
 							<div class="container clearfix" style="margin-left: 320px;">
 								<div class="slider-caption slider-caption-center">
 									<h2 data-caption-animate="fadeInUp">Welcome to Corona</h2>
-									<p data-caption-animate="fadeInUp" data-caption-delay="200">이클립스를 이용한 Pure Java 수업 지원 서비스. <br>선생님의 이클립스를 실시간으로 확인하여<br>학생의 웹 페이지로 전송합니다.</p>
+									<p data-caption-animate="fadeInUp" data-caption-delay="200">Eclipseを利用したPure Javaの授業支援のサービス。<br>先生のEclipseをリアルタイムで確認して<br>学生のウェブページに転送します。</p>
 								</div>
 							</div>
 						</div>
@@ -259,8 +259,8 @@
 					<div class="row topmargin-lg bottommargin-sm">
 
 						<div class="heading-block center" style="margin-bottom: 0px;">
-							<h2>저희가 가진 기능은?</h2>
-							<span class="divcenter">Corona는 선생과 학생의 편의를 도모하기 위해 <br>화면 전송 이외에도 몇가지 주요 기능을 제공하고 있습니다.</span>
+							<h2>私たちが持っている機能は?</h2>
+							<span class="divcenter">Coronaは先生と学生の便宜を図るために <br>画面の転送以外にもいくつかの主要な機能を提供しております。</span>
 						</div>
 
 						<div class="col-md-4 col-sm-6 bottommargin">
@@ -269,16 +269,16 @@
 								<div class="fbox-icon" >
 									<a href="#"><i class="icon-line-heart" style="background-color: #000530;"></i></a>
 								</div>
-								<h3>'우리들'만의 클래스 기능</h3>
-								<p>반 생성 시, 공개 클래스와 비공개 클래스를 설정하실 수 있습니다.</p>
+								<h3>'私たち'だけのクラス機能</h3>
+								<p>クラス生成の時、公開クラスと非公開クラスを設定できます。</p>
 							</div>
 
 							<div class="feature-box fbox-right topmargin" data-animate="fadeIn" data-delay="200">
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-line-paper" style="background-color: #ff9800;"></i></a>
 								</div>
-								<h3>과제 생성 및 과제 확인 기능</h3>
-								<p>과제를 생성하여 학생들에게 제출 뒤, 학생들에게 다시 제출 받아 코드 확인을 할 수 있습니다.</p>
+								<h3>課題の生成および課題の確認機能</h3>
+								<p>課題を生成して学生たちに提出し、学生が提出したらコードの確認ができます。</p>
 							</div>
 
 						</div>
@@ -293,16 +293,16 @@
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-line-cloud" style="background-color: #ff9800;"></i></a>
 								</div>
-								<h3>강의 저장 및 출력 기능</h3>
-								<p>강의를 동영상이 아닌 코드로 저장하여 원하는 강의를 들을 시, 코드를 가져 올 수 있습니다.</p>
+								<h3>講義のセーブおよび出力の機能</h3>
+								<p>講義を動画ではなくてコードでセーブして望む講義を視聴する時、コードをドラッグ＆コピーができます。</p>
 							</div>
 
 							<div class="feature-box topmargin" data-animate="fadeIn" data-delay="200">
 								<div class="fbox-icon">
 									<a href="#"><i class="icon-line-check" style="background-color: #000530;"></i></a>
 								</div>
-								<h3>그 외의 기능들</h3>
-								<p>게시판 및 자료실 기능으로 커뮤니케이션 활용을 강화 하였습니다.</p>
+								<h3>その他の機能</h3>
+								<p>提示版および資料室の機能を通じてコミュニケーションの活用を強化しました。</p>
 							</div>
 
 						</div>
@@ -314,10 +314,10 @@
 				<div class="section  topmargin nobottommargin nobottomborder" style="padding-bottom: 15px; padding-top: 15px;">
 					<div class="container clearfix">
 						<div class="col_half heading-block center nomargin">
-							<h3>선생님 사용 설명서</h3>
+							<h3>先生の使用説明書</h3>
 						</div>
 						<div class="col_half col_last heading-block center nomargin">
-							<h3>학생 사용 설명서</h3>
+							<h3>学生の使用説明書</h3>
 						</div>
 					</div>
 				</div>
@@ -327,18 +327,18 @@
 				<div class="col-md-6 nopadding">
 				 <div class="col_full" style="margin-left: 30px;">
 				  <ol class="olColor">
-   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jar파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jar파일을 넣으십시오.</p></li>
-    				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">클래스 페이지로 입장하셔서 '강의 시작'버튼을 누르세요.</p>
-    				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">이클립스 상단 메뉴 안 Class Ready에 존재하는 Start버튼을 눌러 강의를 시작하세요.</p>
-    				 <li class="liFont"><span class="spanFont">4.</span><p class="pFont">강의가 끝났을 시, 상단 메뉴 안 Class Ready에 존재하는 <br>End버튼을 눌러 강의를 종료하세요.</p>
+   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jarファイルをダウンロードの後に、ユーザが持っている「Eclipse/plugins/」のフォルダに　<br>jarファイルを入れてください。</p></li>
+    				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">クラスのページに入場して「講義スタート」のボタンを押してください。</p>
+    				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">Eclipseの上段のメニューの中のClass Readyに存在するStartボタンを押して講義を始めてください。</p>
+    				 <li class="liFont"><span class="spanFont">4.</span><p class="pFont">講義が終わる時、上段のメニューの中のClass Readyに存在する <br>Endボタンを押して講義を終了してください。</p>
     				 </ol>
  				 </div> 
 					</div>
 					<div class="col-md-6 nopadding">
 					<div class="col_full" style="margin-left: 30px;">
 				  <ol class="olColor">
-   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jar파일을 다운받으신 뒤, 사용자가 가지고 계신 「Eclipse/plugins/」안에 <br> jar파일을 넣으십시오.</p></li>
-    				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">클래스 페이지로 입장하셔서 '강의 참여'버튼을 눌러 강의에 참여하세요.</p>
+   					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jarファイルをダウンロードの後に、ユーザが持っている「Eclipse/plugins/」のフォルダに　<br>jarファイルを入れてください。</p></li>
+    				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">クラスページに入場して「講義参加」のボタンを押して講義に参加してください。</p>
     				 </ol>
  				 </div>
 					</div>
@@ -357,7 +357,7 @@
 				<div class="section topmargin nobottommargin nobottomborder" style="padding-bottom: 15px; padding-top: 15px;">
 					<div class="container clearfix">
 						<div class="heading-block center nomargin">
-							<h3>오시는 길</h3>
+							<h3>アクセスガイド</h3>
 						</div>
 					</div>
 				</div>

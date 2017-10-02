@@ -345,7 +345,7 @@
 									</c:if>
 									</div>
 									<div class="col_half col_last divcenter" id="originalImgBtn">
-									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>이미지 바꾸기</a>
+									<a id="imgbtn" href="#" num="${searchList.num}" class="button button-rounded button-reveal center button-border tright nomargin" style="vertical-align: bottom; filter: alpha(opacity=80);"><i class="icon-angle-right" style="width: 20px"></i>イメージ変化</a>
 									</div>
 									<div id="changeImg" class="col_full">
 									<label for="register-form-img">Choose a Img:</label><input id="input-2" name="upload" type="file" class="file" data-show-preview="false">
@@ -355,9 +355,9 @@
 								</div>
 
 								<div class="col_full nobottommargin">
-								<a href="#" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-lock3" style="width: 20px"></i>수정 미기입</a>
-								<a href="#" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-orange tright nomargin"><i class="icon-angle-right" style="width: 20px"></i>정보 수정</a>
-								<a href="#" id="idDelete"  class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-remove-sign" style="width: 20px"></i>탈퇴</a>
+								<a href="#" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-lock3" style="width: 20px"></i>修正未記入</a>
+								<a href="#" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-orange tright nomargin"><i class="icon-angle-right" style="width: 20px"></i>情報修正</a>
+								<a href="#" id="idDelete"  class="button button-rounded button-reveal button-border button-red tright nomargin"><i class="icon-remove-sign" style="width: 20px"></i>脱退</a>
 								</div>
 
 							</form>
@@ -381,11 +381,11 @@
 				</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					<a href="#modal-register-form" id="myPagebtn"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline" style="background-color: #ff9800 !important; opacity: 0.9; width: 100px !important"><i class="icon-angle-right" style="width: 15px !important"></i>마이 페이지</a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline" style="background-color: #ff9800 !important; opacity: 0.9; width: 100px !important"><i class="icon-angle-right" style="width: 15px !important"></i>マイページ</a>
 					</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					 <a href="${pageContext.request.contextPath}/logout"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9; width: 100px !important">로그아웃<i class="icon-angle-right" style="width: 15px !important"></i></a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9; width: 100px !important">ログアウト<i class="icon-angle-right" style="width: 15px !important"></i></a>
 					</div>
 				</div>
 			</div>
@@ -395,7 +395,7 @@
 						<li><a href="#"><i class="icon-briefcase"></i>Teacher Page</a>
 							<ul>
 									<c:if test="${empty myTeacherList}">
-									<li><a>선생으로 참여한 반이 없습니다.</a></li>
+									<li><a>ご参加のクラスがございません。</a></li>
 									</c:if>
 								<c:forEach items="${myTeacherList}" var="teacherList">
 									<li><a href="${pageContext.request.contextPath}/teacherFormLocation?num=${teacherList.num}"><i class="icon-magic"></i>${teacherList.name}</a></li>
@@ -405,7 +405,7 @@
 						<li><a href="#"><i class="icon-study"></i>Student Page</a>
 							<ul>
 								<c:if test="${empty myStudentList}">
-									<li><a>학생으로 참여한 반이 없습니다.</a></li>
+									<li><a>ご参加のクラスがございません。</a></li>
 								</c:if>
 								<c:forEach items="${myStudentList}" var="studentList">
 									<li><a href="${pageContext.request.contextPath}/studentFormLocation?num=${studentList.num}"><i class="icon-pencil2"></i>${studentList.name}</a></li>
@@ -481,7 +481,7 @@
 		
 		//비밀번호를 입력하지 않았다면
 		if ($.trim($("#register-form-password").val()) == "") {
-			alert("비밀번호를 입력하세요!");
+			alert("暗証番号を入力してください。");
 
 			$("#register-form-password").val("").focus();
 
@@ -491,29 +491,29 @@
 		//비밀번호 길이 유효성 검사
 		if (($.trim($("#register-form-password").val()).length < 6)
 				|| ($.trim($("#register-form-password").val()).length > 21)) {
-			alert("비밀번호는 6~20자리입니다.");
+			alert("暗証番号は6~20まででございます。");
 
 			return false;
 		}
 		if (($.trim($("#register-form-password").val())) != ($.trim($(
 				"#register-form-repassword").val()))) {
-			alert("비밀번호 확인이 같지 않습니다.");
+			alert("暗証番号の確認と合っておりません。");
 
 			return false;
 		}
-		alert('회원 수정이 완료 되었습니다.');
+		alert('会員修正が完了しました。');
 		$('#register-form').submit();
 	}
 	function idDelete() {
 		if (($.trim($("#register-form-password").val()).length < 6)
 				|| ($.trim($("#register-form-password").val()).length > 21)) {
-			alert("비밀번호는 6~20자리입니다.");
+			alert("暗証番号は6~20まででございます。");
 
 			return false;
 		}
 		if (($.trim($("#register-form-password").val())) != ($.trim($(
 				"#register-form-repassword").val()))) {
-			alert("비밀번호 확인이 같지 않습니다.");
+			alert("暗証番号の確認と合っておりません。");
 
 			return false;
 		}
@@ -526,7 +526,7 @@
 			, data : 'password=' + password
 			, success: function(repo) {
 				if(repo == 1){
-					var result = confirm("정말로 탈퇴하시겠습니까?");
+					var result = confirm("本当に脱退しますか?");
 					if(result == true){
 						var password = $("#register-form-password").val();
 						location.href = "${pageContext.request.contextPath}/unregister?password=";
@@ -535,7 +535,7 @@
 						return false;
 					}
 				} else {
-					alert("비밀번호가 다릅니다.");
+					alert("暗証番号が違いません。");
 					return false;
 				}
 			}

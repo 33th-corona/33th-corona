@@ -64,7 +64,7 @@ background-color: white;
 		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
 			<div class="container clearfix">
-				<h1>반 검색</h1>
+				<h1>クラス検索</h1>
 			</div>
 
 		</section>
@@ -143,7 +143,7 @@ background-color: white;
 									</c:if>
 								</c:forEach>
 								<th class="center"style="background-color: rgba(255,152,0, 1) !important;">
-								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin request"><i class="icon-angle-right" style="width: 20px "></i>가입신청</button>
+								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-gray tright nomargin request"><i class="icon-angle-right" style="width: 20px "></i>加入申請</button>
 								</th>
 							</tr>
 							</c:if>
@@ -158,7 +158,7 @@ background-color: white;
 									</c:if>
 								</c:forEach>
 								<th class="center">
-								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
+								<button num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-orange tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>加入申請</button>
 								</th>
 							</tr>
 							</c:if>
@@ -247,12 +247,12 @@ background-color: white;
 			, data : "classNum=" + classNum
 			, success : function(repo) {
 				if(repo == 1){
-					alert("가입 신청 완료입니다.");
-					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>신청완료</button>');
+					alert("申し込み完了しました.");
+					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>申請完了</button>');
 				}
 				if(repo == 0){
-					alert("이미 가입 하셨습니다.");
-					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>신청완료</button>');
+					alert("もう申し込みしております。");
+					$(btn).parent().html('<button disabled="disabled" num="${searchList.num}" class="button button-rounded button-reveal button-small button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>申請完了</button>');
 				}
 			}
 			,error : function(repo) {
