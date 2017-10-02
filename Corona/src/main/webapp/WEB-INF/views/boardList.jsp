@@ -67,7 +67,7 @@
 				<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
 				<div class="col-md-2 nomargin" style="padding:0px;">
 					<select name="searchtype" id="searchType" class="typeahead select-1 sm-form-control t-rotate"  dir="auto" style="width:100%; font-weight: bold; height: 1.0796cm; opacity: 0.8; border: 2px solid #DDD; border-right: 0; border-radius: 0 !important; line-height: 1.42857143;position: relative;   ">
-						<option value="title" ${searchtype=='title' ? 'selected' : '' }>名前</option>
+						<option value="title" ${searchtype=='title' ? 'selected' : '' }>タイトル</option>
 						<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>作成者</option>
 						<option value="content" ${searchtype=='content' ? 'selected' : '' }>内容</option>
 					</select>

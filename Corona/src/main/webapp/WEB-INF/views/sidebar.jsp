@@ -381,11 +381,11 @@
 				</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					<a href="#modal-register-form" id="myPagebtn"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline" style="background-color: #ff9800 !important; opacity: 0.9; width: 100px !important"><i class="icon-angle-right" style="width: 15px !important"></i>マイページ</a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" role="button" data-lightbox="inline" style=" padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9; width: 100px !important; text-align: center;">My Page<i class="icon-angle-right" style="width: 15px !important"></i></a>
 					</div>
 					<div class="col_full center" style="margin-bottom: 0; margin-top: 0;">
 					 <a href="${pageContext.request.contextPath}/logout"
-						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9; width: 100px !important">ログアウト<i class="icon-angle-right" style="width: 15px !important"></i></a>
+						class="btn button button-3d button-reveal button-mini button-rounded tright" style="padding-left: 25px; padding-right: 25px; background-color: #ff9800 !important; opacity: 0.9; width: 100px !important; text-align: center;">LogOut<i class="icon-angle-right" style="width: 15px !important"></i></a>
 					</div>
 				</div>
 			</div>

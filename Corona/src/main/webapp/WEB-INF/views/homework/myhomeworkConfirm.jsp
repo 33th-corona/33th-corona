@@ -133,7 +133,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<i class="i-rounded i-light icon-laptop"></i>
-									<h2 class="nobottommargin textChange">エディター</h2>
+									<h2 class="nobottommargin textChange">エディタ</h2>
 								</div>
 							</div>
 							<div class="row">

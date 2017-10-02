@@ -231,7 +231,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">前回の講義</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">前回の講義</h2></div>
 				
 				</div>
 				</form>

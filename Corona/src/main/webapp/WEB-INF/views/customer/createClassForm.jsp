@@ -118,7 +118,7 @@
 	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
 			<div class="container clearfix">
-				<h1>クラス生成</h1>
+				<h1>Class Create</h1>
 			</div>
 
 		</section>
@@ -142,7 +142,7 @@
 			<div  class="content-wrap" style="padding: 30px;" >
 				<div class="divcenter postcontent clearfix bottommargin-sm">
 					<div class="col_full" >
-					<div class="col-md-3" ><i id="nameIcon" class="i-rounded icon-edit i-small className"></i><span class="h2 className">クラスネーム</span></div>
+					<div class="col-md-3" ><i id="nameIcon" class="i-rounded icon-edit i-small className"></i><span class="h3 className">クラスネーム</span></div>
 					<div class="col-md-8"><input type="text" type="text" id="class-form-name" name="name"
 										value="" class="form-control"></div>
 					<div class="col-md-1"><i id="nameOk" class="i-circled name-i-light i-small icon-ok"></i></div>
@@ -151,7 +151,7 @@
 			   <div class="line bottommargin-sm topmargin-sm"></div>
 			   <div class="divcenter postcontent clearfix bottommargin-sm" >
 					<div class="col_full"  >
-					<div class="col-md-3" ><i id="teacherIcon" class="i-rounded icon-user i-small" style=" " ></i><span class="h2">講師 ID</span></div>
+					<div class="col-md-3" ><i id="teacherIcon" class="i-rounded icon-user i-small" style=" " ></i><span class="h3">講師 ID</span></div>
 					<div class="col-md-8"><input type="text" type="text" id="class-form-name" name="teacher_id"
 										value="${id}" class="form-control" readonly="readonly"></div>
 					<div class="col-md-1"><i id="idOk" class="id-i-circled id-i-light i-small icon-ok"></i></div>
@@ -160,7 +160,7 @@
 			   <div class="line bottommargin-sm topmargin-sm"></div>
 			   <div class="divcenter postcontent clearfix" >
 					<div class="col_full" >
-					<div class="col-sm-3" ><i id="publicIcon" class="i-rounded icon-cog i-small"></i><span class="h2">クラス設定</span></div>
+					<div class="col-sm-3" ><i id="publicIcon" class="i-rounded icon-cog i-small"></i><span class="h3">クラス設定</span></div>
 					<div class="col-sm-4">
 					<input id="publicStatus" class="bt-switch" name="is_public" type="checkbox" value="y" data-on-text="<i class='icon-lock3'></i>" data-off-text="<i class='icon-unlock'></i>" data-on-color="danger" data-off-color="default">
 					</div>

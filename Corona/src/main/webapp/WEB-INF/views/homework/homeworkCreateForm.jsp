@@ -139,7 +139,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<i class="i-rounded i-light icon-laptop"></i>
-								<h2 class="nobottommargin textChange">エディター</h2>
+								<h2 class="nobottommargin textChange">エディタ</h2>
 							</div>
 							<div class="col-md-6 text-right">
 								<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000"	value="作成"> 

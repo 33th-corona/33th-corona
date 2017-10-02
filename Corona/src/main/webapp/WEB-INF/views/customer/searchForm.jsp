@@ -64,7 +64,7 @@ background-color: white;
 		<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
 			<div class="container clearfix">
-				<h1>クラス検索</h1>
+				<h1>Class Search</h1>
 			</div>
 
 		</section>

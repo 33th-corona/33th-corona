@@ -178,8 +178,8 @@
 								</div>
 
 								<div class="col_full nobottommargin">
-								<button type="button" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>미기입</button>
-								<button type="button" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-blue tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>가입신청</button>
+								<button type="button" disabled="disabled" id="no" class="button button-rounded button-reveal button-border button-red tright nomargin request"><i class="icon-lock3" style="width: 20px"></i>未記入</button>
+								<button type="button" style="display: none;" id="register" class="button button-rounded button-reveal button-border button-blue tright nomargin request"><i class="icon-angle-right" style="width: 20px"></i>加入申請</button>
 								</div>
 
 							</form>
