@@ -52,7 +52,7 @@
 	
 	//글삭제
 	function deleteForm(){
-		var del = confirm("정말 삭제하시겠습니까?")
+		var del = confirm("本当に削除しますか?")
 		if(del){
 			location.href="driveDelete?num=${drive.num}&classNum=${classNum}";
 		}
@@ -99,7 +99,7 @@
 		<c:forEach items="${list}" var="driveList" varStatus="check">
 				<tr>
 				<td>
-					<label>첨부파일${check.index + 1}</label>
+					<label>${check.index + 1}</label>
 				</td>
 				<td>
 					<a href="download?num=${driveList.num}">${driveList.original_filename}</a>
@@ -114,13 +114,13 @@
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="driveList?classNum=${classNum}" >목록으로</a>
+				<a href="driveList?classNum=${classNum}" >目録に</a>
 			</td>
 			<td></td>
 			<td align="right">	
-				<input type="button" id="update" class="btn btn-primary" value="글수정">
-				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="driveWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>글쓰기</a>
+				<input type="button" id="update" class="btn btn-primary" value="修正">
+				<input type="button" value="削除" class="btn btn-primary" onclick="deleteForm()"/>
+				<a class="btn btn-primary" href="driveWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>書き込み</a>
 			</td>
 		</tr>
 	</table>

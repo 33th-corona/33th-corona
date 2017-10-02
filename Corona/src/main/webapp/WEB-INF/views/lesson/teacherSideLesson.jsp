@@ -122,7 +122,7 @@ $(document).ready(function() {
 // 			var classNum = '${classNum}';
 			
 			if(title.trim() == "") {
-				alert('강의 제목을 입력해 주세요.');
+				alert('講義名前を入力してください。');
 				return;
 			}
 			
@@ -167,7 +167,7 @@ $(document).ready(function() {
 		});
 		
 		if(cancelResult == 1) {
-			$('div#connInfo').append('<br>강의 시작을 취소하였습니다.');
+			$('div#connInfo').append('<br>講義をキャンセルしました。');
 			location.href = 'teacherFormLocation?num=${classNum}';
 		}
 	});
@@ -282,7 +282,7 @@ function lessonStart(startResult, existLesson) {
 				
 				//사용자에게 다음 행동 지시(알림)
 				$('div#connInfo').empty();
-				$('div#connInfo').append('<br>Eclipse를 켜서 강의를 시작해 주세요.');
+				$('div#connInfo').append('<br>Eclipseを実行して講義を始めてください。');
 			} else if(existLesson == 1) {
 				var sendMessage = {};
 				sendMessage.action = "join";
@@ -309,7 +309,7 @@ function lessonStart(startResult, existLesson) {
 			//action 부분의 내용에 따라 다른 코드 실행
 			//서버에 웹소켓 등록 완료 후 실행
 			if(action == 'initSuccess') {
-				$('div#connInfo').append('<br>웹소켓에 ip등록 완료하였습니다.');
+				$('div#connInfo').append('<br>ウェブソケットにIP登録を完了しました。');
 			} 
 			//선생님 Eclipse와 연결 완료 및 클래스 Thread 실행 후 실행
 			else if(action == 'eclipseConnSuccess') {
@@ -457,12 +457,12 @@ function lessonStart(startResult, existLesson) {
 					}
 				});
 //					console.log(savedFileName);
-				alert('수업이 종료되었습니다.');
+				alert('授業が終了しました。');
 				location.href = 'teacherFormLocation?num=${classNum}';
 			}
 		}
 	} else if(startResult == 0) {
-		$('div#connInfo').append('<br>서버소켓이 사용 중 입니다. 다음에 다시 연결하세요.');
+		$('div#connInfo').append('<br>サーバーソケットが使用中です。やり直して接続してください。');
 	}
 }
 
@@ -500,16 +500,16 @@ function saveEditorOption(editor) {
 			<div  style="left: 380px; top: 5px; width:500px; height: 800px; position: absolute; background-image: url(images/tablet.png); background-size: 430px; background-repeat: no-repeat;">
 			</div>
 			<div id="lessonStartForm" class="divcenter  bottommargin-sm" style="width: 300px; height: 300px; text-align: center; background-color: rgba(255,255,255,0.5); border-radius:5%; padding-top: 30px; margin-top: 150px;">
-				<h3 class="textChange">강의 제목</h3>
+				<h3 class="textChange">講義タイトル</h3>
 				<input type="text" name="title" id="title" class="bottommargin-sm form-control center" style="margin-left: 10px; margin-right: 10px; width: 280px; background-color: rgba(255,255,255,0.5);" ><br>
 				<a href="#" id="start"
 						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
-							<i class="icon-line-play textChange" style="width: 30px"></i>강의 시작
+							<i class="icon-line-play textChange" style="width: 30px"></i>講義スタート
 				</a>
 				<br>
 				<a href="#" id="cancel"
 						class="button button-3d button-xlarge button-rounded button-reveal button-white button-light tright" style="background-color: rgba(255,255,255,0.5);">
-							<i class="icon-switch textChange" style="width: 30px"></i>강의 취소
+							<i class="icon-switch textChange" style="width: 30px"></i>講義キャンセル
 				</a>
 			</div>
 			<div id="connInfo" style="text-align: center; background-color: background-color: rgba(255,255,255,0.5); color: white;"></div>
@@ -584,23 +584,23 @@ function saveEditorOption(editor) {
 		</div>
 		<div id="rightPanel" class="col-sm-2 divwhite divwhite">
 			<div id="rightFirstPanel" class="row editorArea divwhite textChange">
-				참여학생목록
+				参加学生目録
 				<div id="studentList">
 					<select size="10" style="width: 150px; height: 200px"></select>
 				</div>
 			</div>
 			<div id="rightSecondPanel" class="row editorArea divwhite">
-				채팅창
+				チャット
 				<div id="chatDiv">
 					<textarea id="chatMessage" cols="19" rows="8" readonly="readonly"></textarea>
-					<input type="text" id="message" size="15" placeholder="메시지 내용" />
-					<button id="sendMessage" class="btn-change6">전송</button>
+					<input type="text" id="message" size="15" placeholder="メッセージ内容" />
+					<button id="sendMessage" class="btn-change6">転送</button>
 				</div>
 			</div>
 			<div id="rightThirdPanel" class="row editorArea">
 				<div id="connStudentEclipse">
-					<button id="startStudentView" class="btn-change6">출력</button>
-					<button style="margin-left: 35px;" id="stopStudentView" class="btn-change6">해제</button>
+					<button id="startStudentView" class="btn-change6">出力</button>
+					<button style="margin-left: 35px;" id="stopStudentView" class="btn-change6">解体</button>
 				</div>
 			</div>
 		</div>

@@ -88,7 +88,7 @@
 		<c:forEach items="${list}" var="fileList" varStatus="check">
 			<tr>
 				<td>
-					<label>첨부파일${check.index + 1}</label>
+					<label>添付ファイル${check.index + 1}</label>
 				</td>
 				<td>
 					<a href="downloadbf?num=${fileList.num}">${fileList.original_filename}</a>
@@ -103,18 +103,18 @@
 		</tr>
 		<tr>
 			<td colspan="1">
-				<a href="boardList?classNum=${classNum}">≪목록으로</a>
+				<a href="boardList?classNum=${classNum}">≪目録に</a>
 			</td>
 			<td></td>
 			<td align="right">	
-				<input type="submit" class="btn btn-primary bbb" value="글수정">
-				<input type="button" value="글삭제" class="btn btn-primary" onclick="deleteForm()"/>
-				<a class="btn btn-primary" href="boardWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>글쓰기</a>
+				<input type="submit" class="btn btn-primary bbb" value="修正">
+				<input type="button" value="削除" class="btn btn-primary" onclick="deleteForm()"/>
+				<a class="btn btn-primary" href="boardWrite?classNum=${classNum}" role="button"><i class="icon-book3"></i>書き込み</a>
 			</td>
 		</tr>
 	</table>
 	</form>
-	<span>댓글 수 : </span><span id="replycount">${board.reply_count}</span> <span>조회수 : ${board.hit}</span>
+	<span>コメント数  : </span><span id="replycount">${board.reply_count}</span> <span>照会数 : ${board.hit}</span>
 	<!-- 댓글 입력 / 로그인한 사람만 댓글을 달 수 있다. -->
 		<form id="replyWrite" action="replyWrite" method="POST">
 		<input type="hidden" name="action" value="replyWrite" />
@@ -124,12 +124,12 @@
 			<tr>
 				<td>
 				<label class="col-md-1">${loginId}</label>
-				<textarea class="col-md-10 row-md-4" id="reply_text" name="reply_text" maxlength="400" cols="150" rows="3" placeholder="댓글을 입력해주세요"></textarea>
+				<textarea class="col-md-10 row-md-4" id="reply_text" name="reply_text" maxlength="400" cols="150" rows="3" placeholder="コメントを入力してください。"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>
-				<p class="col-md-9"></p><a class="btn btn-primary col-md-2" id="reply_submit" role="button"><i class="icon-ok"></i>등록</a>
+				<p class="col-md-9"></p><a class="btn btn-primary col-md-2" id="reply_submit" role="button"><i class="icon-ok"></i>登録</a>
 				</td>
 			</tr>
 			</tbody>	
@@ -172,7 +172,7 @@
 			dataType:"json",
 			success : replyList,
 			error : function(){
-				alert("게시글을 읽어올 수 없습니다.");
+				alert("文章を読みません。");
 			}
 		});
 	}
@@ -209,17 +209,17 @@
 				method :"get",
 				data : "rnum="+rnum+"&bnum="+bnum,
 				success : function(){
-					alert("댓글이 삭제되었습니다.");
+					alert("コメントを削除しました。");
 					init(); // 삭제되면 리스트 새로 그리기
 				}
 				, error : function(){
-					alert("댓글 삭제에 실패했습니다.");
+					alert("コメントの削除に失敗しました。");
 				}
 			});//end ajax
 		}); // end delete
 		//수정
 		  $(".update").on("click",function(){
-			$("#reply_submit").val('댓글수정'); //버튼값 바꾸기
+			$("#reply_submit").val('コメント修正'); //버튼값 바꾸기
 			$('#reply_submit').off('click');
 			var con = $(this).attr('data-con');//댓글내용가져오기
 			var reply = $(this).attr('data-rno'); //리플넘버가져오기
@@ -235,11 +235,11 @@
 						init();
 						$("#reply_submit").off('click');
 						$("#reply_submit").on("click", replywrite);
-						$("#reply_submit").val('댓글입력');
+						$("#reply_submit").val('コメント入力');
 						$("#reply_text").val("");
 					}
 					,error : function(){
-						alert("댓글수정에 실패했습니다.");
+						alert("コメント修正に失敗しました。");
 					}
 				});//end ajax
 			})//end 수정버튼클릭
@@ -266,7 +266,7 @@
 						$("#reply_text").val("");
 					}
 					,error : function(){
-						alert("답글달기에 실패했습니다");
+						alert("コメントの書き込みに失敗しました。");
 					}
 				});//end ajax
 			});
@@ -278,7 +278,7 @@
 		var d = document.getElementById("reply_text").value;
 		
 		if(document.getElementById("reply_text").value == ""){
-			alert("댓글을 입력해주세요");
+			alert("コメントを入力してください。");
 			return false;
 		}
 		
@@ -292,13 +292,13 @@
 					init();
 				}
 				,error: function(){
-					alert("댓글작성에 실패했습니다");
+					alert("コメント作成に失敗しました。");
 				}
 			});//end ajax
 	}
 	//글삭제
 	function deleteForm(){
-		var del = confirm("정말 삭제하시겠습니까?")
+		var del = confirm("本当に削除しますか？")
 		if(del){
 			location.href="deleteForm?num=${board.num}&classNum=${classNum}";
 		}

@@ -42,9 +42,9 @@
 	});
 	
 	function plus() {
-		var html = '<tr><th style="width: 100px;">파일 명</th><td>';
+		var html = '<tr><th style="width: 100px;">ファイル名</th><td>';
 		html += '<input type="file" name="file1" class="upload" style="display: inline; margin-right:20px; cursor:pointer;"/>';
-		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
@@ -59,26 +59,26 @@
 		
 		var content = $('#textss').val();
 		if(title == ''){
-			alert('제목을 적으세요.');
+			alert('名前を書いてください。');
 			return;
 		}
 		if(file1.length == 0){
-			alert('첨부파일이 없습니다. 확인해주세요');
+			alert('添付ファイルがないです。確認してください。');
 			return;	
 		}
 		for (var i = 0; i < file1.length; i++) {
 			var check = $(file1[i]).val();
 			if(check == null){
-				alert('첨부파일이 없습니다. 확인해주세요');
+				alert('添付ファイルがないです。確認してください。');
 				return;	
 			}
 			if(check == ''){
-				alert('첨부파일이 없습니다. 확인해주세요');
+				alert('添付ファイルがないです。確認してください。');
 				return;	
 			}
 		}
 		if(content == ''){
-			alert('내용을 적어주세요');
+			alert('内容を書いてください。');
 			return;
 		}
 		$('#upload').submit();
@@ -103,19 +103,19 @@
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 		<tr>
-			<th style="width: 100px;">제목</th>
+			<th style="width: 100px;">タイトル</th>
 			<td><input type="text" name="title" required class="col-md-12"/></td>
 		</tr>
 		<tr>
-			<th style="width: 100px;">작성자</th>
+			<th style="width: 100px;">作成者</th>
 			<td>${loginId}</td>
 		</tr>
 		<tr>
 			<th style="width: 100px;">
-				파일 추가
+				ファイル追加
 			</th>
 			<td>
-				<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
+				<img class="plus" alt="追加" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
 			</td>
 		</tr>
 		
@@ -127,8 +127,8 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<a href="driveList?classNum=${classNum}" class="btn btn-primary">취소</a>
-				<input type="button" class="btn btn-primary" id="check" value='등록하기'>
+				<a href="driveList?classNum=${classNum}" class="btn btn-primary">キャンセル</a>
+				<input type="button" class="btn btn-primary" id="check" value='登録する'>
 			</td>
 		</tr>
 	</table>

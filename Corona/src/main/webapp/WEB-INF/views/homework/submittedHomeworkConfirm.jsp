@@ -79,7 +79,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 제목</h2>
+								<h2 class="nobottommargin textChange">課題タイトル</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -96,7 +96,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 내용</h2>
+								<h2 class="nobottommargin textChange">課題内容</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -113,7 +113,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<i class="i-rounded i-light icon-calendar"></i>
-								<h2 class="nobottommargin textChange">날짜 기한</h2>
+								<h2 class="nobottommargin textChange">締め切り</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -133,12 +133,12 @@
 							<div class="row">
 								<div class="col-md-3">
 									<i class="i-rounded i-light icon-laptop"></i>
-									<h2 class="nobottommargin textChange">에디터</h2>
+									<h2 class="nobottommargin textChange">エディター</h2>
 								</div>
 								<div class="col-md-5 tright" id="submitTime">
 								</div>
 								<div class="col-md-4">
-								<h4 class="textChange">제출학생 <select id="submittedStudent">
+								<h4 class="textChange">提出学生 <select id="submittedStudent">
 									</select></h4>
 								</div>
 							</div>
@@ -302,7 +302,7 @@ $(function() {
     		}
     		
     		
-    		$('div#submitTime').html("<h4>제출시간 : " + submitList[0].submit_time + "</h4>");
+    		$('div#submitTime').html("<h4>提出時間 : " + submitList[0].submit_time + "</h4>");
     		editor.setValue(submitList[0].submit_code);
     		editor.clearSelection();
     		
@@ -310,7 +310,7 @@ $(function() {
     			var studentIndex = $(this).val();
     			editor.setValue(submitList[studentIndex].submit_code);
     			editor.clearSelection();
-    			$('div#submitTime').html("<h4>제출시간 : " + submitList[studentIndex].submit_time + "</h4>");
+    			$('div#submitTime').html("<h4>提出時間 : " + submitList[studentIndex].submit_time + "</h4>");
     		});
 		}
     });

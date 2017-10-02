@@ -26,7 +26,7 @@
 	
 	<!-- Document Title
 	============================================= -->
-	<title>Corona - 자료실</title>
+	<title>Corona - 資料室</title>
 
 </head>
 <style>
@@ -82,9 +82,9 @@ width: 20%;
 					<div class="col_full" style="margin-top:10px; margin-bottom: 25px;">
 				<div class="col-md-2 nomargin" style="padding:0px;">
 					<select name="searchtype" id="searchType" class="typeahead select-1 sm-form-control t-rotate"  dir="auto" style="width:100%; font-weight: bold; height: 1.0796cm; opacity: 0.8; border: 2px solid #DDD; border-right: 0; border-radius: 0 !important; line-height: 1.42857143;position: relative;   ">
-						<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
-						<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
-						<option value="content" ${searchtype=='content' ? 'selected' : '' }>내용</option>
+						<option value="title" ${searchtype=='title' ? 'selected' : '' }>タイトル</option>
+						<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>作成者</option>
+						<option value="content" ${searchtype=='content' ? 'selected' : '' }>内容</option>
 					</select>
 						</div>
 				<div class="col-md-5 nopadding">
@@ -129,7 +129,7 @@ width: 20%;
 						<ul class="entry-meta clearfix">
 							<li>${drive.user_id}</li>
 							<li><i class="icon-calendar3"></i>${drive.register_time}</li>
-							<li>조회수 : ${drive.hit}</li>
+							<li>照会数 : ${drive.hit}</li>
 						</ul><br>
 						<div class="entry-fileList">
 							<c:forEach var="dfL" items="${dfList}">

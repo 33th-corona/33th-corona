@@ -55,16 +55,16 @@
 					<!-- 일반 게시판 -->
 					<div id="normal" class="entry clearfix">
 						<div class="center">
-							<h2>일반 게시판</h2>
+							<h2>一般提示版</h2>
 						</div>
 						<div class="search">
 						<!-- 특정 글 검색 -->
 							<form id="search" action ="boardLocation" method="GET" >
 							<input type = "hidden" name = "action" value = "boardList">
 							<select name="searchtype">
-								<option value="title" ${searchtype=='title' ? 'selected' : '' }>제목</option>
-								<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>작성자</option>
-								<option value="content" ${searchtype=='content' ? 'selected' : '' }>내용</option>
+								<option value="title" ${searchtype=='title' ? 'selected' : '' }>名前</option>
+								<option value="user_id" ${searchtype=='user_id' ? 'selected' : '' }>作成者</option>
+								<option value="content" ${searchtype=='content' ? 'selected' : '' }>内容</option>
 							</select>
 							<input type="text" name="searchword" value="${searchword}" /> 
 							<input class="btn" type="submit" value="검색" />
@@ -110,7 +110,7 @@
 							</table>
 						<div class="tright">
 							<a href="boardWrite" class="button button-3d button-rounded button-blue"><i
-								class="icon-book3"></i>글쓰기</a>
+								class="icon-book3"></i>書き込み</a>
 						</div>
 						</div>
 						<!-- Paging 출력 부분 -->
@@ -140,7 +140,7 @@
 					<div id="drive" class="entry clearfix"
 						style="margin-bottom: 10px; padding-bottom: 10px;">
 						<div class="center">
-							<h2>자료실</h2>
+							<h2>資料室</h2>
 						</div>
 						<table id="datatable2"
 							class="table table-striped table-bordered datatable"
@@ -180,7 +180,7 @@
 						</table>
 						<div class="tright">
 						<a href="driveWrite" class="button button-3d button-rounded button-blue"><i
-							class="icon-book3"></i>글쓰기</a>
+							class="icon-book3"></i>書き込み</a>
 					</div>
 					</div>
 					
@@ -231,7 +231,7 @@
 					</table>
 					<div class="tright">
 					<a href="#" class="button button-3d button-rounded button-blue"><i
-						class="icon-book3"></i>글쓰기</a>
+						class="icon-book3"></i>書き込み</a>
 					</div>
 				</div>
 				

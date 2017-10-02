@@ -89,7 +89,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 제목</h2>
+								<h2 class="nobottommargin textChange">課題タイトル</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -106,7 +106,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 내용</h2>
+								<h2 class="nobottommargin textChange">課題内容</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -123,7 +123,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<i class="i-rounded i-light icon-calendar"></i>
-								<h2 class="nobottommargin textChange">날짜 기한</h2>
+								<h2 class="nobottommargin textChange">締め切り</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -143,11 +143,11 @@
 							<div class="row">
 								<div class="col-md-6">
 									<i class="i-rounded i-light icon-laptop"></i>
-									<h2 class="nobottommargin textChange">에디터</h2>
+									<h2 class="nobottommargin textChange">エディター</h2>
 								</div>
 								<div class="col-md-6 text-right">
-									<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="테스트"> 
-									<input type="button" id="editorReset" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="리셋">
+									<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="テスト"> 
+									<input type="button" id="editorReset" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="リセット">
 								</div>
 							</div>
 							<div class="row">
@@ -202,7 +202,7 @@
 						<div class="col-md-9"></div>
 						<div class="col-md-3" data-toggle="modal" data-target="#explainHomework">
 							<i class="i-rounded i-light icon-box"></i>
-							<h2>과제 설명</h2>
+							<h2>課題説明</h2>
 						</div>
 					</div>
 					<div class="modal fade" tabindex="-1" id="explainHomework" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -213,16 +213,13 @@
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal"
 											aria-hidden="true">&times;</button>
-										<h2 class="modal-title" id="myModalLabel">작성 방법</h2>
+										<h2 class="modal-title" id="myModalLabel">作成方法</h2>
 									</div>
 									<div class="modal-body" style="font-size: 20px">
-										<p class="nobottommargin">1. 선생님이 작성한 과제 내용을 확인합니다.</p>
-										<p class="nobottommargin">2. 과제 내용을 기반으로 비어있는 부분의 코드를
-											작성합니다.</p>
-										<p class="nobottommargin">3. '테스트' 버튼을 클릭하여 올바르게 코드가
-											작성되어있는지 확인합니다.</p>
-										<p class="nobottommargin">4. 올바르면 제출이 가능하고, 다른 결과가 출력 될
-											경우 다시 작성해 주세요.</p>
+										<p class="nobottommargin">1. 先生が作成した課題内容を確認します。</p>
+										<p class="nobottommargin">2. 課題内容を基盤で空いた部分のコードを作成します。</p>
+										<p class="nobottommargin">3. 「テスト」ボタンをクリックして正しくコードが書いているか確認します。</p>
+										<p class="nobottommargin">4. 正しければ提出可能で、違う結果が出力できた場合はもう一度作成してください。</p>
 									</div>
 								</div>
 							</div>
@@ -348,7 +345,7 @@ $(function() {
     		},
     		success: function(resp) {
     			if(resp == 1) {
-    				if(confirm('정답입니다. 코드를 제출 하시겠습니까?')) {
+    				if(confirm('正解です。コードを提出しましょうか。')) {
     					$.ajax({
     						url: "submitHomework",
     						method: "post",
@@ -360,16 +357,16 @@ $(function() {
     						},
     						success: function(resp) {
     							if(resp == 1) {
-    								alert("제출 되었습니다.");
+    								alert("提出しました。");
     								location.href = "homeworkList?classNum=${task.class_num}";
     							} else if(resp == 0) {
-    								alert("제출에 실패하였습니다.");
+    								alert("提出に失敗しました。");
     							}
     						}
     					});
     				}
     			} else {
-    				alert('오답입니다. 다시 작성해 주세요.');
+    				alert('不正解です。もう一度、作成してください。');
     			}
     		}
     	});

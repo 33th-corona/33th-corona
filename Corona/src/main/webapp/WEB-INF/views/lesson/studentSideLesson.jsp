@@ -67,7 +67,7 @@ $.ajax({
 	data: {"classNum" : '${classNum}'},
 	success: function(resp) {
 		if(resp == 0) {
-			alert('수업이 시작되지 않았습니다.');
+			alert('授業がスタートしておりません。');
 			location.href = "studentFormLocation?num=${classNum}";
 		}
 	}
@@ -229,7 +229,7 @@ $(document).ready(function() {
 			
 		}
 		else if (action == 'disconnect') {
-			alert('수업이 종료되었습니다.');
+			alert('授業が終了しました。');
 			location.href = 'studentFormLocation?num=${classNum}';
 		}
 	}
@@ -385,17 +385,17 @@ function saveEditorOption(editor) {
 		</div>
 		<div id="rightPanel" class="col-sm-2 divwhite divwhite">
 			<div id="rightFirstPanel" class="row editorArea divwhite">
-				참여학생목록
+				参加学生目録
 				<div id="studentList">
 					<select size="10" style="width: 150px; height: 200px"></select>
 				</div>
 			</div>
 			<div id="rightSecondPanel" class="row editorArea divwhite">
-				채팅창
+				チャット
 				<div id="chatDiv">
 					<textarea id="chatMessage" cols="19" rows="8" readonly="readonly"></textarea>
-					<input type="text" id="message" size="15" placeholder="메시지 내용" />
-					<button id="sendMessage" class="btn-change6">전송</button>
+					<input type="text" id="message" size="15" placeholder="メッセージ内容" />
+					<button id="sendMessage" class="btn-change6">転送</button>
 				</div>
 			</div>
 		</div>

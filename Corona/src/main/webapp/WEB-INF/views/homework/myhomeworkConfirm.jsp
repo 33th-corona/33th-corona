@@ -79,7 +79,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 제목</h2>
+								<h2 class="nobottommargin textChange">課題タイトル</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -96,7 +96,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<i class="i-rounded i-light icon-edit"></i>
-								<h2 class="nobottommargin textChange">과제 내용</h2>
+								<h2 class="nobottommargin textChange">課題内容</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -113,7 +113,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<i class="i-rounded i-light icon-calendar"></i>
-								<h2 class="nobottommargin textChange">날짜 기한</h2>
+								<h2 class="nobottommargin textChange">締め切り</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -133,7 +133,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<i class="i-rounded i-light icon-laptop"></i>
-									<h2 class="nobottommargin textChange">에디터</h2>
+									<h2 class="nobottommargin textChange">エディター</h2>
 								</div>
 							</div>
 							<div class="row">

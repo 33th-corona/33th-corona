@@ -71,14 +71,14 @@
 					<form action="#" method="post" class="nobottommargin">
 						<div class="input-daterange travel-date-group bottommargin-sm">
 							<div class="col_full" >
-							<i class="i-rounded i-light icon-edit"></i><h2>Java클래스 명</h2>
+							<i class="i-rounded i-light icon-edit"></i><h2>Javaクラス名</h2>
 							<div class="col-md-10"><input type="text" type="text" id="class-form-name" name="class-form-name"
 										value="" class="form-control"></div>
 							<div class="col-md-2"><i class="i-circled i-light i-small icon-ok"></i></div>
 							</div>
 							<div class="line topmargin-sm bottommargin-sm"></div>
 							<div class="col_full">
-									<i class="i-rounded i-light icon-calendar"></i><h2>날짜 기한</h2>
+									<i class="i-rounded i-light icon-calendar"></i><h2>締め切り</h2>
 							</div>
 							<div class="row">
 								<div class="clear"></div>
@@ -88,15 +88,15 @@
 							</div>
 							<div class="line topmargin-sm bottommargin-sm"></div>
 							<div class="col_full " >
-							<i class="i-rounded i-light icon-edit"></i><h2>과제 내용</h2>
+							<i class="i-rounded i-light icon-edit"></i><h2>課題内容</h2>
 							<div class="col-md-10"><textarea class="form-control" rows="5" id="comment"></textarea>
 							<div class="col_last"><i class="i-circled i-light i-small icon-ok"></i></div>
 							</div>
 							<div class="line topmargin-sm bottommargin-sm"></div>
 							</div>
 							<div class="col_full">
-							<i class="i-rounded i-light icon-laptop"></i><h2>에디터</h2>&nbsp<a href="#" class="button button-3d button-rounded button-green"><i class="icon-line-file"></i>클래스 명 에디터에 추가</a>
-							<a href="#" class="button button-3d button-rounded button-red"><i class="icon-line-paper"></i>메인 추가</a>
+							<i class="i-rounded i-light icon-laptop"></i><h2>エディター</h2>&nbsp<a href="#" class="button button-3d button-rounded button-green"><i class="icon-line-file"></i>クラス名にエディター追加</a>
+							<a href="#" class="button button-3d button-rounded button-red"><i class="icon-line-paper"></i>メイン追加</a>
 							<!-- Editor 여기다가 넣으세요. -->
 							<div id="editor" class="col_full">
 							
@@ -105,8 +105,8 @@
 							<div class="line topmargin-sm bottommargin-sm"></div>
 							<div class="col_full">
 								<div class="center">
-																	<button type="submit" class="button button-xlarge button-dark button-rounded tright">만들기<i class="icon-circle-arrow-right"></i></button>
-								&nbsp<button type="reset" class="button button-xlarge button-dark button-rounded tright">리셋<i class="icon-line-cross"></i></button>
+																	<button type="submit" class="button button-xlarge button-dark button-rounded tright">作成<i class="icon-circle-arrow-right"></i></button>
+								&nbsp<button type="reset" class="button button-xlarge button-dark button-rounded tright">リセット<i class="icon-line-cross"></i></button>
 								</div>
 							</div>
 						</div>

@@ -85,7 +85,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<i class="i-rounded i-light icon-edit"></i>
-							<h2 class="nobottommargin textChange">과제 제목</h2>
+							<h2 class="nobottommargin textChange">課題タイトル</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -102,7 +102,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<i class="i-rounded i-light icon-edit"></i>
-							<h2 class="nobottommargin textChange">과제 내용</h2>
+							<h2 class="nobottommargin textChange">課題内容</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -119,7 +119,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<i class="i-rounded i-light icon-calendar"></i>
-							<h2 class="nobottommargin textChange">날짜 기한</h2>
+							<h2 class="nobottommargin textChange">締め切り</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -139,11 +139,11 @@
 						<div class="row">
 							<div class="col-md-6">
 								<i class="i-rounded i-light icon-laptop"></i>
-								<h2 class="nobottommargin textChange">에디터</h2>
+								<h2 class="nobottommargin textChange">エディター</h2>
 							</div>
 							<div class="col-md-6 text-right">
-								<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000"	value="만들기"> 
-								<input type="button" id="editorReset" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="리셋">
+								<input type="button" id="homeworkSubmit" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000"	value="作成"> 
+								<input type="button" id="editorReset" class="button button-xlarge button-white button-rounded tright" style="border-radius: 15%; color: #000000" value="リセット">
 							</div>
 						</div>
 						<div class="row">
@@ -207,7 +207,7 @@ public class ${classFileName} {
                     <div class="row">
                         <div class="col-md-11">
                             <i class="i-rounded i-light icon-edit"></i>
-                            <h2 class="nobottommargin textChange">입력 값</h2>
+                            <h2 class="nobottommargin textChange">入力値</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -222,7 +222,7 @@ public class ${classFileName} {
                     <div class="row">
                         <div class="col-md-11">
                             <i class="i-rounded i-light icon-edit"></i>
-                            <h2 class="nobottommargin textChange">출력 값</h2>
+                            <h2 class="nobottommargin textChange">出力値</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -237,19 +237,19 @@ public class ${classFileName} {
                 <div class="row plus">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-line-marquee-plus"></i>
-                        <h3 class="textChange">입출력값 추가</h3>
+                        <h3 class="textChange">入出力追加</h3>
                     </div>
                 </div>
                 <div class="row calsle">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-line-marquee-minus"></i>
-                        <h3 class="textChange">입출력값 삭제</h3>
+                        <h3 class="textChange">入出力削除</h3>
                     </div>
                 </div>
                 <div class="row" data-toggle="modal" data-target="#explainHomework">
                     <div class="col-md-10">
                         <i class="i-rounded i-light icon-box"></i>
-                        <h3 class="textChange">과제 설명</h3>
+                        <h3 class="textChange">課題説明</h3>
                     </div>
                 </div>
                 <div class="modal fade" tabindex="-1" id="explainHomework" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -258,13 +258,13 @@ public class ${classFileName} {
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h2 class="modal-title" id="myModalLabel">작성 방법</h2>
+                                    <h2 class="modal-title" id="myModalLabel">作成方法</h2>
                                 </div>
                                 <div class="modal-body" style="font-size: 20px">
-                                    <p class="nobottommargin">1. 입력 값과 기대하는 출력 값을 입력합니다.</p>
-                                    <p class="nobottommargin">2. 입력 값과 출력 값은 여러 개 생성이 가능합니다.</p>
-                                    <p class="nobottommargin">3. 학생이 작성한 과제 코드의 결과 값과 아까 기입한 출력 값을 비교합니다.</p>
-                                    <p class="nobottommargin">4. 올바르면 제출이 가능하고, 서로 상이한 경우, 다시 과제 코드를 작성하는 방식입니다.</p>
+                                    <p class="nobottommargin">1. 入力値と期待する出力値を入力します。</p>
+                                    <p class="nobottommargin">2. 入力値と出力値は三つの生成ができます。</p>
+                                    <p class="nobottommargin">3. 学生が作成した課題コードの結果と記入した出力値と比較します。</p>
+                                    <p class="nobottommargin">4. 正しければ提出可能でお互いに相異なった場合は、もう一度課題コートを作成する方式です。</p>
                                 </div>
                             </div>
                         </div>
@@ -424,13 +424,13 @@ $(function() {
 		var output_answer = [];
 		
 		if(!title) {
-			alert('과제 제목을 입력하세요.');
+			alert('課題の名前を入力してください。');
 			return;
 		} else if(!explain) {
-			alert('과제 설명을 입력하세요.');
+			alert('課題説明を入力してください。');
 			return;
 		} else if(!limitTime) {
-			alert('마감 기한을 입력하세요.');
+			alert('締切期限を入力してください。');
 			return;
 		}
 		
@@ -459,14 +459,14 @@ $(function() {
 					"&input_answer=" + input_answer,
 			success : function(resp) {
 				if(resp == 1) {
-					alert("과제 등록 완료");
+					alert("課題登録完了。");
 					location.href = "homeworkList?classNum=${classNum}";
 				} else if(resp == 0) {
-					alert("과제 등록 실패!!");
+					alert("課題登録失敗。");
 				}
 			},
 			error : function() {
-				alert("과제 전송에 실패 하였습니다.");
+				alert("課題転送に失敗しました。");
 			}
 		});
 	});

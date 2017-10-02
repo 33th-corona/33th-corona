@@ -88,7 +88,7 @@ $(function() {
 				return;
 			}
 			myAudio.playbackRate = myAudio.playbackRate + 0.5;
-			$('pre#nowSpeed').text(myAudio.playbackRate + " 배속");
+			$('pre#nowSpeed').text(myAudio.playbackRate + " 倍速");
 			console.log(myAudio.playbackRate);
 		});
 		
@@ -97,7 +97,7 @@ $(function() {
 				return;
 			}
 			myAudio.playbackRate = myAudio.playbackRate-0.5;
-			$('pre#nowSpeed').text(myAudio.playbackRate + " 배속");
+			$('pre#nowSpeed').text(myAudio.playbackRate + " 倍速");
 			console.log(myAudio.playbackRate);
 		});
 		
@@ -283,7 +283,7 @@ function saveEditorOption(editor) {
 				<track id="entrack" src="captionPlay?saved_code=${savedLessonInfo.saved_code}" kind="metadata" default></track>
 			</audio>
 			&nbsp;
-			<pre id="nowSpeed" class="nomargin topPanelPart" style="display: inline-block;">1 배속</pre>
+			<pre id="nowSpeed" class="nomargin topPanelPart" style="display: inline-block;">1 倍速</pre>
 			&nbsp;
 			<button type="button" id="speedUp" class="topPanelPart">+0.5</button>
 			<button type="button" id="speedDown" class="topPanelPart">-0.5</button>
@@ -344,7 +344,7 @@ function saveEditorOption(editor) {
 		</div>
 		<div id="rightPanel" class="col-sm-2">
 			<div id="rightFirstPanel" class="row editorArea backWhite">
-				채팅창
+				チャット
 				<div id="chatDiv">
 					<textarea id="chatMessage" cols="20" rows="22"></textarea>
 				</div>

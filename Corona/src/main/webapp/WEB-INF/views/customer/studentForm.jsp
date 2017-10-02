@@ -195,7 +195,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">일반 게시판</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">一般提示版</h2></div>
 				
 				</div>
 				</form>
@@ -206,7 +206,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-line-paper-clip"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">자료실</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">資料室</h2></div>
 				
 				</div>
 				</form>
@@ -221,7 +221,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-et-search i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">강의 참여</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">講義参加</h2></div>
 				</div>
 				</form>
 				</div> 
@@ -231,7 +231,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-study"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">지난 강의</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important;">前回の講義</h2></div>
 				
 				</div>
 				</form>
@@ -242,7 +242,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">과제 게시판</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">課題提示版</h2></div>
 				
 				</div>
 				</form>
@@ -262,13 +262,13 @@ ul.c-controls li a:hover {
                     <span class="title">Contacts</span>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                    <span class="title" style="padding-left: 0">아이디</span>
+                    <span class="title" style="padding-left: 0">ID</span>
                     </div>
                     <div class="col-xs-12 col-sm-2">
-                    <span class="title" style="padding-left: 0">이름</span>
+                    <span class="title" style="padding-left: 0">名前</span>
                     </div>
                     <div class="col-xs-12 col-sm-3">
-                    <span class="title" style="padding-left: 0">이 메일</span>
+                    <span class="title" style="padding-left: 0">E-Mail</span>
                     </div>
                     <ul class="pull-right c-controls">
                         <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="icon-ellipsis-horizontal"></i></a></li>

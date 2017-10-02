@@ -184,14 +184,14 @@ $(function() {
 				<c:if test="${position eq 'student' }">
 					<c:if test="${taskInfo.submitted}">
 					 <div class="col-sm-3">
-							<a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>답안 확인</a>
+							<a href="myhomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>答案確認</a>
 					</div>		
 					</c:if>
 					
 					<c:if test="${!taskInfo.submitted}">
 						<c:if test="${taskInfo.is_closed eq 'n'}">
 						 <div class="col-sm-3">
-							<a href="homeworkDetail?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>과제작성</a>
+							<a href="homeworkDetail?homeworkNum=${taskInfo.num}" class="btn btn-lg red" > <span class="fa fa-home"></span>課題作成</a>
 						</div>		
 						</c:if>
 						
@@ -203,7 +203,7 @@ $(function() {
 				
 				<c:if test="${position eq 'teacher' }">
 				 <div class="col-sm-3">
-					<a href="submittedHomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" style="font-size: 40px; height: 75px;"><span class="fa fa-home" ></span>제출자 확인</a>
+					<a href="submittedHomeworkConfirm?homeworkNum=${taskInfo.num}" class="btn btn-lg red" style="font-size: 40px; height: 75px;"><span class="fa fa-home" ></span>提出者確認</a>
 				</div>		
 				</c:if>
 				

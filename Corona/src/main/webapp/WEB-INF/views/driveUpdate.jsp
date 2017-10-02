@@ -42,10 +42,10 @@ $(function() {
 })
 //추가 아이콘으로 첨부파일 추가
 function plus() {
-	var html = '<tr><td><label>파일 명</label></td><td>';
+	var html = '<tr><td><label>ファイル名</label></td><td>';
 	html += '<input type="file" name="file1" class="upload" style="display: inline;"/>';
-	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<img alt="修正" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td></tr>';
 	$('#plustable').append(html);
 	$('.modify').on('click', modify);
@@ -57,10 +57,10 @@ function cansle() {
 }
 //수정 아이콘 누를시  input file로 덮어 씌움
 function modify() {
-	var html = '<td><label>파일 명</label></td><td>';
+	var html = '<td><label>ファイル名</label></td><td>';
 	html += '<input type="file" name="file1" class="upload" style="display: inline;/>';
-	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<img alt="修正" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td>';
 	$(this).parent().parent().html(html);
 	$('.modify').on('click', modify);
@@ -74,26 +74,26 @@ function check(){
 	var original_filename = $('.original_filename');
 	var content = $('#texts').val();
 	if(title == ''){
-		alert('제목을 적으세요.');
+		alert('名前を書いてください。');
 		return;
 	}
 	if(file1.length == 0 && original_filename.length == 0){
-		alert('첨부파일이 없습니다. 확인해주세요');
+		alert('添付ファイルがないです。確認してください。');
 		return;	
 	}
 	for (var i = 0; i < file1.length; i++) {
 		var check = $(file1[i]).val();
 		if(check == null){
-			alert('첨부파일이 없습니다. 확인해주세요');
+			alert('添付ファイルがないです。確認してください。');
 			return;	
 		}
 		if(check == ''){
-			alert('첨부파일이 없습니다. 확인해주세요');
+			alert('添付ファイルがないです。確認してください。');
 			return;	
 		}
 	}
 	if(content == ''){
-		alert('내용을 적어주세요');
+		alert('内容を書いてください。');
 		return;
 	}
 	$('#dup').submit();
@@ -126,16 +126,16 @@ function back() {
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 		<tr>
-			<th class="col-md-2">제목</th>
+			<th class="col-md-2">タイトル</th>
 			<td><input type="text" name="title" required value="${drive.title}" class="col-md-9"/></td>
 		</tr>
 		<tr>
-			<th>작성자</th>
+			<th>作成者</th>
 			<td>${loginId}</td>
 		</tr>
 		<tr>
 			<td>
-				<label>파일 추가</label>
+				<label>ファイル追加</label>
 			</td>
 			<td>
 				<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
@@ -144,13 +144,13 @@ function back() {
 		<c:forEach items="${list}" var="driveList" varStatus="check">
 				<tr>
 				<td>
-					<label>파일 명</label>
+					<label>ファイル名</label>
 				</td>
 				<td>
 					<a href="download?num=${driveList.num}">${driveList.original_filename}</a> 
 					<input type="hidden" name="original_filename" class="original_filename" value="${driveList.original_filename}">
-					<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
-					<img alt="삭제" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
+					<img alt="修正" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
+					<img alt="削除" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
 				</td>
 			</tr>
 			</c:forEach>
@@ -164,8 +164,8 @@ function back() {
 		
 		<tr>
 			<td colspan="2" align="right">
-				<a href="driveList?classNum=${classNum}" class="btn btn-primary">취소</a>
-				<input type="button" class="btn btn-primary" id="check" value='등록하기'>
+				<a href="driveList?classNum=${classNum}" class="btn btn-primary">キャンセル</a>
+				<input type="button" class="btn btn-primary" id="check" value='登録する'>
 			</td>
 		</tr>
 	</table>

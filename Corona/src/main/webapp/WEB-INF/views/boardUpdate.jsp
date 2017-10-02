@@ -39,9 +39,9 @@ window.onload = function(){
 	$('.cansle').on('click', cansle);
 	$('.modify').on('click', modify);
 	function plus() {
-		var html = '<tr><td><label>파일 명</label></td><td>';
+		var html = '<tr><td><label>ファイル名</label></td><td>';
 		html += '<input type="file" id="ty"  name="file1" class="upload" style="display:inline; cursor: pointer;"/>';
-		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
@@ -86,7 +86,7 @@ window.onload = function(){
     $("#save").click(function(){
         oEditors.getById["texts"].exec("UPDATE_CONTENTS_FIELD", []);
         $("#frm").submit();
-        alert('수정되었습니다.');
+        alert('修正しました。');
     });   
 	 
 }//end window.onload
@@ -97,10 +97,10 @@ function cansle() {
 }
 //수정 아이콘 누를시  input file로 덮어 씌움
 function modify() {
-	var html = '<td><label>파일 명</label></td><td>';
+	var html = '<td><label>ファイル名</label></td><td>';
 	html += '<input type="file" name="file1" class="upload" style="display: inline; cursor: pointer; margin-right:20px;"/>';
-	html += '<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
-	html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+	html += '<img alt="修正" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">';
+	html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 	html += '</td>';
 	$(this).parent().parent().html(html);
 	$('.modify').on('click', modify);
@@ -126,17 +126,17 @@ function modify() {
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 	<tr>
-		<th>제목</th>
+		<th>タイトル</th>
 		<td><input type="text" name="title" required class="col-md-12" value="${board.title}" /></td>
 	</tr>
 	<tr>
-		<th>작성자</th>
+		<th>作成者</th>
 		<td>${loginId}</td>
 	</tr>
 	
 	<tr>
 		<td>
-			<label>파일 추가</label>
+			<label>ファイル追加</label>
 		</td>
 		<td>
 			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
@@ -145,13 +145,13 @@ function modify() {
 		<c:forEach items="${list}" var="fileList" varStatus="check">
 			<tr>
 				<td>
-					<label>파일 명</label>
+					<label>ファイル名</label>
 				</td>
 				<td>
 					<a href="download?num=${fileList.num}">${fileList.original_filename}</a> 
 					<input type="hidden" name="original_filename" class="original_filename" value="${fileList.original_filename}">
-					<img alt="수정" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
-					<img alt="삭제" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
+					<img alt="修正" src="images/modify.png" class="modify" width="20" height="20" style="cursor: pointer;">
+					<img alt="削除" src="images/cansle.png" class="cansle" width="20" height="20" style="cursor: pointer;">
 				</td>
 			</tr>
 		</c:forEach>
@@ -164,8 +164,8 @@ function modify() {
 	</tr>
 	<tr>
 		<td colspan="2" align="right">
-			<a href="boardList?classNum=${classNum}" class="btn btn-primary">취소</a>
-			<input type="button" id="save" class="btn btn-primary" value='등록하기'>
+			<a href="boardList?classNum=${classNum}" class="btn btn-primary">キャンセル</a>
+			<input type="button" id="save" class="btn btn-primary" value='登録する'>
 		</td>
 	</tr>
 	</table>

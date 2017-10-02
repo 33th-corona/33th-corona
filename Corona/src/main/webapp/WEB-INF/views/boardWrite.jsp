@@ -42,9 +42,9 @@ window.onload = function(){
 	$('.cansle').on('click', cansle);
 	
 	function plus() {
-		var html = '<tr><th>파일 명</th><td>';
+		var html = '<tr><th>ファイル名</th><td>';
 		html += '<input type="file" id="input-2"  name="file1" class="upload file" data-show-preview="false" style="display:inline; cursor: pointer; margin-right:20px;" />';
-		html += '<img class="cansle" alt="취소" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
+		html += '<img class="cansle" alt="キャンセル" src="images/cansle.png" width="20" height="20" style="cursor: pointer;">';
 		html += '</td></tr>';
 		$('#plustable').append(html);
 		$('.cansle').on('click', cansle);
@@ -92,13 +92,13 @@ window.onload = function(){
 	    	 
 	    	var fileKind = fileName.split(".")[1];
 			if(!(fileKind == 'png' || 'jpg' || 'gif')){
-			alert('이미지 파일형식만 업로드 해주세요');
+			alert('イメージファイル式だけアップロードしてください。');
 	    	return false;
 			}
     	 }
     	 
     	 if($("#title").val() == "") {
-    		 alert('제목을 입력해주세요');
+    		 alert('名前を入力してください。');
     		 $("#title").focus();
     		 return false;
     	 }
@@ -126,17 +126,17 @@ window.onload = function(){
 <input type="hidden" name="classNum" value="${classNum}">
 	<table class="Bordered table">
 	<tr>
-		<th style="width: 100px;">제목</th>
+		<th style="width: 100px;">タイトル</th>
 		<td><input type="text" id="title" name="title" required class="col-md-12"/></td>
 	</tr>
 	<tr>
-		<th style="width: 200px;">작성자</th>
+		<th style="width: 200px;">作成者</th>
 		<td>${loginId}</td>
 	</tr>
 	
 	<tr>
 		<td>
-			<label>파일 추가</label>
+			<label>ファイル追加</label>
 		</td>
 		<td>
 			<img class="plus" alt="추가" src="images/plus.png" width="20" height="20" style="cursor: pointer;">
@@ -151,8 +151,8 @@ window.onload = function(){
 	
 	<tr>
 		<td colspan="2" align="right">
-			<a href="boardList?classNum=${classNum}" class="btn btn-primary">취소</a>
-			<input type="button" id="save" class="btn btn-primary" value='등록하기'>
+			<a href="boardList?classNum=${classNum}" class="btn btn-primary">キャンセル</a>
+			<input type="button" id="save" class="btn btn-primary" value='登録する'>
 		</td>
 	</tr>
 	</table>

@@ -118,7 +118,7 @@
 	<section id="page-title" style="padding-bottom: 20px; padding-top: 20px !important;">
 
 			<div class="container clearfix">
-				<h1>반 생성</h1>
+				<h1>クラス生成</h1>
 			</div>
 
 		</section>
@@ -142,7 +142,7 @@
 			<div  class="content-wrap" style="padding: 30px;" >
 				<div class="divcenter postcontent clearfix bottommargin-sm">
 					<div class="col_full" >
-					<div class="col-md-3" ><i id="nameIcon" class="i-rounded icon-edit i-small className"></i><span class="h2 className">반 이름</span></div>
+					<div class="col-md-3" ><i id="nameIcon" class="i-rounded icon-edit i-small className"></i><span class="h2 className">クラスネーム</span></div>
 					<div class="col-md-8"><input type="text" type="text" id="class-form-name" name="name"
 										value="" class="form-control"></div>
 					<div class="col-md-1"><i id="nameOk" class="i-circled name-i-light i-small icon-ok"></i></div>
@@ -151,7 +151,7 @@
 			   <div class="line bottommargin-sm topmargin-sm"></div>
 			   <div class="divcenter postcontent clearfix bottommargin-sm" >
 					<div class="col_full"  >
-					<div class="col-md-3" ><i id="teacherIcon" class="i-rounded icon-user i-small" style=" " ></i><span class="h2">강사 ID</span></div>
+					<div class="col-md-3" ><i id="teacherIcon" class="i-rounded icon-user i-small" style=" " ></i><span class="h2">講師 ID</span></div>
 					<div class="col-md-8"><input type="text" type="text" id="class-form-name" name="teacher_id"
 										value="${id}" class="form-control" readonly="readonly"></div>
 					<div class="col-md-1"><i id="idOk" class="id-i-circled id-i-light i-small icon-ok"></i></div>
@@ -160,13 +160,13 @@
 			   <div class="line bottommargin-sm topmargin-sm"></div>
 			   <div class="divcenter postcontent clearfix" >
 					<div class="col_full" >
-					<div class="col-sm-3" ><i id="publicIcon" class="i-rounded icon-cog i-small"></i><span class="h2">반 설정</span></div>
+					<div class="col-sm-3" ><i id="publicIcon" class="i-rounded icon-cog i-small"></i><span class="h2">クラス設定</span></div>
 					<div class="col-sm-4">
 					<input id="publicStatus" class="bt-switch" name="is_public" type="checkbox" value="y" data-on-text="<i class='icon-lock3'></i>" data-off-text="<i class='icon-unlock'></i>" data-on-color="danger" data-off-color="default">
 					</div>
 					<div id ="publicwordForm" class="col-sm-4">
 							<button disabled="disabled" id="publicbtn"
-						class="button publicbutton-3d tright nomargin" role="button" data-lightbox="inline" style="cursor: default; width: 100px; background-color: #ff9800;">공개<i class="icon-unlock" style="width: 15px"></i></button>
+						class="button publicbutton-3d tright nomargin" role="button" data-lightbox="inline" style="cursor: default; width: 100px; background-color: #ff9800;">公開<i class="icon-unlock" style="width: 15px"></i></button>
 					</div>
 			   </div>
 			   </div>
@@ -272,8 +272,8 @@
 						})
 					})
 			$(".bt-switch").bootstrapSwitch();
-			var pub = '공개<i class="icon-unlock" style="width: 15px"></i>';
-			var nopub = '비공개<i class="icon-lock3" style="width: 15px"></i>';
+			var pub = '公開<i class="icon-unlock" style="width: 15px"></i>';
+			var nopub = '非公開<i class="icon-lock3" style="width: 15px"></i>';
 			$(".bt-switch").on('switchChange.bootstrapSwitch',
 					function(event, state) {
 						var publicWordForm = $("#publicbtn");
