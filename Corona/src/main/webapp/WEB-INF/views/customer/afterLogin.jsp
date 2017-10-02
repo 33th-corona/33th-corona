@@ -270,7 +270,7 @@
 									<a href="#"><i class="icon-line-heart" style="background-color: #000530;"></i></a>
 								</div>
 								<h3>'私たち'だけのクラス機能</h3>
-								<p>クラス生成の時、公開クラスと非公開クラスを設定できます。</p>
+								<p>クラス生成の時、公開クラスと <br>非公開クラスを設定できます。</p>
 							</div>
 
 							<div class="feature-box fbox-right topmargin" data-animate="fadeIn" data-delay="200">
@@ -278,7 +278,7 @@
 									<a href="#"><i class="icon-line-paper" style="background-color: #ff9800;"></i></a>
 								</div>
 								<h3>課題の生成および課題の確認機能</h3>
-								<p>課題を生成して学生たちに提出し、学生が提出したらコードの確認ができます。</p>
+								<p>課題を生成して学生たちに提出し、学生が<br>&nbsp;提出したらコードの確認ができます。</p>
 							</div>
 
 						</div>
@@ -294,7 +294,7 @@
 									<a href="#"><i class="icon-line-cloud" style="background-color: #ff9800;"></i></a>
 								</div>
 								<h3>講義のセーブおよび出力の機能</h3>
-								<p>講義を動画ではなくてコードでセーブして望む講義を視聴する時、コードをドラッグ＆コピーができます。</p>
+								<p>講義を動画ではなくてコードでセーブして前の講義を視聴する時、コードをドラッグ＆コピーができます。</p>
 							</div>
 
 							<div class="feature-box topmargin" data-animate="fadeIn" data-delay="200">
@@ -329,7 +329,7 @@
 				  <ol class="olColor">
    					 <li class="liFont"><span class="spanFont">1.</span><p class="pFont">jarファイルをダウンロードの後に、ユーザが持っている「Eclipse/plugins/」のフォルダに　<br>jarファイルを入れてください。</p></li>
     				 <li class="liFont"><span class="spanFont">2.</span><p class="pFont">クラスのページに入場して「講義スタート」のボタンを押してください。</p>
-    				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">Eclipseの上段のメニューの中のClass Readyに存在するStartボタンを押して講義を始めてください。</p>
+    				 <li class="liFont"><span class="spanFont">3.</span><p class="pFont">Eclipseの上段のメニューの中のClass Readyに存在するStartボタンを押して講義を<br>始めてください。</p>
     				 <li class="liFont"><span class="spanFont">4.</span><p class="pFont">講義が終わる時、上段のメニューの中のClass Readyに存在する <br>Endボタンを押して講義を終了してください。</p>
     				 </ol>
  				 </div> 

@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 	<link rel="stylesheet" href="css/components/bs-datatable.css" type="text/css" />
 	<!-- Bootstrap File Upload CSS -->
+	<link rel="stylesheet" href="css/components/bs-switches.css" type="text/css" />
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="css/customHeader.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -162,7 +163,11 @@ ul.c-controls li a:hover {
 	font-size: 1.2em;
 }
 .feature-box.fbox-light .fbox-icon i { line-height: 30px !important; }
-/* 왜 터졌지? */
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
 </style>
 </head>
 <body class="stretched no-transition" style="background-image: url('images/teacherback.jpeg'); background-size: 2000px; background-repeat: repeat;" >
@@ -254,12 +259,32 @@ ul.c-controls li a:hover {
 			</div>
 			</div>
 		</section>
-		<section>
-			<div class="container clearfix" style="margin-right: 85px;">
-				<div class="panel-heading" style="width: 1200px;">
-					<div id="homeWork" class="entry clearfix"
+		<section id="content" style="background-color: transparent;">
+			<div class="container clearfix">
+				<div class="panel-heading col_full divcenter" style="width: 1200px;">
+					<div id="homeWork" class="entry clearfix col_full"
 					style="margin-bottom: 10px; padding-bottom: 10px;">
+					<div class="panel panel-default">
+					
+					
+					</div>
 					<div class="table-responsive col-md-6">
+					<div class="row" style=" padding-right: 10px;">
+					<div class="col-md-12" style="background-color: #f5f5f5; border-radius: 3px;">
+					<div class="col-sm-4">
+					<h3 style="font-weight: bold;">E-Mail招待</h3>
+					</div>
+					<div class="col-sm-8" style="top:11px;" >
+						<div class="row form-group">
+							<div class="input-group">
+								<input type="text" class="form-control"> <span
+								class="input-group-addon success" style="cursor: pointer;"><i
+								class="icon-line-check" ></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
 					<div class="row" style=" padding-right: 10px;">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
@@ -284,6 +309,7 @@ ul.c-controls li a:hover {
                 </div>
                 
                 <div class="row" style="display: none;">
+                
                     <div class="col-xs-12">
                         <div class="input-group c-search">
                             <input type="text" class="form-control" id="contact-list-search">
@@ -337,7 +363,22 @@ ul.c-controls li a:hover {
 					</div>
 					<div class="col-md-6">
 					<div class="row" style= "padding-left: 10px;">
+					<div class="col-md-12" style="background-color: #f5f5f5; border-radius: 3px;" >
+					<div class="col-sm-7">
+					<h3 style="font-weight: bold;">クラス変換</h3>
+					</div>
+					<div class="col-sm-2" style="margin-top: 10px;">
+					<input id="publicStatus" class="bt-switch" name="is_public" type="checkbox" value="y" data-on-text="<i class='icon-lock3'></i>" data-off-text="<i class='icon-unlock'></i>" data-on-color="danger" data-off-color="default">
+					</div>
+					<div id ="publicwordForm" class="col-sm-2" style="margin-top: 7px;">
+							<button disabled="disabled" id="publicbtn"
+						class="button publicbutton-3d tright nomargin" role="button" data-lightbox="inline" style="cursor: default; width: 100px; background-color: #ff9800;">公開<i class="icon-unlock" style="width: 15px"></i></button>
+					</div>
+					</div>
+					</div>
+					<div class="row" style= "padding-left: 10px;">
             <div class="panel panel-default">
+            	
                 <div class="panel-heading c-list">
                 	<div class="col-xs-12 col-sm-2" style="padding-top:5px; padding-left: 0; padding-right: 0;">
                     <span class="title">学生たち</span>
@@ -432,6 +473,7 @@ ul.c-controls li a:hover {
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/components/bs-switches.js"></script>
 	<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 	<script>
 
@@ -520,7 +562,48 @@ ul.c-controls li a:hover {
 			$('#wrapper').animate({
 				backgroundColor: "rgba(255, 255, 255, 0.5)"
 			}, 1500);
-			
+			$(".bt-switch").bootstrapSwitch();
+			var pub = '公開<i class="icon-unlock" style="width: 15px"></i>';
+			var nopub = '非公開<i class="icon-lock3" style="width: 15px"></i>';
+			$(".bt-switch").on('switchChange.bootstrapSwitch',
+					function(event, state) {
+						var publicWordForm = $("#publicbtn");
+						if (state == false) {
+							$(publicWordForm).css({
+								'border-radius': '3px',
+							'border-bottom': '3px solid rgba(0,0,0,0.15)',
+							'background-color': '#FF9800 !important',
+							'color': '#fff !important',
+							'text-shadow': '1px 1px 1px rgba(0,0,0,0.3)',
+							'box-shadow': '0 0 0 rgba(0,0,0,0.2)'
+							})
+							$(publicWordForm).hover(
+									$(publicWordForm).css({
+										'background-color': '#ff9800 !important',
+										'opacity': '0.9'
+									})
+							)
+							$(publicWordForm).html(pub);
+						}
+						if (state == true) {
+							$(publicWordForm).css({
+								'border-radius': '3px',
+							'border-bottom': '3px solid rgba(0,0,0,0.15)',
+							'background-color': '#F5F5F5 !important',
+							'color': '#444 !important',
+							'text-shadow': '1px 1px 1px rgba(0,0,0,0.3)',
+							'box-shadow': '0 0 0 rgba(0,0,0,0.2)'
+							})
+							$(publicWordForm).hover(
+									$(publicWordForm).css({
+										'background-color': '#F5F5F5 !important',
+										'opacity': '0.9'
+									})
+							)
+
+							$(publicWordForm).html(nopub);
+						}
+					});
 		});
 		function locationStatus(){
 			var status= $(this).attr('status');
