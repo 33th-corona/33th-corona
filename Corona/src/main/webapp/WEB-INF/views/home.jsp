@@ -205,7 +205,7 @@
 											<input type="button" id="loginbtn" class="button button-rounded button-reveal button-light  button-small button-black nomargin" value="login">
 										</div>
 										<div class="col-xs-6">
-											<p class="nobottommargin tright"><small class="t300"><em><a href="#">Forgot Password?</a></em></small></p>
+<!-- 											<p class="nobottommargin tright"><small class="t300"><em><a href="#">Forgot Password?</a></em></small></p> -->
 										</div>
 									</div>
 								</div>

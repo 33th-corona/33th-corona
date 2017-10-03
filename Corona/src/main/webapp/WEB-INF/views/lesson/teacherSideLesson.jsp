@@ -337,8 +337,10 @@ function lessonStart(startResult, existLesson) {
 					$('button#stopStudentView').trigger('click');
 					var sendMessage = {};
 					sendMessage.action = "viewStudentEclipse";
-					sendMessage.ip = $('select option:selected').attr("user-ip");
+					var selectedUserIp = $('div#studentList select option:selected').attr("user-ip");
+					sendMessage.ip = selectedUserIp;
 					var sendMessageJSON = JSON.stringify(sendMessage);
+					console.log(sendMessageJSON);
 					sock.send(sendMessageJSON);
 				});
 			} 

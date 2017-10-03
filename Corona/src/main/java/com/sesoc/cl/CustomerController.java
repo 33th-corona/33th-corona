@@ -92,9 +92,9 @@ public class CustomerController {
 			int result = repo.register(makedUser);
 			
 			if(result != 0) {
-				message = "회원가입이 정상적으로 완료 되었습니다.";
+				message = "会員加入が成功しました。";
 			} else {
-				message = "회원가입에 실패하였습니다.";
+				message = "会員加入が失敗しました。";
 			}
 			
 			model.addAttribute("message", message);

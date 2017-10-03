@@ -176,7 +176,7 @@
 								<button id="createbtn" disabled="disabled" type="submit" class="button button-xlarge button-rounded tright" style="background-color: #444;">Create!<i class="icon-circle-arrow-right"></i></button>
 								&nbsp;<button type="reset" id="re" class="button button-xlarge button-blue button-rounded tright" style="background-color: #444">Reset!<i class="icon-line-cross"></i></button>
 						</div>
-			   		</div>	   
+			   		</div>
 			</div>
 		</div>
 		</form>
