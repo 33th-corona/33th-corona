@@ -195,7 +195,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-list i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">一般提示版</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">一般掲示板</h2></div>
 				
 				</div>
 				</form>
@@ -242,7 +242,7 @@ ul.c-controls li a:hover {
 							<div class="fbox-icon center" style="position: static !important; margin: 0 auto !important;">
 								<a href="#" style="background-color: transparent;"><i class="icon-book3 i-alt"></i></a>
 							</div>
-							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">課題提示版</h2></div>
+							<div class="col_full center" style="padding-top:1px;"><h2 style="color: white !important; font-size: 24px;">課題掲示板</h2></div>
 				
 				</div>
 				</form>

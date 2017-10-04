@@ -602,7 +602,7 @@ function saveEditorOption(editor) {
 			<div id="rightThirdPanel" class="row editorArea">
 				<div id="connStudentEclipse">
 					<button id="startStudentView" class="btn-change6">出力</button>
-					<button style="margin-left: 35px;" id="stopStudentView" class="btn-change6">解体</button>
+					<button style="margin-left: 35px;" id="stopStudentView" class="btn-change6">削除</button>
 				</div>
 			</div>
 		</div>

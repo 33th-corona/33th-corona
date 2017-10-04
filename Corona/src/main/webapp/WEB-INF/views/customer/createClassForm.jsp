@@ -221,56 +221,8 @@
 					return false;
 				}
 			});
-			$('#class-form-name').keyup(
-					function(evt) {
-						var checkName = $('#class-form-name').val();
-						$.ajax({
-							url : 'checkClassName',
-							method : 'GET',
-							data : "name=" + checkName,
-							success : function(repo) {
-								if (repo == 0) {
-									$('#nameOk').css({
-										'background-color' : '#ff9800',
-										'color' : '#FFF',
-										'text-shadow' : '1px 1px 1px rgba(0,0,0,0.3)',
-										'box-shadow' : '0 0 0 rgba(0,0,0,0.2)'
-									})
-									$('#nameOk').hover(
-											$('#nameOk').addClass("hoveri-circled") , 
-											$('#nameOk').removeClass("name-i-light") 
-									);
-									$('#createbtn').attr('disabled', false);
-									$('#createbtn').hover(
-										$('#createbtn').css('background-color','#ff9800')
-									)
-								} else {
-									$('#nameOk').css({
-										'background-color' : '#F5F5F5',
-										'color' : '#444',
-										'text-shadow' : '1px 1px 1px rgba(0,0,0,0.3)',
-										'box-shadow' : '0 0 0 rgba(0,0,0,0.2)'
-									})
-									$('#createbtn').attr('disabled', 'disabled');
-									$('#nameOk').hover(
-											$('#nameOk').removeClass("hoveri-circled"),
-											$('#nameOk').addClass("name-i-light")
-									);
-									$('#createbtn').mouseover(
-											$('#createbtn').css('background-color','#444 ')	
-										);
-										$('#createbtn').mouseout(
-												$('#createbtn').css('background-color','#444')	
-										);
-									
-									
-								}
-							},
-							error : function(repo) {
-								alert("오류 = " + repo);
-							}
-						})
-					})
+			$('#class-form-name').change(textC);
+			$('#class-form-name').keyup(textC);
 			$(".bt-switch").bootstrapSwitch();
 			var pub = '公開<i class="icon-unlock" style="width: 15px"></i>';
 			var nopub = '非公開<i class="icon-lock3" style="width: 15px"></i>';
@@ -317,6 +269,55 @@
 
 		function nameFocus() {
 			$('#class-form-name').focus();
+		}
+		function textC(evt) {
+			var checkName = $('#class-form-name').val();
+			$.ajax({
+				url : 'checkClassName',
+				method : 'GET',
+				data : "name=" + checkName,
+				success : function(repo) {
+					if (repo == 0) {
+						$('#nameOk').css({
+							'background-color' : '#ff9800',
+							'color' : '#FFF',
+							'text-shadow' : '1px 1px 1px rgba(0,0,0,0.3)',
+							'box-shadow' : '0 0 0 rgba(0,0,0,0.2)'
+						})
+						$('#nameOk').hover(
+								$('#nameOk').addClass("hoveri-circled") , 
+								$('#nameOk').removeClass("name-i-light") 
+						);
+						$('#createbtn').attr('disabled', false);
+						$('#createbtn').hover(
+							$('#createbtn').css('background-color','#ff9800')
+						)
+					} else {
+						$('#nameOk').css({
+							'background-color' : '#F5F5F5',
+							'color' : '#444',
+							'text-shadow' : '1px 1px 1px rgba(0,0,0,0.3)',
+							'box-shadow' : '0 0 0 rgba(0,0,0,0.2)'
+						})
+						$('#createbtn').attr('disabled', 'disabled');
+						$('#nameOk').hover(
+								$('#nameOk').removeClass("hoveri-circled"),
+								$('#nameOk').addClass("name-i-light")
+						);
+						$('#createbtn').mouseover(
+								$('#createbtn').css('background-color','#444 ')	
+							);
+							$('#createbtn').mouseout(
+									$('#createbtn').css('background-color','#444')	
+							);
+						
+						
+					}
+				},
+				error : function(repo) {
+					alert("오류 = " + repo);
+				}
+			})
 		}
 	</script>
 </body>
