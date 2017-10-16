@@ -1,5 +1,6 @@
 package com.sesoc.cl.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,5 +91,12 @@ public class ClassRepository {
 		List<ClassInfo> result = dao.myTeacherList(id);
 		
 		return result;
+	}
+	public int changeClassState(int classNum, int state) {
+		ClassInfoDao dao = sqlSession.getMapper(ClassInfoDao.class);
+		Map<String, Integer> tempMap = new HashMap<>();
+		tempMap.put("classNum", classNum);
+		tempMap.put("state", state);
+		return dao.changeClassState(tempMap);
 	}
 }

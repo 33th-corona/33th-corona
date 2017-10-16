@@ -25,4 +25,5 @@ public interface ClassInfoDao {
 	public List<ClassInfo> myStudentList(String id);
 	public List<ClassUser> selectRequestClassOne(int num);
 	public List<ClassInfo> myTeacherList(String id);
+	public int changeClassState(Map<String, Integer> map);
 }

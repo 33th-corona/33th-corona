@@ -138,6 +138,13 @@ public class ClassController {
 			}
 		}
 		
+		//반 상태 변경(공개, 비공개)
+		@ResponseBody
+		@RequestMapping(value = "changeClassState", method = RequestMethod.POST)
+		public int changeClassState(int classNum, int state) {
+			return cRepo.changeClassState(classNum, state);
+		}
+		
 		
 		public void listCome(Model model, HttpServletRequest request) {
 			HttpSession session = request.getSession(); 

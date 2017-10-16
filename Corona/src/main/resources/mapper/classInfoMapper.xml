@@ -75,6 +75,12 @@
 		where u.CLASS_NUM = i.NUM and u.user_id = #{user_id} and not u.STATUS = 'request' and not u.status = 'withdraw'
 	</select>
 	<select id="myTeacherList" parameterType="String" resultType="ClassInfo">
-	Select * from Class_Info where Teacher_id = #{id} order by num
+		Select * from Class_Info where Teacher_id = #{id} order by num
 	</select>
+	<update id="changeClassState" parameterType="map">
+		update class_info
+		<if test="state == 1">set is_public = 'y'</if>
+		<if test="state == 0">set is_public = 'n'</if>
+		where num = #{classNum}
+	</update>
 </mapper>

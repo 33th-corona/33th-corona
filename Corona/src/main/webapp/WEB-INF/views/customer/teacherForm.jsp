@@ -562,48 +562,73 @@ ul.c-controls li a:hover {
 			$('#wrapper').animate({
 				backgroundColor: "rgba(255, 255, 255, 0.5)"
 			}, 1500);
+			
 			$(".bt-switch").bootstrapSwitch();
 			var pub = '公開<i class="icon-unlock" style="width: 15px"></i>';
 			var nopub = '非公開<i class="icon-lock3" style="width: 15px"></i>';
 			$(".bt-switch").on('switchChange.bootstrapSwitch',
-					function(event, state) {
-						var publicWordForm = $("#publicbtn");
-						if (state == false) {
-							$(publicWordForm).css({
-								'border-radius': '3px',
+				function(event, state) {
+					var publicWordForm = $("#publicbtn");
+					var classNum = ${classInfo.num};
+					if (state == false) {
+						$.ajax({
+							url: "changeClassState",
+							method: "post",
+							data: {"classNum" : classNum,
+								"state" : 1},
+							success: function(resp) {
+								if(resp == 1) {
+									console.log("공개 적용 완료");
+								}
+							}
+						});
+						
+						$(publicWordForm).css({
+							'border-radius': '3px',
 							'border-bottom': '3px solid rgba(0,0,0,0.15)',
 							'background-color': '#FF9800 !important',
 							'color': '#fff !important',
 							'text-shadow': '1px 1px 1px rgba(0,0,0,0.3)',
 							'box-shadow': '0 0 0 rgba(0,0,0,0.2)'
-							})
-							$(publicWordForm).hover(
-									$(publicWordForm).css({
-										'background-color': '#ff9800 !important',
-										'opacity': '0.9'
-									})
-							)
-							$(publicWordForm).html(pub);
-						}
-						if (state == true) {
-							$(publicWordForm).css({
-								'border-radius': '3px',
-							'border-bottom': '3px solid rgba(0,0,0,0.15)',
-							'background-color': '#F5F5F5 !important',
-							'color': '#444 !important',
-							'text-shadow': '1px 1px 1px rgba(0,0,0,0.3)',
-							'box-shadow': '0 0 0 rgba(0,0,0,0.2)'
-							})
-							$(publicWordForm).hover(
-									$(publicWordForm).css({
-										'background-color': '#F5F5F5 !important',
-										'opacity': '0.9'
-									})
-							)
-
-							$(publicWordForm).html(nopub);
-						}
-					});
+						});
+						$(publicWordForm).hover(
+								$(publicWordForm).css({
+									'background-color': '#ff9800 !important',
+									'opacity': '0.9'
+								})
+						);
+						$(publicWordForm).html(pub);
+					} else if (state == true) {
+						$.ajax({
+							url: "changeClassState",
+							method: "post",
+							data: {"classNum" : classNum,
+								"state" : 0},
+							success: function(resp) {
+								if(resp == 1) {
+									console.log("비공개 적용 완료");
+								}
+							}
+						});
+						
+						$(publicWordForm).css({
+							'border-radius': '3px',
+						'border-bottom': '3px solid rgba(0,0,0,0.15)',
+						'background-color': '#F5F5F5 !important',
+						'color': '#444 !important',
+						'text-shadow': '1px 1px 1px rgba(0,0,0,0.3)',
+						'box-shadow': '0 0 0 rgba(0,0,0,0.2)'
+						})
+						$(publicWordForm).hover(
+								$(publicWordForm).css({
+									'background-color': '#F5F5F5 !important',
+									'opacity': '0.9'
+								})
+						)
+						$(publicWordForm).html(nopub);
+					}
+				}
+			);
 		});
 		function locationStatus(){
 			var status= $(this).attr('status');
