@@ -367,6 +367,7 @@ ul.c-controls li a:hover {
 					<div class="col-sm-7">
 					<h3 style="font-weight: bold;">クラス変換</h3>
 					</div>
+						<c:if test="${classInfo.is_public eq 'y'}">
 					<div class="col-sm-2" style="margin-top: 10px;">
 					<input id="publicStatus" class="bt-switch" name="is_public" type="checkbox" value="y" data-on-text="<i class='icon-lock3'></i>" data-off-text="<i class='icon-unlock'></i>" data-on-color="danger" data-off-color="default">
 					</div>
@@ -374,6 +375,16 @@ ul.c-controls li a:hover {
 							<button disabled="disabled" id="publicbtn"
 						class="button publicbutton-3d tright nomargin" role="button" data-lightbox="inline" style="cursor: default; width: 100px; background-color: #ff9800;">公開<i class="icon-unlock" style="width: 15px"></i></button>
 					</div>
+						</c:if>
+						<c:if test="${classInfo.is_public eq 'n'}">
+						<div class="col-sm-2" style="margin-top: 10px;">
+					<input id="publicStatus" class="bt-switch" name="is_public" type="checkbox" checked="checked" value="n" data-on-text="<i class='icon-lock3'></i>" data-off-text="<i class='icon-unlock'></i>" data-on-color="danger" data-off-color="default">
+					</div>
+					<div id ="publicwordForm" class="col-sm-2" style="margin-top: 7px;">
+							<button disabled="disabled" id="publicbtn"
+						class="button publicbutton-3d tright nomargin" role="button" data-lightbox="inline" style="cursor: default; border-radius:3px; border-bottom:3px solid rgba(0,0,0,0.15); width: 100px; color:#444; background-color: #F5F5F5; text-shadow:1px 1px 1px rgba(0,0,0,0.3); box-shadow: 0 0 0 rgba(0,0,0,0.2);">非公開<i class="icon-lock3" style="width: 15px"></i></button>
+					</div>
+						</c:if>
 					</div>
 					</div>
 					<div class="row" style= "padding-left: 10px;">
