@@ -81,7 +81,7 @@
 	</div>
 </section>
 <section id="content" style="background-image: url('images/homeworkback.jpg'); background-size: 1300px;">
-<div class="container clearfix" style=" background-color: rgba(255,255,255, 0.3); padding-top: 20px; padding-bottom: 20px;">
+	<div class="container clearfix" style=" background-color: rgba(255,255,255, 0.3); padding-top: 20px; padding-bottom: 20px;">
 		<div class="row"><!-- 큰 row 시작 -->
 			<div class="col-md-3"><!-- 서쪽 컬럼 시작 -->
 				<div class="row"><!-- 서쪽 1번째 줄 시작 -->

@@ -311,7 +311,7 @@ function saveEditorOption(editor) {
 </script>
 </head>
 <%@ include file="../topMenu.jsp" %>
-	<%@ include file="../sidebar.jsp" %>
+<%@ include file="../sidebar.jsp" %>
 <script src="js/jquery.fancytree.js/"></script>
 <body class="stretched side-panel-left" style="background-image: url('images/studentLessonBack.jpg'); background-size: 1300px;">
 <div class="body-overlay"></div>

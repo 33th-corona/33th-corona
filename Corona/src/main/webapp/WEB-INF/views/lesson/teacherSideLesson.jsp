@@ -481,7 +481,7 @@ function saveEditorOption(editor) {
 </script>
 </head>
 <%@ include file="../topMenu.jsp" %>
-	<%@ include file="../sidebar.jsp" %>
+<%@ include file="../sidebar.jsp" %>
 <script src="js/jquery.fancytree.js/"></script>
 <body class="stretched side-panel-left">
 <div class="body-overlay"></div>
@@ -521,9 +521,7 @@ function saveEditorOption(editor) {
 
 <div id="lessonDiv" style="background-image: url('images/teacherLessonBack.gif'); display: none;">
 <section id="content" style="background-color: rgba(255,255,255,0);">
-<div id="bor" class="container clearfix" style="background: linear-gradient(45deg, #cccccc, #333333); border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; 
-	background-size: 100% 100%;
-	" >
+<div id="bor" class="container clearfix" style="background: linear-gradient(45deg, #cccccc, #333333); border: 22px solid; border-radius:10%; margin : 10px 30px 10px 30px; padding: 20px 70px 20px 70px; background-position: center center; background-size: 100% 100%;" >
 	<div class="row" >
 		<div id="leftPanel" class="col-sm-10" style="display: none">
 			<div id="leftUpperPanel" class="row">
@@ -617,14 +615,13 @@ function saveEditorOption(editor) {
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+
 <footer id="footer" class="dark noborder">
-
-			<div id="copyrights">
-				<div class="container center clearfix">
-					Copyright HanJo 2017 | All Rights Reserved
-				</div>
-			</div>
-
-		</footer><!-- #footer end -->
+	<div id="copyrights">
+		<div class="container center clearfix">
+			Copyright HanJo 2017 | All Rights Reserved
+		</div>
+	</div>
+</footer><!-- #footer end -->
 </body>
 </html>

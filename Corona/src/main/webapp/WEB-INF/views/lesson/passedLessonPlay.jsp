@@ -256,7 +256,8 @@ function saveEditorOption(editor) {
 </head>
 
 <%@ include file="../topMenu.jsp" %>
-	<%@ include file="../sidebar.jsp" %>
+<%@ include file="../sidebar.jsp" %>
+
 <!-- FancyTree Library -->
 <script src="js/jquery.fancytree.js/"></script>
 
@@ -278,7 +279,6 @@ function saveEditorOption(editor) {
 		<div id="rightSecondPanel" class="editorArea topPanel col-sm-12" style="background-image: url('images/audioback.jpg'); background-size: 1300px;">
 			<!-- 오디오  -->
 			<audio id="myAudio" class="topPanelPart" controls="controls" controlsList="nodownload noremote" preload="auto" style="display: inline-block;">
-<%-- 				<source src="videoPlay?saved_audio=${savedLessonInfo.saved_audio}" type="audio/mpeg"> --%>
 				<!-- 자막 -->
 				<track id="entrack" src="captionPlay?saved_code=${savedLessonInfo.saved_code}" kind="metadata" default></track>
 			</audio>
@@ -360,14 +360,13 @@ function saveEditorOption(editor) {
 	<input type="hidden" name="invisibles">
 	<input type="hidden" name="indentGuides">
 </form>
+
 <footer id="footer" class="dark noborder">
-
-			<div id="copyrights">
-				<div class="container center clearfix">
-					Copyright HanJo 2017 | All Rights Reserved
-				</div>
-			</div>
-
-		</footer>
+	<div id="copyrights">
+		<div class="container center clearfix">
+			Copyright HanJo 2017 | All Rights Reserved
+		</div>
+	</div>
+</footer>
 </body>
 </html>
