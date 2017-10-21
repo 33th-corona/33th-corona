@@ -52,21 +52,19 @@ public class LessonInitialization {
 	
 	/**
 	 * Eclipse와의 Stream이 잘 구축되었는지 확인을 위해 Eclipse에 성공 메세지 전달
+	 * @param oos 
 	 * @return Eclipse에 메세지 전송에 성공하면 true, 아니면 false
 	 */
-	public boolean initStreamCheck() {
-		boolean result = false;
+	public void initStreamCheck(ObjectOutputStream oos) {
 		try {
 			Map<String, Object> sendMapToEclipse = new HashMap<>();
 			sendMapToEclipse.put("initResult", "success");
 			oos = lessonThread.getOos();
 			oos.writeObject(sendMapToEclipse);
-			result = true;
 		} catch (IOException e) {
 			e.printStackTrace();
 			close();
 		}
-		return result;
 	}
 	
 	public boolean startLectureSave() {
@@ -143,10 +141,9 @@ public class LessonInitialization {
 		return result;
 	}
 	
-	public boolean startAudioRecord() {
-		boolean result = false;
+	public void startAudioRecord(String savedFileName) {
 		
-		AudioRecordThread recordThread = new AudioRecordThread(lessonThread);
+		AudioRecordThread recordThread = new AudioRecordThread(savedFileName);
 		lessonThread.setAudioRecordThread(recordThread);
 		new Thread(recordThread).start();
 		
@@ -156,13 +153,11 @@ public class LessonInitialization {
 			sendMapToEclipse.put("checkSocket", "openSocket");
 			oos = lessonThread.getOos();
 			oos.writeObject(sendMapToEclipse);
-			result = true;
 		} catch (IOException e) {
 			e.printStackTrace();
 			close();
 		}
 		
-		return result;
 	}
 	
 	/**

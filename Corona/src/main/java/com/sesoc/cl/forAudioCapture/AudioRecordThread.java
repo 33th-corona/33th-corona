@@ -9,14 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-
-import com.sesoc.cl.threadForLesson.LessonThread;
 
 public class AudioRecordThread implements Runnable {
 	
@@ -27,7 +24,8 @@ public class AudioRecordThread implements Runnable {
 
 	private boolean stopCapture = false;
 	
-	private LessonThread lessonThread;
+	private String directory = "C:\\CoronaSaveFolder\\passed_lesson\\audio";
+	private String savedFileName;
 	
 	// 파일 내보내기
 	// 녹음된 wav파일과 녹음 후 컨버팅할 mp3파일의 경로설정
@@ -40,8 +38,8 @@ public class AudioRecordThread implements Runnable {
 	
 	FileOutputStream fos;
 
-	public AudioRecordThread(LessonThread lessonThread) {
-		this.lessonThread = lessonThread;
+	public AudioRecordThread(String savedFileName) {
+		this.savedFileName = savedFileName;
 	}
 
 	@Override
@@ -53,6 +51,7 @@ public class AudioRecordThread implements Runnable {
 			serverSocket.close();
 			System.out.println("레코드쓰레드 서버소켓 생성완료");
 			is = socket.getInputStream();
+			
 			captureAudio();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,9 +66,6 @@ public class AudioRecordThread implements Runnable {
 	
 	// ButeArrayOutputStream에 마이크로부터 입력받은 오디오 데이터를 저장하는 메소드
 	public void captureAudio() {
-		String savedFileName = lessonThread.getSavedFileName();
-		String directory = "C:\\CoronaSaveFolder\\passed_lesson\\audio";
-		
 		File pathFile = new File(directory);
 		if (!(pathFile.isDirectory())) pathFile.mkdirs();
 		
@@ -79,7 +75,7 @@ public class AudioRecordThread implements Runnable {
 		
 		// 캡쳐의 모든 설정
 		AudioFormat audioFormat = getAudioFormat(); // ex)PCM_SIGNED 44100.0 Hz, 16 bit, stereo, 4 bytes/frame, little-endian
-
+		
 		System.out.println(audioFormat);
 		
 		// ex)PCM_SIGNED 44100.0 Hz, 16 bit, stereo, 4 bytes/frame, little-endian

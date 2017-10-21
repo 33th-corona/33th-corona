@@ -7,14 +7,12 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketSession;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.StudentConn;
@@ -71,8 +69,8 @@ public class LessonThread implements Runnable{
 		savedFileName = init.getSavedFileName();
 		
 		initStream();
-		init.initStreamCheck();
-		init.startAudioRecord();
+		init.initStreamCheck(oos);
+		init.startAudioRecord(savedFileName);
 		init.startLectureSave();
 		init.getInitProjectExplorer();
 		init.getInitActivedEditor();
