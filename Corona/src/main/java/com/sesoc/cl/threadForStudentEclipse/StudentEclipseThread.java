@@ -44,8 +44,9 @@ public class StudentEclipseThread implements Runnable{
 		this.teacherConn = teacherConn;
 		this.studentIp = studentIp;
 		currentStudentEclipsePage = new CurrentStudentEclipsePage();
+		
 		send = new SendToStudentEclipsePage(teacherConn.getSession());
-		init = new StudentEclipseInitialization(this);
+		init = new StudentEclipseInitialization();
 	}
 	
 	/**
@@ -55,12 +56,12 @@ public class StudentEclipseThread implements Runnable{
 	@Override
 	public void run() {
 		initStream();
-		init.initStreamCheck();
+		init.initStreamCheck(oos);
 		
 		send.sendToStudentEclipsePage("connStudentEclipseSuccess");
 		
-		init.getInitProjectExplorer();
-		init.getInitActivedEditor();
+		init.getInitProjectExplorer(ois, currentStudentEclipsePage, send);
+		init.getInitActivedEditor(ois, currentStudentEclipsePage, send);
 		
 		try {
 			//stop이 true가 될 때까지 무한 반복
@@ -209,46 +210,10 @@ public class StudentEclipseThread implements Runnable{
 		}
 	}
 	
-	public ObjectInputStream getOis() {
-		return ois;
-	}
-
-	public void setOis(ObjectInputStream ois) {
-		this.ois = ois;
-	}
-
-	public ObjectOutputStream getOos() {
-		return oos;
-	}
-
-	public void setOos(ObjectOutputStream oos) {
-		this.oos = oos;
-	}
-
 	public TeacherConn getTeacherConn() {
 		return teacherConn;
 	}
 
-	public void setTeacherConn(TeacherConn teacherConn) {
-		this.teacherConn = teacherConn;
-	}
-	
-	public CurrentStudentEclipsePage getCurrentStudentEclipsePage() {
-		return currentStudentEclipsePage;
-	}
-
-	public void setCurrentStudentEclipsePage(CurrentStudentEclipsePage currentStudentEclipsePage) {
-		this.currentStudentEclipsePage = currentStudentEclipsePage;
-	}
-	
-	public SendToStudentEclipsePage getSend() {
-		return send;
-	}
-
-	public void setSend(SendToStudentEclipsePage send) {
-		this.send = send;
-	}
-	
 	/**
 	 * Eclipse가 종료되거나 강의가 종료되었을 경우 실행, 현재 Thread를 종료 시키고, 학생에게 강의 종료를 알림
 	 */
