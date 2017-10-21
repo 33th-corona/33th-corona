@@ -11,24 +11,25 @@ import org.springframework.web.socket.WebSocketSession;
 
 import com.sesoc.cl.connInfo.StudentConn;
 import com.sesoc.cl.connInfo.TeacherConn;
+import com.sesoc.cl.forLessonSave.LessonSave;
 
 public class SendChatMessage {
-	private LessonThread lessonThread;
 	private List<StudentConn> studentConnList;
 	private TeacherConn teacherConn;
 	private List<Map<String, String>> chatHistory; 
+	private LessonSave lessonSave;
 	
 	/**
 	 * 웹 페이지에 정보 전송 클래스의 생성자, 클래스 Thread에 참가하고 있는 StudentConnList를 로딩
-	 * @param lessonThread 클래스 Thread 객체
 	 */
-	public SendChatMessage(LessonThread lessonThread) {
-		this.lessonThread = lessonThread;
-		studentConnList = this.lessonThread.getStudentConnList();
-		teacherConn = this.lessonThread.getTeacherConn();
-		chatHistory = this.lessonThread.getCurrentLessonPage().getChatHistory();
+	public SendChatMessage(TeacherConn teacherConn, List<StudentConn> studentConnList,
+			List<Map<String, String>> chatHistory, LessonSave lessonSave) {
+		this.teacherConn = teacherConn;
+		this.studentConnList = studentConnList;
+		this.chatHistory = chatHistory;
+		this.lessonSave = lessonSave;
 	}
-	
+
 	public boolean sendChatMessage(String from, String to, String message) {
 		boolean result = false;
 		
@@ -46,7 +47,7 @@ public class SendChatMessage {
 			tempMap.put("chatMessage", message);
 			chatHistory.add(tempMap);
 			
-			lessonThread.getLectureSave().savePart("chatMessage", chatHistory);
+			lessonSave.savePart("chatMessage", chatHistory);
 		} else {
 			sendMap.put("to", to);
 		}

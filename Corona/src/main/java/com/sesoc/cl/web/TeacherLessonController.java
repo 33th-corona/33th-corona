@@ -22,7 +22,6 @@ import com.sesoc.cl.connInfo.TeacherConn;
 import com.sesoc.cl.connInfo.TeacherConnList;
 import com.sesoc.cl.dao.ClassRepository;
 import com.sesoc.cl.dao.PassedLessonRepository;
-import com.sesoc.cl.dao.UsersRepository;
 import com.sesoc.cl.socket.LessonMainSocket;
 import com.sesoc.cl.threadForLesson.LessonThread;
 import com.sesoc.cl.vo.ClassInfo;

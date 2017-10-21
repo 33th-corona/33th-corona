@@ -1,17 +1,8 @@
 package com.sesoc.cl.web;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
-import java.util.Locale;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,15 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.dao.ClassRepository;
-import com.sesoc.cl.dao.UsersRepository;
-import com.sesoc.cl.forLessonSave.UnZip;
 import com.sesoc.cl.threadForLesson.LessonThread;
 import com.sesoc.cl.vo.ClassInfo;
 

@@ -58,7 +58,8 @@ public class LessonThread implements Runnable{
 		
 		init = new LessonInitialization();
 		sendToLessonPage = new SendToLessonPage(studentConnList);
-		sendChatMessage = new SendChatMessage(this);
+		sendChatMessage = new SendChatMessage(teacherConn, studentConnList, 
+				currentLessonPage.getChatHistory(), lessonSave);
 	}
 	
 	/**
@@ -329,20 +330,12 @@ public class LessonThread implements Runnable{
 		}
 	}
 
-	public LessonSave getLectureSave() {
-		return lessonSave;
-	}
-
 	public TeacherConn getTeacherConn() {
 		return teacherConn;
 	}
 
 	public List<StudentConn> getStudentConnList() {
 		return studentConnList;
-	}
-
-	public CurrentLessonPage getCurrentLessonPage() {
-		return currentLessonPage;
 	}
 
 	public SendChatMessage getSendChatMessage() {
