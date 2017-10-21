@@ -124,6 +124,8 @@ public class AudioRecordThread implements Runnable {
 				System.out.println("파일저장 끝");
 				boolean result1 = mp3Converter.WavToMp3(wavFile, result);
 				if (result1 == true) {
+					tempFile.delete();
+					wavFile.delete();
 					System.out.println("컨버팅 완료");
 				}
 				close();
