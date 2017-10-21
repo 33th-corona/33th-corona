@@ -118,7 +118,7 @@ public class LessonSave {
 		Long chenge = new Long(lessonTime);
 		String chenge2 = chenge.toString();
 		
-		if(chenge2.length() < 3) {
+		if(chenge2.length() < 4) {
 			return "00:00:00.000";
 		} else {
 			String stringMiliSecond = chenge2.substring(chenge2.length() - 3, chenge2.length());

@@ -58,8 +58,6 @@ public class LessonThread implements Runnable{
 		
 		init = new LessonInitialization();
 		sendToLessonPage = new SendToLessonPage(studentConnList);
-		sendChatMessage = new SendChatMessage(teacherConn, studentConnList, 
-				currentLessonPage.getChatHistory(), lessonSave);
 	}
 	
 	/**
@@ -80,6 +78,9 @@ public class LessonThread implements Runnable{
 		
 		lessonSave = new LessonSave(savedFileName, startTime);
 		lessonSave.initSaveFile();
+		
+		sendChatMessage = new SendChatMessage(teacherConn, studentConnList, 
+				currentLessonPage.getChatHistory(), lessonSave);
 		
 		init.getInitProjectExplorer(ois, currentLessonPage, lessonSave);
 		init.getInitActivedEditor(ois, currentLessonPage, lessonSave);
