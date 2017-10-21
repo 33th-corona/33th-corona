@@ -57,7 +57,7 @@ public class LessonThread implements Runnable{
 		currentLessonPage = new CurrentLessonPage();
 		
 		init = new LessonInitialization();
-		sendToLessonPage = new SendToLessonPage(this);
+		sendToLessonPage = new SendToLessonPage(studentConnList);
 		sendChatMessage = new SendChatMessage(this);
 	}
 	

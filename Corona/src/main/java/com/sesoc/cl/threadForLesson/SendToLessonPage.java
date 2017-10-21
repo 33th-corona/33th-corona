@@ -17,16 +17,14 @@ import com.sesoc.cl.connInfo.StudentConn;
  */
 public class SendToLessonPage {
 	
-	private LessonThread lessonThread;
 	private List<StudentConn> studentConnList;
 	
 	/**
 	 * 웹 페이지에 정보 전송 클래스의 생성자, 클래스 Thread에 참가하고 있는 StudentConnList를 로딩
-	 * @param lessonThread 클래스 Thread 객체
+	 * @param studentConnList 클래스 Thread 객체
 	 */
-	public SendToLessonPage(LessonThread lessonThread) {
-		this.lessonThread = lessonThread;
-		studentConnList = this.lessonThread.getStudentConnList();
+	public SendToLessonPage(List<StudentConn> studentConnList) {
+		this.studentConnList = studentConnList;
 	}
 	
 	/**
