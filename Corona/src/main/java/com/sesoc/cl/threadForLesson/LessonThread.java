@@ -55,7 +55,8 @@ public class LessonThread implements Runnable{
 		this.teacherConn = teacherConn;
 		studentConnList = new ArrayList<>();
 		currentLessonPage = new CurrentLessonPage();
-		init = new LessonInitialization(this);
+		
+		init = new LessonInitialization();
 		sendToLessonPage = new SendToLessonPage(this);
 		sendChatMessage = new SendChatMessage(this);
 	}
@@ -66,14 +67,21 @@ public class LessonThread implements Runnable{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
-		savedFileName = init.getSavedFileName();
 		
-		initStream();
+		initStream(teacherConn.getSocket());
+		
 		init.initStreamCheck(oos);
-		init.startAudioRecord(savedFileName);
-		init.startLectureSave();
-		init.getInitProjectExplorer();
-		init.getInitActivedEditor();
+		
+		savedFileName = init.getSavedFileName(teacherConn.getclassNum());
+		startTime = System.currentTimeMillis();
+		
+		audioRecordThread = init.startAudioRecord(oos, savedFileName);
+		
+		lessonSave = new LessonSave(savedFileName, startTime);
+		lessonSave.initSaveFile();
+		
+		init.getInitProjectExplorer(ois, currentLessonPage, lessonSave);
+		init.getInitActivedEditor(ois, currentLessonPage, lessonSave);
 		
 		try {
 			//stop이 true가 될 때까지 무한 반복
@@ -110,7 +118,7 @@ public class LessonThread implements Runnable{
 									//변화 된 project로 바꿔 줌
 									projectExplorerList1.set(index, changedProjectList);
 									//자막 저장
-									lessonSave.lessonSave("projectChange");
+									lessonSave.savePart("projectChange", projectExplorerList1);
 									//update된 project explorer의 정보를 접속 학생들에게 전송
 									sendToLessonPage.sendToLessonPage("changeProject", "projectExplorer", projectExplorerList1);
 									break;
@@ -145,7 +153,7 @@ public class LessonThread implements Runnable{
 						//삭제 된 project를 저장된 project explorer객체에서 삭제
 						projectExplorerList2.remove(deleteIndex);
 						//자막 저장
-						lessonSave.lessonSave("projectDelete");
+						lessonSave.savePart("projectDelete", projectExplorerList2);
 						//update된 project explorer의 정보를 접속 학생들에게 전송
 						sendToLessonPage.sendToLessonPage("changeProject", "projectExplorer", projectExplorerList2);
 					}
@@ -161,7 +169,7 @@ public class LessonThread implements Runnable{
 					projectExplorerList3.add(addedProjectList);
 					
 					//자막 저장
-					lessonSave.lessonSave("projectAdd");
+					lessonSave.savePart("projectAdd", projectExplorerList3);
 					
 					//update된 project explorer의 정보를 접속 학생들에게 전송
 					sendToLessonPage.sendToLessonPage("changeProject", "projectExplorer", projectExplorerList3);
@@ -173,7 +181,7 @@ public class LessonThread implements Runnable{
 					currentLessonPage.setNowCode(changedCode);
 					
 					//자막 저장
-					lessonSave.lessonSave("codeChange");
+					lessonSave.savePart("codeChange", changedCode);
 					
 //					System.out.println("codeChange : " + changedCode);
 					sendToLessonPage.sendToLessonPage("changeCode", "code", changedCode);
@@ -186,7 +194,7 @@ public class LessonThread implements Runnable{
 					currentLessonPage.setNowConsole(changedConsole);
 					
 					//자막 저장
-					lessonSave.lessonSave("consoleChange");
+					lessonSave.savePart("consoleChange", changedConsole);
 					
 //					System.out.println("consoleChange : " + changedConsole);
 					sendToLessonPage.sendToLessonPage("changeConsole", "console", changedConsole);
@@ -198,9 +206,12 @@ public class LessonThread implements Runnable{
 					String nowCode = (String) receiveMapFromEclipse.get("code");
 					currentLessonPage.setNowPath(nowPath);
 					currentLessonPage.setNowCode(nowCode);
+					Map<String, String> tempMap = new HashMap<>();
+					tempMap.put("path", nowPath);
+					tempMap.put("code", nowCode);
 					
 					//자막 저장
-					lessonSave.lessonSave("activatedEditorChange");
+					lessonSave.savePart("activatedEditorChange", tempMap);
 					
 //					System.out.println("now activated path : " + nowPath);
 //					System.out.println("now activated code : " + nowCode);
@@ -224,10 +235,11 @@ public class LessonThread implements Runnable{
 
 	/**
 	 * Eclipse와 통신을 위한 Stream 생성
+	 * @param socket 
 	 */
-	private void initStream() {
+	private void initStream(Socket socket) {
 		try {
-			socket = teacherConn.getSocket();
+			this.socket = socket;
 			
 			os = socket.getOutputStream();
 			is = socket.getInputStream();
@@ -317,99 +329,31 @@ public class LessonThread implements Runnable{
 		}
 	}
 
-	public SendToLessonPage getSendToLessonPage() {
-		return sendToLessonPage;
-	}
-
-	public void setSendToLessonPage(SendToLessonPage sendToLessonPage) {
-		this.sendToLessonPage = sendToLessonPage;
-	}
-	
 	public LessonSave getLectureSave() {
 		return lessonSave;
 	}
 
-	public void setLectureSave(LessonSave lectureSave) {
-		this.lessonSave = lectureSave;
-	}
-	
-	public AudioRecordThread getAudioRecordThread() {
-		return audioRecordThread;
-	}
-
-	public void setAudioRecordThread(AudioRecordThread recordThread) {
-		this.audioRecordThread = recordThread;
-	}
-
-	public ObjectOutputStream getOos() {
-		return oos;
-	}
-
-	public void setOos(ObjectOutputStream oos) {
-		this.oos = oos;
-	}
-
-	public ObjectInputStream getOis() {
-		return ois;
-	}
-
-	public void setOis(ObjectInputStream ois) {
-		this.ois = ois;
-	}
-	
 	public TeacherConn getTeacherConn() {
 		return teacherConn;
-	}
-
-	public void setTeacherConn(TeacherConn teacherConn) {
-		this.teacherConn = teacherConn;
 	}
 
 	public List<StudentConn> getStudentConnList() {
 		return studentConnList;
 	}
 
-	public void setStudentConnList(List<StudentConn> studentConnList) {
-		this.studentConnList = studentConnList;
-	}
-	
 	public CurrentLessonPage getCurrentLessonPage() {
 		return currentLessonPage;
 	}
 
-	public void setCurrentLessonPage(CurrentLessonPage currentLessonPage) {
-		this.currentLessonPage = currentLessonPage;
-	}
-	
 	public SendChatMessage getSendChatMessage() {
 		return sendChatMessage;
 	}
 
-	public void setSendChatMessage(SendChatMessage sendChatMessage) {
-		this.sendChatMessage = sendChatMessage;
-	}
-	
-	public String getSavedFileName() {
-		return savedFileName;
-	}
-
-	public void setSavedFileName(String savedFileName) {
-		this.savedFileName = savedFileName;
-	}
-
-	public long getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(long startTime) {
-		this.startTime = startTime;
-	}
-	
 	/**
 	 * socket이 강제 종료되었을 경우 실행
 	 */
 	private void close() {
-		lessonSave.lessonSave("");
+		lessonSave.savePart("", null);
 		try {
 			TeacherConnList.getList().remove(teacherConn);
 			if(oos != null)	oos.close();

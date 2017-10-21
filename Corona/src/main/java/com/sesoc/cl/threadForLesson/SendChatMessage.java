@@ -46,7 +46,7 @@ public class SendChatMessage {
 			tempMap.put("chatMessage", message);
 			chatHistory.add(tempMap);
 			
-			lessonThread.getLectureSave().lessonSave("chatMessage");
+			lessonThread.getLectureSave().savePart("chatMessage", chatHistory);
 		} else {
 			sendMap.put("to", to);
 		}

@@ -14,42 +14,30 @@ import java.util.zip.ZipOutputStream;
 
 import org.json.simple.JSONObject;
 
-import com.sesoc.cl.threadForLesson.CurrentLessonPage;
-import com.sesoc.cl.threadForLesson.LessonThread;
-
 public class LessonSave {
 
 	private long rawStartTime;
-	private CurrentLessonPage currentLessonPage;
 	private boolean firstOfFile = true;
 	private String prevJsonCode;
 	
 	private Map<String, Object> lectureData;
 	
-	private LessonThread lessonThread;
+	private String savedFileName;
+	private String directory = "C:\\CoronaSaveFolder\\passed_lesson\\text";
 	
-	// 파일 저장 경로! 변경 중요!
-//	private String zipName = "c:\\test\\test11.zip";
-//	private String fileName = "c:\\test\\test11.vtt";
 	private String zipName;
 	private String fileName;
 
-	public LessonSave() {
-	}
-
-	// 생성자
-	public LessonSave(LessonThread lessonThread) {
-		this.lessonThread = lessonThread;
-		this.currentLessonPage = lessonThread.getCurrentLessonPage();
-		rawStartTime = lessonThread.getStartTime();
+	public LessonSave(String savedFileName, long startTime) {
+		this.savedFileName = savedFileName;
+		rawStartTime = startTime;
 		lectureData = new HashMap<>();
 	}
 
 	// 이클립스 실행시 파일 저장
-	public boolean startFile() {
+	public boolean initSaveFile() {
 		boolean result = false;
-		String savedFileName = lessonThread.getSavedFileName();
-		String directory = "C:\\CoronaSaveFolder\\passed_lesson\\text";
+		
 		zipName = directory + "\\" + savedFileName + ".zip";
 		fileName = directory + "\\" + savedFileName + ".vtt";
 		
@@ -70,7 +58,8 @@ public class LessonSave {
 	/**
 	 * 자막 저장 코드 part = 각 파트별 이름으로 저장 status = input : 재생중, end면 종료
 	 */
-	public boolean lessonSave(String part) {
+	@SuppressWarnings("unchecked")
+	public boolean savePart(String partName, Object part) {
 //		System.out.println("part: " + part);
 		boolean result = false;
 		
@@ -79,37 +68,34 @@ public class LessonSave {
 		
 		boolean endOfFile = false;
 //		System.out.println("part: " + part);
-		switch (part) {
+		switch (partName) {
 		case "initProjectExplorer":
-			lectureData.put("projectExplorer", currentLessonPage.getProjectExplorerList());
+			lectureData.put("projectExplorer", part);
 			return true;
 		
 		case "initActivedEditor":
-			lectureData.put("nowPath", currentLessonPage.getNowPath());
-			lectureData.put("nowCode", currentLessonPage.getNowCode());
+		case "activatedEditorChange":
+			Map<String, String> activedEditor = (Map<String, String>) part;
+			lectureData.put("nowPath", activedEditor.get("path"));
+			lectureData.put("nowCode", activedEditor.get("code"));
 			break;
 			
 		case "projectChange":
 		case "projectDelete":
 		case "projectAdd":
-			lectureData.put("projectExplorer", currentLessonPage.getProjectExplorerList());
+			lectureData.put("projectExplorer", part);
 			break;
 			
 		case "codeChange":
-			lectureData.put("nowCode", currentLessonPage.getNowCode());
+			lectureData.put("nowCode", part);
 			break;
 			
 		case "consoleChange":
-			lectureData.put("changedConsole", currentLessonPage.getNowConsole());
+			lectureData.put("changedConsole", part);
 			break;
 			
-		case "activatedEditorChange":
-			lectureData.put("nowPath", currentLessonPage.getNowPath());
-			lectureData.put("nowCode", currentLessonPage.getNowCode());
-			break;
-		
 		case "chatMessage":
-			lectureData.put("chatMessage", currentLessonPage.getChatHistory());
+			lectureData.put("chatMessage", part);
 			break;
 			
 		case "":
