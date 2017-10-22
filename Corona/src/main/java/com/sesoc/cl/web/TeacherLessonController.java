@@ -88,10 +88,7 @@ public class TeacherLessonController {
 	 */
 	@ResponseBody
 	@RequestMapping("/startLesson")
-	public int startLesson(
-			TeacherConn teacherConn
-			) 
-	{
+	public int startLesson(TeacherConn teacherConn) {
 		int resultInt = 0;
 		logger.info(teacherConn.toString());
 		if(teacherSocket.getTeacherConn() != null) {

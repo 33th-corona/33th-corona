@@ -12,7 +12,6 @@ import java.util.Map;
 
 import com.sesoc.cl.connInfo.StudentEclipseThreadList;
 import com.sesoc.cl.connInfo.TeacherConn;
-import com.sesoc.cl.connInfo.TeacherConnList;
 
 /**
  * 학생 Eclipse 접속 Thread의 메인 클레스
@@ -20,7 +19,6 @@ import com.sesoc.cl.connInfo.TeacherConnList;
  */
 public class StudentEclipseThread implements Runnable{
 	
-	private int serverPort = 8891;
 	private Socket socket;
 	private InputStream is;
 	private OutputStream os;
@@ -28,7 +26,6 @@ public class StudentEclipseThread implements Runnable{
 	private ObjectOutputStream oos;
 	
 	private TeacherConn teacherConn;
-	private String studentIp;
 	private StudentEclipseInitialization init;
 	private SendToStudentEclipsePage send;
 	private CurrentStudentEclipsePage currentStudentEclipsePage;
@@ -38,11 +35,11 @@ public class StudentEclipseThread implements Runnable{
 	/**
 	 * 학생 Eclipse 접속 Thread의 생성자, 실행에 필요한 요소들의 객체를 생성
 	 * @param teacherConn 접속을 시도하는 선생님의 정보를 담은 VO
-	 * @param studentIp 접속 될 학생의 IP
+	 * @param socket 접속 될 학생의 IP
 	 */
-	public StudentEclipseThread(TeacherConn teacherConn, String studentIp) {
+	public StudentEclipseThread(TeacherConn teacherConn, Socket socket) {
 		this.teacherConn = teacherConn;
-		this.studentIp = studentIp;
+		this.socket = socket;
 		currentStudentEclipsePage = new CurrentStudentEclipsePage();
 		
 		send = new SendToStudentEclipsePage(teacherConn.getSession());
@@ -193,21 +190,20 @@ public class StudentEclipseThread implements Runnable{
 	/**
 	 * 학생의 Eclipse와 통신을 위한 Socket 및 Stream 생성
 	 */
-	private void initStream() {
+	private boolean initStream() {
+		boolean result = false;
 		try {
-//			System.out.println(studentIp);
-			socket = new Socket(studentIp, serverPort);
-//			socket = new Socket("localhost", serverPort);
-			
 			os = socket.getOutputStream();
 			is = socket.getInputStream();
 			
 			oos = new ObjectOutputStream(os);
 			ois = new ObjectInputStream(is);
+			result = true;
 		} catch (IOException e) {
 			e.printStackTrace();
 			close();
 		}
+		return result;
 	}
 	
 	public TeacherConn getTeacherConn() {
@@ -219,13 +215,12 @@ public class StudentEclipseThread implements Runnable{
 	 */
 	public boolean disconnect() {
 		boolean result = false;
-		
-		send.sendToStudentEclipsePage("disconnection");
+		send.sendToStudentEclipsePage("disconnStudentEclipse");
 		currentStudentEclipsePage.close();
 		stop = true;
 		close();
+		StudentEclipseThreadList.getStudentEclipseList().remove(this);
 		System.out.println(teacherConn.getId() + "님의 관전이 종료되었습니다.");
-		Thread.currentThread().interrupt();
 		result = true;
 		
 		return result;
@@ -253,7 +248,6 @@ public class StudentEclipseThread implements Runnable{
 	private void close() {
 		try {
 			StudentEclipseThreadList.getStudentEclipseList().remove(this);
-			TeacherConnList.getList().remove(teacherConn);
 			if(oos != null)	oos.close();
 			if(ois != null) ois.close();
 			if(os != null) os.close();

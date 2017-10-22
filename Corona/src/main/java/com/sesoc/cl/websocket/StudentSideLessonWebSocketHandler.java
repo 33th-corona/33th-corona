@@ -14,7 +14,6 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.StudentConn;
-import com.sesoc.cl.connInfo.StudentConnList;
 import com.sesoc.cl.threadForLesson.LessonThread;
 
 /**
@@ -65,7 +64,6 @@ public class StudentSideLessonWebSocketHandler extends TextWebSocketHandler {
 			String ip = (String) jsonObject.get("ip");
 			String classNum = (String) jsonObject.get("classNum");
 			StudentConn tempStudentConn = new StudentConn(id, ip, classNum, session);
-			StudentConnList.getList().add(tempStudentConn);
 			
 			//client에게 보낼 실행 결과 객체 생성
 			Map<String, Object> sendMap = new HashMap<>();

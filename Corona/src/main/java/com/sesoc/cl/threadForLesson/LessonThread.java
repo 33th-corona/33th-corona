@@ -16,7 +16,6 @@ import org.springframework.web.socket.TextMessage;
 
 import com.sesoc.cl.connInfo.LessonList;
 import com.sesoc.cl.connInfo.StudentConn;
-import com.sesoc.cl.connInfo.StudentConnList;
 import com.sesoc.cl.connInfo.TeacherConn;
 import com.sesoc.cl.connInfo.TeacherConnList;
 import com.sesoc.cl.forAudioCapture.AudioRecordThread;
@@ -223,7 +222,6 @@ public class LessonThread implements Runnable{
 				//Eclipse가 종료되거나 강의가 종료되었을 경우 실행
 				case "disconnection":
 					System.out.println("강의전송소켓 정상 종료");
-					audioRecordThread.stop();
 					disconnect();
 					break;
 				}
@@ -250,7 +248,7 @@ public class LessonThread implements Runnable{
 			ois = new ObjectInputStream(is);
 		} catch (IOException e) {
 			e.printStackTrace();
-			close();
+			connClose();
 		}
 	}
 	
@@ -258,6 +256,7 @@ public class LessonThread implements Runnable{
 	 * Eclipse가 종료되거나 강의가 종료되었을 경우 실행, 현재 Thread를 종료 시키고, 학생에게 강의 종료를 알림
 	 */
 	private void disconnect() {
+		audioRecordThread.stop();
 		
 		sendToLessonPage.sendToLessonPage("disconnect");
 		
@@ -272,10 +271,14 @@ public class LessonThread implements Runnable{
 			e.printStackTrace();
 		}
 		
-		close();
-		StudentConnList.getList().removeAll(studentConnList);
+		lessonSave.savePart("", null);
+		
+		connClose();
+		
+		TeacherConnList.getList().remove(teacherConn);
 		currentLessonPage.close();
 		LessonList.getLessonList().remove(this);
+		
 		stop = true;
 		System.out.println(teacherConn.getId() + "님의 수업이 종료되었습니다.");
 	}
@@ -346,10 +349,9 @@ public class LessonThread implements Runnable{
 	/**
 	 * socket이 강제 종료되었을 경우 실행
 	 */
-	private void close() {
-		lessonSave.savePart("", null);
+	private void connClose() {
+		
 		try {
-			TeacherConnList.getList().remove(teacherConn);
 			if(oos != null)	oos.close();
 			if(ois != null) ois.close();
 			if(os != null) os.close();

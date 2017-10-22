@@ -1,11 +1,13 @@
 package com.sesoc.cl.websocket;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
@@ -38,36 +40,28 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 	 * @throws Exception
 	 */
 	public static void startLesson(TeacherConn conn) throws Exception {
-		//TeacherConnList에서 Eclipse로 접속 한 TeacherConn 객체와 동일 한 ip를 가진 객체 탐색
-		for(TeacherConn t : TeacherConnList.getList()) {
-//			System.out.println("t"+t);
-//			System.out.println("conn"+conn);
-			if(t.getIp().equals(conn.getIp())) {
-				//TeacherConn이 가지고 있는 웹소켓 session 객체를 로딩
-				WebSocketSession session = t.getSession();
-				
-				//client에게 보낼 실행 결과 객체 생성
-				Map<String, Object> sendMap = new HashMap<>();
-				
-				//client에게 보낼 실행 결과 설정
-				sendMap.put("action", "eclipseConnSuccess");
-				
-				//JSON String으로 변환
-				String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
-				
-				//Client에게 강의 참여 결과를 전송
-				session.sendMessage(new TextMessage(JSONStringSendMessage));
-				
-				//클래스 Thread 생성 및 Thread에 돌릴 LessonThread객체를 LessionList에 저장
-				LessonThread lessonThread = new LessonThread(t);
-				Thread thread = new Thread(lessonThread);
-				LessonList.getLessonList().add(lessonThread);
-				
-				//클래스 Thread 실행
-				thread.start();
-				break;
-			}
-		}
+		//TeacherConn이 가지고 있는 웹소켓 session 객체를 로딩
+		WebSocketSession session = conn.getSession();
+		
+		//client에게 보낼 실행 결과 객체 생성
+		Map<String, Object> sendMap = new HashMap<>();
+		
+		//client에게 보낼 실행 결과 설정
+		sendMap.put("action", "eclipseConnSuccess");
+		
+		//JSON String으로 변환
+		String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
+		
+		//Client에게 강의 참여 결과를 전송
+		session.sendMessage(new TextMessage(JSONStringSendMessage));
+		
+		//클래스 Thread 생성 및 Thread에 돌릴 LessonThread객체를 LessionList에 저장
+		LessonThread lessonThread = new LessonThread(conn);
+		Thread thread = new Thread(lessonThread);
+		LessonList.getLessonList().add(lessonThread);
+		
+		//클래스 Thread 실행
+		thread.start();
 	}
 	
 	/**
@@ -84,7 +78,7 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 	 * @param textMessage 클라이언트가 보낸 메세지를 담은 객체
 	 */
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage textMessage) throws Exception {
+	protected void handleTextMessage(WebSocketSession session, TextMessage textMessage) {
 		
 		logger.info(session.getId() + "님이 메시지 전송");
 		
@@ -93,7 +87,12 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 		
 		//JSON으로 다시 parsing
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(message);
+		JSONObject jsonObject = null;
+		try {
+			jsonObject = (JSONObject) jsonParser.parse(message);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		//action에 담겨있는 명령을 로딩
 		String action = (String) jsonObject.get("action");
@@ -119,7 +118,11 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 //					byte[] sendMessageByteArray = JSONStringSendMessage.getBytes();
 					
 					//Client에게 강의 참여 결과를 전송
-					session.sendMessage(new TextMessage(JSONStringSendMessage));
+					try {
+						session.sendMessage(new TextMessage(JSONStringSendMessage));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 				}
 			}
@@ -132,7 +135,11 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 			//JSON String으로 변환
 			String JSONStringSendMessage = JSONObject.toJSONString(sendMap);
 			//Client에게 강의 참여 결과를 전송
-			session.sendMessage(new TextMessage(JSONStringSendMessage));
+			try {
+				session.sendMessage(new TextMessage(JSONStringSendMessage));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			//client에게 받은 ip를 저장
 			String teacherId = (String) jsonObject.get("id");
@@ -149,12 +156,24 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 		case "viewStudentEclipse":
 			//접속하려는 학생의 ip를 저장
 			String studentIp = (String) jsonObject.get("ip");
+			int serverPort = 8891;
+			Socket socket = null;
+			try {
+				socket = new Socket(studentIp, serverPort);
+			} catch (IOException e) {
+//				e.printStackTrace();
+				logger.error("접속실패!");
+			}
+			if(socket == null || !socket.isConnected()) {
+				return;
+			}
+			
 			//학생 eclipse확인 용 thread실행
 			for(LessonThread l : LessonList.getLessonList()) {
 				if(l.getTeacherConn().getSession().equals(session)) {
 					//학생 Eclipse 접속 Thread 생성 및 Thread에 돌릴 StudentEclipseThread객체를 StudentEclipseThreadList에 저장
 					//접속하려는 학생의 ip와 현재 요청 한 선생님의 정보를 매개 변수로 하여 생성
-					StudentEclipseThread studentEclipseThread = new StudentEclipseThread(l.getTeacherConn(), studentIp);
+					StudentEclipseThread studentEclipseThread = new StudentEclipseThread(l.getTeacherConn(), socket);
 					Thread thread = new Thread(studentEclipseThread);
 					StudentEclipseThreadList.getStudentEclipseList().add(studentEclipseThread);
 					
@@ -191,20 +210,5 @@ public class TeacherSideLessonWebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		logger.info(session.getId() + "님 접속 종료");
-		
-		//TeacherConnList를 로딩
-		List<TeacherConn> teacherConnList = TeacherConnList.getList();
-		
-		//TeacherConnList에서 접속을 종료한 session과 같은 session을 가진 TeacherConn객체를 탐색
-		for(TeacherConn t : teacherConnList) {
-			if(t.getSession().equals(session)) {
-				//TeacherConnList에서 해당하는 TeacherConn객체를 삭제
-				if(teacherConnList.remove(t)) {
-					logger.info(session.getId() + "님 안전하게 접속 종료");
-					return;
-				}
-			}
-		}
-		logger.info(session.getId() + "님 비정상 접속 종료");
 	}
 }

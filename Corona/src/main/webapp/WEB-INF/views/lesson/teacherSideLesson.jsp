@@ -193,9 +193,6 @@ $(document).ready(function() {
 	
 	//학생 eclipse 접속 종료
 	$('button#stopStudentView').on('click', function() {
-		$('div#leftPanel').css('display', 'none');
-		$('div#leftReadyPanel').css('display', 'block');
-		
 		var sendMessage = {};
 		sendMessage.action = "closeStudentEclipse";
 		var sendMessageJSON = JSON.stringify(sendMessage);
@@ -438,6 +435,10 @@ function lessonStart(startResult, existLesson) {
 				
 				$('#chatMessage').val(existMessage);
 				$('#chatMessage').scrollTop(999999);
+			}
+			else if (action == 'disconnStudentEclipse') {
+				$('div#leftPanel').css('display', 'none');
+				$('div#leftReadyPanel').css('display', 'block');
 			}
 			else if (action == 'disconnect') {
 				$('button#stopStudentView').trigger('click');
