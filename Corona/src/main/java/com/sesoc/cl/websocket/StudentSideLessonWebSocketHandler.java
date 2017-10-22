@@ -1,10 +1,12 @@
 package com.sesoc.cl.websocket;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
@@ -42,7 +44,7 @@ public class StudentSideLessonWebSocketHandler extends TextWebSocketHandler {
 	 * @param textMessage 클라이언트가 보낸 메세지를 담은 객체
 	 */
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage textMessage) throws Exception {
+	protected void handleTextMessage(WebSocketSession session, TextMessage textMessage) {
 		
 		logger.info(session.getId() + "님이 메시지 전송");
 		
@@ -51,7 +53,13 @@ public class StudentSideLessonWebSocketHandler extends TextWebSocketHandler {
 		
 		//JSON으로 다시 parsing
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(message);
+		JSONObject jsonObject = null;
+		try {
+			jsonObject = (JSONObject) jsonParser.parse(message);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//action에 담겨있는 명령을 로딩
 		String action = (String) jsonObject.get("action");
@@ -87,7 +95,11 @@ public class StudentSideLessonWebSocketHandler extends TextWebSocketHandler {
 //			byte[] sendMessageByteArray = JSONStringSendMessage.getBytes();
 			
 			//Client에게 강의 참여 결과를 전송
-			session.sendMessage(new TextMessage(JSONStringSendMessage));
+			try {
+				session.sendMessage(new TextMessage(JSONStringSendMessage));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "chatMessage":
 			String chatMessage = (String) jsonObject.get("chatMessage");
