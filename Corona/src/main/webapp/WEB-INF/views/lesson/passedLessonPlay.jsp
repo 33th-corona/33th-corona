@@ -84,7 +84,7 @@ $(function() {
 		req.send();
 		
 		$('button#speedUp').on('click', function() {
-			if(myAudio.playbackRate >= 2) {
+			if(myAudio.playbackRate >= 3) {
 				return;
 			}
 			myAudio.playbackRate = myAudio.playbackRate + 0.5;
@@ -283,7 +283,7 @@ function saveEditorOption(editor) {
 				<track id="entrack" src="captionPlay?saved_code=${savedLessonInfo.saved_code}" kind="metadata" default></track>
 			</audio>
 			&nbsp;
-			<pre id="nowSpeed" class="nomargin topPanelPart" style="display: inline-block;">1 倍速</pre>
+			<pre id="nowSpeed" class="nomargin topPanelPart" style="display: inline-block; text-align:center; width: 100px;">1 倍速</pre>
 			&nbsp;
 			<button type="button" id="speedUp" class="topPanelPart">+0.5</button>
 			<button type="button" id="speedDown" class="topPanelPart">-0.5</button>
