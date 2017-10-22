@@ -73,6 +73,14 @@
 			<mapping path="/studentForm"/>
 			<mapping path="/teacherForm"/>
 			<mapping path="/topMenu"/>
+			<mapping path="/passedLessonList"/>
+			<mapping path="/homeworkList"/>
+			<mapping path="/homeworkCreateForm"/>
+			<mapping path="/submittedHomeworkConfirm"/>
+			<mapping path="/homeworkDetail"/>
+			<mapping path="/lessonStart"/>
+			<mapping path="/lessonJoin"/>
+			<mapping path="/loadPassedLesson"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>

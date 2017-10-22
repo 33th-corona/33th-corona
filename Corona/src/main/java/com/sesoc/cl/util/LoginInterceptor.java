@@ -16,7 +16,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		//로그인을 하지 않은 경우
 		if(custid == null){
 			//로그인 화면으로 redirect
-			response.sendRedirect("home");
+			response.sendRedirect("intercepted");
 			return false;
 		}
 		
