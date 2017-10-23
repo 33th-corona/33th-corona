@@ -430,7 +430,7 @@ ul.c-controls li a:hover {
 	});
 	
 	function retired(){
-		var result = confirm("정말 탈퇴하시겠습니까?");
+		var result = confirm("本当に脱退しますか?");
 		var num = $(this).attr('num');
 		if(result){
 			location.href = "${pageContext.request.contextPath}/retired?num=" + num;

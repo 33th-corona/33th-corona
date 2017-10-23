@@ -660,7 +660,7 @@ ul.c-controls li a:hover {
 			var num = $(this).attr('num');
 			var statusChange = $(this).attr('status');
 			var btn = $(this);
-			var result = confirm(statusChange + " : 실행 하시겠습니까?");
+			var result = confirm(statusChange + " : 実行しますか?");
 			if(result){
 			$.ajax({
 						url : 'status',
@@ -668,11 +668,11 @@ ul.c-controls li a:hover {
 						data : 'num=' + num + '&status=' + statusChange,
 						success : function(repo) {
 							if(repo == 'student'){
-								alert("승인 하였습니다.");
+								alert("承認しました。");
 								$(btn).parent().parent().parent().remove();
 							}
 							if(repo == 'withdraw'){
-								alert("거부 하였습니다.");
+								alert("拒否しました。");
 								$(btn).parent().parent().parent().remove();
 							}
 						},
@@ -688,14 +688,14 @@ ul.c-controls li a:hover {
 		function retired(){
 			var num = $(this).attr('num');
 			var btn = $(this);
-			var result = confirm("강제 탈퇴 시키겠습니까?");
+			var result = confirm("強制脱退しますか?");
 			if(result){
 			$.ajax({
 				url : 'retired',
 				data : 'num=' + num,
 				method : 'POST',
 				success : function(repo){
-					alert("탈퇴 완료되었습니다.");
+					alert("脱退完了しました。");
 					$(btn).parent().parent().parent().remove();
 				} 
 				,

@@ -10,7 +10,7 @@
 <script src="js/jquery-3.2.1.min.js/"></script>
 <script>
 $(function() {
-	alert("404에러 발생! 메인으로 돌아갑니다.");
+	alert("500エーラ発生! メインページに戻ります。");
 	location.href = '${pageContext.request.contextPath}/';
 });
 </script>

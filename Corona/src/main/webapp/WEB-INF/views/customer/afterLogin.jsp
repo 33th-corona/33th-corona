@@ -498,7 +498,7 @@
 					}
 				});
 			} else {
-				alert('Please enter your Location!');
+// 				alert('Please enter your Location!');
 			}
 			e.preventDefault();
 		});
